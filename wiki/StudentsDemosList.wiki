@@ -20,10 +20,10 @@ Record status - planned,working,done
     * P]anned: tba
     * Working: tba
     * Done: tba
-  * *Richard Legendi*
-    * P]anned: tba
-    * Working: tba
-    * Done: tba
+  * *[Richard Richard Legendi]*
+    * Planned: [Richard#Planned_Models StupidModel1-16] (_Java_)
+    * Working: _Nothing yet_
+    * Done: _Nothing yet_
   * *Grace Lin*
     * P]anned: tba
     * Working: tba
