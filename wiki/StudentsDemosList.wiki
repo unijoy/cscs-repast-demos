@@ -2,14 +2,40 @@
 
 = Assigned Demos =
 
+Record status - planned,working,done
+
   * *Mark Champe*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Rowan Copley*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Kwame Green*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Mundit Gupta*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Richard Legendi*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Grace Lin*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Benjamin Schleich*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
   * *Tim Sweda*
+    * P]anned: tba
+    * Working: tba
+    * Done: tba
 
 
 ----
