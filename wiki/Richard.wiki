@@ -1,8 +1,8 @@
 #summary Richard's project and task description
 #labels Phase-Implementation
-#sidebar TableOfContents
 
 = General Information =
+#sidebar TableOfContents
 
 == Introduction ==
 
