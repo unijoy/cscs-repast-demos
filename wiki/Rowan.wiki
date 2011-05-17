@@ -1,12 +1,19 @@
 #summary Rowan's stuff: current tasks, ideas, etc.
-
-== Current Task(s) ==
+= Repast = 
+=== Current Task(s) ===
 To be decided.
-== Finished Work ==
+=== Finished Work ===
 Nothin' yet.
-== Unimplemented Ideas ==
+=== Unimplemented Ideas ===
 _TODO_
-== About Me ==
+=== Preferences for demos ===
+
+= Myself =
+=== Contact ===
+cell: 301-491-1865
+email: dovinmu@gmail.com or rowan.copley@gmail.com
+
+=== About Me ===
 _TODO_
-== Other Stuff ==
+=== Other Stuff ===
 _TODO_
