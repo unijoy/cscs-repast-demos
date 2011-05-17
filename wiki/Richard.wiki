@@ -43,6 +43,18 @@ I would like to create simple models and tutorials about how to link Repast with
 
 I believe such demo models and detailed descriptions may help modelers and make [http://repast.sourceforge.net/ Repast S] a more widely used tool.
 
+=== Tools ===
+I would like to create several smaller models, link them with some of the following tools and write detailed tutorials how to use them.
+
+ * MatLab/Maple/Octave
+ * ORA
+ * R
+ * Spreadsheet (Excel by default)
+ * JUNG (Internal tools that provides some stats on networks)
+ * Terracotta
+ * Weka
+ * Pajek
+
 = References =
 
  # [http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf]
