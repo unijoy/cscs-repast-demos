@@ -1,8 +1,9 @@
 #summary Rowan's stuff: current tasks, ideas, etc.
 
-== Current ==
+== Current Task(s) ==
 To be decided.
 == Finished Work ==
+Nothin' yet.
 == Unimplemented Ideas ==
 _TODO_
 == About Me ==
