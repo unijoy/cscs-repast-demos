@@ -31,7 +31,7 @@ You can find the descriptions of the models I plan to create during the summer.
 
 == Implementation of the !StupidModel ==
 
-I am sure the StupidModel (1) considered a relevant learning /comparison tool for agent-based modelling. In the last half-a-year I saw it appearing several places, like in the tutorial of gama-platform (2), and in a JASSS publication (3) with a Python API. I've also used it for comparing platforms in one of my publications with different software metrics.
+I am sure the [http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf StupidModel] (1) considered a relevant learning /comparison tool for agent-based modelling. In the last half-a-year I saw it appearing several places, like in the tutorial of gama-platform (2), and in a JASSS publication (3) with a Python API. I've also used it for comparing platforms in one of my publications with different software metrics.
 
 There was a [http://ccl.northwestern.edu/netlogo/ NetLogo] implementation from the beginning, and as I see it is accessible for [http://www.cs.gmu.edu/~eclab/projects/mason/ Mason] (4). It seems I'm a bit drop behind with [http://metaabm.org/ MetaABM], however, I made a bit of search and saw it is also accessible for this platform (5).
 
