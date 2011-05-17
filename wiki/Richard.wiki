@@ -49,8 +49,8 @@ I would like to create several smaller models, link them with some of the follow
  * !MatLab/Maple/Octave
  * ORA
  * R
- * Spreadsheet (Excel by default)
- * JUNG (Internal tools that provides some stats on networks)
+ * Spreadsheets
+ * JUNG
  * Terracotta
  * Weka
  * Pajek
