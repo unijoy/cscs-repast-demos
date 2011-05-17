@@ -1,22 +1,30 @@
 #summary Richard's project and task description
 #labels Phase-Implementation
 
-= Accounts =
-  * E-mail: richard.legendi@gmail.com
-  * Google: richard.legendi
-  * Skype: rlegendi
-  * Mentor: TODO
+= General Information =
 
-= Introduction =
+== Introduction ==
 
 My name is Richard Oliver Legendi, I'm in my second year at Eötvös Loránd University as a PhD student, at the Dept. of Programming Languages and Compilers. I've participated in the development of some other ABM tools (like MASS, Fables, and GridABM).
 
-It is a great pleasure to be on board and to be able to participate in the
-project.
+It is a great pleasure to be on board and to be able to participate in the project.
 
-I would like to create simple models and tutorials about how to link Repast with
-other commonly used tools (like R, Matlab, Octave, Maple, etc.), I believe this
-may help modelers and make Repast S a more widely used tool.
+I would like to create simple models and tutorials about how to link Repast with other commonly used tools (like R, Matlab, Octave and Maple), I believe this may help modelers and make Repast S a more widely used tool.
+
+ * Mentor: TODO
+ * Location: Budapest, Hungary
+ * Time Zone: GMT+01:00
+ * University: 
+   * [http://www.elte.hu/en Eötvös Loránd University]
+   * [http://www.inf.elte.hu/english Faculty of Informatics]
+   * [http://plcportal.inf.elte.hu/en Dept. of Programming Languages and Compilers]
+
+== Contact ==
+ * E-mail: [richard.legendi@gmail.com]
+ * Google: richard.legendi
+ * Skype: rlegendi
+ * IRC: rlegendi
+ * Web: http://people.inf.elte.hu/legendi/
 
 = Planned Models =
 You can find the descriptions of the models I plan to create during the summer.
