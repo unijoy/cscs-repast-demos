@@ -2,14 +2,14 @@
 
 = Assigned Demos =
 
-  * Mark Champe
-  * Rowan Copley
-  * Kwame Green
-  * Mundit Gupta
-  * Richard Legendi
-  * Grace Lin
-  * Benjamin Schleich
-  * Tim Sweda
+  * *Mark Champe*
+  * *Rowan Copley*
+  * *Kwame Green*
+  * *Mundit Gupta*
+  * *Richard Legendi*
+  * *Grace Lin*
+  * *Benjamin Schleich*
+  * *Tim Sweda*
 
 
 ----
@@ -28,32 +28,32 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # second pref
     # third pref
 
-  * Kwame Green
+  * *Kwame Green*
     # first pref
     # second pref
     # third pref
 
-  * Mundit Gupta
+  * *Mundit Gupta*
     # first pref
     # second pref
     # third pref
 
-  * Richard Legendi
+  * *Richard Legendi*
     # first pref
     # second pref
     # third pref
 
-  * Grace Lin
+  * *Grace Lin*
     # first pref
     # second pref
     # third pref
 
-  * Benjamin Schleich
+  * *Benjamin Schleich*
     # first pref
     # second pref
     # third pref
 
-  * Tim Sweda
+  * *Tim Sweda*
     # first pref
     # second pref
     # third pref
