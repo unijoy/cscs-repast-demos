@@ -21,11 +21,11 @@ may help modelers and make Repast S a more widely used tool.
 = Planned Models =
 You can find the descriptions of the models I plan to create during the summer.
 
-== Implementation of the StupidModel ==
+== Implementation of the !StupidModel ==
 
 I am sure the model considered a relevant learning /comparison tool for agent-based modelling. In the last half-a-year I saw it appearing several places, like in the tutorial of gama-platform (1), and in a JASSS publication (2) with a Python API. I've also used it for comparing platforms in one of my publications with different software metrics.
 
-There was a NetLogo implementation from the beginning, and as I see it is accessible for Mason (3). It seems I'm a bit drop behind with MetaABM, however, I made a bit of search and saw it is also accessible for this platform (4).
+There was a !NetLogo implementation from the beginning, and as I see it is accessible for Mason (3). It seems I'm a bit drop behind with MetaABM, however, I made a bit of search and saw it is also accessible for this platform (4).
 
 I believe it would worth implementing this tool, and improve the comparability with other platforms.
  
