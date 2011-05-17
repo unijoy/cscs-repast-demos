@@ -6,19 +6,19 @@
 Record status after the group agrees on the assignment - planned,working,done
 
   * *Mark Champe*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
   * *Rowan Copley*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
   * *Kwame Green*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
-  * *Mundit Gupta*
-    * P]anned: tba
+  * *Mudit Raj Gupta*
+    * Planned: tba
     * Working: tba
     * Done: tba
   * *[Richard Richard Legendi]*
@@ -26,15 +26,15 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: _Nothing yet_
     * Done: _Nothing yet_
   * *Grace Lin*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
   * *Benjamin Schleich*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
   * *Tim Sweda*
-    * P]anned: tba
+    * Planned: tba
     * Working: tba
     * Done: tba
 
@@ -60,7 +60,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # second pref
     # third pref
 
-  * *Mundit Gupta*
+  * *Mudit Raj Gupta*
     # first pref
     # second pref
     # third pref
