@@ -61,7 +61,7 @@ I am thinking of smaller models, because i) they could be better for tutorial an
 ==== Statistics ====
 I think a major contribution would be if we could link Repast S with R. Several messages come to the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest] mailing list about R, and I also found a blog (6) stating:
 
-  _"I thought  Repast Simphony was the way to go, since the website claims about capabilities to work along with R, but then I was disappointed to find out that it was only storing the output in a data.frame class object (and besides it does not work on a  Mac…). Then after switching (at this stage almost completely) to NetLogo, I found this awesome extension, currently in beta stage (and alas, still not working on yet on a Mac...) but as far as I've seen it works perfectly fine."_
+  _"I thought  Repast Simphony was the way to go, since the website claims about capabilities to work along with R, but then I was disappointed to find out that it was only storing the output in a data.frame class object (and besides it does not work on a  Mac...). Then after switching (at this stage almost completely) to !NetLogo, I found this awesome extension, currently in beta stage (and alas, still not working on yet on a Mac...) but as far as I've seen it works perfectly fine."_
 
 ==== Population Dynamics ====
 A simple population dynamics model, like Lotka–Volterra (7) would be good to use with any of the mathematical tools (Matlab, Maple, Octave). 
