@@ -9,7 +9,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Rowan Copley]*
+  * *[Rowan Rowan Copley]*
     * Planned: tba
     * Working: _Nothing yet_
     * Done: _Nothing yet_
@@ -50,7 +50,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # second pref
     # third pref
  
-  * *Rowan Copley*
+  * *[Rowan Rowan Copley]*
     # [Rowan#boids boids]
     # sugarScape documentation
     # Three-bodies problem
