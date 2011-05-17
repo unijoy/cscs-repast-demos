@@ -46,7 +46,7 @@ I believe such demo models and detailed descriptions may help modelers and make 
 === Tools ===
 I would like to create several smaller models, link them with some of the following tools and write detailed tutorials how to use them.
 
- * !MatLab/Maple/Octave
+ * Matlab/Maple/Octave
  * ORA
  * R
  * Spreadsheets
@@ -55,6 +55,14 @@ I would like to create several smaller models, link them with some of the follow
  * Weka
  * Pajek
 
+=== Models ===
+I am thinking of smaller models, because i) they could be better for tutorial and demo reasons, and ii) the emphasis is on how to use external tools with Repast S, not on the models. For this reason I thought to implement simple known models, like the following ones.
+
+==== Population Dynamics ====
+A simple population dynamics model, like Lotka–Volterra (6) would be good to use with any of the mathematical tools (Matlab, Maple, Octave). 
+
+They can handle and approximate the solutions of the differential equation systems without any problem (i.e. we don't have to deal with implementing a method like Runge-Kutta).
+
 = References =
 
  # [http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf]
@@ -62,3 +70,6 @@ I would like to create several smaller models, link them with some of the follow
  # [http://jasss.soc.surrey.ac.uk/14/2/5.html]
  # [http://condor.depaul.edu/slytinen/abm/]
  # [http://metaabm.org/docs/designing_model.html]
+ # Lotka, A.J., "Contribution to the Theory of Periodic Reaction", J. Phys. Chem., 14 (3), pp 271–274 (1910)
+ # W. Brian Arthur. "Inductive Reasoning and Bounded Rationality", The American Economic Review, v84n2, p406-411 (1994)
+ # Fogel, D.B.; Chellapilla, K.; Angeline, P.J., "Inductive reasoning and bounded rationality reconsidered", IEEE Transactions on Evolutionary Computation, v3n2, p142-146 (1999)
