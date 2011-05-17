@@ -5,16 +5,51 @@ To be decided.
 === Finished Work ===
 Nothin' yet.
 === Unimplemented Ideas ===
-_TODO_
-=== Preferences for demos ===
+Here's a list of my ideas so far - will put in short descriptions later.
+ * Boids
+ * Three-bodies 
+ * simple traffic 
+ * simple weather 
+ * ant foraging
+ * penguin huddle
+ * simple morphogenesis
+ * cellular automaton 
 
+=== Preferences for demos ===
+ # boids
+ # document sugarscape
+ # three-bodies
+----
 = Myself =
 === Contact ===
 cell: 301-491-1865
 
 email: dovinmu@gmail.com or rowan.copley@gmail.com
 
-=== About Me ===
-_TODO_
+I will put my skype and IRC handles here once I reinstall and create an account, respectively.
+
+=== About Me/Relevant Info ===
+location: Hagerstown, Maryland, USA
+
+time awake: ~8am - 9pm EST or in UTC: ~12 - 1 (i'm 4 hours behind UTC)
+
+favorite authors: Neal Stephenson, Douglas Hofstadter, Larry Niven, Daniel Saurez, George R. R. Martin, Cory Doctorow
+
+favorite Beatle: George
+
+from my intro email:
+ I'm an undergrad dual Compsci/Studio Art major entering my final year at  
+ St. Mary's College of Maryland ...
+
+ I've become pretty interested in swarm and complexity since I started 
+ doing preliminary research on it for my senior undergraduate thesis on 
+ swarm robotics. I'm not exactly sure what attracts me to complexity, but 
+ I find the examples of organized swarms in nature very beautiful - my 
+ favorite example is the collaborative process in which honeybees find a 
+ new nest site. I'm interested to learn more about the optimizational and 
+ societal applications of complex systems.
+
 === Other Stuff ===
-_TODO_
+this show is really cool:
+
+<wiki:video url="http://www.youtube.com/watch?v=qJjeHLcbQJ0"/>
