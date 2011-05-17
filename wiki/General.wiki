@@ -1,0 +1,30 @@
+#summary General information about the Repast S GSoC 2011 project
+#labels Featured
+
+= Introduction =
+
+This project was founded as part of a Google Summer of Code 2011 in order to improve [http://repast.sourceforge.net/ Repast Simphony]. We have two different goals:
+
+  * Project #1: Create Agent Based Model _"Demos"_ using Repast Simphony
+  * Project #2: Development of Repast Simphony
+
+= Project Details =
+== Members ==
+
+The mentors are:
+
+  * Nick Collier, nick.collier@gmail.com
+  * Michael North, north@anl.gov
+  * Eric R., Tatara tatara@anl.gov
+  * Rick Riolo, rlriolo@umich.edu
+
+The interns are:
+
+  * gracelin999@gmail.com
+  * kogreen2@yahoo.com,
+  * mudit.raaj.gupta@gmail.com
+  * Richard Oliver Legendi, richard.legendi@gmail.com
+  * rowan copley <dovinmu@gmail.com>
+  * tsweda@u.northwestern.edu,
+  * tychobismeijer@gmail.com
+  * Mark Champe, mark.champe@gmail.com>,
