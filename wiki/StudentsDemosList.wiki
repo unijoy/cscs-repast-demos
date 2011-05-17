@@ -9,10 +9,10 @@ Record status after the group agrees on the assignment - planned,working,done
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *Rowan Copley*
+  * *[Rowan Copley]*
     * Planned: tba
-    * Working: tba
-    * Done: tba
+    * Working: _Nothing yet_
+    * Done: _Nothing yet_
   * *Kwame Green*
     * Planned: tba
     * Working: tba
@@ -51,9 +51,9 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # third pref
  
   * *Rowan Copley*
-    # first pref
-    # second pref
-    # third pref
+    # [Rowan#boids boids]
+    # sugarScape documentation
+    # Three-bodies problem
 
   * *Kwame Green*
     # first pref
