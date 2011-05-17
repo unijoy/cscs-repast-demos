@@ -20,6 +20,10 @@ This is an old algorithm for agent-based modelling (it was [http://en.wikipedia.
 
 ----
 = Myself =
+mentor: Nick Collier
+=== Intro === 
+I'm an undergrad entering my final year at St. Mary's College of Maryland, a (secular) public liberal arts college. I'm doing my undergrad thesis on swarm robotics, and I'm planning on using RepastS for modelling purposes.
+
 === Contact ===
 cell: 301-491-1865
 
@@ -35,18 +39,6 @@ time awake: ~8am - 9pm EST or in UTC: ~12 - 1 (i'm 4 hours behind UTC)
 favorite authors: Neal Stephenson, Douglas Hofstadter, Larry Niven, Daniel Saurez, George R. R. Martin, Cory Doctorow
 
 favorite Beatle: George
-
-from my intro email:
- I'm an undergrad dual Compsci/Studio Art major entering my final year at  
- St. Mary's College of Maryland ...
-
- I've become pretty interested in swarm and complexity since I started 
- doing preliminary research on it for my senior undergraduate thesis on 
- swarm robotics. I'm not exactly sure what attracts me to complexity, but 
- I find the examples of organized swarms in nature very beautiful - my 
- favorite example is the collaborative process in which honeybees find a 
- new nest site. I'm interested to learn more about the optimizational and 
- societal applications of complex systems.
 
 === Other Stuff ===
 this show is really cool:
