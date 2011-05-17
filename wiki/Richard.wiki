@@ -2,7 +2,6 @@
 #labels Phase-Implementation
 
 = General Information =
-#sidebar TableOfContents
 
 == Introduction ==
 
