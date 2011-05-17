@@ -63,6 +63,8 @@ I think a major contribution would be if we could link Repast S with R. Several 
 
   _"I thought  Repast Simphony was the way to go, since the website claims about capabilities to work along with R, but then I was disappointed to find out that it was only storing the output in a data.frame class object (and besides it does not work on a  Mac...). Then after switching (at this stage almost completely) to !NetLogo, I found this awesome extension, currently in beta stage (and alas, still not working on yet on a Mac...) but as far as I've seen it works perfectly fine."_
 
+I do not have any particular model in mind right know, any suggestions are more than welcome where we can use some of the features of R.
+
 ==== Population Dynamics ====
 A simple population dynamics model, like Lotka–Volterra (8) would be good to use with any of the mathematical tools (Matlab, Maple, Octave). 
 
