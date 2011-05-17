@@ -18,12 +18,12 @@
 Scratch area to list preferences, from which we will figure out the actual assignments, above.
 
 
-  * Mark Champe
+  * *Mark Champe*
     # first pref
     # second pref
     # third pref
  
-  * Rowan Copley
+  * *Rowan Copley*
     # first pref
     # second pref
     # third pref
