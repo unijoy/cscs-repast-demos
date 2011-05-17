@@ -2,14 +2,14 @@
 
 = Assigned Demos =
 
-* Mark Champe
-* Rowan Copley
-* Kwame Green
-* Mundit Gupta
-* Richard Legendi
-* Grace Lin
-* Benjamin Schleich
-* Tim Sweda
+  * Mark Champe
+  * Rowan Copley
+  * Kwame Green
+  * Mundit Gupta
+  * Richard Legendi
+  * Grace Lin
+  * Benjamin Schleich
+  * Tim Sweda
 
 
 ----
@@ -18,42 +18,42 @@
 Scratch area to list preferences, from which we will figure out the actual assignments, above.
 
 
-* Mark Champe
-  # first pref
-  # second pref
-  # third pref
+  * Mark Champe
+    # first pref
+    # second pref
+    # third pref
+ 
+  * Rowan Copley
+    # first pref
+    # second pref
+    # third pref
 
-* Rowan Copley
-  # first pref
-  # second pref
-  # third pref
+  * Kwame Green
+    # first pref
+    # second pref
+    # third pref
 
-* Kwame Green
-  # first pref
-  # second pref
-  # third pref
+  * Mundit Gupta
+    # first pref
+    # second pref
+    # third pref
 
-* Mundit Gupta
-  # first pref
-  # second pref
-  # third pref
+  * Richard Legendi
+    # first pref
+    # second pref
+    # third pref
 
-* Richard Legendi
-  # first pref
-  # second pref
-  # third pref
+  * Grace Lin
+    # first pref
+    # second pref
+    # third pref
 
-* Grace Lin
-  # first pref
-  # second pref
-  # third pref
+  * Benjamin Schleich
+    # first pref
+    # second pref
+    # third pref
 
-* Benjamin Schleich
-  # first pref
-  # second pref
-  # third pref
-
-* Tim Sweda
-  # first pref
-  # second pref
-  # third pref
+  * Tim Sweda
+    # first pref
+    # second pref
+    # third pref
