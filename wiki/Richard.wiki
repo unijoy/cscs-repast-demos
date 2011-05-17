@@ -1,0 +1,42 @@
+#summary Richard's project and task description
+#labels Phase-Implementation
+
+= Accounts =
+  * E-mail: richard.legendi@gmail.com
+  * Google: richard.legendi
+  * Skype: rlegendi
+  * Mentor: TODO
+
+= Introduction =
+
+My name is Richard Oliver Legendi, I'm in my second year at Eötvös Loránd University as a PhD student, at the Dept. of Programming Languages and Compilers. I've participated in the development of some other ABM tools (like MASS, Fables, and GridABM).
+
+It is a great pleasure to be on board and to be able to participate in the
+project.
+
+I would like to create simple models and tutorials about how to link Repast with
+other commonly used tools (like R, Matlab, Octave, Maple, etc.), I believe this
+may help modelers and make Repast S a more widely used tool.
+
+= Planned Models =
+You can find the descriptions of the models I plan to create during the summer.
+
+== Implementation of the StupidModel ==
+
+I am sure the model considered a relevant learning /comparison tool for agent-based modelling. In the last half-a-year I saw it appearing several places, like in the tutorial of gama-platform (1), and in a JASSS publication (2) with a Python API. I've also used it for comparing platforms in one of my publications with different software metrics.
+
+There was a NetLogo implementation from the beginning, and as I see it is accessible for Mason (3). It seems I'm a bit drop behind with MetaABM, however, I made a bit of search and saw it is also accessible for this platform (4).
+
+I believe it would worth implementing this tool, and improve the comparability with other platforms.
+ 
+== Using External Tools with Repast S ==
+
+I would like to create simple models and tutorials about how to link Repast with other commonly used tools (like R for statistics, Matlab for learning, Octave for some differential equations, etc.  like R, Matlab, Octave, Maple, etc.).
+
+I believe such demo models and detailed descriptions may help modelers and make Repast S a more widely used tool.
+References 
+
+ # [http://code.google.com/p/gama-platform/wiki/Stupid_Tutorial_Model1]
+ # [http://jasss.soc.surrey.ac.uk/14/2/5.html]
+ # [http://condor.depaul.edu/slytinen/abm/]
+ # [http://metaabm.org/docs/designing_model.html]
