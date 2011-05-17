@@ -41,8 +41,9 @@ I believe it would worth implementing this tool, and improve the comparability w
 
 I would like to create simple models and tutorials about how to link Repast with other commonly used tools (like R for statistics, Matlab for learning, Octave for some differential equations, and so on).
 
-I believe such demo models and detailed descriptions may help modelers and make Repast S a more widely used tool.
-References 
+I believe such demo models and detailed descriptions may help modelers and make [http://repast.sourceforge.net/ Repast S] a more widely used tool.
+
+= References =
 
  # [http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf]
  # [http://code.google.com/p/gama-platform/wiki/Stupid_Tutorial_Model1]
