@@ -1,9 +1,9 @@
 #summary Rowan's stuff: current tasks, ideas, etc.
 = Repast = 
-=== Current Task(s) ===
-To be decided.
-=== Finished Work ===
-Nothin' yet.
+Current Task(s): _Nothing yet_
+
+Finished Work: _Nothing yet_
+
 === Unimplemented Ideas ===
 Here's a list of my ideas so far - will put in short descriptions later.
  * Boids
@@ -15,10 +15,9 @@ Here's a list of my ideas so far - will put in short descriptions later.
  * simple morphogenesis
  * cellular automaton 
 
-=== Preferences for demos ===
- # boids
- # document sugarscape
- # three-bodies
+===boids===
+This is an old algorithm for agent-based modelling (it was [http://en.wikipedia.org/wiki/Boids published in 1986]), but it was definitely an influential one. Check out the video at the bottom of the page if you want to see what complex behavior a simple algorithm like boids can cause. 
+
 ----
 = Myself =
 === Contact ===
