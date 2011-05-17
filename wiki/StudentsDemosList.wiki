@@ -1,8 +1,9 @@
 #summary A list of demos each student are / will be working on.
+#labels Featured
 
 = Assigned Demos =
 
-Record status - planned,working,done
+Record status after the group agrees on the assignment - planned,working,done
 
   * *Mark Champe*
     * P]anned: tba
@@ -21,7 +22,7 @@ Record status - planned,working,done
     * Working: tba
     * Done: tba
   * *[Richard Richard Legendi]*
-    * Planned: [Richard#Planned_Models StupidModel1-16] (_Java_)
+    * Planned: tba
     * Working: _Nothing yet_
     * Done: _Nothing yet_
   * *Grace Lin*
