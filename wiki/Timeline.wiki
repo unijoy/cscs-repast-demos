@@ -1,0 +1,12 @@
+#summary Minor and major events and milestones.
+#labels Phase-Design
+
+= Introduction =
+
+This page contains a general outline of the project timeline.
+
+ * *Tuesday, May 24, 2011* Students begin coding for their GSoC projects; Google begins issuing initial student payments provided tax forms are on file and students are in good standing with their communities.
+
+ * *First task*: All should download repastS and friends to whatever platform you are going to use, and get started learning it - e.g. do the Java Get Started exercise of building JZombies
+
+ * *Agree on what models to implement.*
