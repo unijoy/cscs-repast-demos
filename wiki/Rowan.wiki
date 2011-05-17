@@ -1,15 +1,11 @@
-#summary Personal page for Z. Rowan Copley.
+#summary Rowan's stuff: current tasks, ideas, etc.
 
-= About Me =
-
-Hihi. um, TODO
-
-
-= Demo Ideas =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
-= Other Stuff =
+== Current ==
+To be decided.
+== Finished Work ==
+== Unimplemented Ideas ==
+_TODO_
+== About Me ==
+_TODO_
+== Other Stuff ==
+_TODO_
