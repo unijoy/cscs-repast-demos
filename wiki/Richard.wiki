@@ -59,17 +59,17 @@ I would like to create several smaller models, link them with some of the follow
 I am thinking of smaller models, because i) they could be better for tutorial and demo reasons, and ii) the emphasis is on how to use external tools with Repast S, not on the models. For this reason I thought to implement simple known models, like the following ones.
 
 ==== Statistics ====
-I think a major contribution would be if we could link Repast S with R. Several messages come to the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest] mailing list about R, and I also found a blog (6) stating:
+I think a major contribution would be if we could link Repast S with R. Several messages come to the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest] mailing list about R (6), and I also found a blog (7) stating:
 
   _"I thought  Repast Simphony was the way to go, since the website claims about capabilities to work along with R, but then I was disappointed to find out that it was only storing the output in a data.frame class object (and besides it does not work on a  Mac...). Then after switching (at this stage almost completely) to !NetLogo, I found this awesome extension, currently in beta stage (and alas, still not working on yet on a Mac...) but as far as I've seen it works perfectly fine."_
 
 ==== Population Dynamics ====
-A simple population dynamics model, like Lotka–Volterra (7) would be good to use with any of the mathematical tools (Matlab, Maple, Octave). 
+A simple population dynamics model, like Lotka–Volterra (8) would be good to use with any of the mathematical tools (Matlab, Maple, Octave). 
 
 They can handle and approximate the solutions of the differential equation systems without any problem (i.e. we don't have to deal with implementing a method like Runge-Kutta).
 
 ==== El Farol ====
-Another simple model famous because it is one of the first models related to minority games (8). One version of the model uses genetic algorithm, this could be a good opportunity to use any Java-based GA library (like JGAP), or use any of the mathematical tools since they usually have built-in support for such optimization problems (Matlab, Maple, Octave).
+Another simple model famous because it is one of the first models related to minority games (9). One version of the model uses genetic algorithm (10), this could be a good opportunity to use any Java-based GA library (like JGAP), or use any of the mathematical tools since they usually have built-in support for such optimization problems (Matlab, Maple, Octave).
 
 = References =
 
@@ -78,6 +78,8 @@ Another simple model famous because it is one of the first models related to min
  # [http://jasss.soc.surrey.ac.uk/14/2/5.html]
  # [http://condor.depaul.edu/slytinen/abm/]
  # [http://metaabm.org/docs/designing_model.html]
+ # [http://sourceforge.net/mailarchive/forum.php?thread_name=C4CF3FB80A756643BE25F5F55CAC3ABC1075F727%40ERD-ML1ERD.erd.ds.usace.army.mil&forum_name=repast-interest Using the R-Plugin]
+ # [http://sourceforge.net/mailarchive/forum.php?thread_name=A4E4FC10-E5AF-49D0-AE24-B8C41309B617%40ed.ac.uk&forum_name=repast-interest About sensitivity analysis in Repast]
  # [http://evolvingspaces.blogspot.com/2010/03/netlogo-r-extension.html]
  # Lotka, A.J., "Contribution to the Theory of Periodic Reaction", J. Phys. Chem., 14 (3), pp 271–274 (1910)
  # W. Brian Arthur. "Inductive Reasoning and Bounded Rationality", The American Economic Review, v84n2, p406-411 (1994)
