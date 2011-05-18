@@ -66,7 +66,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # third pref
 
   * *[Richard Richard Legendi]*
-    # [Richard#Planned_Models StupidModel1-16] (_Java_)
+    # [Richard#Implementation_of_the_StupidModel StupidModel1-16] (_Java_)
     # [Richard#Statistics R demo]
     # [Richard#Population_Dynamics Matlab/Maple/Octave demo] (e.g. population dynamics)
     # [Richard#El_Farol El Farol] (e.g. linking Repast S with a GA library)
