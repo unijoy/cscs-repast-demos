@@ -17,7 +17,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *Mudit Raj Gupta*
+  * *[Mudit Raj Gupta]*
     * Planned: tba
     * Working: tba
     * Done: tba
