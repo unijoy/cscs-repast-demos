@@ -31,3 +31,13 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 
 =*Models*=
+
+==*Global Localization Using Guiding Robots*==
+
+*Description*
+
+The simulation will start with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area by moving in their Moore's Neighbourhood that is less populated.    
+
+*Application*
+
+It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transffered to the daughter robots and they are also aware of the same and can navigate in the area.
