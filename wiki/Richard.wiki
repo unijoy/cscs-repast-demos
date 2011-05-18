@@ -23,7 +23,7 @@ I would like to create simple models and tutorials about how to link Repast with
  * E-mail: [mailto:richard.legendi@gmail.com]
  * Google: richard.legendi
  * Skype: rlegendi
- * IRC: rlegendi
+ * IRC: legendi, roante
  * Web: http://people.inf.elte.hu/legendi/
 
 = Planned Models =
