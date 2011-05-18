@@ -32,7 +32,7 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 =*Models*=
 
-==*Global Localization Using Guiding Robots*==
+==*Guiding Bots*==
 
 *Description*
 
