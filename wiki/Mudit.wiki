@@ -16,6 +16,7 @@
 
 -Skype: mudit.raaj.gupta
  
+
 -Gmail: mudit.raaj.gupta 
 
 
@@ -27,3 +28,6 @@ I am a 6th semester student on Birla Institute of Technology and Science – Pil
 I am interested in swarm robotics and embedded systems. A related field that interests me is Claytronics. It is about self-assembly of many modular robots to create synthetic reality. My recent work is centered on a new Wireless Sensor Network Platform and Mobile WSN. 
 
 I will be making “Demo” models on the software as a part of my GSoC 2011 project. I am looking forward to learn the basics of design and simulation of complex systems and agent based complex systems as they are an integral part of mobile WSN and Swarm Robotics. 
+
+
+=*Models*=
