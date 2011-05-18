@@ -60,7 +60,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # second pref
     # third pref
 
-  * *Mudit Raj Gupta*
+  * *[Mudit Mudit Raj Gupta]*
     # first pref
     # second pref
     # third pref
