@@ -1,0 +1,27 @@
+#summary Tim's project and task description
+
+= General Information =
+
+== Introduction ==
+
+Hello, my name is Tim Sweda, and I am a 2nd-year PhD student at Northwestern University in the Department of Industrial Engineering and Management Sciences.
+
+  * Mentor:  Michael North
+  * Location:  Evanston, Illinois, USA
+  * University:
+    * [http://www.northwestern.edu Northwestern University]
+    * [http://iems.northwestern.edu Department of Industrial Engineering and Management Sciences]
+  * Time Zone:  UTC/GMT -5 hours, CDT
+
+NOTE:  My academic term ends on June 10, so I will only be working part-time until then.
+
+== Contact ==
+
+  * E-mail:  tsweda@u.northwestern.edu OR timsweda@gmail.com
+  * Skype:  tsweda
+
+= Planned Models =
+
+  * 1st pref
+  * 2nd pref
+  * 3rd pref
