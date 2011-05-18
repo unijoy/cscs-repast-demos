@@ -61,7 +61,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # third pref
 
   * *[Mudit Mudit Raj Gupta]*
-    # first pref
+    # [Mudit#Guiding Bots]
     # second pref
     # third pref
 
