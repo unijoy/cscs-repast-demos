@@ -18,12 +18,13 @@ The mentors are:
   * Eric R., Tatara tatara@anl.gov
   * Rick Riolo, rlriolo@umich.edu
 
-The interns are:
+The interns (&mentors) are:
 
-  * gracelin999@gmail.com
-  * kogreen2@yahoo.com,
-  * mudit.raaj.gupta@gmail.com
-  * [Richard Richard Oliver Legendi], richard.legendi@gmail.com, Skype: rlegendi
-  * rowan copley <dovinmu@gmail.com>
-  * tsweda@u.northwestern.edu,
-  * Mark Champe, mark.champe@gmail.com>,
+  * gracelin999@gmail.com   (rick)  
+  * kogreen2@yahoo.com,    (mike)
+  * mudit.raaj.gupta@gmail.com  (eric)
+  * [Richard Richard Oliver Legendi], richard.legendi@gmail.com, Skype: rlegendi (eric)
+  * rowan copley <dovinmu@gmail.com> (nick)
+  * tsweda@u.northwestern.edu (mike)
+  * Mark Champe, mark.champe@gmail.com>, (rick)
+  * Benjamin Schleich benjamin.schleich@gmail.com  (nick)
