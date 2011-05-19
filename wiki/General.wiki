@@ -30,5 +30,6 @@ The interns (&mentors) are:
   * Benjamin Schleich benjamin.schleich@gmail.com  (nick)
 
 ----
-Associated google group <cscs-repast-gsoc11@googlegroups.com>
-   http://groups.google.com/group/cscs-repast-gsoc11?hl=en&pli=1
+Associated google group 
+ * cscs-repast-gsoc11@googlegroups.com
+ * http://groups.google.com/group/cscs-repast-gsoc11?hl=en&pli=1
