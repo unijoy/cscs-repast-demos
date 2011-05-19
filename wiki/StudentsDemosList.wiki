@@ -25,7 +25,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Planned: tba
     * Working: _Nothing yet_
     * Done: _Nothing yet_
-  * *Grace Lin*
+  * *[Grace Grace Lin]*
     * Planned: tba
     * Working: tba
     * Done: tba
@@ -71,10 +71,10 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # [Richard#Population_Dynamics Matlab/Maple/Octave demo] (e.g. population dynamics)
     # [Richard#El_Farol El Farol] (e.g. linking Repast S with a GA library)
 
-  * *Grace Lin*
-    # first pref
-    # second pref
-    # third pref
+  * *[Grace Grace Lin]*
+    # [Grace#Planned_Models Fire]
+    # [Grace#Planned_Models Termites]
+    # [Grace#Planned_Models Cooperation]
 
   * *Benjamin Schleich*
     # first pref
