@@ -1,18 +1,65 @@
-#summary Grace's project
+#summary Grace's project and task description
 
 = General Information =
 
-My name is Grace I. Lin, and I'm currently a second year PhD student in Computer Science from the University of California, Santa Cruz.
+My name is Grace I. Lin, and I'm currently a second year PhD student in Computer Science from the University of California, Santa Cruz.  I work on tasks related to Natural Language Processing/Computational Linguistics.  I'm glad to finally get an opportunity to learn more about ABM and work on Repast!
 
   * E-mail: gracelin999@gmail.com or gracelin999@yahoo.com
   * Google/Yahoo: gracelin999
   * AIM/Skype: wind105817 
 
+  * Location: Santa Cruz, California
+  * Time Zone: Pacific Time Zone (GMT -8)
+
+On a more personal note, I love to travel and enjoy good food. I hope to explore a bit more of Santa Cruz (and northern California in general) through hiking this summer :]
+
 = Planned Models =
 
-Preferences
-  * First 
-  * Second 
-  * Third 
+Here's a list of models of interest.  I plan to work on them in the listed order, but that might be changed.
+
+They are based on [http://ccl.northwestern.edu/netlogo/models/index.cgi NetLogo Models] and [http://jmvidal.cse.sc.edu/netlogomas/ Multiagent NetLogo Models] so I know what others have done, you know what to expect, and others know what to compare with. Well, I might add more/less features...  
+
+I've listed MORE models than expected in case there's overlap with other students. Each item is linked with the corresponding individual model. Let me know if there's any feedback on what (not) to do, etc.
+
+  # *Fire*: spread of a fire through forest
+    * [http://ccl.northwestern.edu/netlogo/models/Fire NetLogo: Earth Science: Fire]
+  # *Termites*: termites gather wood chips into piles
+    * [http://ccl.northwestern.edu/netlogo/models/Termites NetLogo: Biology: Termites]
+  # *Cooperation*: agents compete for resources
+    * [http://ccl.northwestern.edu/netlogo/models/Cooperation NetLogo: Social Science: Cooperation]
+  # *Rebellion*: rebel against a central authority
+    * [http://ccl.northwestern.edu/netlogo/models/Rebellion NetLogo: Social Science: Rebellion]
+  # *Sunflower Biomorphs*: selective pressure
+    * [http://ccl.northwestern.edu/netlogo/models/SunflowerBiomorphs NetLogo: Biology: Evolution: Sunflower Biomorphs]
+  # *Dining Philosopher*: does everyone get to eat?
+    * [http://ccl.northwestern.edu/netlogo/models/DiningPhilosophers NetLogo: Computer Science: Dining Philosophers]
+  # *Turing Machine 2D*: information on a 2D tape
+    * [http://ccl.northwestern.edu/netlogo/models/TuringMachine2D NetLogo: Computer Science: Turing Machine 2D]
+  # *Circle*: agents walk around in a circle (emergent behavior)
+    * [http://jmvidal.cse.sc.edu/netlogomas/circle/index.html Multiagent NetLogo Models: Circle]
+  # *Beernet*: The Beer Game
+    * [http://jmvidal.cse.sc.edu/netlogomas/beernet/index.html Multiagent NetLogo Models: Beernet]
+  # *Q-Learning*: path-finding algorithm
+    * [http://jmvidal.cse.sc.edu/netlogomas/qlearning/index.html Multiagent NetLogo Models: Q-Learning]
+  # *The Marriage Problem*: live happily ever after
+    * [http://jmvidal.cse.sc.edu/netlogomas/marriage-problem/index.html Multiagent NetLogo Models: The Marriage Problem] 
+  # *Container Port Simulation*: best behavior for the crane operators
+    * [http://jmvidal.cse.sc.edu/netlogomas/port/index.html Multiagent NetLogo Models: Container Port Simulation]
+
+That's all for now. Suggestions welcome.
 
 = References =
+General references
+
+  * *[http://ccl.northwestern.edu/netlogo/index.shtml NetLogo]*
+    * [http://ccl.northwestern.edu/netlogo/models/index.cgi NetLogo Models Library]
+    * [http://ccl.northwestern.edu/netlogo/models/community/index.cgi NetLogo Community Users Library]
+
+  * *Multiagent Systems* by Jose M. Vidal
+    * [http://multiagent.com/ Blog]
+    * [http://multiagent.com/2010/02/multiagent-systems-textbook.html Textbook online]
+    * [http://jmvidal.cse.sc.edu/netlogomas/ Multiagent NetLogo Models]
+
+  * *Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundation* by Shoham and Leyton-Brown
+    * [http://www.masfoundations.org/index.html Webpage]
+    * [http://www.masfoundations.org/download.html Textbook download]
