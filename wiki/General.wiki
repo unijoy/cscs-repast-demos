@@ -28,3 +28,7 @@ The interns (&mentors) are:
   * tsweda@u.northwestern.edu (mike)
   * Mark Champe, mark.champe@gmail.com>, (rick)
   * Benjamin Schleich benjamin.schleich@gmail.com  (nick)
+
+----
+Associated google group <cscs-repast-gsoc11@googlegroups.com>
+   http://groups.google.com/group/cscs-repast-gsoc11?hl=en&pli=1
