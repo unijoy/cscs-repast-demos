@@ -11,7 +11,7 @@ It is a great pleasure to be on board and to be able to participate in the proje
 
 I would like to create simple models and tutorials about how to link Repast with other commonly used tools (like [http://www.r-project.org/ R], [http://www.mathworks.com Matlab], [http://www.gnu.org/software/octave/ Octave] and [http://www.maplesoft.com/products/maple/ Maple]), I believe this may help modelers and make [http://repast.sourceforge.net/ Repast S] a more widely used tool.
 
- * Mentor: TODO
+ * Mentor: [http://mypages.iit.edu/~tataeri/ Eric R. Tatara PhD, PE]
  * Location: Budapest, Hungary
  * Time Zone: GMT+01:00
  * University: 
