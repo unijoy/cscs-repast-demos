@@ -61,6 +61,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # third pref
 
   * *[Mudit Mudit Raj Gupta]*
+    # [Mudit#Ants Ants]
     # [Mudit#Guiding Guiding Bots]
     # [Mudit#Cover Cover 360]
     # [Mudit#Preferential Preferential Linking]
