@@ -52,3 +52,5 @@ The simulation will start with some "motes" kept at the center and every clock t
 *Application*
 
 It can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. It will also be useful for social simulation. Each "Mote" or agent will decide its' movement on a local basis so no global communication between the robots is required and they can move and cover the area based on their neighbors. 
+
+http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
