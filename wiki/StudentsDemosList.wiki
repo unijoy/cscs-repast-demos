@@ -62,7 +62,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
 
   * *[Mudit Mudit Raj Gupta]*
     # [Mudit#Guiding Guiding Bots]
-    # second pref
+    # [Mudit#Cover Cover 360]
     # third pref
 
   * *[Richard Richard Legendi]*
