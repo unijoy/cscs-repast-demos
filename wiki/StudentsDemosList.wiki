@@ -45,7 +45,7 @@ Record status after the group agrees on the assignment - planned,working,done
 Scratch area to list preferences, from which we will figure out the actual assignments, above.
 
 
-  * *Mark Champe*
+  * *[Mark Mark Champe]*
     # [Mark#PageRank PageRank]
     # [Mark#Virus Computer Virus Spread]
     # [Mark#Entropy Entropy]
