@@ -63,7 +63,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
   * *[Mudit Mudit Raj Gupta]*
     # [Mudit#Guiding Guiding Bots]
     # [Mudit#Cover Cover 360]
-    # third pref
+    # [Mudit#Preferential Preferential Linking]
 
   * *[Richard Richard Legendi]*
     # [Richard#Implementation_of_the_StupidModel StupidModel1-16] (_Java_)
