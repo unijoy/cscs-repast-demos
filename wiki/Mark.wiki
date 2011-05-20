@@ -21,7 +21,9 @@ Hello, my name is Mark Champe. I am an undergraduate at the University of Michig
 = Planned Models =
 
 1. First Pref
+
 2. Second Pref
+
 3. Third Pref
 
 = References =
