@@ -5,7 +5,7 @@
 
 Record status after the group agrees on the assignment - planned,working,done
 
-  * *Mark Champe*
+  * *[Mark Mark Champe]*
     * Planned: tba
     * Working: tba
     * Done: tba
