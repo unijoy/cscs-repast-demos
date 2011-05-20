@@ -40,4 +40,15 @@ The simulation will start with some daughter agents in an unknown area. The guid
 
 *Application*
 
-It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transffered to the daughter robots and they are also aware of the same and can navigate in the area.
+It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transffered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
+
+
+==*Cover 360*==
+
+*Description*
+
+The simulation will start with some "motes" kept at the center and every clock tick they try to spread out. It will be guided by a random walk algorithm. 
+
+*Application*
+
+It can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. It will also be useful for social simulation. Each "Mote" or agent will decide its' movement on a local basis so no global communication between the robots is required and they can move and cover the area based on their neighbors. 
