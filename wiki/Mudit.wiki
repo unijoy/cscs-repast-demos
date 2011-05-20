@@ -43,6 +43,8 @@ Each Ant is guided by a set of simple rules. They keep on wandering in the envir
 
 Such a behavior is observed in many social frameworks. It is very useful in task completion in swarm of robots. The same principle is used in data routing. 
     
+http://ccl.northwestern.edu/netlogo/models/Ants
+
 
 ==*Guiding Bots*==
 
@@ -53,8 +55,6 @@ The simulation will start with some daughter agents in an unknown area. The guid
 *Application*
 
 It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transfered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
-
-http://ccl.northwestern.edu/netlogo/models/Ants
 
 
 ==*Cover 360*==
