@@ -20,11 +20,11 @@ Hello, my name is Mark Champe. I am an undergraduate at the University of Michig
 
 = Planned Models =
 
-  # *PageRank*: Google's very own website ranking algorithm.
+  # *!PageRank*: Google's very own website ranking algorithm.
     * [http://ccl.northwestern.edu/netlogo/models/PageRank]
-  # *Computer Virus Spread*: Model spread of virus on network using SIR method
+  # *!Computer Virus Spread*: Model spread of virus on network using SIR method
     * [http://ccl.northwestern.edu/netlogo/models/VirusonaNetwork]
-  # *Entropy*: A physics simulation showing statistical explanation of entropy.
+  # *!Entropy*: A physics simulation showing statistical explanation of entropy.
 
 
 = References =
