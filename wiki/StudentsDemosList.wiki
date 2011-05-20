@@ -46,9 +46,9 @@ Scratch area to list preferences, from which we will figure out the actual assig
 
 
   * *Mark Champe*
-    # [Mark#PageRank]
-    # [Mark#Computer Virus Spread]
-    # [Mark#Entropy]
+    # [Mark#PageRank PageRank]
+    # [Mark#Virus Computer Virus Spread]
+    # [Mark#Entropy Entropy]
  
   * *[Rowan Rowan Copley]*
     # [Rowan#boids boids]
