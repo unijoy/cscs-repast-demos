@@ -32,15 +32,29 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 =*Models*=
 
+
+==*Ants*==
+
+*Description*
+
+Each Ant is guided by a set of simple rules. They keep on wandering in the environment in search of food or a chemical released by a food carrying Ant. If they bump into food they start taking it back to their colony (In the process releasing a chemical). If other ant come across the same chemical it follows the same. Thus the food is transfered to the ant colony.
+
+*Application*
+
+Such a behavior is observed in many social frameworks. It is very useful in task completion in swarm of robots. The same principle is used in data routing. 
+    
+
 ==*Guiding Bots*==
 
 *Description*
 
-The simulation will start with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area by moving in their Moore's Neighbourhood that is less populated.    
+The simulation will start with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area by moving in their Moore's Neighborhood that is less populated.    
 
 *Application*
 
-It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transffered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
+It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transfered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
+
+http://ccl.northwestern.edu/netlogo/models/Ants
 
 
 ==*Cover 360*==
