@@ -43,6 +43,7 @@ Each Ant is guided by a set of simple rules. They keep on wandering in the envir
 
 Such a behavior is observed in many social frameworks. It is very useful in task completion in swarm of robots. The same principle is used in data routing. 
     
+
 http://ccl.northwestern.edu/netlogo/models/Ants
 
 
