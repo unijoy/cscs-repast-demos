@@ -22,6 +22,17 @@ NOTE:  My academic term ends on June 10, so I will only be working part-time unt
 
 = Planned Models =
 
-  * 1st pref
-  * 2nd pref
-  * 3rd pref
+1.  *Diffusion on a Directed Network*:  diffusion of a quantity through a directed network
+  * http://ccl.northwestern.edu/netlogo/models/DiffusiononaDirectedNetwork
+2.  *Ethnocentrism*:  model of ethnocentric behavior and its evolution
+  * http://ccl.northwestern.edu/netlogo/models/Ethnocentrism
+3.  *Preferential Attachment*:  network generation by preferential attachment
+  * http://ccl.northwestern.edu/netlogo/models/PreferentialAttachment
+4.  *RepastSim*:  adaptation of discrete-event simulation toolkit originally programmed in VBA
+5.  *Small Worlds*:  formation of networks resulting in "small world" phenomenon
+  * http://ccl.northwestern.edu/netlogo/models/SmallWorlds
+6.  *Team Blackjack*:  exploration of team strategies for blackjack, inspired by [http://en.wikipedia.org/wiki/MIT_Blackjack_Team MIT Blackjack Team]
+7.  *Traffic Grid*:  real-time traffic simulation
+  * http://ccl.northwestern.edu/netlogo/models/TrafficGrid
+8.  *Virus on a Network*:  spread of a virus through a network
+  * http://ccl.northwestern.edu/netlogo/models/VirusonaNetwork
