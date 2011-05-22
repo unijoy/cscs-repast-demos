@@ -78,9 +78,9 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # [Grace#Planned_Models Cooperation]
 
   * *Benjamin Schleich*
-    # first pref
-    # second pref
-    # third pref
+    # Predator Prey
+    # Evacuation(Flow) 
+    # Adoption/Diffusion
 
   * *[Tim Tim Sweda]*
     # [Tim#Planned_Models RepastSim]
