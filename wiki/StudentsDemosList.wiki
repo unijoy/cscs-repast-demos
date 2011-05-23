@@ -55,10 +55,10 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # sugarScape documentation
     # Three-bodies problem
 
-  * *Kwame Green*
-    # first pref
-    # second pref
-    # third pref
+  * *[Kwame Kwame Green]*
+    # Economic Disparity
+    # Repast UI Design Fixes
+    # Repast Demo Video
 
   * *[Mudit Mudit Raj Gupta]*
     # [Mudit#Ants Ants]
