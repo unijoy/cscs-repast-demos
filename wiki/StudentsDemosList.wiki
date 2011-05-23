@@ -85,4 +85,4 @@ Scratch area to list preferences, from which we will figure out the actual assig
   * *[Tim Tim Sweda]*
     # [Tim#Planned_Models RepastSim]
     # [Tim#Planned_Models Traffic Grid]
-    # [Tim#Planned_Models Virus on a Network]
+    # [Tim#Planned_Models Small Worlds]
