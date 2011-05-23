@@ -1,0 +1,22 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+I am a first year design student at the IIT Institute of Design in Chicago. You can email me at kogreen2@yahoo.com.
+
+My mentor is Michael North.
+
+= Projects =
+
+  # Economic Disparity
+    * http://ccl.northwestern.edu/netlogo/models/UrbanSuite-EconomicDisparity
+  # Repast UI Design Fixes
+    * TBD (based on working with the software)
+  # Repast Demo Video
+    * Quick introduction and how-to for new users
+  # Recycling
+    * http://ccl.northwestern.edu/netlogo/models/UrbanSuite-Recycling
+  # Interactive Museum Exhibit Flow
+    * Model the flow of museum visitors through an interactive exhibit given various interest levels of each
+  # Cooperation
+    * http://ccl.northwestern.edu/netlogo/models/Cooperation
