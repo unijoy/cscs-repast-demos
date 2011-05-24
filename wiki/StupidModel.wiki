@@ -1,0 +1,17 @@
+#summary StupidModel Demo project.
+
+= Introduction =
+This tutorial is based on the article _StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms_ by Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson.
+
+I am sure the !StupidModel considered a relevant learning /comparison tool for agent-based modelling.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+= References =
+# Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _'StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms'_, (December 20, 2005)
+# Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_ Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html.
