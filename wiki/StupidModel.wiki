@@ -29,6 +29,23 @@ The complete !StupidModel list:
  # Habitat Data from File Input 
  # Predators
 
+== Basic StupidModel ==
+
+=== Purpose ===
+This is the basic StupidModel, an extremely simple individual-based model used as a starting point for learning Repast (or other IBM platforms).
+
+=== Formulation ===
+ * The space is a two-dimensional grid of dimensions 100 x 100. The space is toroidal, meaning that if bugs move off one edge of the grid they appear on the opposite edge.
+ * 100 bug agents are created. They have one behavior: moving to a randomly chosen grid location within +/- 4 cells of their current location, in both the X and Y directions. If there already is a bug at the location (including the moving bug itself—bugs are not allowed to stay at their current location unless none of the neighborhood cells are vacant), then another new location is chosen. This action is executed once per time step.
+ * The bugs are displayed on the space. Bugs are drawn as red circles. The display is updated at the end of each time step.
+ * Instead of specifying which random number generation algorithm to use, the default generator for each platform is used.
+
+=== Implementation Notes ===
+
+=== Complete Model ===
+
+ # You can [http://to.do download the source code] of the first model from the proper SVN branch directly.
+
 = References =
  # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _'!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms'_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
  # Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_ Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html.
