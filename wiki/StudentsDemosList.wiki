@@ -5,35 +5,35 @@
 
 Record status after the group agrees on the assignment - planned,working,done
 
-  * *[Mark Mark Champe]*
+  * *[Mark Mark Champe]* (mentor: rick)
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Rowan Rowan Copley]*
+  * *[Rowan Rowan Copley]* (mentor: nick)
     * Planned: tba
     * Working: _Nothing yet_
     * Done: _Nothing yet_
-  * *Kwame Green*
+  * *Kwame Green* (mentor: mike)
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Mudit Mudit Raj Gupta]*
+  * *[Mudit Mudit Raj Gupta]* (mentor: eric)
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Richard Richard Legendi]*
+  * *[Richard Richard Legendi]* (mentor: eric)
     * Planned: tba
     * Working: _Nothing yet_
     * Done: _Nothing yet_
-  * *[Grace Grace Lin]*
+  * *[Grace Grace Lin]* (mentor: rick)
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *Benjamin Schleich*
+  * *Benjamin Schleich*  (mentor: nick)
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Tim Tim Sweda]*
+  * *[Tim Tim Sweda]* (mrntor: mike)
     * Planned: tba
     * Working: tba
     * Done: tba
