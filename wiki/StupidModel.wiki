@@ -1,19 +1,18 @@
 #summary StupidModel Demo project.
-#sidebar TableOfContents
 
 = Introduction =
 This tutorial is based on the article _[http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms]_ by Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson.
 
 I am sure the !StupidModel considered a relevant learning /comparison tool for agent-based modelling. Several reference implementations may be found on [http://condor.depaul.edu/slytinen/abm/ Steven L. Lytinen's site]
 
-= ModelList =
+= Model List =
 Each section of the following tutorial first describes the !StupidModel, a set of 16 simple template models designed as examples for learning how to use agent-based modeling platforms, then contains detailed notes on the implementation in Repast Simphony. Version 1 is the basic !StupidModel, which is extremely simple. As the first exercise in a class for nonprogrammers, Version 1 can be implemented in 2-3 hours. The subsequent versions incrementally add features that are commonly used in real models. These features include model elements such as interaction among individuals and their environment, stopping rules, alternative orders in which individuals execute their actions, mortality and reproduction, file input for habitat variables, and multiple kinds of agents. Some versions simply add software tools for observing the model: probes, graphs, and file output.
 
 The documentation for each version states its purpose-what tool or technique is illustrated by the version, describes its formulation, and provides notes on how the changes were implemented in the example software.
 
 The complete !StupidModel list:
 
- # Basic StupidModel 
+ # Basic !StupidModel 
  # Bug Growth 
  # Habitat Cells and Resource 
  # Cell and Bug Probes 
