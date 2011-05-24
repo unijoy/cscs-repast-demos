@@ -57,7 +57,7 @@ Illustrate adding instance variables and methods to the agents.
 === Purpose ===
 Show how to create cell objects that represent habitat and spatial resources. Illustrate how agents and habitat cells interact.
 === Formulation ===
- * A new class, HabitatCell, is added. Habitat cell objects have instance variables for their food availability and maximum food production rate. Cells also have a variable for the bug at their location.
+ * A new class, !HabitatCell, is added. Habitat cell objects have instance variables for their food availability and maximum food production rate. Cells also have a variable for the bug at their location.
  * The grid space object now holds habitat cells, not bugs.
  * Food availability is initialized to 0.0, and maximum food production rate is initialized to 0.01.
  * Each time step, food availability is increased by food production. Food production is a random floating point number between zero and the maximum food production.
@@ -141,7 +141,7 @@ No change is made to the model formulation. A graph is added to display the numb
 Illustrate use of random number distributions. A common use of them is to induce variability among initial individuals.
 === Formulation ===
  * Two newmodel parameters are added, and put on the parameter settings window: `initialBugSizeMean` and `initialBugSizeSD`. Values of these parameters are 0.1 and 0.03.
- * Instead of initializing bug sizes to 1.0 (Sect. 2.2), sizes are drawn from a normal distribution defined by `initialBugSizeMean` and `initialBugSizeSD`. The initial size of bugs produced via reproduction is 0.0.
+ * Instead of initializing bug sizes to 1.0 (See [#Bug_Growth]), sizes are drawn from a normal distribution defined by `initialBugSizeMean` and `initialBugSizeSD`. The initial size of bugs produced via reproduction is 0.0.
  * Negative values are very likely to be drawn from normal distributions such as the one used here. To avoid them, a check is introduced to limit initial bug size to a minimum of zero.
 
 == Habitat Data from File Input ==
@@ -166,4 +166,4 @@ Show how to create multiple classes of agents that interact.
 
 = References =
  # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _'!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms'_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
- # Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_ Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html.
+ # Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_ Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html
