@@ -1,5 +1,6 @@
 #summary A list of demos each student are / will be working on.
 #labels Featured
+#sidebar TableOfContents
 
 = Assigned Demos =
 
