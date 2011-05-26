@@ -1,5 +1,6 @@
 #summary Summarizing the tools we are using.
 #labels Phase-Design
+#sidebar TableOfContents
 
 = Tools =
 
