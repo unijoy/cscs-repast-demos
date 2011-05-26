@@ -1,5 +1,6 @@
 #summary Minor and major events and milestones.
 #labels Phase-Design
+#sidebar TableOfContents
 
 = Introduction =
 
