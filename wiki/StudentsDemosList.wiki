@@ -23,8 +23,8 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: tba
     * Done: tba
   * *[Richard Richard Legendi]* (mentor: eric)
-    * Planned: tba
-    * Working: _Nothing yet_
+    * Planned: R demo
+    * Working: StupidModel 1-16
     * Done: _Nothing yet_
   * *[Grace Grace Lin]* (mentor: rick)
     * Planned: tba
