@@ -1,5 +1,6 @@
-#summary General information about the Repast S GSoC 2011 project
+#summary General information about the Repast S GSoC 2011 project.
 #labels Featured
+#sidebar TableOfcontents
 
 = Introduction =
 
