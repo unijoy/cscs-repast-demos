@@ -4,6 +4,7 @@
  *     $LastChangedDate$
  *     $LastChangedRevision$
  *     $LastChangedBy$
+ *     $google:author$
  */
 package stupidmodel;
 

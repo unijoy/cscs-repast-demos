@@ -4,10 +4,10 @@
  *     $LastChangedDate$
  *     $LastChangedRevision$
  *     $LastChangedBy$
+ *     $google:author$
  */
 package stupidmodel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
