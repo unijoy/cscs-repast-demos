@@ -1,7 +1,7 @@
 
 
 /*
- $Id: LICENSE.txt 156 2003-09-26 17:36:37Z jstrachan $
+ $Id$
 
  Copyright 2003 (C) James Strachan and Bob Mcwhirter. All Rights Reserved.
 
