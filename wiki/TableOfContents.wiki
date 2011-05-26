@@ -1,9 +1,18 @@
 #summary General Table of Contents.
 
  * Students
+   * [Kwame]
+   * [Mudit]
+   * [Tim]
+   * [Mark]
+   * [Grace]
+   * [Richard]
+   * [Ben]
+   * [Rowan]
  * Models
  * Administrative
-   * [StudentsDemosList]
+   * [General]
+   * [StudentsDemosList Demo Lists]
    * [Timeline]
    * [Tools]
    * [FAQ]
