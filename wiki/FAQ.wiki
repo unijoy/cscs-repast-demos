@@ -1,5 +1,6 @@
 #summary Frequently Asked Questions about the project.
 #labels Phase-Support
+#sidebar TableOfContents
 
 = FAQ Sections =
 This page contains some Frequently Asked Questions and Hints/Tips for the projects.
