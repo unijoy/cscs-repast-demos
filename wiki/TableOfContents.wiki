@@ -1,9 +1,9 @@
 #summary General Table of Contents.
 
-* Students
-* Models
-* Administrative
-  * [StudentsDemosList]
-  * [Timeline]
-  * [Tools]
-  * [FAQ]
+ * Students
+ * Models
+ * Administrative
+   * [StudentsDemosList]
+   * [Timeline]
+   * [Tools]
+   * [FAQ]
