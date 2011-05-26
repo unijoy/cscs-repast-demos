@@ -4,7 +4,7 @@
 = FAQ Sections =
 This page contains some Frequently Asked Questions and Hints/Tips for the projects.
 
-* [#Subversion_FAQ Subversion FAQ]
+ # [#Subversion_FAQ Subversion FAQ]
 
 ----
 
@@ -12,5 +12,5 @@ This page contains some Frequently Asked Questions and Hints/Tips for the projec
 Common SVN problems.
 
 === Commits to the Repository ===
-* *Question:* I was wondering how you created the folders and did your initial import of files?  I was able to see the SVN repositories in Simphony and was able to checkout.  But when I tried to create a a directory or upload anything, it always fails. I was hoping to at least create a directory like you did.
-* *Answer:*  The commit may fail because of the password: Google Code uses a different generated password for the Subversion repository than your usual Google account password. This generated password is accessible through the web interface. Login to the project site and click on the [http://code.google.com/p/cscs-repast-demos/source/checkout Source] tab. See section ''"When prompted, enter your generated googlecode.com [http://code.google.com/hosting/settings password]."''
+ * *Question:* I was wondering how you created the folders and did your initial import of files?  I was able to see the SVN repositories in Simphony and was able to checkout.  But when I tried to create a a directory or upload anything, it always fails. I was hoping to at least create a directory like you did.
+ * *Answer:*  The commit may fail because of the password: Google Code uses a different generated password for the Subversion repository than your usual Google account password. This generated password is accessible through the web interface. Login to the project site and click on the [http://code.google.com/p/cscs-repast-demos/source/checkout Source] tab. See section ''"When prompted, enter your generated googlecode.com [http://code.google.com/hosting/settings password]."'' You can always regenerate that password there.
