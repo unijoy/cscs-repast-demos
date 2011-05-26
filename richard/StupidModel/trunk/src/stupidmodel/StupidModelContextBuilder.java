@@ -29,7 +29,7 @@ import repast.simphony.space.grid.SimpleGridAdder;
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
-	// FIXME How to infer generic tpyes?
+	// FIXME How to infer generic types?
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 
