@@ -1,5 +1,6 @@
-#summary Richard's project and task description
+#summary Richard's project and task description.
 #labels Phase-Implementation
+#sidebar TableOfContents
 
 = General Information =
 
