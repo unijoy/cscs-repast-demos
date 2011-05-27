@@ -1,11 +1,16 @@
-#Area Coverage Model (Cover 360)
+#Summary Area Coverage Model (Cover 360)
 
 =Summary=
 
-Model        : Cover 360
-Source Code  :
-Author       : Mudit Raj Gupta
-Mentor       : Dr. Eric Tatara
+-Model        : Cover 360
+
+-Source Code  :
+
+-Mentor       : Dr. Eric Tatara
+
+-Author       : Mudit Raj Gupta
+
+
 
 = Introduction =
 
