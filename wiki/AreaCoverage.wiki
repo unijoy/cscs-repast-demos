@@ -1,0 +1,29 @@
+#Area Coverage Model (Cover 360)
+
+=Summary=
+
+Model        : Cover 360
+Source Code  :
+Author       : Mudit Raj Gupta
+Mentor       : Dr. Eric Tatara
+
+= Introduction =
+
+Each mote is tries to move in an area where there are less number 
+of motes. This results in expansions. The initial positioning of the 
+motes can be selected by choosing any of the three regular shapes - 
+Circle, Square and Hexagon.
+
+Model can be used to study the density of motes at different region,
+the effect of initial geometry on the spread and rate at which the 
+expansion is taking place.
+
+=Description= 
+
+=Applications=
+
+=Extending the Model=
+
+=Bugs=
+
+=References=
