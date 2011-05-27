@@ -19,9 +19,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: tba
     * Done: tba
   * *[Mudit Mudit Raj Gupta]* (mentor: eric)
-    * Planned: tba
-    * Working: tba
-    * Done: tba
+    * Planned: Ants, GuidingBots
+    * Working: AreaCoverage
+    * Done: _Nothing Yet_
   * *[Richard Richard Legendi]* (mentor: eric)
     * Planned: R demo
     * Working: StupidModel 1-16
