@@ -1,4 +1,4 @@
-#Summary Area Coverage Model (Cover 360)
+#summary Area Coverage Model (Cover 360)
 
 =Summary=
 
