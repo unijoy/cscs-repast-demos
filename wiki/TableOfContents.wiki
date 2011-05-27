@@ -10,6 +10,8 @@
    * [Ben]
    * [Rowan]
  * Models
+   * [StupidModel]
+   * [AreaCoverage]
  * Administrative
    * [General]
    * [StudentsDemosList Demo Lists]
