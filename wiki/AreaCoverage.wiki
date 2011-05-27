@@ -27,8 +27,12 @@ expansion is taking place.
 
 =Applications=
 
+It can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. It can also be used for calculating robot density at a given time in a given radius. It will also be useful for social simulation. Each "Mote" or agent will decide its' movement on a local basis so no global communication between the robots is required and they can move and cover the area based on their neighbors.
+ 
 =Extending the Model=
 
 =Bugs=
 
 =References=
+
+- http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
