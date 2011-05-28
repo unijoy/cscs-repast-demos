@@ -41,6 +41,12 @@ public class Bug {
 	private final Grid<Object> grid;
 
 	/**
+	 * Bugs have an instance variable for their size, which is initialized to
+	 * 1.0.
+	 */
+	private double size = 1.0;
+
+	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified
 	 * {@link Grid}.
 	 * 
@@ -59,6 +65,15 @@ public class Bug {
 	}
 
 	/**
+	 * Returns the size of the bug.
+	 * 
+	 * @return the size of the bug
+	 */
+	public double getSize() {
+		return size;
+	}
+
+	/**
 	 * Implementation of the agent activity in each turn.
 	 * 
 	 * <p>
@@ -73,7 +88,7 @@ public class Bug {
 	 * chosen and the agent is relocated to that location.
 	 * </p>
 	 */
-	@ScheduledMethod(start = 1, interval = 1)
+	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void step() {
 		// Get the grid location of this Bug
 		final GridPoint location = grid.getLocation(this);
@@ -118,6 +133,12 @@ public class Bug {
 		// Override default Java implementation just to have a nicer
 		// representation
 		return String.format("Bug @ location ", grid.getLocation(this));
+	}
+
+	@ScheduledMethod(start = 1, interval = 1, priority = -1)
+	public void grow() {
+		size += Constants.BUG_GROWTH_RATE;
+		System.out.println(size);
 	}
 
 }

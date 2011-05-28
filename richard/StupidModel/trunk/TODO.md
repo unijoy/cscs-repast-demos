@@ -9,6 +9,7 @@
 
 * General:
 	* Unit testing, Mocking
+	* JMock framework tutorial
 
 * TODO
 	* Model 1:

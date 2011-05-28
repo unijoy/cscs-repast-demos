@@ -12,7 +12,6 @@ import java.util.List;
 
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.random.RandomHelper;
-import repast.simphony.space.grid.GridPoint;
 
 /**
  * Dedicated class for declaring utility functions that is uninstantiable.
@@ -26,23 +25,6 @@ import repast.simphony.space.grid.GridPoint;
  * @version $Id$
  */
 public final strictfp class SMUtils {
-
-	// Unused yet
-	public static <T> List<GridPoint> getGridPoints(
-			final List<GridCell<T>> cellList) {
-		if (null == cellList) {
-			throw new IllegalArgumentException(
-					"Parameter cellList cannot be null.");
-		}
-
-		final ArrayList<GridPoint> ret = new ArrayList<GridPoint>();
-
-		for (final GridCell<T> act : cellList) {
-			ret.add(act.getPoint());
-		}
-
-		return ret;
-	}
 
 	/**
 	 * Returns a filtered list of {@link GridCell} instances from the specified

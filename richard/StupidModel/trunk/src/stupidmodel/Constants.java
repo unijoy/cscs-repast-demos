@@ -24,7 +24,8 @@ package stupidmodel;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: Constants.java 149 2011-05-26 19:03:50Z
+ *          richard.legendi@gmail.com $
  */
 public final class Constants {
 
@@ -50,6 +51,9 @@ public final class Constants {
 	 * cells.
 	 */
 	public static final int BUG_VISION_RANGE = 4;
+
+	/** A bug grows by a fixed amount of size in each time step. */
+	public static final double BUG_GROWTH_RATE = 1.0;
 
 	/**
 	 * Hidden constructor to ensure no instances are created.
