@@ -6,6 +6,8 @@
 
 -Source Code  :
 
+-Platform     : RepastS ReLogo
+
 -Mentor       : Dr. Eric Tatara
 
 -Author       : Mudit Raj Gupta
