@@ -1,4 +1,5 @@
 #summary Mudit's Introduction and Work
+#sidebar TableOfContents
 
 =*General Information*=
  
