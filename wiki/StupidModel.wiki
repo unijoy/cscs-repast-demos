@@ -53,7 +53,7 @@ This is the basic !StupidModel, an extremely simple individual-based model used 
 
 === Complete Model ===
 
- * The [http://to.do complete source code] of the first model is accessible from the proper SVN branch directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN branch directly.
 
 == Bug Growth ==
 === Purpose ===
