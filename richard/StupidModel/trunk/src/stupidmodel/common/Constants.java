@@ -8,7 +8,6 @@
 package stupidmodel.common;
 
 import stupidmodel.StupidModelContextBuilder;
-import stupidmodel.agents.Bug;
 
 /**
  * Dedicated class to store some model-specific constant values (e.g. bug vision
@@ -45,9 +44,10 @@ public final class Constants {
 	public static final int GRID_SIZE = 100;
 
 	/**
-	 * The first model specified to create <code>100</code> {@link Bug} agents.
+	 * 
+	 * @since Model 5
 	 */
-	public static final int BUG_COUNT = 100;
+	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
 
 	/**
 	 * The first model specified an agent vision range of <code>4 * 4</code>

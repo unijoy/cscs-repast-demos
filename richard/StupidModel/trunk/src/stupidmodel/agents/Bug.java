@@ -48,6 +48,8 @@ public class Bug {
 	 * @since Model 2
 	 */
 	private double size = 1.0;
+	
+	private double maxDailyFoodConsumption = 
 
 	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified

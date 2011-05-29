@@ -8,7 +8,6 @@
 package stupidmodel.agents;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.parameter.Parameter;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;

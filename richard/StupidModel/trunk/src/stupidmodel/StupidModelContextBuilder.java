@@ -12,6 +12,8 @@ import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
@@ -41,6 +43,8 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		// Set a specified context ID
 		// FIXME Bug here: if uncommented reinit fails for some reason
 		context.setId(Constants.CONTEXT_ID);
+		final Parameters parameters = RunEnvironment.getInstance()
+				.getParameters();
 
 		// Create a toridal space with random positioning with the specified
 		// dimensions
@@ -70,7 +74,10 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 
 		// Create the specified number of Bug agents and assign them to the
 		// space and the grid
-		for (int i = 0; i < Constants.BUG_COUNT; ++i) {
+		final int bugCount = ((Integer) parameters
+				.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
+
+		for (int i = 0; i < bugCount; ++i) {
 			final Bug bug = new Bug();
 			context.add(bug);
 			final NdPoint pt = space.getLocation(bug);
@@ -99,5 +106,4 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 
 		return context;
 	}
-
 }

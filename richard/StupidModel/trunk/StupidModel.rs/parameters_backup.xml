@@ -6,12 +6,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
-						defaultValue="100" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
 		</parameters>
 
 
