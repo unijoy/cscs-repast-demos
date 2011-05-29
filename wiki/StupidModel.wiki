@@ -1,4 +1,5 @@
 #summary StupidModel Demo project.
+#sidebar TableOfContents
 
 = Introduction =
 This tutorial is based on the article _[http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms]_ by Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson.
