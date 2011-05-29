@@ -12,9 +12,7 @@ import java.awt.Color;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 import stupidmodel.agents.Bug;
-import stupidmodel.observer.BugStyleOGL2D;
 
 /**
  * Simple tests for the created custom style.

@@ -9,7 +9,6 @@ package stupidmodel.observer;
 
 import java.awt.Color;
 
-
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
 import stupidmodel.agents.Bug;
 
@@ -48,5 +47,4 @@ public class BugStyleOGL2D extends DefaultStyleOGL2D {
 
 		return super.getColor(agent);
 	}
-
 }

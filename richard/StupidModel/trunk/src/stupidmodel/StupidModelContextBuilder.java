@@ -18,7 +18,10 @@ import repast.simphony.space.continuous.RandomCartesianAdder;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
+import repast.simphony.space.grid.WrapAroundBorders;
+import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.agents.Bug;
+import stupidmodel.agents.HabitatCell;
 import stupidmodel.common.Constants;
 
 /**
@@ -35,9 +38,9 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	// FIXME How to infer generic types?
 	@Override
 	public Context<Object> build(final Context<Object> context) {
-
 		// Set a specified context ID
-		context.setId(Constants.CONTEXT_ID);
+		// FIXME Bug here: if uncommented reinit fails for some reason
+		// context.setId(Constants.CONTEXT_ID);
 
 		// Create a toridal space with random positioning with the specified
 		// dimensions
@@ -50,7 +53,6 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 						new repast.simphony.space.continuous.WrapAroundBorders(),
 						Constants.GRID_SIZE, Constants.GRID_SIZE);
 
-		// Create the default grid to display where agents move
 		final Grid<Object> grid = GridFactoryFinder
 				.createGridFactory(null)
 				.createGrid(
@@ -75,6 +77,23 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
 		}
 
+		final GridValueLayer foodValueLayer = new GridValueLayer(
+				Constants.FOOD_VALUE_LAYER_ID,
+				true, // Densely populated
+				new WrapAroundBorders(), Constants.GRID_SIZE,
+				Constants.GRID_SIZE);
+		context.addValueLayer(foodValueLayer);
+
+		// Filling up the context with cells
+		for (int i = 0; i < Constants.GRID_SIZE; ++i) {
+			for (int j = 0; j < Constants.GRID_SIZE; ++j) {
+				final HabitatCell cell = new HabitatCell(i, j);
+				context.add(cell);
+				foodValueLayer.set(cell.getFoodAvailability(), i, j);
+			}
+		}
+
 		return context;
 	}
+
 }

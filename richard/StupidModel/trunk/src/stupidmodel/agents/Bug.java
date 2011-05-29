@@ -35,7 +35,7 @@ import stupidmodel.common.SMUtils;
  * </p>
  * 
  * @author Richard O. Legendi (richard.legendi)
- * @since 2.0-beta, 2011 @
+ * @since 2.0-beta, 2011
  * @version $Id$
  */
 public class Bug {

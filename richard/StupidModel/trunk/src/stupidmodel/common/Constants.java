@@ -59,6 +59,12 @@ public final class Constants {
 	public static final double BUG_GROWTH_RATE = 1.0;
 
 	/**
+	 * 
+	 * @since Model 3
+	 */
+	public static final String FOOD_VALUE_LAYER_ID = "foodValueLayer";
+
+	/**
 	 * Hidden constructor to ensure no instances are created.
 	 */
 	private Constants() {
