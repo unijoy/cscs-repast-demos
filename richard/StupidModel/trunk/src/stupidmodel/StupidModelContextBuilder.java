@@ -40,7 +40,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	public Context<Object> build(final Context<Object> context) {
 		// Set a specified context ID
 		// FIXME Bug here: if uncommented reinit fails for some reason
-		// context.setId(Constants.CONTEXT_ID);
+		//context.setId(Constants.CONTEXT_ID);
 
 		// Create a toridal space with random positioning with the specified
 		// dimensions
