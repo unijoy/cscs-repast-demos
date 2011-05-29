@@ -35,8 +35,8 @@ The complete !StupidModel list:
 This is the basic !StupidModel, an extremely simple individual-based model used as a starting point for learning Repast (or other IBM platforms).
 
 === Formulation ===
- * The space is a two-dimensional grid of dimensions 100 x 100. The space is toroidal, meaning that if bugs move off one edge of the grid they appear on the opposite edge.
- * 100 bug agents are created. They have one behavior: moving to a randomly chosen grid location within +/- 4 cells of their current location, in both the X and Y directions. If there already is a bug at the location (including the moving bug itself - bugs are not allowed to stay at their current location unless none of the neighborhood cells are vacant), then another new location is chosen. This action is executed once per time step.
+ * The space is a two-dimensional grid of dimensions `100 x 100`. The space is toroidal, meaning that if bugs move off one edge of the grid they appear on the opposite edge.
+ * `100` bug agents are created. They have one behavior: moving to a randomly chosen grid location within `+/- 4` cells of their current location, in both the `X` and `Y` directions. If there already is a bug at the location (including the moving bug itself - bugs are not allowed to stay at their current location unless none of the neighborhood cells are vacant), then another new location is chosen. This action is executed once per time step.
  * The bugs are displayed on the space. Bugs are drawn as red circles. The display is updated at the end of each time step.
  * Instead of specifying which random number generation algorithm to use, the default generator for each platform is used.
 
@@ -47,20 +47,20 @@ This is the basic !StupidModel, an extremely simple individual-based model used 
  * There are alternative ways to access any grid or space elements (in particular, any defined _projection_) through the context. In this version of the model, we directly passed a reference to the created agents. Can you figure out how to access the same grid instance with the defined `GRID_ID` through the context in which the agent is? *Hint:* An agent's context may be accessed anytime with a call to `ContextUtils.getContext(this)`.
  * Try the simulation out with different different vision ranges for the agents. Run the model with different number of agents to check they are moving correctly.
  * It is quite easy to set different visualization settings, spend a little time with playing them:
-   * Try setting an icon for the bugs! It is pretty easy and makes the model look nicer!
+   * Try setting an icon for the bugs. It is pretty easy and makes the model look nicer.
    * Set a custom background color for the simulation!
- * Try to modify the current implementation to allow multiple agents stay on the same territory! 
+ * Try to modify the current implementation to allow multiple agents stay on the same territory!.
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN branch directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Bug Growth ==
 === Purpose ===
 Illustrate adding instance variables and methods to the agents.
 === Formulation ===
- * Add a second bug action, grow. Each time step, a bug grows by a fixed amount, 1.0. So bugs need an instance variable for their size, which is initialized to 1.0. This action is scheduled after the move action.
- * The bugs' color on the display is shaded to reflect their size. Bug colors shade from white when size is zero to red when size is 10 or greater.
+ * Add a second bug action, `grow`. Each time step, a bug grows by a fixed amount, `1.0`. So bugs need an instance variable for their size, which is initialized to `1.0`. This action is scheduled after the `move` action.
+ * The bugs' color on the display is shaded to reflect their size. Bug colors shade from white when size is zero to red when size is `10` or greater.
 
 === Implementation Notes ===
 
@@ -71,7 +71,7 @@ Illustrate adding instance variables and methods to the agents.
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN branch directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Habitat Cells and Resource ==
 === Purpose ===
