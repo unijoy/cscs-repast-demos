@@ -92,7 +92,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		for (int i = 0; i < Constants.GRID_SIZE; ++i) {
 			for (int j = 0; j < Constants.GRID_SIZE; ++j) {
 				final HabitatCell cell = new HabitatCell(i, j);
-				context.add(cell);
+				context.add(cell); // First add it to the context
 				foodValueLayer.set(cell.getFoodAvailability(), i, j);
 			}
 		}

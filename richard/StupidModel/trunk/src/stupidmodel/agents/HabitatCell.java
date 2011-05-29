@@ -8,6 +8,7 @@
 package stupidmodel.agents;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameter;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
@@ -20,7 +21,8 @@ import stupidmodel.common.Constants;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 3
- * @version $Id$
+ * @version $Id: HabitatCell.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  */
 public class HabitatCell {
 
@@ -72,6 +74,23 @@ public class HabitatCell {
 	}
 
 	/**
+	 * Sets the current food availability of this cell, used for probing.
+	 * 
+	 * @param foodAvailability
+	 *            the new <code>foodAvailability</code> value; <i>must be
+	 *            non-negative</i>
+	 * @since Model 4
+	 */
+	public void setFoodAvailability(final double foodAvailability) {
+		if (foodAvailability < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Parameter foodAvailability = % < 0.", foodAvailability));
+		}
+
+		this.foodAvailability = foodAvailability;
+	}
+
+	/**
 	 * Each time step, food availability is increased by food production. Food
 	 * production is a random floating point number between zero and the maximum
 	 * food production.
@@ -95,6 +114,18 @@ public class HabitatCell {
 		}
 
 		foodValueLayer.set(getFoodAvailability(), x, y);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("HabitatCell @ location (%d, %d)", x, y);
 	}
 
 }

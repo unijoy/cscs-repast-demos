@@ -10,6 +10,7 @@ package stupidmodel.agents;
 import java.util.List;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
 import repast.simphony.random.RandomHelper;
@@ -81,6 +82,7 @@ public class Bug {
 	 * @return the size of the bug
 	 * @since Model 2
 	 */
+	@Parameter(displayName = "Bug Size", usageName = "size")
 	public double getSize() {
 		return size;
 	}
@@ -93,6 +95,11 @@ public class Bug {
 	 * @since Model 2
 	 */
 	public void setSize(final double size) {
+		if (size < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Parameter foodAvailability = % < 0.", size));
+		}
+
 		this.size = size;
 	}
 
@@ -166,7 +173,7 @@ public class Bug {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("Bug @ location ", getGrid().getLocation(this));
+		return String.format("Bug @ location %s", getGrid().getLocation(this));
 	}
 
 }
