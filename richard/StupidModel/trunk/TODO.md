@@ -1,15 +1,6 @@
-* GridCellNgh - Not present in the Javadoc
-* Enable SVN keywords
-* Which license?
-* Grid direct access to neighbours?
-
 * Javadoc issues:
 	* No javadoc for the ContinuousSpaceFactoryFinder class in the installed javadoc:
 		file:///C:/Program%20Files%20%28x86%29/RepastSimphony-2.0-beta/docs/RepastJavaAPI/repast/simphony/context/space/continuous/ContinuousSpaceFactoryFinder.html
-
-* General:
-	* Unit testing, Mocking
-	* JMock framework tutorial
 
 * TODO
 	* Model 1:
@@ -21,9 +12,6 @@
 			* Set Background!
 			
 			* Modify implementation to allow multiple agents stay on the same territory! 
-
 			
-			
-Eric:
+@Eric:
 	- Please check sections with CHECKME tags. I was a bit unsure there.
-	- Sorry for the formatting, I used the default Eclipse formatter with Ctrl + Shift + F, and it is not the most beautiful sometimes

@@ -24,7 +24,8 @@ import repast.simphony.space.grid.SimpleGridAdder;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: StupidModelContextBuilder.java 150 2011-05-26 19:06:40Z
+ *          richard.legendi@gmail.com $
  */
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
@@ -66,7 +67,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		// Create the specified number of Bug agents and assign them to the
 		// space and the grid
 		for (int i = 0; i < Constants.BUG_COUNT; ++i) {
-			final Bug bug = new Bug(grid);
+			final Bug bug = new Bug();
 			context.add(bug);
 			final NdPoint pt = space.getLocation(bug);
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());

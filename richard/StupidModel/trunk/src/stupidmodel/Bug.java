@@ -15,6 +15,7 @@ import repast.simphony.query.space.grid.GridCellNgh;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
+import repast.simphony.util.ContextUtils;
 import repast.simphony.util.SimUtilities;
 
 /**
@@ -37,40 +38,60 @@ import repast.simphony.util.SimUtilities;
  */
 public class Bug {
 
-	/** A reference to the grid on which the agent is located at. */
-	private final Grid<Object> grid;
-
 	/**
 	 * Bugs have an instance variable for their size, which is initialized to
 	 * 1.0.
+	 * 
+	 * @since Model 2
 	 */
 	private double size = 1.0;
 
 	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified
 	 * {@link Grid}.
-	 * 
-	 * @param grid
-	 *            the <code>Grid</code> on which the agent is located; <i>cannot
-	 *            be <code>null</code></i>
 	 */
-	public Bug(final Grid<Object> grid) {
+	public Bug() {
 		super();
+	}
+
+	/**
+	 * Returns a reference to the grid on which the agent is located at.
+	 * 
+	 * @return the <code>Grid</code> on which the agent is located; <i>cannot be
+	 *         <code>null</code></i>
+	 * @since Model 2
+	 */
+	public Grid<Object> getGrid() {
+		@SuppressWarnings("unchecked")
+		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
+				.getProjection(Constants.GRID_ID);
 
 		if (null == grid) {
-			throw new IllegalArgumentException("Parameter grid cannot be null.");
+			throw new IllegalStateException("Cannot locate grid in context.");
 		}
 
-		this.grid = grid;
+		return grid;
 	}
 
 	/**
 	 * Returns the size of the bug.
 	 * 
 	 * @return the size of the bug
+	 * @since Model 2
 	 */
 	public double getSize() {
 		return size;
+	}
+
+	/**
+	 * Sets the size of the bug, <i>used for testing</i>.
+	 * 
+	 * @param size
+	 *            the new size of the bug
+	 * @since Model 2
+	 */
+	public void setSize(final double size) {
+		this.size = size;
 	}
 
 	/**
@@ -91,14 +112,14 @@ public class Bug {
 	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void step() {
 		// Get the grid location of this Bug
-		final GridPoint location = grid.getLocation(this);
+		final GridPoint location = getGrid().getLocation(this);
 
 		// We use the GridCellNgh class to create GridCells for the surrounding
 		// neighborhood. It contains the locations, and a list of objects from
 		// the specified class which is accessible from that location
 
-		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
-				location, Bug.class, Constants.BUG_VISION_RANGE,
+		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
+				getGrid(), location, Bug.class, Constants.BUG_VISION_RANGE,
 				Constants.BUG_VISION_RANGE).getNeighborhood(false);
 
 		// We have a utility function that returns the filtered list of empty
@@ -120,7 +141,18 @@ public class Bug {
 
 		// We have our new GridPoint to move to, so relocate agent
 		final GridPoint newGridPoint = chosenFreeCell.getPoint();
-		grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+		getGrid().moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+	}
+
+	/**
+	 * Each time step, a bug grows by a fixed amount, <code>1.0</code>, and this
+	 * action is scheduled after the <code>move()</code> action.
+	 * 
+	 * @since Model 2
+	 */
+	@ScheduledMethod(start = 1, interval = 1, priority = -1)
+	public void grow() {
+		size += Constants.BUG_GROWTH_RATE;
 	}
 
 	/*
@@ -132,13 +164,7 @@ public class Bug {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("Bug @ location ", grid.getLocation(this));
-	}
-
-	@ScheduledMethod(start = 1, interval = 1, priority = -1)
-	public void grow() {
-		size += Constants.BUG_GROWTH_RATE;
-		System.out.println(size);
+		return String.format("Bug @ location ", getGrid().getLocation(this));
 	}
 
 }

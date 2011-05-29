@@ -4,13 +4,13 @@
   <styles>
     <entry>
       <string>stupidmodel.Bug</string>
-      <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
+      <string>stupidmodel.observer.BugStyleOGL2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
       <string>stupidmodel.Bug</string>
-      <string>stupidmodel.Bug.style_3.xml</string>
+      <null/>
     </entry>
   </editedStyles>
   <netStyles/>
