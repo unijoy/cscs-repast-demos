@@ -42,6 +42,15 @@ This is the basic !StupidModel, an extremely simple individual-based model used 
 
 === Implementation Notes ===
 
+=== Further Fun ===
+
+ * There are alternative ways to access any grid or space elements (in particular, any defined _projection_) through the context. In this version of the model, we directly passed a reference to the created agents. Can you figure out how to access the same grid instance with the defined `GRID_ID` through the context in which the agent is? *Hint:* An agent's context may be accessed anytime with a call to `ContextUtils.getContext(this)`.
+ * Try the simulation out with different different vision ranges for the agents. Run the model with different number of agents to check they are moving correctly.
+ * It is quite easy to set different visualization settings, spend a little time with playing them:
+   * Try setting an icon for the bugs! It is pretty easy and makes the model look nicer!
+   * Set a custom background color for the simulation!
+ * Try to modify the current implementation to allow multiple agents stay on the same territory! 
+
 === Complete Model ===
 
  * The [http://to.do complete source code] of the first model is accessible from the proper SVN branch directly.
