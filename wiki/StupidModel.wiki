@@ -62,6 +62,17 @@ Illustrate adding instance variables and methods to the agents.
  * Add a second bug action, grow. Each time step, a bug grows by a fixed amount, 1.0. So bugs need an instance variable for their size, which is initialized to 1.0. This action is scheduled after the move action.
  * The bugs' color on the display is shaded to reflect their size. Bug colors shade from white when size is zero to red when size is 10 or greater.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+ * Try to schedule the `grow()` and `move()` actions with the same priority, run the model and check in which order are the actions executed.
+ * Try to create different rainbow color maps for the agents.
+ * Agents' `size` property is changed by the same fixed number. Try to introduce minor heterogeneity through randomizing the `grow()` action: make the `size` property increased by a random value between the interval `[0.5, 1.5]`.
+
+=== Complete Model ===
+
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN branch directly.
+
 == Habitat Cells and Resource ==
 === Purpose ===
 Show how to create cell objects that represent habitat and spatial resources. Illustrate how agents and habitat cells interact.
