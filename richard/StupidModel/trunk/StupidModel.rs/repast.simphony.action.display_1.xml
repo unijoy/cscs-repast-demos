@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.DefaultDisplayDescriptor>
-  <name>Grid Display</name>
+  <name>Grid with Food Display</name>
   <type>TWO_D</type>
   <styles>
     <entry>
@@ -24,6 +24,7 @@
     <frequency>REPEAT</frequency>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
+  <valueLayerStyleName>stupidmodel.observer.FoodValueLayerStyleOGL</valueLayerStyleName>
   <layoutProjection>grid</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
@@ -39,7 +40,9 @@
       <type>GRID</type>
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
-  <valueLayers/>
+  <valueLayers>
+    <string>foodValueLayer</string>
+  </valueLayers>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>15.0</unitSize>
   </visualizationProperties>
