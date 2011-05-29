@@ -3,13 +3,13 @@
   <type>TWO_D</type>
   <styles>
     <entry>
-      <string>stupidmodel.Bug</string>
+      <string>stupidmodel.agents.Bug</string>
       <string>stupidmodel.observer.BugStyleOGL2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>stupidmodel.Bug</string>
+      <string>stupidmodel.agents.Bug</string>
       <null/>
     </entry>
   </editedStyles>
@@ -28,7 +28,7 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>stupidmodel.Bug</string>
+      <string>stupidmodel.agents.Bug</string>
       <int>0</int>
     </entry>
   </layerOrder>

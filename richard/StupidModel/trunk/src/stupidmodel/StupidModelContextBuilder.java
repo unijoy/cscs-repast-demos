@@ -18,6 +18,8 @@ import repast.simphony.space.continuous.RandomCartesianAdder;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
+import stupidmodel.agents.Bug;
+import stupidmodel.common.Constants;
 
 /**
  * Custom {@link ContextBuilder} implementation for the <i>StupidModel 1</i>.

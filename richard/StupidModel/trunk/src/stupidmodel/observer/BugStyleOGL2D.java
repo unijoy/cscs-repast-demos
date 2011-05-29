@@ -9,8 +9,9 @@ package stupidmodel.observer;
 
 import java.awt.Color;
 
+
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
-import stupidmodel.Bug;
+import stupidmodel.agents.Bug;
 
 /**
  * A simple custom color implementation for {@link Bug} agents.

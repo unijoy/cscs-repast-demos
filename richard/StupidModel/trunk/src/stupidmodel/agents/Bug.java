@@ -5,7 +5,7 @@
  *     $LastChangedRevision$
  *     $LastChangedBy$
  */
-package stupidmodel;
+package stupidmodel.agents;
 
 import java.util.List;
 
@@ -17,6 +17,8 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.util.SimUtilities;
+import stupidmodel.common.Constants;
+import stupidmodel.common.SMUtils;
 
 /**
  * Bug agent implementation for <i>StupidModel 1</i>.

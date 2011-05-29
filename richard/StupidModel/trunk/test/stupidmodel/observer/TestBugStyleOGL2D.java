@@ -12,7 +12,8 @@ import java.awt.Color;
 import org.junit.Assert;
 import org.junit.Test;
 
-import stupidmodel.Bug;
+
+import stupidmodel.agents.Bug;
 import stupidmodel.observer.BugStyleOGL2D;
 
 /**

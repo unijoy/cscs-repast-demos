@@ -18,6 +18,7 @@ import org.junit.Test;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.TestGridCellFactory;
 import repast.simphony.space.grid.GridPoint;
+import stupidmodel.common.SMUtils;
 
 /**
  * Test methods for the {@link SMUtils} class.

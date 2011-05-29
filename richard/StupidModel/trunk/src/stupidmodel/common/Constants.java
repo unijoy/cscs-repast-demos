@@ -5,7 +5,10 @@
  *     $LastChangedRevision$
  *     $LastChangedBy$
  */
-package stupidmodel;
+package stupidmodel.common;
+
+import stupidmodel.StupidModelContextBuilder;
+import stupidmodel.agents.Bug;
 
 /**
  * Dedicated class to store some model-specific constant values (e.g. bug vision

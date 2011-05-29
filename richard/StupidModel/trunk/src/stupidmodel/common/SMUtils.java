@@ -5,7 +5,7 @@
  *     $LastChangedRevision$
  *     $LastChangedBy$
  */
-package stupidmodel;
+package stupidmodel.common;
 
 import java.util.ArrayList;
 import java.util.List;
