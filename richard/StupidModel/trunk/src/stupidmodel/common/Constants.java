@@ -59,6 +59,7 @@ public final class Constants {
 	public static final double BUG_GROWTH_RATE = 1.0;
 
 	/**
+	 * Unique ID for the food availability layer.
 	 * 
 	 * @since Model 3
 	 */

@@ -40,7 +40,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	public Context<Object> build(final Context<Object> context) {
 		// Set a specified context ID
 		// FIXME Bug here: if uncommented reinit fails for some reason
-		//context.setId(Constants.CONTEXT_ID);
+		// context.setId(Constants.CONTEXT_ID);
 
 		// Create a toridal space with random positioning with the specified
 		// dimensions
@@ -77,14 +77,18 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
 		}
 
+		// Create a background layer for the displayed grid that represents the
+		// available (grown) food amount
 		final GridValueLayer foodValueLayer = new GridValueLayer(
-				Constants.FOOD_VALUE_LAYER_ID,
+				Constants.FOOD_VALUE_LAYER_ID, // Access layer through context
 				true, // Densely populated
-				new WrapAroundBorders(), Constants.GRID_SIZE,
-				Constants.GRID_SIZE);
+				new WrapAroundBorders(), // Toric world
+				// Size of the grid (defined constants)
+				Constants.GRID_SIZE, Constants.GRID_SIZE);
 		context.addValueLayer(foodValueLayer);
 
-		// Filling up the context with cells
+		// Fill up the context with cells, and set the initial food values for
+		// the new layer
 		for (int i = 0; i < Constants.GRID_SIZE; ++i) {
 			for (int j = 0; j < Constants.GRID_SIZE; ++j) {
 				final HabitatCell cell = new HabitatCell(i, j);

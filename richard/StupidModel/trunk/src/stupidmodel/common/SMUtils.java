@@ -22,7 +22,8 @@ import repast.simphony.random.RandomHelper;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: SMUtils.java 174 2011-05-29 06:31:57Z richard.legendi@gmail.com
+ *          $
  */
 public final strictfp class SMUtils {
 

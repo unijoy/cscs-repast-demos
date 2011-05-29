@@ -27,7 +27,12 @@ import stupidmodel.agents.Bug;
 public class BugStyleOGL2D extends DefaultStyleOGL2D {
 
 	/**
-	 * Returns a modified color value for an agent. Bit tricky, though.
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * Returns a modified color value for an agent. Bit tricky, though, contains
+	 * a minor hex-magic to determine the actual color value.
+	 * </p>
 	 * 
 	 * @see repast.simphony.visualizationOGL2D.DefaultStyleOGL2D#getColor(java.lang.Object)
 	 */

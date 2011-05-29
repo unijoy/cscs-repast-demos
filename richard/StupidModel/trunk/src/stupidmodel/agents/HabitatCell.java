@@ -19,8 +19,8 @@ import stupidmodel.common.Constants;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
  * @since Model 3
+ * @version $Id$
  */
 public class HabitatCell {
 
@@ -33,18 +33,40 @@ public class HabitatCell {
 	 */
 	private double foodAvailability = 0.0;
 
-	private final int x;
-
-	private final int y;
+	/** Location of this cell at the grid. */
+	private final int x, y;
 
 	/**
 	 * Creates a new instance of <code>HabitatCell</code>.
+	 * 
+	 * @param x
+	 *            the specified <code>x</code> coordinate; <i>must be
+	 *            non-negative</i>
+	 * @param y
+	 *            the specified <code>y</code> coordinate; <i>must be
+	 *            non-negative</i>
 	 */
 	public HabitatCell(final int x, final int y) {
+		if (x < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Coordinate x = %d < 0.", x));
+		}
+
+		if (y < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Coordinate y = %d < 0.", y));
+		}
+
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * Returns the current food availability of this cell.
+	 * 
+	 * @return the <code>foodAvailability</code> of the cell; <i>a non-negative
+	 *         value</i>
+	 */
 	public double getFoodAvailability() {
 		return foodAvailability;
 	}
@@ -65,6 +87,12 @@ public class HabitatCell {
 
 		final GridValueLayer foodValueLayer = (GridValueLayer) ContextUtils
 				.getContext(this).getValueLayer(Constants.FOOD_VALUE_LAYER_ID);
+
+		if (null == foodValueLayer) {
+			throw new IllegalStateException(
+					"Cannot locate food value layer with ID="
+							+ Constants.FOOD_VALUE_LAYER_ID + ".");
+		}
 
 		foodValueLayer.set(getFoodAvailability(), x, y);
 	}
