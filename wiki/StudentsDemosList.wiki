@@ -62,9 +62,9 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # Repast Demo Video
 
   * *[Mudit Mudit Raj Gupta]*
-    # [Mudit#Ants Ants]
+    # [AreaCoverage AreaCoverage(Cover 360)]
     # [Mudit#Guiding Guiding Bots]
-    # [Mudit#Cover Cover 360]
+    # [Mudit#Ants Ants]
     # [Mudit#Preferential Preferential Linking]
 
   * *[Richard Richard Legendi]*
