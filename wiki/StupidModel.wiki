@@ -78,13 +78,22 @@ Illustrate adding instance variables and methods to the agents.
 === Purpose ===
 Show how to create cell objects that represent habitat and spatial resources. Illustrate how agents and habitat cells interact.
 === Formulation ===
- * A new class, !HabitatCell, is added. Habitat cell objects have instance variables for their food availability and maximum food production rate. Cells also have a variable for the bug at their location.
+ * A new class, `HabitatCell`, is added. Habitat cell objects have instance variables for their `foodAvailability` and `maximumFoodProductionRate`. Cells also have a variable for the bug at their location.
  * The grid space object now holds habitat cells, not bugs.
- * Food availability is initialized to 0.0, and maximum food production rate is initialized to 0.01.
+ * Food availability is initialized to `0.0`, and maximum food production rate is initialized to `0.01`.
  * Each time step, food availability is increased by food production. Food production is a random floating point number between zero and the maximum food production.
  * Food production is scheduled before agent actions.
  * Bug growth is modified so growth equals food consumption. Food consumption is equal to the minimum of (a) the bug's maximum consumption rate (set to 1.0) and (b) the bug's cell's food availability.
  * The food consumed by each bug is subtracted from the food availability of its cell.
+
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [https://to.do complete source code] of the first model is accessible from the proper SVN tag directly.
+
 
 == Cell and Bug Probes ==
 === Purpose ===
