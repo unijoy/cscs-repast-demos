@@ -1,4 +1,5 @@
 #summary Area Coverage Model (Cover 360)
+#sidebar TableOfContents
 
 =Summary=
 
