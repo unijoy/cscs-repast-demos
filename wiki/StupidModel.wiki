@@ -89,6 +89,8 @@ Show how to create cell objects that represent habitat and spatial resources. Il
 === Implementation Notes ===
 
 === Further Fun ===
+ * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
+ * Try using some other color values to display food availability for the grid.
 
 === Complete Model ===
 
