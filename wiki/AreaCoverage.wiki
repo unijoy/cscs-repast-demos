@@ -66,5 +66,7 @@ The properties such as Battery Level and Power Loss in transmission can be added
 =References=
 
 - http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
+
 - http://en.wikipedia.org/wiki/Swarm_robotics
+
 - http://www.swarmrobotic.com/
