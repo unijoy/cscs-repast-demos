@@ -44,8 +44,12 @@ public final class Constants {
 	public static final int GRID_SIZE = 100;
 
 	/**
+	 * Unique ID for the parameter representing the initial number of bugs. It
+	 * is set to <code>100</code> by default on the graphical interface.
 	 * 
 	 * @since Model 5
+	 * @see <code>parameters.xml</code> in the <code>StupidModel.rs</code>
+	 *      directory for details
 	 */
 	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
 
@@ -54,9 +58,6 @@ public final class Constants {
 	 * cells.
 	 */
 	public static final int BUG_VISION_RANGE = 4;
-
-	/** A bug grows by a fixed amount of size in each time step. */
-	public static final double BUG_GROWTH_RATE = 1.0;
 
 	/**
 	 * Unique ID for the food availability layer.

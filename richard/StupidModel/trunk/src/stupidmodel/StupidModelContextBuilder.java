@@ -41,7 +41,6 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 		// Set a specified context ID
-		// FIXME Bug here: if uncommented reinit fails for some reason
 		context.setId(Constants.CONTEXT_ID);
 		final Parameters parameters = RunEnvironment.getInstance()
 				.getParameters();
@@ -67,8 +66,8 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 								// This is a simple implementation of an adder
 								// that doesn't perform any action
 								new SimpleGridAdder<Object>(),
-								// Each cell in the grid is single occupancy
-								false,
+								// Each cell in the grid is multi-occupancy
+								true,
 								// Size of the grid (defined constants)
 								Constants.GRID_SIZE, Constants.GRID_SIZE));
 
@@ -77,6 +76,8 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		final int bugCount = ((Integer) parameters
 				.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
 
+		// Create Bug agents and add them to the context and to the grid as
+		// placed randomly by the RandomCartesianAdder of the space
 		for (int i = 0; i < bugCount; ++i) {
 			final Bug bug = new Bug();
 			context.add(bug);
@@ -92,14 +93,16 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 				new WrapAroundBorders(), // Toric world
 				// Size of the grid (defined constants)
 				Constants.GRID_SIZE, Constants.GRID_SIZE);
+
 		context.addValueLayer(foodValueLayer);
 
 		// Fill up the context with cells, and set the initial food values for
-		// the new layer
+		// the new layer. Also add them to the created grid.
 		for (int i = 0; i < Constants.GRID_SIZE; ++i) {
 			for (int j = 0; j < Constants.GRID_SIZE; ++j) {
 				final HabitatCell cell = new HabitatCell(i, j);
 				context.add(cell); // First add it to the context
+				grid.moveTo(cell, i, j);
 				foodValueLayer.set(cell.getFoodAvailability(), i, j);
 			}
 		}
