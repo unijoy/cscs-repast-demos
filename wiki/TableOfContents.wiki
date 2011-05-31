@@ -12,6 +12,7 @@
  * Models
    * [StupidModel]
    * [AreaCoverage]
+   * [Boids]
  * Platforms
    * [RepastSReLogo]
  * Administrative
