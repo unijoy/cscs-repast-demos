@@ -17,7 +17,7 @@
 
 = Introduction =
 
-The model describes the area coverage pattern of a group of Agent, initially kept in a given geometry. The model is useful in studying the spread, the agent density at different radii and comparing the spread given different geometries. 
+The model describes the area coverage pattern of a group of Agent, initially kept in a given geometry. The model is useful in studying the spread, the agent density at different radii and comparing the spread given different geometries. The model can be further extended and modified according to specific application. 
 
 =Description= 
 
@@ -25,13 +25,13 @@ The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", trie
 
 The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geomwtries which come with the model are - 
 
-#Circle
+1. Circle
 
-#Square
+2. Square
 
-#Hexagon
+3. Hexagon
 
-#Line
+4. Line
 
 All the Mote positions are random values generated within the boundary of the selected geometries. The code had embedded comments to aptly explain the formation of these initial geometries and random position generation. The following page in the Description Section details about the initial geometry formation.
 
