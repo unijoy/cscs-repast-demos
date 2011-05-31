@@ -13,7 +13,7 @@
    * [StupidModel]
    * [AreaCoverage]
  * Platforms
-   * RepastSReLogo
+   * [RepastSReLogo]
  * Administrative
    * [General]
    * [StudentsDemosList Demo Lists]
