@@ -1,0 +1,27 @@
+#summary Boids ReLogo/groovy implementation
+
+= Introduction =
+Boids is a relatively simple agent-based model based on the steering behavior of flocking birds. 
+
+There are three simple rules that each Boid must follow[0]:
+  * Alignment: Each Boid steers itself to align its heading with that of its neighbors
+  * Cohesion: Each Boid steers itself to the average position of its flockmates
+  * Separation: Each Boid steers itself in order not to crowd its neighbors
+
+Obviously, these three simple algorithms for determining the heading of each Boid at the next timestep are often conflicting. So the directions are averaged together. For variation, weights can be applied to each rule, so that it is more or less influential in the final direction.
+
+= Implementation =
+
+=== Alignment ===
+
+_TODO: upload Alignment demo_
+
+=== Cohesion === 
+
+_TODO: upload Cohesion demo_
+
+=== Separation ===
+
+_TODO: upload Separation demo_
+
+[0] http://www.red3d.com/cwr/boids/
