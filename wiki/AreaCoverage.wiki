@@ -26,8 +26,11 @@ The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", trie
 The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geomwtries which come with the model are - 
 
 #Circle
+
 #Square
+
 #Hexagon
+
 #Line
 
 All the Mote positions are random values generated within the boundary of the selected geometries. The code had embedded comments to aptly explain the formation of these initial geometries and random position generation. The following page in the Description Section details about the initial geometry formation.
