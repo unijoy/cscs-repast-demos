@@ -34,7 +34,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Planned: tba
     * Working: tba
     * Done: tba
-  * *[Tim Tim Sweda]* (mrntor: mike)
+  * *[Tim Tim Sweda]* (mentor: mike)
     * Planned: tba
     * Working: tba
     * Done: tba
