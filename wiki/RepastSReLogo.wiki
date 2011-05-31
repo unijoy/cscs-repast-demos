@@ -1,4 +1,5 @@
-#platform for model development
+#summary platform for model development
+#sidebar TableOfContents
 
 = Introduction =
 
