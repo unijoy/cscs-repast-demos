@@ -5,7 +5,7 @@
 
 -Model        : Cover 360
 
--Source Code  :
+-Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
 
 -Platform     : RepastS ReLogo
 
