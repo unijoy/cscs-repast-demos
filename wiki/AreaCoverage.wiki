@@ -17,16 +17,24 @@
 
 = Introduction =
 
-Each mote is tries to move in an area where there are less number 
-of motes. This results in expansions. The initial positioning of the 
-motes can be selected by choosing any of the three regular shapes - 
-Circle, Square and Hexagon.
-
-Model can be used to study the density of motes at different region,
-the effect of initial geometry on the spread and rate at which the 
-expansion is taking place.
+The model describes the area coverage pattern of a group of Agent, initially kept in a given geometry. The model is useful in studying the spread, the agent density at different radii and comparing the spread given different geometries. 
 
 =Description= 
+
+The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to more in the area where there are less number of motes initially available. This forces the overall colony of mots to expant and thus covering a given area. 
+
+The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geomwtries which come with the model are - 
+
+#Circle
+#Square
+#Hexagon
+#Line
+
+All the Mote positions are random values generated within the boundary of the selected geometries. The code had embedded comments to aptly explain the formation of these initial geometries and random position generation. The following page in the Description Section details about the initial geometry formation.
+
+The model also comes with a check box for automatically filling the motes in the selected geometry. 
+
+In this mode maximum number of motes that can be accommodated in a given geometry are kept. This mode is useful overlap between agents is not favored. 
 
 ==Generating Initial Geometry=
 
@@ -45,6 +53,8 @@ In most cases regular figures are made. The one-quarter of the figure is made in
 *User can select "Number of Motes", "Step Size" and "Initial Side  Length/Radius"  
 
 *User can check "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
+
+==Plots==
 
 =Applications=
 
