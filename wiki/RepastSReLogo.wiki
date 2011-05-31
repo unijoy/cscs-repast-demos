@@ -1,0 +1,35 @@
+#platform for model development
+
+= Introduction =
+
+ReLogo can be used to create and analyze models in Repast Simphony.
+Detailed documentation about tool and ReLogo can be found here:
+
+http://repast.sourceforge.net/docs.html
+
+To start with ReLogo, the following document can be of a great help
+
+http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf
+
+More advanced models can be made and new functions can be explored through the quick reference available here: 
+
+http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html
+
+The complete ReLogo API can be found here:
+
+http://repast.sourceforge.net/docs/api/relogo/index.html
+
+
+= Available Demos (in ReLogo) = 
+
+* Zombies (Available with the software)
+
+* SimTutorial (Available with the software)
+
+* FlowZombies (Available with the Software)
+
+* AreaCoverage (Unverified)
+
+= References =
+
+*http://repast.sourceforge.net/docs.html
