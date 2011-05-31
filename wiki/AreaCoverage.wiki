@@ -7,7 +7,7 @@
 
 *Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
 
-*Platform     : RepastS ReLogo
+*Platform     : [RepastSReLogo RepastS ReLogo]
 
 *Mentor       : Dr. Eric Tatara
 
