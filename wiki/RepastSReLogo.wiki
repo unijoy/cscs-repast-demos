@@ -21,15 +21,15 @@ The complete ReLogo API can be found here:
 http://repast.sourceforge.net/docs/api/relogo/index.html
 
 
-= Available Demos (in ReLogo) = 
+= Available Demos = 
 
-* Zombies (Available with the software)
+1. Zombies (Available with the software)
 
-* SimTutorial (Available with the software)
+2. SimTutorial (Available with the software)
 
-* FlowZombies (Available with the Software)
+3. FlowZombies (Available with the Software)
 
-* AreaCoverage (Unverified)
+4. AreaCoverage (Unverified)
 
 = References =
 
