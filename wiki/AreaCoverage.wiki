@@ -3,15 +3,15 @@
 
 =Summary=
 
--Model        : Cover 360
+*Model        : Cover 360
 
--Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
+*Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
 
--Platform     : RepastS ReLogo
+*Platform     : RepastS ReLogo
 
--Mentor       : Dr. Eric Tatara
+*Mentor       : Dr. Eric Tatara
 
--Author       : Mudit Raj Gupta
+*Author       : Mudit Raj Gupta
 
 
 
@@ -36,15 +36,15 @@ In most cases regular figures are made. The one-quarter of the figure is made in
 
 ==User Panel==
 
--Push Buttons (that rebounds) for setting up the motes and for making them move for one clock tick. 
+*Push Buttons (that rebounds) for setting up the motes and for making them move for one clock tick. 
 
--Toggle Button to run simulation in a loop till the button is toggled again.
+*Toggle Button to run simulation in a loop till the button is toggled again.
 
--User can choose the initial geometry form Circle, Hexagon and Square.
+*User can choose the initial geometry form Circle, Hexagon and Square.
 
--User can select "Number of Motes", "Step Size" and "Initial Side  Length/Radius"  
+*User can select "Number of Motes", "Step Size" and "Initial Side  Length/Radius"  
 
--User can check "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
+*User can check "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
 
 =Applications=
 
@@ -65,8 +65,8 @@ The properties such as Battery Level and Power Loss in transmission can be added
 
 =References=
 
-- http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
+* http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
 
-- http://en.wikipedia.org/wiki/Swarm_robotics
+* http://en.wikipedia.org/wiki/Swarm_robotics
 
-- http://www.swarmrobotic.com/
+* http://www.swarmrobotic.com/
