@@ -28,6 +28,9 @@ The model basic implementation of the localization strategy based on RSSI (Recei
   
 The model is set up with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area and transferring information further. The daughter can pass the information only to a specified number of agents because of the error introduced due to each information transfers. 
 
+A similar method is used in the project demonstrated in the video. The difference is that the Guiding Robot (Poles) are stationary and Daughter Robot (Car) is moving.
+
+<wiki:video url="http://www.youtube.com/watch?v=xMDsKiTxD8g"/>
 
 =Description= 
 
