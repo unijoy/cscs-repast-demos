@@ -59,14 +59,19 @@ f(x,y)>0 , for points outside a 2-Dimensional figure on the x-y plane
 
 f(x,y)=0 , for points on a 2-Dimensional figure on the x-y plane
  
+
 Given, f(x,y) is the equation of the figure and x, y are the respective x and y coordinates.
 
 For Example, Consider a circle with center on the origin and radius r units
 
 Equation             : x^2 + y^2 - r^2 = 0
+
 Points on the circle : x^2 + y^2 - r^2 = 0
+
 Inside               : x^2 + y^2 - r^2 < 0
+
 Outside              : x^2 + y^2 - r^2 > 0
+
 
 One one fourth of the figure is generated, it is randomly reflected or not reflected. If reflected it can be randomly reflected along any of the axes (x axis or y axis). This algorithm can be used to create any symmetric figure and fill turtles randomly in it.
 
