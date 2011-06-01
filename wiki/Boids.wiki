@@ -16,7 +16,9 @@ Obviously, these three simple algorithms for determining the heading of each Boi
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodDistance. This average is the new heading of any given Boid at their next timestep.
 
-_TODO: upload Alignment demo_
+*The Alignment demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_avgheading/ here].*
+
+
 
 === Cohesion === 
 
