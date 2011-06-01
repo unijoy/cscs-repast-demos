@@ -14,18 +14,25 @@
  * *Author       : [Mudit Mudit Raj Gupta]
 
 
-= Introduction =
+=Introduction=
 
 
 The model describes the area coverage pattern of a group of Agent, initially kept in a given geometry. The model is useful in studying the spread, the agent density at different radii and comparing the spread given different geometries. The model can be further extended and modified according to specific application. 
+
+The model is inspired by the following work. It implements an initial stage of the model. It is a general implementation and can be changed depending on application. The model is modified and new features are added.
+
+- *Environments using Multi-robot swarms with Memory and Communication Constrains." UNO TEchnical Report no. cst-2009-1, 2009*
+
+A presentation of the work can be found [http://docs.google.com/viewer?a=v&q=cache:rP_3HLYWTIUJ:disalw3.epfl.ch/Miscellaneous/Events_News/Docs/Dasgupta_seminar_17062009.pdf+Area+Coverage+npde+counting&hl=en&gl=in&pid=bl&srcid=ADGEESi2rlCzZdWo9tXTCaiw_XnCwWmjkBi5HNACd0W-NpDRNgi9nULXZmAPspzA8wuQ8i7fUnEcNQpTnCCRNyYawja1i4X0kDzQ3LzaFPEwMy7yMwhEjxVjztBgtGDNYiQoXXD1_BmS&sig=AHIEtbTZSsgGpYDDJxR2XHJ3Eua9XjERyQ&pli=1 here]:
+
 
 
 =Description= 
 
 
-The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to move in the area where there are less number of motes initially available. This forces the overall colony of mots to expant and thus covering a given area. 
+The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to move in the area where there are less number of motes initially available. This forces the overall colony of motes to expand and thus covering a given area. 
 
-The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geomwtries which come with the model are - 
+The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geometries which come with the model are - 
 
 1. Circle
 
@@ -108,26 +115,61 @@ The section briefly describes the elements of the User Panel and the parameters 
 
 ==Data Sets==
 
+_to be added soon_
+
 ==Outputters==
+
+_to be added soon_
 
 ==Plots==
 
+_to be added soon_
+
 ==External Plugin==
+
+_to be added soon_
 
 =Applications=
 
-It can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. It can also be used for calculating robot density at a given time in a given radius. It will also be useful for social simulation. Each "Mote" or agent will decide its' movement on a local basis so no global communication between the robots is required and they can move and cover the area based on their neighbors.
+==Swarm Robotics and Mobile Wireless Sensor Networks==
+
+Multi Agent Robotics/ Swarm Robotics is used in many fields. Research has been in progress.
+
+Some of the Applications of Multi Agent Robotic Systems are:
+
+ # Automatic Target Recognition
+ 
+ # Automatic Landmine detection
+
+ # Space Robotics, like fleet of Mars Rovers 
+
+
+This model can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. 
+
+It can also be used for calculating robot density at a given time in a given radius. It will also be instrumental in deciding the initial geometry of the fleet.
+
+Each "Mote" or agent will decide its' movement on a local basis so no global communication between the robots is required and they can move and cover the area based on their neighbors.
+
+==Other Application==
+
+It will be useful for social simulation. It can be used to study the behavior of colonies when each individual is given such a characteristic. 
+
  
 =Extending the Model=
+
 
 ==Adding Initial Geometry==
 
 The model can be extended to give mote density of different area(shapes) and even the user can add an irregular geometry 
-or some other geometry according to project specific requirements.
+or some other geometry according to project specific requirements. This can be done using the same concept as described in the description section (generating geometries)
 
-==More Robot Specific==
+==Distributed Area Coverage==
 
-The properties such as Battery Level and Power Loss in transmission can be added to the properties to make a rough estimate of the power source and energy dissipation.
+The Motes can be given more specific properties and the indivisual behavior can be changed slightly to see observable change in the colonial behavior. Try decreasing the speed of all the motes after they have traveled a specific distance (Assuming battery level falls) 
+
+==Addition of Plots and Outputters==
+
+Application specific graphs, outputters and plug in can be incorporated in the given model. 
 
 =Bugs=
 
