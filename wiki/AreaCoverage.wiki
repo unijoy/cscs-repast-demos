@@ -1,5 +1,5 @@
 #summary Area Coverage Model (Cover 360)
-#labels SwarmRobotics,AreaCoverage
+#labels SwarmRobotics,AreaCoverage,MobileSensorNodeDeployment
 #sidebar TableOfContents
 
 =Summary=
