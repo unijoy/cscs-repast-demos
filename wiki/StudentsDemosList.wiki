@@ -7,8 +7,8 @@
 Record status after the group agrees on the assignment - planned,working,done
 
   * *[Mark Mark Champe]* (mentor: rick)
-    * Planned: tba
-    * Working: tba
+    * Planned: [Mark#PageRank PageRank], [Mark#Entropy Entropy]
+    * Working: [Mark#Virus Computer Virus Spread]
     * Done: tba
   * *[Rowan Rowan Copley]* (mentor: nick)
     * Planned: tba
