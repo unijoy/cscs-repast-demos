@@ -21,7 +21,7 @@ The model describes the area coverage pattern of a group of Agent, initially kep
 
 The model is inspired by the following work. It implements an initial stage of the model. It is a general implementation and can be changed depending on application. The model is modified and new features are added.
 
-- *Environments using Multi-robot swarms with Memory and Communication Constrains." UNO TEchnical Report no. cst-2009-1, 2009*
+- * K Cheng, P. Dasgupta " Distributed Coverage of Environments using Multi-robot swarms with Memory and Communication Constrains." UNO Technical Report no. cst-2009-1, 2009*
 
 A presentation of the work can be found [http://docs.google.com/viewer?a=v&q=cache:rP_3HLYWTIUJ:disalw3.epfl.ch/Miscellaneous/Events_News/Docs/Dasgupta_seminar_17062009.pdf+Area+Coverage+npde+counting&hl=en&gl=in&pid=bl&srcid=ADGEESi2rlCzZdWo9tXTCaiw_XnCwWmjkBi5HNACd0W-NpDRNgi9nULXZmAPspzA8wuQ8i7fUnEcNQpTnCCRNyYawja1i4X0kDzQ3LzaFPEwMy7yMwhEjxVjztBgtGDNYiQoXXD1_BmS&sig=AHIEtbTZSsgGpYDDJxR2XHJ3Eua9XjERyQ&pli=1 here]:
 
@@ -137,11 +137,11 @@ Multi Agent Robotics/ Swarm Robotics is used in many fields. Research has been i
 
 Some of the Applications of Multi Agent Robotic Systems are:
 
- # Automatic Target Recognition
+ 1. Automatic Target Recognition
  
- # Automatic Landmine detection
+ 2. Automatic Landmine detection
 
- # Space Robotics, like fleet of Mars Rovers 
+ 3. Space Robotics, like fleet of Mars Rovers 
 
 
 This model can be used in swarm robotics application for studying optimum number of agents for a given area coverage in a given time frame. 
