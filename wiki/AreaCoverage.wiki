@@ -3,15 +3,15 @@
 
 =Summary=
 
-*Model        : Cover 360
+* *Model        : Cover 360
 
-*Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
+* *Source Code  : http://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
 
-*Platform     : [RepastSReLogo RepastS ReLogo]
+* *Platform     : [RepastSReLogo RepastS ReLogo]
 
-*Mentor       : Dr. Eric Tatara
+* *Mentor       : Dr. Eric Tatara
 
-*Author       : [Mudit Mudit Raj Gupta]
+* *Author       : [Mudit Mudit Raj Gupta]
 
 
 = Introduction =
@@ -53,24 +53,24 @@ The model generates four initial geometries as mentioned above. The initial geom
 
 According to this method, a random number is generated that lies on the principle axis of the figure. All figures are made at Origin (0,0) and x - axis is the principal axis. The y-axis limit is the y - coordinate that lie in the area below the plot of the equation of the figure. A very common principle of Coordinate geometry guides this:
 
-f(x,y)<0 , for points inside a 2-Dimensional figure on the x-y plane
+* f(x,y)<0 , for points inside a 2-Dimensional figure on the x-y plane
 
-f(x,y)>0 , for points outside a 2-Dimensional figure on the x-y plane 
+* f(x,y)>0 , for points outside a 2-Dimensional figure on the x-y plane 
 
-f(x,y)=0 , for points on a 2-Dimensional figure on the x-y plane
+* f(x,y)=0 , for points on a 2-Dimensional figure on the x-y plane
  
 
 Given, f(x,y) is the equation of the figure and x, y are the respective x and y coordinates.
 
 For Example, Consider a circle with center on the origin and radius r units
 
-Equation             : x^2 + y^2 - r^2 = 0
+* Equation             : x^2 + y^2 - r^2 = 0
 
-Points on the circle : x^2 + y^2 - r^2 = 0
+* Points on the circle : x^2 + y^2 - r^2 = 0
 
-Inside               : x^2 + y^2 - r^2 < 0
+* Inside               : x^2 + y^2 - r^2 < 0
 
-Outside              : x^2 + y^2 - r^2 > 0
+* Outside              : x^2 + y^2 - r^2 > 0
 
 
 One one fourth of the figure is generated, it is randomly reflected or not reflected. If reflected it can be randomly reflected along any of the axes (x axis or y axis). This algorithm can be used to create any symmetric figure and fill turtles randomly in it.
@@ -102,7 +102,9 @@ The section briefly describes the elements of the User Panel and the parameters 
  
  - User can select the inital geometry from a drop down list.
 
- "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
+ * Check Box 
+
+ - Automatically Fill Initial Geometry: Automatically fills the selected geometry with maximum number of number of motes.
 
 ==Data Sets==
 
