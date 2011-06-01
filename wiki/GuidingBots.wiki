@@ -35,12 +35,6 @@ The model is set up with some daughter agents in an unknown area. The guiding ag
 _to be added soon_
 
 
-==Initial Geometry=
-
-
-_to be added soon_
-
-
 ==User Panel==
 
 The section briefly describes the elements of the User Panel and the parameters they control. 
