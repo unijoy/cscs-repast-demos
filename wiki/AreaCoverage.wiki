@@ -171,9 +171,9 @@ The Motes can be given more specific properties and the indivisual behavior can 
 
 Application specific graphs, outputters and plug in can be incorporated in the given model. 
 
-=Bugs=
 
 =References=
+
 
 * http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
 
