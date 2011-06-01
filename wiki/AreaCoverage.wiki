@@ -75,18 +75,34 @@ Outside              : x^2 + y^2 - r^2 > 0
 
 One one fourth of the figure is generated, it is randomly reflected or not reflected. If reflected it can be randomly reflected along any of the axes (x axis or y axis). This algorithm can be used to create any symmetric figure and fill turtles randomly in it.
 
+
 ==User Panel==
 
+The section briefly describes the elements of the User Panel and the parameters they control. 
 
-*Push Buttons (that rebounds) for setting up the motes and for making them move for one clock tick. 
+ * Push Buttons (that rebounds) 
+      
+  - Set Up : For setting up the motes in the area according to the selected options and settings. 
 
-*Toggle Button to run simulation in a loop till the button is toggled again.
+  - Go Once : For running the simulation for one clock tick.
 
-*User can choose the initial geometry form Circle, Hexagon and Square.
+ * Toggle Button 
 
-*User can select "Number of Motes", "Step Size" and "Initial Side  Length/Radius"  
+ - Go : For running the model unless the button is toggled again
 
-*User can check "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
+ * Sliders
+
+ - Number of Motes : self explainatory
+ 
+ - Step Size :Distance moved by the motes in a given direction
+ 
+ - Initial Side Length/Radius : Parameters of the initial geometry  
+
+ * Chooser
+ 
+ - User can select the inital geometry from a drop down list.
+
+ "Automatically Fill Initial Geometry" to automatically fill the selected geometry with maximum number of number of motes.
 
 ==Data Sets==
 
