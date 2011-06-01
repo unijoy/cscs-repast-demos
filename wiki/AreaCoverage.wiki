@@ -4,15 +4,15 @@
 
 =Summary=
 
- * *Model        : Cover 360
+ * Model        : Cover 360
 
- * *Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
 
- * *Platform     : [RepastSReLogo RepastS ReLogo]
+ * Platform     : [RepastSReLogo RepastS ReLogo]
 
- * *Mentor       : Dr. Eric Tatara
+ * Mentor       : Dr. Eric Tatara
 
- * *Author       : [Mudit Mudit Raj Gupta]
+ * Author       : [Mudit Mudit Raj Gupta]
 
 
 =Introduction=
