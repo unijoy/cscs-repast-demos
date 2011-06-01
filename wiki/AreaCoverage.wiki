@@ -23,7 +23,7 @@ The model describes the area coverage pattern of a group of Agent, initially kep
 =Description= 
 
 
-The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to more in the area where there are less number of motes initially available. This forces the overall colony of mots to expant and thus covering a given area. 
+The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to move in the area where there are less number of motes initially available. This forces the overall colony of mots to expant and thus covering a given area. 
 
 The initial position of motes lie inside a regular figure/geometry. The dimensions of which can be entered by the user. The initial geomwtries which come with the model are - 
 
@@ -36,6 +36,8 @@ The initial position of motes lie inside a regular figure/geometry. The dimensio
 4. Line
 
 All the Mote positions are random values generated within the boundary of the selected geometries. The code had embedded comments to aptly explain the formation of these initial geometries and random position generation. The following page in the Description Section details about the initial geometry formation.
+
+Each mote moves depending on the value of their Moore's neighbor. Depending on the number of neighbours they select a direction (where the value is less). After selecting the value they face that direction and finally move to that position.
 
 The model also comes with a check box for automatically filling the motes in the selected geometry. 
 
