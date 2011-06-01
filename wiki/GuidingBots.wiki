@@ -1,7 +1,89 @@
 #summary Localization of Mobile Wireless Sensor Nodes
 #labels MobileWirelessSensorNetworks,SwarmRobotics,LocalizationStrategy
+#sidebar TableOfContents
+
+= Summary = 
+
+
+* *Model        : GuidingBots
+
+ * *Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
+
+ * *Platform     : [RepastSReLogo RepastS ReLogo]
+
+ * *Mentor       : Dr. Eric Tatara
+
+ * *Author       : [Mudit Mudit Raj Gupta]
+
 
 = Introduction =
 
 
-= Details =
+This model is designed keeping in mind a very important problem in the Mobile Wireless Sensor Network Domain - Localization. This model is inspired by the work:
+ 
+
+- * [http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5610184 " A RSSI based localization algorithm for multiple mobile robots" by Qingxin Zhang, Qinglong Di, Guangyan Xu, Xiaoyan Qiu; Computer, Mechatronics, Control and Electronic Engineering (CMCE), 2010 International Conference on 24-26 Aug. 2010; 190 - 193, IEEE 2010]
+
+The model basic implementation of the localization strategy based on RSSI (Received Signal Strength Indicator) and a simple algorithm _(Please check the description section)_
+  
+The model is set up with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area and transferring information further. The daughter can pass the information only to a specified number of agents because of the error introduced due to each information transfers. 
+
+
+=Description= 
+
+
+_to be added soon_
+
+
+==Initial Geometry=
+
+
+_to be added soon_
+
+
+==User Panel==
+
+The section briefly describes the elements of the User Panel and the parameters they control. 
+
+_to be added soon_
+ 
+
+==Data Sets==
+
+
+_to be added soon_
+
+
+==Outputters==
+
+
+_to be added soon_
+
+
+==Plots==
+
+
+_to be added soon_
+
+
+==External Plugin==
+
+
+_to be added soon_
+
+
+=Applications=
+
+
+_to be added soon_
+ 
+=Extending the Model=
+
+_to be added soon_
+
+=References=
+
+
+* http://en.wikipedia.org/wiki/Swarm_robotics
+
+* http://www.swarmrobotic.com/
