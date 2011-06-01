@@ -11,12 +11,10 @@ import repast.simphony.relogo.UtilityG;
 import repast.simphony.relogo.*;
 
 class Boid extends BaseTurtle {
-	
 	def neighborhoodRadius = 4
 	
 	def step(){
 		forward(0.2)
-//		steer() //this adjusts the heading of each Boid every step
 		setHeading( alignmentDirection() )
 		label = ""+(int)getHeading()
 	}
