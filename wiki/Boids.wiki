@@ -3,7 +3,7 @@
 = Introduction =
 Boids is a relatively simple agent-based model based on the steering behavior of flocking birds. 
 
-There are three simple rules that each Boid must follow[0]:
+There are three simple rules that each Boid must follow(0):
   * Alignment: Each Boid steers itself to align its heading with that of its neighbors
   * Cohesion: Each Boid steers itself to the average position of its flockmates
   * Separation: Each Boid steers itself in order not to crowd its neighbors
@@ -13,6 +13,8 @@ Obviously, these three simple algorithms for determining the heading of each Boi
 = Implementation =
 
 === Alignment ===
+
+The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodDistance. This average is the new heading of any given Boid at their next timestep.
 
 _TODO: upload Alignment demo_
 
@@ -24,4 +26,4 @@ _TODO: upload Cohesion demo_
 
 _TODO: upload Separation demo_
 
-[0] http://www.red3d.com/cwr/boids/
+(0) http://www.red3d.com/cwr/boids/
