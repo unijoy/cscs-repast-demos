@@ -1,0 +1,1 @@
+The Boids_relogo_avgheading model is licensed as provided for by the authors. Please contact them for details.
