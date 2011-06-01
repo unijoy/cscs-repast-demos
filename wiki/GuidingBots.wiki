@@ -5,15 +5,15 @@
 = Summary = 
 
 
-* *Model        : GuidingBots
+ * Model        : GuidingBots
 
- * *Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
 
- * *Platform     : [RepastSReLogo RepastS ReLogo]
+ * Platform     : [RepastSReLogo RepastS ReLogo]
 
- * *Mentor       : Dr. Eric Tatara
+ * Mentor       : Dr. Eric Tatara
 
- * *Author       : [Mudit Mudit Raj Gupta]
+ * Author       : [Mudit Mudit Raj Gupta]
 
 
 = Introduction =
