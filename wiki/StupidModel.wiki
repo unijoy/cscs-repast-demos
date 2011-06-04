@@ -7,6 +7,11 @@ This tutorial is based on the article _[http://condor.depaul.edu/slytinen/abm/St
 == Why the StupidModel? ==
 I am sure the !StupidModel considered a relevant learning /comparison tool for agent-based modelling. Several reference implementations may be found on [http://condor.depaul.edu/slytinen/abm/ Steven L. Lytinen's site]. Additional resources may be found at the [http://www.swarm.org/wiki/Software_templates SwarmWiki].
 
+== Prerequisites ==
+Before we start, make sure a proper installation of Repast Simphony (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
+
+Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+
 = Model List =
 Each section of the following tutorial first describes the !StupidModel, a set of 16 simple template models designed as examples for learning how to use agent-based modeling platforms, then contains detailed notes on the implementation in Repast Simphony. Version 1 is the basic !StupidModel, which is extremely simple. As the first exercise in a class for nonprogrammers, Version 1 can be implemented in 2-3 hours. The subsequent versions incrementally add features that are commonly used in real models. These features include model elements such as interaction among individuals and their environment, stopping rules, alternative orders in which individuals execute their actions, mortality and reproduction, file input for habitat variables, and multiple kinds of agents. Some versions simply add software tools for observing the model: probes, graphs, and file output.
 
