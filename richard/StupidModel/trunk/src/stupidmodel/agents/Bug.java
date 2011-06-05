@@ -102,7 +102,7 @@ public class Bug {
 	public void setSize(final double size) {
 		if (size < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter foodAvailability = % < 0.", size));
+					"Parameter size = % < 0.", size));
 		}
 
 		this.size = size;
