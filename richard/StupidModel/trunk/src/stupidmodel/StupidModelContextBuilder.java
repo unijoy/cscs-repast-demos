@@ -56,6 +56,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 						new repast.simphony.space.continuous.WrapAroundBorders(),
 						Constants.GRID_SIZE, Constants.GRID_SIZE);
 
+		// Create a toridal space on which agents and cells located at
 		final Grid<Object> grid = GridFactoryFinder
 				.createGridFactory(null)
 				.createGrid(
@@ -71,10 +72,16 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 								// Size of the grid (defined constants)
 								Constants.GRID_SIZE, Constants.GRID_SIZE));
 
+		// ---------------------------------------------------------------------
 		// Create the specified number of Bug agents and assign them to the
 		// space and the grid
+
+		// Parameter usage I: Parameter is declared on the graphical user
+		// interface
 		final int bugCount = ((Integer) parameters
 				.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
+
+		// ---------------------------------------------------------------------
 
 		// Create Bug agents and add them to the context and to the grid as
 		// placed randomly by the RandomCartesianAdder of the space
