@@ -57,7 +57,7 @@ public class HabitatCell {
 			throw new IllegalArgumentException(String.format(
 					"Coordinate y = %d < 0.", y));
 		}
-
+		
 		this.x = x;
 		this.y = y;
 	}
@@ -82,7 +82,7 @@ public class HabitatCell {
 	public void setFoodAvailability(final double foodAvailability) {
 		if (foodAvailability < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter foodAvailability = % < 0.", foodAvailability));
+					"Parameter foodAvailability = %f < 0.", foodAvailability));
 		}
 
 		this.foodAvailability = foodAvailability;
