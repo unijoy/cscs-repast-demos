@@ -78,10 +78,10 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	public Color getColor(final double... coordinates) {
 		final double food = layer.get(coordinates);
 
-		if (food >= 0) {
+		if (food < 0) {
 			throw new IllegalStateException(
 					String.format(
-							"A cell's food availability property should be non-negative, but its current value is %d.",
+							"A cell's food availability property should be non-negative, but its current value is %f.",
 							food));
 		}
 
