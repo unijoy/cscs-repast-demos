@@ -18,6 +18,7 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.util.SimUtilities;
+import stupidmodel.StupidModelContextBuilder;
 import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
 
@@ -50,9 +51,9 @@ public class Bug {
 	private double size = 1.0;
 
 	/**
-	 * Maximum Food consumption of the bug (set to <code>1.0</code> by default).
+	 * Maximum food consumption of the bug (set to <code>1.0</code> by default).
 	 */
-	private final double maxConsumptionRate = 1.0;
+	private double maxConsumptionRate = 1.0;
 
 	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified
@@ -87,7 +88,6 @@ public class Bug {
 	 * @return the size of the bug
 	 * @since Model 2
 	 */
-	@Parameter(displayName = "Bug Size", usageName = "size")
 	public double getSize() {
 		return size;
 	}
@@ -102,10 +102,46 @@ public class Bug {
 	public void setSize(final double size) {
 		if (size < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter size = % < 0.", size));
+					"Parameter size = %f < 0.", size));
 		}
 
 		this.size = size;
+	}
+
+	/**
+	 * Returns the maximum food consumption rate of the current bug.
+	 * 
+	 * <p>
+	 * Parameter usage II: This method was created to demonstrate the usage of
+	 * parameters declared at the level of agents.
+	 * </p>
+	 * 
+	 * @return the value of {@link #maxConsumptionRate}
+	 * @since Model 5
+	 * @see StupidModelContextBuilder#build(repast.simphony.context.Context)
+	 * @field maxConsumptionRate
+	 */
+	@Parameter(displayName = "Bug maximum food consumption rate", usageName = "maxConsumptionRate")
+	public double getMaxConsumptionRate() {
+		return maxConsumptionRate;
+	}
+
+	/**
+	 * Sets the maximum food consumption rate of the current bug.
+	 * 
+	 * @param maxConsumptionRate
+	 *            the new value of {@link #maxConsumptionRate}; <i>must be
+	 *            non-negative</i>
+	 * @since Model 5
+	 */
+	public void setMaxConsumptionRate(final double maxConsumptionRate) {
+		if (maxConsumptionRate < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Parameter maxConsumptionRate = %f < 0.",
+					maxConsumptionRate));
+		}
+
+		this.maxConsumptionRate = maxConsumptionRate;
 	}
 
 	/**
