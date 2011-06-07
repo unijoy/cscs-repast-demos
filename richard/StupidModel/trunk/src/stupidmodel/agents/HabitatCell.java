@@ -8,9 +8,11 @@
 package stupidmodel.agents;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameter;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
+import stupidmodel.StupidModelContextBuilder;
 import stupidmodel.common.Constants;
 
 /**
@@ -26,7 +28,7 @@ import stupidmodel.common.Constants;
 public class HabitatCell {
 
 	/** Maximum food production rate is initialized to <code>0.01</code>. */
-	private static final double maximumFoodProductionRate = 0.01;
+	private double maximumFoodProductionRate = 0.01;
 
 	/**
 	 * Represents the actual food availability at this cell, initialized to
@@ -60,6 +62,42 @@ public class HabitatCell {
 		
 		this.x = x;
 		this.y = y;
+	}
+
+	/**
+	 * Returns the maximum food production rate of the current cell.
+	 * 
+	 * <p>
+	 * Parameter usage II: This method was created to demonstrate the usage of
+	 * parameters declared at the level of agents.
+	 * </p>
+	 * 
+	 * @return the value of {@link #maximumFoodProductionRate}
+	 * @since Model 5
+	 * @see StupidModelContextBuilder#build(repast.simphony.context.Context)
+	 * @field maximumFoodProductionRate
+	 */
+	@Parameter(displayName = "Cell maximum food production rate", usageName = "maximumFoodProductionRate")
+	public double getMaximumFoodProductionRate() {
+		return maximumFoodProductionRate;
+	}
+
+	/**
+	 * Sets the maximum food consumption rate of the current bug.
+	 * 
+	 * @param maximumFoodProductionRate
+	 *            the new value of {@link #maximumFoodProductionRate}; <i>must be
+	 *            non-negative</i>
+	 * @since Model 5
+	 */
+	public void setMaximumFoodProductionRate(double maximumFoodProductionRate) {
+		if (maximumFoodProductionRate < 0) {
+			throw new IllegalArgumentException(String.format(
+					"Parameter maximumFoodProductionRate = %f < 0.",
+					maximumFoodProductionRate));
+		}
+		
+		this.maximumFoodProductionRate = maximumFoodProductionRate;
 	}
 
 	/**
