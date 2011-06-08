@@ -15,14 +15,9 @@ Here's a list of my ideas so far - will put in short descriptions later.
  * simple morphogenesis
  * cellular automaton 
 
-===boids===
-This is an old algorithm for agent-based modelling (it was [http://en.wikipedia.org/wiki/Boids published in 1986]), but it was definitely an influential one. Check out the video at the bottom of the page if you want to see what complex behavior a simple algorithm like boids can cause. 
-
-----
 = Myself =
-mentor: Nick Collier
 === Intro === 
-I'm an undergrad entering my final year at St. Mary's College of Maryland, a (secular) public liberal arts college. I'm doing my undergrad thesis on swarm robotics, and I'm planning on using RepastS for modelling purposes.
+I'm an undergrad entering my final year at St. Mary's College of Maryland, a (secular) public liberal arts college. I'm doing my undergrad thesis on swarm robotics, and I'm planning on using RepastS for modelling purposes. I am also picking up an Art major for fun.
 
 === Contact ===
 cell: 301-491-1865
@@ -30,6 +25,8 @@ cell: 301-491-1865
 email: dovinmu@gmail.com or rowan.copley@gmail.com
 
 === About Me/Mostly Irrelevant Info ===
+mentor: Nick Collier
+
 location: Hagerstown, Maryland, USA
 
 time awake: ~8am - 9pm EST or in UTC: ~12 - 1 (i'm 4 hours behind UTC)
