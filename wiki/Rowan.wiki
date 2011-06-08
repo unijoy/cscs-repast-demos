@@ -38,7 +38,7 @@ favorite authors: Neal Stephenson, Douglas Hofstadter, Larry Niven, Daniel Saure
 
 favorite Beatle: George
 
-Stuff that is cool:
+=== Stuff that is cool ===
 
 [http://orbit.medphys.ucl.ac.uk/ Orbiter]
 
