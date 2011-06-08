@@ -23,7 +23,8 @@ import stupidmodel.agents.Bug;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: TestBugStyleOGL2D.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  */
 public class TestBugStyleOGL2D {
 
@@ -43,7 +44,7 @@ public class TestBugStyleOGL2D {
 	}
 
 	/**
-	 * Test if returned color is white when size is <code>255</code>.
+	 * Test if returned color is red when size is <code>255</code>.
 	 */
 	@Test
 	public void testRedColor() {
@@ -55,7 +56,7 @@ public class TestBugStyleOGL2D {
 	}
 
 	/**
-	 * Test if returned color is white when size is (intermediate state).
+	 * Test if returned color is pink when size is (intermediate state).
 	 */
 	@Test
 	public void testPinkColor() {

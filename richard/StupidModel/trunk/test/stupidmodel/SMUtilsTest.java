@@ -25,7 +25,8 @@ import stupidmodel.common.SMUtils;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: SMUtilsTest.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  * @see SMUtils
  */
 public class SMUtilsTest {
@@ -132,4 +133,59 @@ public class SMUtilsTest {
 		Assert.assertEquals(ret, Collections.emptyList());
 	}
 
+	// ========================================================================
+	// === Testing function randomElementOf() =================================
+
+	/**
+	 * Testing {@link SMUtils#randomElementOf(List)} for <code>null</code>
+	 * parameter.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testRandomElementOfForNull() {
+		SMUtils.randomElementOf(null);
+	}
+
+	/**
+	 * Testing {@link SMUtils#randomElementOf(List)} for empty list.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testRandomElementOfForEmptyList() {
+		SMUtils.randomElementOf(Collections.emptyList());
+	}
+
+	/**
+	 * Testing {@link SMUtils#randomElementOf(List)} for a singleton list.
+	 */
+	@Test
+	public void testRandomElementOfForSingletonList() {
+		final String value = "A";
+		final String randomElement = SMUtils.randomElementOf(Collections
+				.singletonList(value));
+
+		Assert.assertEquals(value, randomElement);
+	}
+
+	/**
+	 * Testing {@link SMUtils#randomElementOf(List)} for a sample list.
+	 */
+	@Test
+	public void testRandomElementOfContainsResult() {
+		final List<String> list = Arrays.asList("A", "B", "C", "D", "E");
+		final String randomElement = SMUtils.randomElementOf(list);
+
+		Assert.assertTrue(list.contains(randomElement));
+	}
+
+	/**
+	 * Assert that {@link SMUtils#randomElementOf(List)} does not modify the
+	 * original list.
+	 */
+	@Test
+	public void testRandomElementOfDoesNotModifiesOriginalList() {
+		final List<String> list = Arrays.asList("A", "B", "C", "D", "E");
+		final List<String> backupList = new ArrayList<String>(list);
+
+		SMUtils.randomElementOf(list);
+		Assert.assertEquals(backupList, list);
+	}
 }
