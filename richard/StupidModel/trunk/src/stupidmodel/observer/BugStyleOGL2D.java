@@ -22,7 +22,8 @@ import stupidmodel.agents.Bug;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: BugStyleOGL2D.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  */
 public class BugStyleOGL2D extends DefaultStyleOGL2D {
 
@@ -34,6 +35,13 @@ public class BugStyleOGL2D extends DefaultStyleOGL2D {
 	 * a minor hex-magic to determine the actual color value.
 	 * </p>
 	 * 
+	 * @param agent
+	 *            the agent whose color should be determined; <i>may be null</i>
+	 * @return the color for the specified {@link Bug} agent created as
+	 *         <code>new Color(0xFF, strength, strength)</code> (where
+	 *         <code>strength = 255 - size of the bug</code>); <i>or
+	 *         <code>Color.BLUE</code> if the parameter was <code>null</code>
+	 *         </i>
 	 * @see repast.simphony.visualizationOGL2D.DefaultStyleOGL2D#getColor(java.lang.Object)
 	 */
 	@Override

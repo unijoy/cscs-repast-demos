@@ -70,7 +70,7 @@ public class Bug {
 	 *         <code>null</code></i>
 	 * @since Model 2
 	 */
-	public Grid<Object> getGrid() {
+	private Grid<Object> getGrid() {
 		@SuppressWarnings("unchecked")
 		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
 				.getProjection(Constants.GRID_ID);

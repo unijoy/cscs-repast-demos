@@ -12,6 +12,7 @@ import java.awt.Color;
 import repast.simphony.valueLayer.ValueLayer;
 import repast.simphony.visualizationOGL2D.ValueLayerStyleOGL;
 import stupidmodel.agents.HabitatCell;
+import stupidmodel.common.Constants;
 
 /**
  * A simple custom color implementation for {@link HabitatCell} food production
@@ -33,7 +34,8 @@ import stupidmodel.agents.HabitatCell;
 public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 
 	/** The <code>ValueLayer</code> object to reflect its values. */
-	private ValueLayer layer = null;
+	protected ValueLayer layer = null; // Protected to access from the same
+										// package for testing
 
 	/**
 	 * {@inheritDoc}
@@ -42,10 +44,22 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	 * We keep a reference for the specified <code>ValueLayer</code> instance.
 	 * </p>
 	 * 
+	 * @param layer
+	 *            {@inheritDoc}; <i>cannot be <code>null</code></i>
 	 * @see repast.simphony.visualizationOGL2D.ValueLayerStyleOGL#init(repast.simphony.valueLayer.ValueLayer)
 	 */
 	@Override
 	public void init(final ValueLayer layer) {
+		if (null == layer) {
+			throw new IllegalArgumentException(
+					"Parameter layer cannot be null.");
+		}
+
+		if (this.layer != null) {
+			throw new IllegalStateException(
+					String.format("Food value layer should not be reinitialized with a new ValueLayer instance."));
+		}
+
 		this.layer = layer;
 	}
 
@@ -61,7 +75,7 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	 */
 	@Override
 	public float getCellSize() {
-		return 15.0f;
+		return Constants.GUI_CELL_SIZE;
 	}
 
 	/**

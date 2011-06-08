@@ -79,6 +79,8 @@ public final strictfp class SMUtils {
 		return list.get(RandomHelper.nextIntFromTo(0, list.size() - 1));
 	}
 
+	// ========================================================================
+
 	/**
 	 * Hidden constructor to ensure no instances are created.
 	 */

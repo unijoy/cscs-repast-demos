@@ -31,6 +31,12 @@ import stupidmodel.StupidModelContextBuilder;
  */
 public final class Constants {
 
+	/**
+	 * Dedicated constant for the operating system dependent <i>End of Line</i>
+	 * character sequence.
+	 */
+	public static final String EOL = System.getProperty("line.separator");
+
 	/** The root <code>Context</code> ID. */
 	public static final String CONTEXT_ID = "StupidModel";
 
@@ -65,6 +71,17 @@ public final class Constants {
 	 * @since Model 3
 	 */
 	public static final String FOOD_VALUE_LAYER_ID = "foodValueLayer";
+
+	/** Constant used to specify the dimensions of a cell in the displayed GUI. */
+	public static final float GUI_CELL_SIZE = 15.0f;
+
+	/**
+	 * Delta value used for double comparisons: double values <code>d1</code>
+	 * and <code>d2</code> declared identical if {@literal |d1 - d2| < DELTA}
+	 */
+	public static final double DELTA = 1e-6;
+
+	// ========================================================================
 
 	/**
 	 * Hidden constructor to ensure no instances are created.
