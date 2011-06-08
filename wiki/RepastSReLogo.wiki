@@ -31,7 +31,7 @@ http://repast.sourceforge.net/docs/api/relogo/index.html
 
 4. AreaCoverage (Unverified)
 
-5. Boids 
+5. Boids (Unverified)
 
 6. GuidingBots (Unverified)
 
