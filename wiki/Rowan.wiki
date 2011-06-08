@@ -1,13 +1,13 @@
 #summary Rowan's stuff: current tasks, ideas, etc.
 = Repast = 
-Current Task(s): _Nothing yet_
+Doing: finish uploading all files for Boids; start pages for a couple more models
 
-Finished Work: _Nothing yet_
+Done: some [Boids] models
 
-=== Unimplemented Ideas ===
+=== Ideas ===
 Here's a list of my ideas so far - will put in short descriptions later.
- * Boids
- * Three-bodies 
+ * [Boids]: Agents follow simple rules which adjust their heading based on their neighbors' relative position and heading, and organic flocks emerge.
+ * Two body or three body: 
  * simple traffic 
  * simple weather 
  * ant foraging
@@ -29,9 +29,7 @@ cell: 301-491-1865
 
 email: dovinmu@gmail.com or rowan.copley@gmail.com
 
-I will put my skype and IRC handles here once I reinstall and create an account, respectively.
-
-=== About Me/Relevant Info ===
+=== About Me/Mostly Irrelevant Info ===
 location: Hagerstown, Maryland, USA
 
 time awake: ~8am - 9pm EST or in UTC: ~12 - 1 (i'm 4 hours behind UTC)
@@ -40,7 +38,8 @@ favorite authors: Neal Stephenson, Douglas Hofstadter, Larry Niven, Daniel Saure
 
 favorite Beatle: George
 
-=== Other Stuff ===
-this show is really cool:
+Stuff that is cool:
+
+[http://orbit.medphys.ucl.ac.uk/ Orbiter]
 
 <wiki:video url="http://www.youtube.com/watch?v=qJjeHLcbQJ0"/>
