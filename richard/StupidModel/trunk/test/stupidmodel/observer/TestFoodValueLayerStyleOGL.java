@@ -7,9 +7,17 @@
  */
 package stupidmodel.observer;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.awt.Color;
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import repast.simphony.random.RandomHelper;
+import repast.simphony.valueLayer.ValueLayer;
 import stupidmodel.common.Constants;
 
 /**
@@ -26,22 +34,50 @@ import stupidmodel.common.Constants;
  */
 public class TestFoodValueLayerStyleOGL {
 
-	/** Style object to test. */
-	// TODO Mock out ValueLayer in init
-	private final FoodValueLayerStyleOGL style = new FoodValueLayerStyleOGL();
+	/** Style object to test, mocked out when verifying behaviour. */
+	private FoodValueLayerStyleOGL style;
+
+	/**
+	 * Initialize the style object (it may be parameterized differently for each
+	 * test).
+	 */
+	@Before
+	public void initTest() {
+		style = new FoodValueLayerStyleOGL();
+	}
 
 	// ========================================================================
 	// === General Tests ======================================================
 
+	/**
+	 * Testing {@link FoodValueLayerStyleOGL#init(ValueLayer)} for
+	 * <code>null</code> parameter.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testInitParameterValidation() {
 		style.init(null);
 	}
 
+	/**
+	 * Testing {@link FoodValueLayerStyleOGL#init(ValueLayer)} for multiple
+	 * initialization calls.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void testMultipleInit() {
+		final ValueLayer layer = mock(ValueLayer.class);
+		style.init(layer);
+		style.init(layer); // Multiple initialization should fail
+	}
+
+	/**
+	 * Testing {@link FoodValueLayerStyleOGL#init(ValueLayer)} for proper
+	 * initialization by checking the representation directly.
+	 */
 	@Test
-	public void testInit() {
-		// TODO
-		// Assert.assertEquals(stuff, style.layer);
+	public void testInitWorksProperly() {
+		final ValueLayer layer = mock(ValueLayer.class);
+		style.init(layer);
+		Assert.assertEquals(layer, style.layer); // Testing representation
 	}
 
 	/**
@@ -49,7 +85,8 @@ public class TestFoodValueLayerStyleOGL {
 	 */
 	@Test
 	public void testCellSize() {
-		Assert.assertEquals(Constants.GUI_CELL_SIZE, style.getCellSize(), Constants.DELTA);
+		Assert.assertEquals(Constants.GUI_CELL_SIZE, style.getCellSize(),
+				Constants.DELTA);
 	}
 
 	// ========================================================================
@@ -60,7 +97,14 @@ public class TestFoodValueLayerStyleOGL {
 	 */
 	@Test
 	public void testWhiteColor() {
-		// TODO
+		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+
+		final ValueLayer layer = mock(ValueLayer.class);
+		when(layer.get(x, y)).thenReturn(0.0);
+		style.init(layer);
+
+		Assert.assertEquals(Color.WHITE, style.getColor(x, y));
 	}
 
 	/**
@@ -68,7 +112,14 @@ public class TestFoodValueLayerStyleOGL {
 	 */
 	@Test
 	public void testGreenColor() {
-		// TODO
+		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+
+		final ValueLayer layer = mock(ValueLayer.class);
+		when(layer.get(x, y)).thenReturn(255.0);
+		style.init(layer);
+
+		Assert.assertEquals(Color.GREEN, style.getColor(x, y));
 	}
 
 	// No test for the intermediate state, since there is no dedicated constant

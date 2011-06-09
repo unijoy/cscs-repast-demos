@@ -24,7 +24,8 @@ import repast.simphony.space.grid.GridPoint;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: TestGridCellFactory.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  * @see GridCell
  */
 public final class TestGridCellFactory {
