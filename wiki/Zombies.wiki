@@ -24,7 +24,7 @@ continue with your own explorations of ReLogo.
 The rst thing we must do is create a new ReLogo project. This is done by clicking on
 the New ReLogo Project icon in the toolbar (Fig. 1) at the top of our ReLogo workspace1.
 
-http://code.google.com/p/vehicle-tracking-system/source/browse/IMG_1478.JPG
+[http://code.google.com/p/vehicle-tracking-system/source/browse/IMG_1478.JPG]
 
 This brings up the New ReLogo Project Wizard (Fig. 2) which gives us the ability
 to name our project (and a few more options which we'll ignore for now). Typing in
