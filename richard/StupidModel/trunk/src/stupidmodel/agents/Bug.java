@@ -9,6 +9,7 @@ package stupidmodel.agents;
 
 import java.util.List;
 
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
@@ -198,11 +199,23 @@ public class Bug {
 	 * Each time step, a bug grows by a fixed amount, <code>1.0</code>, and this
 	 * action is scheduled after the <code>move()</code> action.
 	 * 
-	 * @since Model 2
+	 * <p>
+	 * From <i>Model 7</i>, this function also verifies if the biggest bug
+	 * reached size of <code>100</code>, and if so, it stops the simulation.
+	 * </p>
+	 * 
+	 * @since Model 2, Model 7
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = -1)
 	public void grow() {
 		size += foodConsumption();
+
+		if (size > 100.0) {
+			// The RunEnvironment class provides the environment in which the
+			// model is being executed. It features a set of utility functions
+			// like stopping, pausing and resuming the simulation.
+			RunEnvironment.getInstance().endRun();
+		}
 	}
 
 	/**
