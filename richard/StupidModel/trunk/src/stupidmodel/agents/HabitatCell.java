@@ -27,17 +27,19 @@ import stupidmodel.common.Constants;
  */
 public class HabitatCell {
 
+	// Members declared package-protected to be able to use them in the tests
+
 	/** Maximum food production rate is initialized to <code>0.01</code>. */
-	private double maximumFoodProductionRate = 0.01;
+	protected double maximumFoodProductionRate = 0.01;
 
 	/**
 	 * Represents the actual food availability at this cell, initialized to
 	 * <code>0.0</code>.
 	 */
-	private double foodAvailability = 0.0;
+	protected double foodAvailability = 0.0;
 
 	/** Location of this cell at the grid. */
-	private final int x, y;
+	protected final int x, y;
 
 	/**
 	 * Creates a new instance of <code>HabitatCell</code>.
@@ -59,7 +61,7 @@ public class HabitatCell {
 			throw new IllegalArgumentException(String.format(
 					"Coordinate y = %d < 0.", y));
 		}
-		
+
 		this.x = x;
 		this.y = y;
 	}
@@ -86,17 +88,18 @@ public class HabitatCell {
 	 * Sets the maximum food consumption rate of the current bug.
 	 * 
 	 * @param maximumFoodProductionRate
-	 *            the new value of {@link #maximumFoodProductionRate}; <i>must be
-	 *            non-negative</i>
+	 *            the new value of {@link #maximumFoodProductionRate}; <i>must
+	 *            be non-negative</i>
 	 * @since Model 5
 	 */
-	public void setMaximumFoodProductionRate(double maximumFoodProductionRate) {
+	public void setMaximumFoodProductionRate(
+			final double maximumFoodProductionRate) {
 		if (maximumFoodProductionRate < 0) {
 			throw new IllegalArgumentException(String.format(
 					"Parameter maximumFoodProductionRate = %f < 0.",
 					maximumFoodProductionRate));
 		}
-		
+
 		this.maximumFoodProductionRate = maximumFoodProductionRate;
 	}
 
