@@ -23,17 +23,13 @@ http://repast.sourceforge.net/docs/api/relogo/index.html
 
 = Available Demos = 
 
-1. Zombies (Available with the software)
-
-2. SimTutorial (Available with the software)
-
-3. FlowZombies (Available with the Software)
-
-4. AreaCoverage (Unverified)
-
-5. [Boids] (Unverified)
-
-6. GuidingBots (Unverified)
+# Zombies (Available with the software)
+# SimTutorial (Available with the software)
+# FlowZombies (Available with the Software)
+# AreaCoverage (Unverified)
+# [Boids] (Unverified)
+# GuidingBots (Unverified)
+# StupidModel (Unverified)
 
 = References =
 
