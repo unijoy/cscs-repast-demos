@@ -29,7 +29,6 @@ http://repast.sourceforge.net/docs/api/relogo/index.html
  # AreaCoverage (Unverified)
  # [Boids] (Unverified)
  # GuidingBots (Unverified)
- # StupidModel (Unverified)
 
 = References =
 
