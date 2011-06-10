@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Scenario>
+<repast.simphony.data.logging.outputter.engine.DefaultOutputterDescriptorAction context="StupidModel" file="repast.simphony.data.logging.outputter.engine.DefaultOutputterDescriptorAction_0.xml" />
+<repast.simphony.data.engine.DefaultDataGathererDescriptorAction context="StupidModel" file="repast.simphony.data.engine.DefaultDataGathererDescriptorAction_1.xml" />
+<repast.simphony.data.engine.DefaultDataGathererDescriptorAction context="StupidModel" file="repast.simphony.data.engine.DefaultDataGathererDescriptorAction_2.xml" />
+<repast.simphony.dataLoader.engine.ClassNameDataLoaderAction context="StupidModel" file="repast.simphony.dataLoader.engine.ClassNameDataLoaderAction_3.xml" />
+<repast.simphony.action.display context="StupidModel" file="repast.simphony.action.display_4.xml" />
+<repast.simphony.chart.engine.DefaultStaticHistogramChartOutputterDescriptorAction context="StupidModel" file="repast.simphony.chart.engine.DefaultStaticHistogramChartOutputterDescriptorAction_5.xml" />
+</Scenario>
