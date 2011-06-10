@@ -36,11 +36,16 @@ import stupidmodel.common.SMUtils;
  * current position.
  * </p>
  * 
+ * <p>
+ * From <i>Model 10</i>, agents are comparable with their <code>size</code> in
+ * descending order.
+ * </p>
+ * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id$
  */
-public class Bug {
+public class Bug implements Comparable<Bug> {
 
 	/**
 	 * Bugs have an instance variable for their size, which is initialized to
@@ -288,6 +293,31 @@ public class Bug {
 		return ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * For the current model, <code>Bug</code> agents are comparable by their
+	 * <code>size</code> values: <i>a bug is "bigger" if its size value is
+	 * bigger than the value of other one</i>. For this, we compare the size
+	 * values by the default Java way multiplied by <code>(-1)</code> (the
+	 * default Java comparison would result in an ascending order, the
+	 * multiplier makes it a descending comparison).
+	 * </p>
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * @throws NullPointerException
+	 *             if parameter is null.
+	 */
+	@Override
+	public int compareTo(final Bug other) {
+		if (null == other) {
+			throw new IllegalArgumentException("Parameter other == null.");
+		}
+
+		return -Double.compare(size, other.size);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -297,7 +327,8 @@ public class Bug {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("Bug @ location %s", getGrid().getLocation(this));
+		return String.format("Bug @ location %s, size=%f", getGrid()
+				.getLocation(this), size);
 	}
 
 }
