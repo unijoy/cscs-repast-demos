@@ -8,6 +8,7 @@
 package stupidmodel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
@@ -18,7 +19,6 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameters;
-import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
@@ -26,7 +26,6 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
-import repast.simphony.util.SimUtilities;
 import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.agents.Bug;
 import stupidmodel.agents.HabitatCell;
@@ -145,13 +144,17 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	 * executed each tick afterwards.
 	 * </p>
 	 * 
-	 * @since Model 9
+	 * @since Model 9, Model 10
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void activateAgents() {
 		final ArrayList<Bug> bugList = getBugList();
 
-		SimUtilities.shuffle(bugList, RandomHelper.getUniform());
+		// Model 9 requires random agent activation
+		// SimUtilities.shuffle(bugList, RandomHelper.getUniform());
+
+		// Model 10 requires sorted agent activation
+		Collections.sort(bugList);
 
 		for (final Bug bug : bugList) {
 			bug.step();
