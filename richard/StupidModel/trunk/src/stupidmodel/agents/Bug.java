@@ -10,7 +10,6 @@ package stupidmodel.agents;
 import java.util.List;
 
 import repast.simphony.engine.environment.RunEnvironment;
-import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
@@ -149,18 +148,11 @@ public class Bug {
 	 * Implementation of the agent activity in each turn.
 	 * 
 	 * <p>
-	 * Using the annotation {@link ScheduledMethod} makes this
-	 * <code>step()</code> method executed from the first simulation tick, and
-	 * with specifying interval it is executed each tick afterwards.
-	 * </p>
-	 * 
-	 * <p>
 	 * Agents work in a very simple way: they gather their neighbourhood and
 	 * check for empty locations. If any is found, one of them is randomly
 	 * chosen and the agent is relocated to that location.
 	 * </p>
 	 */
-	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void step() {
 		// Get the grid location of this Bug
 		final GridPoint location = getGrid().getLocation(this);
@@ -206,11 +198,11 @@ public class Bug {
 	 * 
 	 * @since Model 2, Model 7
 	 */
-	@ScheduledMethod(start = 1, interval = 1, priority = -1)
 	public void grow() {
 		size += foodConsumption();
 
 		if (size > 100.0) {
+			System.out.println("Agent reached maximal size: " + this);
 			// The RunEnvironment class provides the environment in which the
 			// model is being executed. It features a set of utility functions
 			// like stopping, pausing and resuming the simulation.
