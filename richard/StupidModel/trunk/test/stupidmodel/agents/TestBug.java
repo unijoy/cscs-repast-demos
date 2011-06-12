@@ -25,11 +25,11 @@ import org.junit.Test;
 public class TestBug {
 
 	/**
-	 * Making sure if the default comparison works correctly, and sorting
-	 * returns an agent list in descending size order.
+	 * Making sure if the default comparison works correctly for two agents, and
+	 * sorting returns an agent list in descending size order.
 	 */
 	@Test
-	public void testComparison() {
+	public void testComparisonWithTwoElements() {
 		final Bug b1 = new Bug();
 		final Bug b2 = new Bug();
 
@@ -41,5 +41,27 @@ public class TestBug {
 
 		Assert.assertEquals(b2, list.get(0));
 		Assert.assertEquals(b1, list.get(1));
+	}
+
+	/**
+	 * Making sure if the default comparison works correctly for three agents,
+	 * and sorting returns an agent list in descending size order.
+	 */
+	@Test
+	public void testComparisonWithThreeElements() {
+		final Bug b1 = new Bug();
+		final Bug b2 = new Bug();
+		final Bug b3 = new Bug();
+
+		b1.setSize(5.0);
+		b2.setSize(10.0);
+		b3.setSize(2.0);
+
+		final List<Bug> list = Arrays.asList(b1, b2, b3);
+		Collections.sort(list);
+
+		Assert.assertEquals(b2, list.get(0));
+		Assert.assertEquals(b1, list.get(1));
+		Assert.assertEquals(b3, list.get(2));
 	}
 }
