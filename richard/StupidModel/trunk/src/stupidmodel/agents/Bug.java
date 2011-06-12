@@ -7,18 +7,19 @@
  */
 package stupidmodel.agents;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
-import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
-import repast.simphony.util.SimUtilities;
 import stupidmodel.StupidModelContextBuilder;
+import stupidmodel.agents.HabitatCell.HabitatCellFoodAvailabilityComparator;
 import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
 
@@ -159,15 +160,17 @@ public class Bug implements Comparable<Bug> {
 	 * </p>
 	 */
 	public void step() {
+		// Reference for the used grid
+		final Grid<Object> grid = getGrid();
 		// Get the grid location of this Bug
-		final GridPoint location = getGrid().getLocation(this);
+		final GridPoint location = grid.getLocation(this);
 
 		// We use the GridCellNgh class to create GridCells for the surrounding
 		// neighborhood. It contains the locations, and a list of objects from
 		// the specified class which is accessible from that location
 
-		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
-				getGrid(), location, Bug.class, Constants.BUG_VISION_RANGE,
+		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
+				location, Bug.class, Constants.BUG_VISION_RANGE,
 				Constants.BUG_VISION_RANGE).getNeighborhood(false);
 
 		// We have a utility function that returns the filtered list of empty
@@ -181,15 +184,59 @@ public class Bug implements Comparable<Bug> {
 			return;
 		}
 
-		// CHECKME Is it needed?
-		SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+		// Before Model 11, random movement was used
+		// SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 
 		// Get a random free location within sight range
-		final GridCell<Bug> chosenFreeCell = SMUtils.randomElementOf(freeCells);
+		// final GridCell<Bug> chosenFreeCell =
+		// SMUtils.randomElementOf(freeCells);
+
+		final List<GridCell<HabitatCell>> habitatCells = getHabitatCellsForLocations(freeCells);
+
+		Collections.sort(habitatCells,
+				new HabitatCellFoodAvailabilityComparator());
+
+		// The first element has the most available food, it is the optimal
+		// target for displacement
+		final GridCell<HabitatCell> chosenFreeCell = habitatCells.get(0);
 
 		// We have our new GridPoint to move to, so relocate agent
 		final GridPoint newGridPoint = chosenFreeCell.getPoint();
-		getGrid().moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+		grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+	}
+
+	/**
+	 * Return the habitat cells for those grid points where no {@link Bug} agent
+	 * is located at.
+	 * 
+	 * @param freeCells
+	 *            list of cells where no agents is located at
+	 * @return list of {@link HabitatCell} objects associated for the specified
+	 *         empty locations
+	 */
+	private List<GridCell<HabitatCell>> getHabitatCellsForLocations(
+			final List<GridCell<Bug>> freeCells) {
+		assert (freeCells.equals(SMUtils.getFreeGridCells(freeCells))) : String
+				.format("Parametet freeCells=%s should contain only empty cells.",
+						freeCells);
+
+		final ArrayList<GridCell<HabitatCell>> ret = new ArrayList<GridCell<HabitatCell>>();
+		final Grid<Object> grid = getGrid();
+
+		// Iterate over the specified location with no associated Bug agents
+		for (final GridCell<Bug> gridCell : freeCells) {
+			final GridPoint point = gridCell.getPoint();
+
+			// Query the HabitatCell of that location
+			final List<GridCell<HabitatCell>> cells = new GridCellNgh<HabitatCell>(
+					grid, point, HabitatCell.class, 0, 0).getNeighborhood(true);
+
+			assert (1 == cells.size()) : "One cell should exist on a grid cell, but found: "
+					+ cells;
+			ret.add(cells.get(0));
+		}
+
+		return ret;
 	}
 
 	/**
@@ -325,10 +372,13 @@ public class Bug implements Comparable<Bug> {
 	 */
 	@Override
 	public String toString() {
+		// This may happen when testing
+		final String location = (ContextUtils.getContext(this) != null) ? getGrid()
+				.getLocation(this).toString() : "[?, ?]";
+
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("Bug @ location %s, size=%f", getGrid()
-				.getLocation(this), size);
+		return String.format("Bug @ location %s, size=%f", location, size);
 	}
 
 }

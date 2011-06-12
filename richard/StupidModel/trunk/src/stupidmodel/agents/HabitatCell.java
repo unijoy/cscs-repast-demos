@@ -7,8 +7,12 @@
  */
 package stupidmodel.agents;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameter;
+import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
@@ -26,6 +30,64 @@ import stupidmodel.common.Constants;
  *          richard.legendi@gmail.com $
  */
 public class HabitatCell {
+
+	/**
+	 * Simple comparator for {@link HabitatCell} objects that orders them
+	 * descending based on the current food availability.
+	 * 
+	 * @author Richard O. Legendi (richard.legendi)
+	 * @since 2.0-beta, 2011
+	 * @since Model 11
+	 */
+	public final static class HabitatCellFoodAvailabilityComparator implements
+			Comparator<GridCell<HabitatCell>> {
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * <p>
+		 * Two cells are compared based on their
+		 * {@link HabitatCell#foodAvailability} value by the default Java
+		 * comparator for <code>double</code> values.
+		 * </p>
+		 * 
+		 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+		 */
+		@Override
+		public int compare(final GridCell<HabitatCell> gc1,
+				final GridCell<HabitatCell> gc2) {
+			// Make sure if exactly 1 HabitatCell exists
+			assert (hasOneCell(gc1));
+			assert (hasOneCell(gc2));
+
+			final HabitatCell cell = gc1.items().iterator().next();
+			final HabitatCell bell = gc2.items().iterator().next();
+			return -Double
+					.compare(cell.foodAvailability, bell.foodAvailability);
+		}
+
+		/**
+		 * A function to validate that the specified <code>GridCell</code>
+		 * instance has exactly one {@link HabitatCell} instance associated.
+		 * 
+		 * <p>
+		 * <i>Assertative function.</i>
+		 * </p>
+		 * 
+		 * @param gc
+		 *            the <code>GridCell</code> object to validate
+		 * @return <code>true</code> if there is exactly one {@link HabitatCell}
+		 *         on the specified cell; <code>false</code> otherwise
+		 */
+		private boolean hasOneCell(final GridCell<HabitatCell> gc) {
+			final ArrayList<HabitatCell> list = new ArrayList<HabitatCell>();
+			for (final HabitatCell cell : gc.items()) {
+				list.add(cell);
+			}
+
+			return (1 == list.size());
+		}
+	}
 
 	// Members declared package-protected to be able to use them in the tests
 
@@ -188,7 +250,9 @@ public class HabitatCell {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("HabitatCell @ location (%d, %d)", x, y);
+		return String.format(
+				"HabitatCell @ location (%d, %d), foodAvailability=%f", x, y,
+				foodAvailability);
 	}
 
 }
