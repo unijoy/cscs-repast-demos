@@ -21,7 +21,7 @@ import stupidmodel.common.Constants;
  * <p>
  * A cell's color on the display is shaded to reflect the food available on
  * them: it shades from white (when available food is zero) to green (when food
- * is <code>255</code> or greater).
+ * is <code>1</code> or greater).
  * </p>
  * 
  * @author rlegendi
@@ -99,7 +99,7 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 							food));
 		}
 
-		final int strength = (int) Math.max(255 - food, 0);
+		final int strength = (int) Math.max(255 - 200 * food, 0);
 		return new Color(strength, 0xFF, strength); // 0xFFFFFF - white,
 													// 0x00FF00 - green
 	}
