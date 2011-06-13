@@ -1,0 +1,38 @@
+<repast.simphony.data.engine.DefaultDataGathererDescriptor>
+  <name>Data Set of Bug Sizes</name>
+  <dataSetId class="string">Data Set of Bug Sizes</dataSetId>
+  <scheduleParameters>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+  </scheduleParameters>
+  <dataMappingContainer class="repast.simphony.data.logging.gather.DefaultDataMappingContainer">
+    <nameMappingTable>
+      <entry>
+        <string>Size</string>
+        <repast.simphony.data.logging.gather.MethodMapping>
+          <method>
+            <class>stupidmodel.agents.Bug</class>
+            <name>getSize</name>
+            <parameter-types/>
+          </method>
+        </repast.simphony.data.logging.gather.MethodMapping>
+      </entry>
+    </nameMappingTable>
+    <mappingNameTable>
+      <entry>
+        <repast.simphony.data.logging.gather.MethodMapping reference="../../../nameMappingTable/entry/repast.simphony.data.logging.gather.MethodMapping"/>
+        <string>Size</string>
+      </entry>
+    </mappingNameTable>
+  </dataMappingContainer>
+  <aggregateContainer class="repast.simphony.data.logging.gather.DefaultAggregateDataMappingContainer">
+    <nameMappingTable/>
+    <mappingNameTable/>
+    <alternatedNameTable/>
+    <nameAlternatedTable/>
+  </aggregateContainer>
+  <agentClass>stupidmodel.agents.Bug</agentClass>
+</repast.simphony.data.engine.DefaultDataGathererDescriptor>
