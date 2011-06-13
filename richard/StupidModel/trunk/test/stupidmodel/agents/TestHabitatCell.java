@@ -9,6 +9,10 @@ package stupidmodel.agents;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -16,8 +20,12 @@ import org.junit.Test;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.engine.environment.RunState;
+import repast.simphony.query.space.grid.GridCell;
+import repast.simphony.query.space.grid.TestGridCellFactory;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.grid.GridPoint;
 import repast.simphony.valueLayer.GridValueLayer;
+import stupidmodel.agents.HabitatCell.HabitatCellFoodAvailabilityComparator;
 import stupidmodel.common.Constants;
 
 /**
@@ -292,6 +300,70 @@ public class TestHabitatCell {
 
 		final HabitatCell cell = new HabitatCell(x, y);
 		Assert.assertNotNull(cell.toString());
+	}
+
+	/**
+	 * A simple test to verify if the defined comparator for {@link HabitatCell}
+	 * objects order elements descending properly.
+	 */
+	@Test
+	public void testComparatorBasicFunctionality() {
+		final ArrayList<GridCell<HabitatCell>> list = new ArrayList<GridCell<HabitatCell>>();
+
+		final HabitatCell cell = new HabitatCell(0, 0);
+		cell.setFoodAvailability(10);
+		final GridCell<HabitatCell> gc1 = TestGridCellFactory
+				.createGridCellToTest(new GridPoint(0, 0), HabitatCell.class,
+						cell);
+		list.add(gc1);
+
+		final HabitatCell bell = new HabitatCell(1, 1);
+		bell.setFoodAvailability(20);
+		final GridCell<HabitatCell> gc2 = TestGridCellFactory
+				.createGridCellToTest(new GridPoint(1, 1), HabitatCell.class,
+						bell);
+		list.add(gc2);
+
+		Collections.sort(list, new HabitatCellFoodAvailabilityComparator());
+		Assert.assertEquals(gc2, list.get(0));
+		Assert.assertEquals(gc1, list.get(1));
+	}
+
+	/**
+	 * Another simple test to verify if the defined comparator for
+	 * {@link HabitatCell} objects order elements descending properly.
+	 * 
+	 * @see #testComparatorBasicFunctionality()
+	 */
+	@Test
+	public void testComparator() {
+		final ArrayList<GridCell<HabitatCell>> list = new ArrayList<GridCell<HabitatCell>>();
+
+		final HabitatCell cell = new HabitatCell(0, 0);
+		cell.setFoodAvailability(15);
+		final GridCell<HabitatCell> gc1 = TestGridCellFactory
+				.createGridCellToTest(new GridPoint(0, 0), HabitatCell.class,
+						cell);
+		list.add(gc1);
+
+		final HabitatCell bell = new HabitatCell(1, 1);
+		bell.setFoodAvailability(10);
+		final GridCell<HabitatCell> gc2 = TestGridCellFactory
+				.createGridCellToTest(new GridPoint(1, 1), HabitatCell.class,
+						bell);
+		list.add(gc2);
+
+		final HabitatCell dell = new HabitatCell(2, 2);
+		dell.setFoodAvailability(20);
+		final GridCell<HabitatCell> gc3 = TestGridCellFactory
+				.createGridCellToTest(new GridPoint(2, 2), HabitatCell.class,
+						dell);
+		list.add(gc3);
+
+		Collections.sort(list, new HabitatCellFoodAvailabilityComparator());
+		Assert.assertEquals(gc3, list.get(0));
+		Assert.assertEquals(gc1, list.get(1));
+		Assert.assertEquals(gc2, list.get(2));
 	}
 
 }
