@@ -39,10 +39,6 @@ import stupidmodel.common.Constants;
  * @version $Id: StupidModelContextBuilder.java 150 2011-05-26 19:06:40Z
  *          richard.legendi@gmail.com $
  */
-/**
- * @author rlegendi
- * 
- */
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
@@ -123,6 +119,10 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 			}
 		}
 
+		// The model stopping rule is changed: the model stops after 1000 time
+		// steps have been executed... [*] (see activateAgents())
+		RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
+
 		return context;
 	}
 
@@ -144,7 +144,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	 * executed each tick afterwards.
 	 * </p>
 	 * 
-	 * @since Model 9, Model 10
+	 * @since Model 9, Model 10, Model 12
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void activateAgents() {
@@ -162,6 +162,20 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 
 		for (final Bug bug : bugList) {
 			bug.grow();
+		}
+
+		// Model 12: Added mortality, scheduled after the bug move and grow
+		for (final Bug bug : bugList) {
+			bug.mortality();
+		}
+
+		// Model 12: [*] ... or when the number of bugs reaches zero.
+		// We have to re-collect all of the bug agents, since during mortality
+		// it may be heavily modified (e.g. several new agents may
+		// born or die)
+		if (0 == getBugList().size()) {
+			System.out.println("All agents dead, terminating simulation.");
+			RunEnvironment.getInstance().endRun();
 		}
 	}
 

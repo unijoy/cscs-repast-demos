@@ -79,6 +79,27 @@ public final strictfp class SMUtils {
 		return list.get(RandomHelper.nextIntFromTo(0, list.size() - 1));
 	}
 
+	/**
+	 * Returns <code>true</code> or <code>false</code> with the specified
+	 * probability.
+	 * 
+	 * @param threshold
+	 *            the actual threshold level to use
+	 * @return Returns <code>true</code> if a random number chosen from the
+	 *         <code>[0,1)</code> interval is smaller than the parameter;
+	 *         <code>false</code> otherwise
+	 * @since Model 12
+	 */
+	public static boolean prob(final double threshold) {
+		if (threshold < 0.0 || 1.0 < threshold) {
+			throw new IllegalArgumentException(String.format(
+					"Parameter threshold=%f should be in interval [0, 1].",
+					threshold));
+		}
+
+		return (threshold < RandomHelper.nextDouble());
+	}
+
 	// ========================================================================
 
 	/**

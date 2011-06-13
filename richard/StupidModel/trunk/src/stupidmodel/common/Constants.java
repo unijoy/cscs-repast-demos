@@ -8,6 +8,7 @@
 package stupidmodel.common;
 
 import stupidmodel.StupidModelContextBuilder;
+import stupidmodel.agents.Bug;
 
 /**
  * Dedicated class to store some model-specific constant values (e.g. bug vision
@@ -66,6 +67,22 @@ public final class Constants {
 	public static final int BUG_VISION_RANGE = 4;
 
 	/**
+	 * The specified number of children a spawning {@link Bug} agent should
+	 * create during reproduction.
+	 * 
+	 * @since Model 12
+	 */
+	public static final int BUG_REPRODUCTION_RATE = 5;
+
+	/**
+	 * Default vision range of a bug to find empty cells around when spawning
+	 * descendants.
+	 * 
+	 * @since Model 12
+	 */
+	public static final int BUG_REPRODUCTION_RANGE = 3;
+
+	/**
 	 * Unique ID for the food availability layer.
 	 * 
 	 * @since Model 3
@@ -80,6 +97,14 @@ public final class Constants {
 	 * and <code>d2</code> declared identical if {@literal |d1 - d2| < DELTA}
 	 */
 	public static final double DELTA = 1e-6;
+
+	/**
+	 * In <i>Model 12</i>, the default stopping action is changed to terminate
+	 * simulation at the specified tick.
+	 * 
+	 * @since Model 12
+	 */
+	public static final double DEFAULT_END_AT = 1000.0;
 
 	// ========================================================================
 

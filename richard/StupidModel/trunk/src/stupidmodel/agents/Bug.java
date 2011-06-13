@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.context.Context;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
@@ -42,6 +42,12 @@ import stupidmodel.common.SMUtils;
  * descending order.
  * </p>
  * 
+ * <p>
+ * From <i>Model 12</i>, agents are die and reproduce.
+ * <p>
+ * 
+ * </p>
+ * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id$
@@ -60,6 +66,16 @@ public class Bug implements Comparable<Bug> {
 	 * Maximum food consumption of the bug (set to <code>1.0</code> by default).
 	 */
 	private double maxConsumptionRate = 1.0;
+
+	/**
+	 * A new bug parameter <code>survivalProbability</code> is initialized to
+	 * <code>0.95</code>. Each time step, each bug draws a uniform random
+	 * number, and if it is greater than <code>survivalProbability</code>, the
+	 * bug dies and is dropped.
+	 * 
+	 * @since Model 12
+	 */
+	private double survivalProbability = 0.95;
 
 	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified
@@ -148,6 +164,40 @@ public class Bug implements Comparable<Bug> {
 		}
 
 		this.maxConsumptionRate = maxConsumptionRate;
+	}
+
+	/**
+	 * Returns the survival probability of the bug.
+	 * 
+	 * @return survival probability; <i>value is on the interval
+	 *         <code>[0, 1]</code></i>
+	 * @see #survivalProbability
+	 * @since Model 12
+	 */
+	@Parameter(displayName = "Bug survival probability", usageName = "survivalProbability")
+	public double getSurvivalProbability() {
+		return survivalProbability;
+	}
+
+	/**
+	 * Sets the new survival probability of the bug (<i>it is an agent-level
+	 * parameter</i>).
+	 * 
+	 * @param survivalProbability
+	 *            the new survival probability of the agent; <i>must be on the
+	 *            interval <code>[0, 1]</code></i>
+	 * @see #survivalProbability
+	 * @since Model 12
+	 */
+	public void setSurvivalProbability(final double survivalProbability) {
+		if (survivalProbability < 0.0 || 1.0 < survivalProbability) {
+			throw new IllegalArgumentException(
+					String.format(
+							"Parameter survivalProbability=%f should be in interval [0, 1].",
+							survivalProbability));
+		}
+
+		this.survivalProbability = survivalProbability;
 	}
 
 	/**
@@ -248,18 +298,19 @@ public class Bug implements Comparable<Bug> {
 	 * reached size of <code>100</code>, and if so, it stops the simulation.
 	 * </p>
 	 * 
-	 * @since Model 2, Model 7
+	 * @since Model 2, Model 7, Model 12
 	 */
 	public void grow() {
 		size += foodConsumption();
 
-		if (size > 100.0) {
-			System.out.println("Agent reached maximal size: " + this);
-			// The RunEnvironment class provides the environment in which the
-			// model is being executed. It features a set of utility functions
-			// like stopping, pausing and resuming the simulation.
-			RunEnvironment.getInstance().endRun();
-		}
+		// The model stopping rule is changed in Model 12
+		// if (size > 100.0) {
+		// System.out.println("Agent reached maximal size: " + this);
+		// // The RunEnvironment class provides the environment in which the
+		// // model is being executed. It features a set of utility functions
+		// // like stopping, pausing and resuming the simulation.
+		// RunEnvironment.getInstance().endRun();
+		// }
 	}
 
 	/**
@@ -341,6 +392,106 @@ public class Bug implements Comparable<Bug> {
 	}
 
 	/**
+	 * New activity for the agents in <i>Model 12</i>.
+	 * 
+	 * <ul>
+	 * <li>When a bug's size reaches <code>10</code>, it reproduces by splitting
+	 * into <code>5</code> new bugs. Each new bug has an initial size of
+	 * <code>0.0</code>, and the old bug disappears.</li>
+	 * 
+	 * <li>New bugs are placed at the first empty location randomly selected
+	 * within <code>+/- 3</code> cells of their parent’s last location. If no
+	 * location is identified within <code>5</code> random draws, then the new
+	 * bug dies.</li>
+	 * 
+	 * <li>A new bug parameter <code>survivalProbability</code> is initialized
+	 * to <code>0.95</code>. Each time step, each bug draws a uniform random
+	 * number, and if it is greater than <code>survivalProbability</code>, the
+	 * bug dies and is dropped.</li>
+	 * </ul>
+	 * 
+	 * @since Model 12
+	 */
+	public void mortality() {
+
+		// If size is great enough, reproduce and disappear
+		if (size > 10.0) {
+			reproduce();
+			die();
+			return;
+		}
+
+		// Check the uniform random survival probability, and drop agent if
+		// necessary
+		if (SMUtils.prob(survivalProbability)) {
+			die();
+		}
+	}
+
+	/**
+	 * Perform the reproduction of an agent.
+	 * 
+	 * @since Model 12
+	 */
+	private void reproduce() {
+		// Make sure the agent is big enough to reproduce
+		assert (size > 10.0);
+
+		// Get the current context, grid and location
+		@SuppressWarnings("unchecked")
+		final Context<Object> context = (Context<Object>) ContextUtils
+				.getContext(this);
+
+		final Grid<Object> grid = getGrid();
+		final GridPoint location = grid.getLocation(this);
+
+		// Spawn the specified number of descendants
+
+		for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+			// Create new bug with specified default size
+			final Bug child = new Bug();
+			child.setSize(0.0);
+
+			// Get the reproduction range of the current bug
+			final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
+					grid, location, Bug.class,
+					Constants.BUG_REPRODUCTION_RANGE,
+					Constants.BUG_REPRODUCTION_RANGE).getNeighborhood(false);
+
+			// We have a utility function that returns the filtered list of
+			// empty GridCells objects
+			final List<GridCell<Bug>> freeCells = SMUtils
+					.getFreeGridCells(bugNeighborhood);
+
+			// Model specifies if there is no empty location in vision range,
+			// no new child should be spawned
+			if (freeCells.isEmpty()) {
+				break;
+			}
+
+			// Choose one of the possible cells randomly
+			final GridCell<Bug> chosenFreeCell = SMUtils
+					.randomElementOf(freeCells);
+
+			// Add the new bug to the context and to the grid
+			context.add(child);
+
+			// We have our new GridPoint to move to, so locate agent
+			final GridPoint newGridPoint = chosenFreeCell.getPoint();
+			grid.moveTo(child, newGridPoint.getX(), newGridPoint.getY());
+		}
+	}
+
+	/**
+	 * Simple utility function to show how to delete an agent.
+	 * 
+	 * @since Model 12
+	 */
+	private void die() {
+		ContextUtils.getContext(this).remove(this);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * <p>
@@ -355,6 +506,7 @@ public class Bug implements Comparable<Bug> {
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 * @throws NullPointerException
 	 *             if parameter is null.
+	 * @since Model 12
 	 */
 	@Override
 	public int compareTo(final Bug other) {
