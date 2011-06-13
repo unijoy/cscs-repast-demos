@@ -7,11 +7,14 @@
  */
 package stupidmodel.observer;
 
+import static org.mockito.Mockito.*;
+
 import java.awt.Color;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import repast.simphony.random.RandomHelper;
 import stupidmodel.agents.Bug;
 
 /**
@@ -25,6 +28,7 @@ import stupidmodel.agents.Bug;
  * @since 2.0-beta, 2011
  * @version $Id: TestBugStyleOGL2D.java 183 2011-05-29 17:09:27Z
  *          richard.legendi@gmail.com $
+ * @see BugStyleOGL2D
  */
 public class TestBugStyleOGL2D {
 
@@ -44,6 +48,30 @@ public class TestBugStyleOGL2D {
 		// Color "white" was modified to be able to see zero-sized bug agents on
 		// empty cells (which are also white)
 		Assert.assertEquals(new Color(255, 200, 200), color);
+	}
+
+	/**
+	 * Test if invalid size value is assigned to a {@link Bug}.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void testInvalid() {
+		final Bug bug = mock(Bug.class);
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+		when(bug.getSize()).thenReturn(wrongValue);
+
+		style.getColor(bug); // Should fail
+	}
+
+	/**
+	 * Test default color value for non {@link Bug} parameters.
+	 */
+	@Test
+	public void testNonBugColor() {
+		final Color color = style.getColor(null); // Pass anything but a Bug
+
+		// The default color is BLUE in DefaultStyleOGL2D
+		Assert.assertEquals(Color.BLUE, color);
 	}
 
 	/**

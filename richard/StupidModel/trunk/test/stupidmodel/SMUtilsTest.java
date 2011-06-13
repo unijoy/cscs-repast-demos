@@ -7,6 +7,7 @@
  */
 package stupidmodel;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +18,7 @@ import org.junit.Test;
 
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.TestGridCellFactory;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.GridPoint;
 import stupidmodel.common.SMUtils;
 
@@ -30,6 +32,18 @@ import stupidmodel.common.SMUtils;
  * @see SMUtils
  */
 public class SMUtilsTest {
+
+	/**
+	 * Easy win to get coverage and eliminate noise in the report: putting the
+	 * idealism aside the following test does the job.
+	 */
+	@Test
+	public void giveMeCoverageForMyPrivateConstructor() throws Exception {
+		final Constructor<?> constructor = SMUtils.class
+				.getDeclaredConstructor();
+		constructor.setAccessible(true);
+		constructor.newInstance();
+	}
 
 	/**
 	 * Testing {@link SMUtils#getFreeGridCells(List)} for <code>null</code>
@@ -188,4 +202,44 @@ public class SMUtilsTest {
 		SMUtils.randomElementOf(list);
 		Assert.assertEquals(backupList, list);
 	}
+
+	/**
+	 * Test if {@link SMUtils#prob(double)} fails for negative parameters.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testProbNegativeValue() {
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+
+		SMUtils.prob(wrongValue); // Should fail
+	}
+
+	/**
+	 * Test if {@link SMUtils#prob(double)} fails for threshold parameters above
+	 * one.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testProbParamAboveOne() {
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				1.0 + Double.MIN_VALUE, Double.MAX_VALUE);
+
+		SMUtils.prob(wrongValue); // Should fail
+	}
+
+	/**
+	 * Assert that a threshold level of one always return <code>false</code>.
+	 */
+	@Test
+	public void testProbAlwaysFalse() {
+		Assert.assertFalse(SMUtils.prob(1.0));
+	}
+
+	/**
+	 * Assert that a threshold level of zero always return <code>true</code>.
+	 */
+	@Test
+	public void testProbAlwaysTrue() {
+		Assert.assertTrue(SMUtils.prob(0.0));
+	}
+
 }

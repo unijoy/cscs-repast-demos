@@ -31,6 +31,7 @@ import stupidmodel.common.Constants;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id$
+ * @see FoodValueLayerStyleOGL
  */
 public class TestFoodValueLayerStyleOGL {
 
@@ -91,6 +92,25 @@ public class TestFoodValueLayerStyleOGL {
 
 	// ========================================================================
 	// === Test Color Values ==================================================
+
+	/**
+	 * Test if invalid food value is assigned to a location.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void testInvalidFoodValue() {
+		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+
+		final ValueLayer layer = mock(ValueLayer.class);
+
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+
+		when(layer.get(x, y)).thenReturn(wrongValue);
+		style.init(layer);
+
+		style.getColor(x, y); // Should fail
+	}
 
 	/**
 	 * Test if returned color is white when size is <code>0</code>.

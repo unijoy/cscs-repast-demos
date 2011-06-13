@@ -33,8 +33,8 @@ import stupidmodel.common.Constants;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @since Model 3
  * @version $Id$
+ * @see HabitatCell
  */
 public class TestHabitatCell {
 

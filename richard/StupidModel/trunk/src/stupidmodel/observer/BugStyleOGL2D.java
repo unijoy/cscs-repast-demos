@@ -54,9 +54,12 @@ public class BugStyleOGL2D extends DefaultStyleOGL2D {
 		if (agent instanceof Bug) {
 			final Bug bug = (Bug) agent;
 
-			assert (bug.getSize() >= 0) : String
-					.format("An agent's size property should be non-negative, but its current value is %f.",
-							bug.getSize());
+			if (bug.getSize() < 0) {
+				throw new IllegalStateException(
+						String.format(
+								"An agent's size property should be non-negative, but its current value is %f.",
+								bug.getSize()));
+			}
 
 			final int strength = (int) Math.max(200 - 20 * bug.getSize(), 0);
 			return new Color(0xFF, strength, strength); // 0xFFFFFF - white,
