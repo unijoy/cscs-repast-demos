@@ -47,7 +47,14 @@ public final class TestGridCellFactory {
 	public static <T, S extends T> GridCell<T> createGridCellToTest(
 			final GridPoint pt, final Class<T> clazz,
 			final S... objectAtGridCell) {
-		final GridCell<T> ret = new GridCell<T>(pt, clazz);
+		final GridCell<T> ret = new GridCell<T>(pt, clazz) {
+			@Override
+			public String toString() {
+				// Just for error verification for testing
+				return "GridCell<" + items() + ">";
+			}
+		};
+
 		for (final S act : objectAtGridCell) {
 			ret.addObject(act);
 		}
