@@ -206,4 +206,33 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		return bugList;
 	}
 
+	/**
+	 * A simple method to get the total number of current {@link Bug} population
+	 * which is used to create the <i>Population Abundance Graph</i>.
+	 * 
+	 * @return the current number of existing {@link Bug} agents in the root
+	 *         context; <i>or <code>0</code> if the simulation is not yet
+	 *         initialized or no master context is available</i>
+	 * @since Model 13
+	 */
+	public int bugCount() {
+		final RunState runState = RunState.getInstance();
+
+		// If simulation is not yet started or initialized correctly
+		if (null == runState) {
+			return 0;
+		}
+
+		@SuppressWarnings("unchecked")
+		final Context<Object> masterContext = runState.getMasterContext();
+
+		// If simulation is not initialized correctly and there is no root
+		// context
+		if (null == masterContext) {
+			return 0;
+		}
+
+		return masterContext.getObjects(Bug.class).size();
+	}
+
 }

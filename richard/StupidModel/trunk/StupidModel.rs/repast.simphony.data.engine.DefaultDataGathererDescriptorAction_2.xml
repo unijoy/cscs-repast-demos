@@ -60,6 +60,10 @@
     </nameMappingTable>
     <mappingNameTable>
       <entry>
+        <repast.simphony.data.logging.gather.aggregate.MaxMapping reference="../../../nameMappingTable/entry[3]/repast.simphony.data.logging.gather.aggregate.MaxMapping"/>
+        <string>MaxSize</string>
+      </entry>
+      <entry>
         <repast.simphony.data.logging.gather.DefaultTimeDataMapping reference="../../../nameMappingTable/entry/repast.simphony.data.logging.gather.DefaultTimeDataMapping"/>
         <string>Tick</string>
       </entry>
@@ -70,10 +74,6 @@
       <entry>
         <repast.simphony.data.logging.gather.aggregate.MinMapping reference="../../../nameMappingTable/entry[2]/repast.simphony.data.logging.gather.aggregate.MinMapping"/>
         <string>MinSize</string>
-      </entry>
-      <entry>
-        <repast.simphony.data.logging.gather.aggregate.MaxMapping reference="../../../nameMappingTable/entry[3]/repast.simphony.data.logging.gather.aggregate.MaxMapping"/>
-        <string>MaxSize</string>
       </entry>
     </mappingNameTable>
     <alternatedNameTable/>
