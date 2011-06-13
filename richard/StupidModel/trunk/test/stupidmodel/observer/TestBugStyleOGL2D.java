@@ -40,7 +40,10 @@ public class TestBugStyleOGL2D {
 		bug.setSize(0);
 
 		final Color color = style.getColor(bug);
-		Assert.assertEquals(Color.WHITE, color);
+
+		// Color "white" was modified to be able to see zero-sized bug agents on
+		// empty cells (which are also white)
+		Assert.assertEquals(new Color(255, 200, 200), color);
 	}
 
 	/**
@@ -61,7 +64,8 @@ public class TestBugStyleOGL2D {
 	@Test
 	public void testPinkColor() {
 		final Bug bug = new Bug();
-		bug.setSize(80);
+		// Results in color strength 175, which is color pink
+		bug.setSize(1.25);
 
 		final Color color = style.getColor(bug);
 		Assert.assertEquals(Color.PINK, color);
