@@ -24,6 +24,7 @@ import repast.simphony.engine.environment.RunState;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
+import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.common.Constants;
 
 /**
@@ -85,9 +86,18 @@ public class TestBug {
 	 * Test illegal argument for {@link Bug#compareTo(Bug)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testCompareToInvalidParameter() {
+	public void testCompareToInvalidFirstParameter() {
 		final Bug bug = new Bug();
-		bug.compareTo(null); // Should fail
+		new BugSizeComparator().compare(null, bug); // Should fail
+	}
+
+	/**
+	 * Test illegal argument for {@link Bug#compareTo(Bug)}.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testCompareToInvalidSecondParameter() {
+		final Bug bug = new Bug();
+		new BugSizeComparator().compare(bug, null); // Should fail
 	}
 
 	/**
@@ -103,7 +113,7 @@ public class TestBug {
 		b2.setSize(10.0);
 
 		final List<Bug> list = Arrays.asList(b1, b2);
-		Collections.sort(list);
+		Collections.sort(list, new BugSizeComparator());
 
 		Assert.assertEquals(b2, list.get(0));
 		Assert.assertEquals(b1, list.get(1));
@@ -124,7 +134,7 @@ public class TestBug {
 		b3.setSize(2.0);
 
 		final List<Bug> list = Arrays.asList(b1, b2, b3);
-		Collections.sort(list);
+		Collections.sort(list, new BugSizeComparator());
 
 		Assert.assertEquals(b2, list.get(0));
 		Assert.assertEquals(b1, list.get(1));

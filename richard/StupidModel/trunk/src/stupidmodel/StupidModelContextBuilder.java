@@ -28,6 +28,7 @@ import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
 import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.agents.Bug;
+import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.agents.HabitatCell;
 import stupidmodel.common.Constants;
 
@@ -154,7 +155,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		// SimUtilities.shuffle(bugList, RandomHelper.getUniform());
 
 		// Model 10 requires sorted agent activation
-		Collections.sort(bugList);
+		Collections.sort(bugList, new BugSizeComparator());
 
 		for (final Bug bug : bugList) {
 			bug.step();

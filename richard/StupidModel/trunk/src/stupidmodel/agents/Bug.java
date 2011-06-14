@@ -7,8 +7,10 @@
  */
 package stupidmodel.agents;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import repast.simphony.context.Context;
@@ -38,11 +40,6 @@ import stupidmodel.common.SMUtils;
  * </p>
  * 
  * <p>
- * From <i>Model 10</i>, agents are comparable with their <code>size</code> in
- * descending order.
- * </p>
- * 
- * <p>
  * From <i>Model 12</i>, agents are die and reproduce.
  * <p>
  * 
@@ -52,7 +49,66 @@ import stupidmodel.common.SMUtils;
  * @since 2.0-beta, 2011
  * @version $Id$
  */
-public class Bug implements Comparable<Bug> {
+public class Bug {
+
+	/**
+	 * <p>
+	 * From <i>Model 10</i>, agents are comparable with their <code>size</code>
+	 * in descending order.
+	 * </p>
+	 * 
+	 * <p>
+	 * It would be easier to make class {@link Bug} comparable, however, it
+	 * would break the contract of <code>Comparable</code>, which states:
+	 * </p>
+	 * 
+	 * <blockquote> It is strongly recommended, but <i>not</i> strictly required
+	 * that <code>{@literal (x.compareTo(y)==0) == (x.equals(y))}</code>.
+	 * Generally speaking, any class that implements the <code>Comparable</code>
+	 * interface and violates this condition should clearly indicate this fact.
+	 * The recommended language is <i>
+	 * "Note: this class has a natural ordering that is inconsistent with equals."
+	 * </i> </blockquote>
+	 * 
+	 * @since Model 12
+	 */
+	public static class BugSizeComparator implements Comparator<Bug>, Serializable {
+		
+		/**
+		 * Use <code>serialVersionUID</code> from JDK 1.0.2 for
+		 * interoperability.
+		 */
+		private static final long serialVersionUID = 3468196663094781744L;
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * <p>
+		 * For the current model, <code>Bug</code> agents are comparable by
+		 * their <code>size</code> values: <i>a bug is "bigger" if its size
+		 * value is bigger than the value of other one</i>. For this, we compare
+		 * the size values by the default Java way multiplied by
+		 * <code>(-1)</code> (the default Java comparison would result in an
+		 * ascending order, the multiplier makes it a descending comparison).
+		 * </p>
+		 * 
+		 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+		 * @throws NullPointerException
+		 *             if parameter is null.
+		 */
+		@Override
+		public int compare(final Bug o1, final Bug o2) {
+			if (null == o1) {
+				throw new IllegalArgumentException("Parameter o1 == null.");
+			}
+
+			if (null == o2) {
+				throw new IllegalArgumentException("Parameter o2 == null.");
+			}
+
+			return -Double.compare(o1.getSize(), o2.getSize());
+		}
+	}
 
 	/**
 	 * Bugs have an instance variable for their size, which is initialized to
@@ -489,32 +545,6 @@ public class Bug implements Comparable<Bug> {
 	 */
 	protected void die() {
 		ContextUtils.getContext(this).remove(this);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * <p>
-	 * For the current model, <code>Bug</code> agents are comparable by their
-	 * <code>size</code> values: <i>a bug is "bigger" if its size value is
-	 * bigger than the value of other one</i>. For this, we compare the size
-	 * values by the default Java way multiplied by <code>(-1)</code> (the
-	 * default Java comparison would result in an ascending order, the
-	 * multiplier makes it a descending comparison).
-	 * </p>
-	 * 
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 * @throws NullPointerException
-	 *             if parameter is null.
-	 * @since Model 12
-	 */
-	@Override
-	public int compareTo(final Bug other) {
-		if (null == other) {
-			throw new IllegalArgumentException("Parameter other == null.");
-		}
-
-		return -Double.compare(size, other.size);
 	}
 
 	/*

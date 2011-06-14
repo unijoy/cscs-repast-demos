@@ -7,6 +7,7 @@
  */
 package stupidmodel.agents;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -40,7 +41,13 @@ public class HabitatCell {
 	 * @since Model 11
 	 */
 	public final static class HabitatCellFoodAvailabilityComparator implements
-			Comparator<GridCell<HabitatCell>> {
+			Comparator<GridCell<HabitatCell>>, Serializable {
+
+		/**
+		 * Use <code>serialVersionUID</code> from JDK 1.0.2 for
+		 * interoperability.
+		 */
+		private static final long serialVersionUID = 3468196663094781744L;
 
 		/**
 		 * {@inheritDoc}
