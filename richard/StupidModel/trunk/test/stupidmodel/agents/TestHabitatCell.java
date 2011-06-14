@@ -291,7 +291,7 @@ public class TestHabitatCell {
 	}
 
 	/**
-	 * Just to test if <code>toString()</code> works.
+	 * Just to suppress <code>toString()</code> coverage noise.
 	 */
 	@Test
 	public void testToString() {

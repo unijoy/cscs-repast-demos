@@ -92,7 +92,7 @@ public class Bug implements Comparable<Bug> {
 	 *         <code>null</code></i>
 	 * @since Model 2
 	 */
-	private Grid<Object> getGrid() {
+	protected Grid<Object> getGrid() {
 		@SuppressWarnings("unchecked")
 		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
 				.getProjection(Constants.GRID_ID);
@@ -487,7 +487,7 @@ public class Bug implements Comparable<Bug> {
 	 * 
 	 * @since Model 12
 	 */
-	private void die() {
+	protected void die() {
 		ContextUtils.getContext(this).remove(this);
 	}
 
