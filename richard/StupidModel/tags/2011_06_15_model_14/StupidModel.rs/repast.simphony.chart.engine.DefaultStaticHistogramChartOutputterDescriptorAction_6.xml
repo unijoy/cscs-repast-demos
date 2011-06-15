@@ -1,0 +1,21 @@
+<repast.simphony.chart.engine.DefaultHistogramChartOutputterDescriptor>
+  <name>Histogram of Bug Sizes</name>
+  <outputterFactory class="repast.simphony.chart.wizard.HistogramFactory"/>
+  <dataSetHandler>
+    <dataSets>
+      <string>Data Set of Bug Sizes</string>
+    </dataSets>
+  </dataSetHandler>
+  <streamHandler>
+    <columns/>
+  </streamHandler>
+  <isBatchAction>false</isBatchAction>
+  <dataSetId class="string">Data Set of Bug Sizes</dataSetId>
+  <showLegend>false</showLegend>
+  <multipleSeries>false</multipleSeries>
+  <valueColumnName>Size</valueColumnName>
+  <numberOfBins>10</numberOfBins>
+  <min>0.0</min>
+  <max>10.0</max>
+  <outOfRangeHandling>ADD</outOfRangeHandling>
+</repast.simphony.chart.engine.DefaultHistogramChartOutputterDescriptor>
