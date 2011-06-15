@@ -186,6 +186,17 @@ Illustrate use of random number distributions. A common use of them is to induce
  * Instead of initializing bug sizes to `1.0` (See [#Bug_Growth here]), sizes are drawn from a normal distribution defined by `initialBugSizeMean` and `initialBugSizeSD`. The initial size of bugs produced via reproduction is `0.0`.
  * Negative values are very likely to be drawn from normal distributions such as the one used here. To avoid them, a check is introduced to limit initial bug size to a minimum of zero.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+ * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values!
+ * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively).
+
+=== Complete Model ===
+
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_15_model_14/ complete source code] of the first model is accessible from the proper SVN tag directly.
+
+
 == Habitat Data from File Input ==
 === Purpose ===
 Show how to read spatial data in from a file.
