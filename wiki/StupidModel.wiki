@@ -190,7 +190,7 @@ Illustrate use of random number distributions. A common use of them is to induce
 
 === Further Fun ===
  * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values!
- * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively).
+ * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively)?
 
 === Complete Model ===
 
