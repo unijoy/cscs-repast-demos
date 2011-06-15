@@ -10,6 +10,8 @@ package stupidmodel;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import cern.jet.random.Normal;
+
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
@@ -19,6 +21,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameters;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
@@ -87,12 +90,27 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		final int bugCount = ((Integer) parameters
 				.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
 
+		// Model 14 defines a new random normal distribution to use for the
+		// initially created agent sizes
+		final double initialBugSizeMean = ((Double) parameters
+				.getValue(Constants.PARAMETER_INITIAL_BUG_SIZE_MEAN))
+				.doubleValue();
+
+		final double initialBugSizeSD = ((Double) parameters
+				.getValue(Constants.PARAMETER_INITIAL_BUG_SIZE_SD))
+				.doubleValue();
+
+		final Normal normal = RandomHelper.createNormal(initialBugSizeMean,
+				initialBugSizeSD);
+
 		// ---------------------------------------------------------------------
 
 		// Create Bug agents and add them to the context and to the grid as
 		// placed randomly by the RandomCartesianAdder of the space
 		for (int i = 0; i < bugCount; ++i) {
 			final Bug bug = new Bug();
+			bug.setInitialSize(normal);
+
 			context.add(bug);
 			final NdPoint pt = space.getLocation(bug);
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());

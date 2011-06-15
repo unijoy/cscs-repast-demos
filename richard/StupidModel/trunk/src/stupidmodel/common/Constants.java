@@ -61,6 +61,22 @@ public final class Constants {
 	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
 
 	/**
+	 * Unique ID for the parameter representing <code>initialBugSizeMean</code>
+	 * specified in the model formulation.
+	 * 
+	 * @since Model 14
+	 */
+	public static final String PARAMETER_INITIAL_BUG_SIZE_MEAN = "initialBugSizeMean";
+
+	/**
+	 * Unique ID for the parameter representing <code>initialBugSizeSD</code>
+	 * specified in the model formulation.
+	 * 
+	 * @since Model 14
+	 */
+	public static final String PARAMETER_INITIAL_BUG_SIZE_SD = "initialBugSizeSD";
+
+	/**
 	 * The first model specified an agent vision range of <code>4 * 4</code>
 	 * cells.
 	 */

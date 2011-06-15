@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import cern.jet.random.Normal;
+
 import repast.simphony.context.Context;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
@@ -72,8 +74,9 @@ public class Bug {
 	 * 
 	 * @since Model 12
 	 */
-	public static class BugSizeComparator implements Comparator<Bug>, Serializable {
-		
+	public static class BugSizeComparator implements Comparator<Bug>,
+			Serializable {
+
 		/**
 		 * Use <code>serialVersionUID</code> from JDK 1.0.2 for
 		 * interoperability.
@@ -545,6 +548,42 @@ public class Bug {
 	 */
 	protected void die() {
 		ContextUtils.getContext(this).remove(this);
+	}
+
+	/**
+	 * Two new model parameters were added to the model, and put on the
+	 * parameter settings window: <code>initialBugSizeMean</code> and
+	 * <code>initialBugSizeSD</code>.
+	 * 
+	 * <p>
+	 * Values of these parameters are <code>0.1</code> and <code>0.03</code>.
+	 * Instead of initializing bug sizes to <code>1.0</code> (as defined in
+	 * previous models), sizes are drawn from a normal distribution defined by
+	 * <code>initialBugSizeMean</code> and <code>initialBugSizeSD</code>. The
+	 * initial size of bugs produced via reproduction is still <code>0.0</code>.
+	 * </p>
+	 * 
+	 * <p>
+	 * Negative values are very likely to be drawn from normal distributions
+	 * such as the one used here. To avoid them, a check is introduced to limit
+	 * initial bug size to a minimum of zero.
+	 * </p>
+	 * 
+	 * @param normal
+	 *            a properly initialized <code>Normal</code> distribution (cf.
+	 *            to <code>RandomHelper</code> documentation); <i>cannot be
+	 *            <code>null</code></i>
+	 * @since Model 14
+	 */
+	public void setInitialSize(final Normal normal) {
+		if (null == normal) {
+			throw new IllegalArgumentException("Parameter normal == null.");
+		}
+
+		// Generate a new random initial size value, and if it is negative, use
+		// 0.0 instead
+		final double initialSize = Math.max(normal.nextDouble(), 0.0);
+		setSize(initialSize);
 	}
 
 	/*
