@@ -182,8 +182,8 @@ No change is made to the model formulation. A graph is added to display the numb
 === Purpose ===
 Illustrate use of random number distributions. A common use of them is to induce variability among initial individuals.
 === Formulation ===
- * Two newmodel parameters are added, and put on the parameter settings window: `initialBugSizeMean` and `initialBugSizeSD`. Values of these parameters are 0.1 and 0.03.
- * Instead of initializing bug sizes to 1.0 (See [#Bug_Growth here]), sizes are drawn from a normal distribution defined by `initialBugSizeMean` and `initialBugSizeSD`. The initial size of bugs produced via reproduction is 0.0.
+ * Two new model parameters are added, and put on the parameter settings window: `initialBugSizeMean` and `initialBugSizeSD`. Values of these parameters are `0.1` and `0.03`.
+ * Instead of initializing bug sizes to `1.0` (See [#Bug_Growth here]), sizes are drawn from a normal distribution defined by `initialBugSizeMean` and `initialBugSizeSD`. The initial size of bugs produced via reproduction is `0.0`.
  * Negative values are very likely to be drawn from normal distributions such as the one used here. To avoid them, a check is introduced to limit initial bug size to a minimum of zero.
 
 == Habitat Data from File Input ==
