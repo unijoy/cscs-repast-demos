@@ -13,8 +13,6 @@ Hello, my name is Tim Sweda, and I am a 2nd-year PhD student at Northwestern Uni
     * [http://iems.northwestern.edu Department of Industrial Engineering and Management Sciences]
   * Time Zone:  UTC/GMT -5 hours, CDT
 
-NOTE:  My academic term ends on June 10, so I will only be working part-time until then.
-
 == Contact ==
 
   * E-mail:  tsweda@u.northwestern.edu OR timsweda@gmail.com
@@ -24,11 +22,11 @@ NOTE:  My academic term ends on June 10, so I will only be working part-time unt
 
   # *Diffusion on a Directed Network*:  diffusion of a quantity through a directed network
     * http://ccl.northwestern.edu/netlogo/models/DiffusiononaDirectedNetwork
+  # *Discrete Event Simulator*:  discrete-event simulation toolkit designed for Repast
   # *Ethnocentrism*:  model of ethnocentric behavior and its evolution
     * http://ccl.northwestern.edu/netlogo/models/Ethnocentrism
   # *Preferential Attachment*:  network generation by preferential attachment
     * http://ccl.northwestern.edu/netlogo/models/PreferentialAttachment
-  # *RepastSim*:  adaptation of discrete-event simulation toolkit originally programmed in VBA
   # *Small Worlds*:  formation of networks resulting in "small world" phenomenon
     * http://ccl.northwestern.edu/netlogo/models/SmallWorlds
   # *Team Blackjack*:  exploration of team strategies for blackjack, inspired by [http://en.wikipedia.org/wiki/MIT_Blackjack_Team MIT Blackjack Team]
