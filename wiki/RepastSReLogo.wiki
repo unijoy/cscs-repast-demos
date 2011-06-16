@@ -24,12 +24,12 @@ http://repast.sourceforge.net/docs/api/relogo/index.html
 = Available Demos = 
 
  # Zombies (Available with the software)
- # SimTutorial (Available with the software)
- # FlowZombies (Available with the Software)
+ # !SimTutorial (Available with the software)
+ # !FlowZombies (Available with the Software)
  # AreaCoverage (Unverified)
  # [Boids] (Unverified)
  # GuidingBots (Unverified)
 
 = References =
 
-*http://repast.sourceforge.net/docs.html
+ * http://repast.sourceforge.net/docs.html
