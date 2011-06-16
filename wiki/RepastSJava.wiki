@@ -1,0 +1,28 @@
+#summary Repast Java platform for model development
+#sidebar TableOfContents
+
+= Introduction =
+
+Repast Simphony has an extensive [http://repast.sourceforge.net/docs/api/repastjava/index.html Java API] to create, run and observe agent-based simulations.
+
+Detailed documentation about tool and the API can be found here:
+
+  http://repast.sourceforge.net/docs.html
+
+It is advised that users with a workable knowledge of a Java-based languages (such as Groovy) and who want to use the features of the general purpose programming language should use their chosen language after reading the [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Repast Java Getting Started guide]
+
+Users with a workable knowledge of Java who want highly customized models also should begin with the aforementioned guide.
+
+= Available Demos = 
+
+ # JZombies (Available with the software)
+ # StupidModel (Unverified)
+
+= References =
+
+ * [http://repast.sourceforge.net/docs.html Repast Simphony Documentation]
+ * [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Repast Java Getting Started Guide]
+ * [http://repast.sourceforge.net/docs/api/repastjava/index.html Repast Java API (Online)]
+ * [http://repast.sourceforge.net/docs/api/RepastJavaAPI.zip Repast Java API (download in a ZIP archive)]
+ * [http://repast.sourceforge.net/docs/RepastReference.pdf Repast Reference]
+ * [http://repast.sourceforge.net/docs/RepastSimphonyFAQ.pdf Repast FAQ]
