@@ -1,4 +1,5 @@
 #summary Tim's project and task description
+#sidebar TableOfContents
 
 = General Information =
 
