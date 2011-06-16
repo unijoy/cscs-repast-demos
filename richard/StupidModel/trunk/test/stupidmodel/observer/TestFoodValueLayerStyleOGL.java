@@ -24,8 +24,8 @@ import stupidmodel.common.Constants;
  * Simple tests for the created custom food value layer style.
  * 
  * <p>
- * Food color shade from white when size is zero to green, when the available
- * food on a cell is <code>255</code> or greater.
+ * Food color shade from black when food level is zero to green, when the
+ * available food on a cell is <code>255</code> or greater.
  * </p>
  * 
  * @author Richard O. Legendi (richard.legendi)
@@ -113,10 +113,10 @@ public class TestFoodValueLayerStyleOGL {
 	}
 
 	/**
-	 * Test if returned color is white when size is <code>0</code>.
+	 * Test if returned color is black when food level is <code>0</code>.
 	 */
 	@Test
-	public void testWhiteColor() {
+	public void testBlackColor() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
@@ -124,11 +124,11 @@ public class TestFoodValueLayerStyleOGL {
 		when(layer.get(x, y)).thenReturn(0.0);
 		style.init(layer);
 
-		Assert.assertEquals(Color.WHITE, style.getColor(x, y));
+		Assert.assertEquals(Color.BLACK, style.getColor(x, y));
 	}
 
 	/**
-	 * Test if returned color is green when size is <code>255</code>.
+	 * Test if returned color is green when food level is <code>255</code>.
 	 */
 	@Test
 	public void testGreenColor() {
