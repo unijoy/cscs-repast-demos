@@ -1,4 +1,5 @@
 #summary Boids ReLogo/groovy implementation by R Copley
+#sidebar TableOfContents
 
 = Introduction =
 Boids is a relatively simple agent-based model based on the steering behavior of flocking birds. 
