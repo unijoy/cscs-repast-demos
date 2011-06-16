@@ -16,6 +16,7 @@
    * [GuidingBots]
  * Platforms
    * [RepastSReLogo]
+   * [RepastSJava]
  * Administrative
    * [General]
    * [StudentsDemosList Demo Lists]
