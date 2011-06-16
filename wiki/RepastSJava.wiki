@@ -15,7 +15,18 @@ Users with a workable knowledge of Java who want highly customized models also s
 
 = Available Demos = 
 
+ # Autocatalysis (Available with the software)
+ # Automata (Available with the software)
+ # Cells (Available with the software)
+ # Geography (Available with the software)
+ # Geography3D (Available with the software)
  # JZombies (Available with the software)
+ # Mousetrap (Available with the software)
+ # PredatorPrey (Available with the software)
+ # Schelling (Available with the software)
+ # SimplePhysics (Available with the software)
+ # SolarSystem (Available with the software)
+ # SugarScape (Available with the software)
  # StupidModel (Unverified)
 
 = References =
