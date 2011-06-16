@@ -13,22 +13,22 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import cern.jet.random.Normal;
-
 import repast.simphony.context.Context;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
+import repast.simphony.util.SimUtilities;
 import stupidmodel.StupidModelContextBuilder;
-import stupidmodel.agents.HabitatCell.HabitatCellFoodAvailabilityComparator;
 import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
+import cern.jet.random.Normal;
 
 /**
- * Bug agent implementation for <i>StupidModel 1</i>.
+ * Bug agent implementation for <i>StupidModel</i> versions.
  * 
  * <p>
  * Agents in this model are very simple: they can access their neihgbourhood at
@@ -177,7 +177,7 @@ public class Bug {
 	 * Sets the size of the bug, <i>used for testing</i>.
 	 * 
 	 * @param size
-	 *            the new size of the bug
+	 *            the new size of the bug; <i>must be non-negative</i>
 	 * @since Model 2
 	 */
 	public void setSize(final double size) {
@@ -293,17 +293,23 @@ public class Bug {
 			return;
 		}
 
-		// Before Model 11, random movement was used
-		// SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+		// Model 15: A change to the bug move method is required to avoid a very
+		// strong artifact now that cell food production is no longer random.
+		// Near the start of a simulation, many cells will have exactly the same
+		// food availability, so a bug simply would move to the first cell on
+		// its list of neighbor cells. This is always the top-left cell among
+		// the neighbors, so bugs move constantly up and left if all the cells
+		// available to them have the same food availability. This artifact is
+		// removed by randomly shuffling the list of available cells before the
+		// bug loops through it to identify the best.
 
-		// Get a random free location within sight range
-		// final GridCell<Bug> chosenFreeCell =
-		// SMUtils.randomElementOf(freeCells);
+		SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 
 		final List<GridCell<HabitatCell>> habitatCells = getHabitatCellsForLocations(freeCells);
+		assert (habitatCells.size() == freeCells.size());
 
 		Collections.sort(habitatCells,
-				new HabitatCellFoodAvailabilityComparator());
+				HabitatCell.HABITAT_CELL_FOOD_AVAILABILITY_COMPARATOR);
 
 		// The first element has the most available food, it is the optimal
 		// target for displacement
@@ -362,14 +368,9 @@ public class Bug {
 	public void grow() {
 		size += foodConsumption();
 
-		// The model stopping rule is changed in Model 12
-		// if (size > 100.0) {
-		// System.out.println("Agent reached maximal size: " + this);
-		// // The RunEnvironment class provides the environment in which the
-		// // model is being executed. It features a set of utility functions
-		// // like stopping, pausing and resuming the simulation.
-		// RunEnvironment.getInstance().endRun();
-		// }
+		// The model stopping rule is changed in Model 12, it was defined here.
+		// Check it in the previous versions, but the task is simple by calling
+		// RunEnvironment.getInstance().endRun()
 	}
 
 	/**

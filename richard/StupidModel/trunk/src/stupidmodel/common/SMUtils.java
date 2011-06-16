@@ -7,7 +7,12 @@
  */
 package stupidmodel.common;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import repast.simphony.query.space.grid.GridCell;
@@ -98,6 +103,94 @@ public final strictfp class SMUtils {
 		}
 
 		return (threshold < RandomHelper.nextDouble());
+	}
+
+	/**
+	 * A utility function to read a specified data file that describes the real
+	 * state of agents to create at the initialization of the simulation.
+	 * 
+	 * <p>
+	 * The method uses the standard Java way to read and parse the input data.
+	 * </p>
+	 * 
+	 * @param cellDataFileName
+	 *            the name of the file to open; <i>by default, it is searched in
+	 *            the root of the project directory, cannot be <code>null</code>
+	 *            or empty</i>
+	 * @return a properly initialized list containing all of the cell data in
+	 *         the specified file in a structured way;
+	 *         <code>cannot be modified</code>
+	 */
+	public static List<CellData> readDataFile(final String cellDataFileName) {
+		if (null == cellDataFileName) {
+			throw new IllegalArgumentException(
+					"Parameter cellDataFileName cannot be null.");
+		}
+
+		if (cellDataFileName.isEmpty()) {
+			throw new IllegalArgumentException(
+					"A file name cannot have an empty name.");
+		}
+
+		final ArrayList<CellData> ret = new ArrayList<CellData>();
+
+		BufferedReader br = null;
+
+		try {
+			br = new BufferedReader(new FileReader(cellDataFileName));
+
+			// Skip header
+			for (int i = 0; i < Constants.CELL_DATA_FILE_HEADER_LINES; ++i) {
+				br.readLine();
+			}
+
+			// Read lines, parse data and add a new CellData for each one
+
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+				// Split the line around whitespaces
+				final String[] data = line.split("\\s+");
+
+				// Check if current line seems all right
+				if (data.length != 3) {
+					throw new IllegalArgumentException(String.format(
+							"File %s contains a malformed input line: %s",
+							cellDataFileName, line));
+				}
+
+				try {
+					int idx = 0;
+					final int x = Integer.parseInt(data[idx++]);
+					final int y = Integer.parseInt(data[idx++]);
+					final double foodProductionRate = Double
+							.parseDouble(data[idx++]);
+
+					ret.add(new CellData(x, y, foodProductionRate));
+				} catch (final NumberFormatException e) {
+					e.printStackTrace();
+
+					throw new IllegalArgumentException(String.format(
+							"File %s contains a malformed input line: %s",
+							cellDataFileName, line), e);
+				}
+			}
+
+		} catch (final FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (final IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return Collections.unmodifiableList(ret);
 	}
 
 	// ========================================================================

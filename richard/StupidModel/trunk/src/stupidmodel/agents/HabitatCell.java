@@ -14,15 +14,22 @@ import java.util.Comparator;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameter;
 import repast.simphony.query.space.grid.GridCell;
-import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.StupidModelContextBuilder;
+import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
 
 /**
  * Habitat cell objects have instance variables for their food availability and
  * maximum food production rate.
+ * 
+ * <p>
+ * Below <i>Model 15</i>, the food production rate was defined by a random value
+ * between <code>0</code> and <code>maximumFoodProductionRate</code>. However,
+ * it was eliminated from <i>Model 15</i>, since these models work with real
+ * data.
+ * </p>
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
@@ -33,6 +40,12 @@ import stupidmodel.common.Constants;
 public class HabitatCell {
 
 	/**
+	 * Default comparator used to compare {@link HabitatCell} objects by their
+	 * current food availability.
+	 */
+	public static final HabitatCellFoodAvailabilityComparator HABITAT_CELL_FOOD_AVAILABILITY_COMPARATOR = new HabitatCellFoodAvailabilityComparator();
+
+	/**
 	 * Simple comparator for {@link HabitatCell} objects that orders them
 	 * descending based on the current food availability.
 	 * 
@@ -40,7 +53,7 @@ public class HabitatCell {
 	 * @since 2.0-beta, 2011
 	 * @since Model 11
 	 */
-	public final static class HabitatCellFoodAvailabilityComparator implements
+	private final static class HabitatCellFoodAvailabilityComparator implements
 			Comparator<GridCell<HabitatCell>>, Serializable {
 
 		/**
@@ -98,8 +111,18 @@ public class HabitatCell {
 
 	// Members declared package-protected to be able to use them in the tests
 
-	/** Maximum food production rate is initialized to <code>0.01</code>. */
-	protected double maximumFoodProductionRate = 0.01;
+	/**
+	 * Default food production rate is initialized to <code>0.01</code>.
+	 * 
+	 * <p>
+	 * It is set by the constructor, but not declared as final, since the use
+	 * may want to manipulate it at the graphical interface (<i>probing</i>, as
+	 * defined in <i>Model 4</i>).
+	 * </p>
+	 * 
+	 * @since Model 15
+	 */
+	protected double foodProductionRate = 0.01;
 
 	/**
 	 * Represents the actual food availability at this cell, initialized to
@@ -113,26 +136,26 @@ public class HabitatCell {
 	/**
 	 * Creates a new instance of <code>HabitatCell</code>.
 	 * 
-	 * @param x
-	 *            the specified <code>x</code> coordinate; <i>must be
-	 *            non-negative</i>
-	 * @param y
-	 *            the specified <code>y</code> coordinate; <i>must be
-	 *            non-negative</i>
+	 * <p>
+	 * Previous versions created the cell directly, but from <i>Model 15</i>, we
+	 * use a wrapper class for the parsed data to create a new instance
+	 * properly.
+	 * </p>
+	 * 
+	 * @param cellData
+	 *            a parsed data from the specified input file containing the
+	 *            coordinates and the food production rate; <i>cannot be
+	 *            <code>null</code></i>
+	 * @since Model 3, Model 15
 	 */
-	public HabitatCell(final int x, final int y) {
-		if (x < 0) {
-			throw new IllegalArgumentException(String.format(
-					"Coordinate x = %d < 0.", x));
+	public HabitatCell(final CellData cellData) {
+		if (null == cellData) {
+			throw new IllegalArgumentException("Parameter cellData == null.");
 		}
 
-		if (y < 0) {
-			throw new IllegalArgumentException(String.format(
-					"Coordinate y = %d < 0.", y));
-		}
-
-		this.x = x;
-		this.y = y;
+		this.x = cellData.getX();
+		this.y = cellData.getY();
+		this.foodProductionRate = cellData.getFoodProductionRate();
 	}
 
 	/**
@@ -144,13 +167,12 @@ public class HabitatCell {
 	 * </p>
 	 * 
 	 * @return the value of {@link #maximumFoodProductionRate}
-	 * @since Model 5
+	 * @since Model 5, Model 15
 	 * @see StupidModelContextBuilder#build(repast.simphony.context.Context)
-	 * @field maximumFoodProductionRate
 	 */
-	@Parameter(displayName = "Cell maximum food production rate", usageName = "maximumFoodProductionRate")
-	public double getMaximumFoodProductionRate() {
-		return maximumFoodProductionRate;
+	@Parameter(displayName = "Cell maximum food production rate", usageName = "foodProductionRate")
+	public double getFoodProductionRate() {
+		return foodProductionRate;
 	}
 
 	/**
@@ -159,17 +181,16 @@ public class HabitatCell {
 	 * @param maximumFoodProductionRate
 	 *            the new value of {@link #maximumFoodProductionRate}; <i>must
 	 *            be non-negative</i>
-	 * @since Model 5
+	 * @since Model 5, Model 15
 	 */
-	public void setMaximumFoodProductionRate(
-			final double maximumFoodProductionRate) {
-		if (maximumFoodProductionRate < 0) {
+	public void setFoodProductionRate(final double foodProductionRate) {
+		if (foodProductionRate < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter maximumFoodProductionRate = %f < 0.",
-					maximumFoodProductionRate));
+					"Parameter foodProductionRate == %f < 0.",
+					foodProductionRate));
 		}
 
-		this.maximumFoodProductionRate = maximumFoodProductionRate;
+		this.foodProductionRate = foodProductionRate;
 	}
 
 	/**
@@ -192,25 +213,27 @@ public class HabitatCell {
 	public void setFoodAvailability(final double foodAvailability) {
 		if (foodAvailability < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter foodAvailability = %f < 0.", foodAvailability));
+					"Parameter foodAvailability == %f < 0.", foodAvailability));
 		}
 
 		this.foodAvailability = foodAvailability;
 	}
 
 	/**
-	 * Each time step, food availability is increased by food production. Food
-	 * production is a random floating point number between zero and the maximum
-	 * food production.
+	 * Each time step, food availability is increased by food production. The
+	 * food production in the previous versions was a random floating point
+	 * number between zero and the maximum food production; from <i>Model 15</i>
+	 * it is exactly defined in the specified input data file.
 	 * 
 	 * <p>
 	 * Food production is scheduled before agent actions.
 	 * </p>
+	 * 
+	 * @since Model 5, Model 15
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = -2)
 	public void growFood() {
-		foodAvailability += RandomHelper.nextDoubleFromTo(0.0,
-				maximumFoodProductionRate);
+		foodAvailability += foodProductionRate;
 
 		final GridValueLayer foodValueLayer = (GridValueLayer) ContextUtils
 				.getContext(this).getValueLayer(Constants.FOOD_VALUE_LAYER_ID);
@@ -236,12 +259,12 @@ public class HabitatCell {
 	public void foodConsumed(final double eatenFood) {
 		if (eatenFood < 0.0) {
 			throw new IllegalArgumentException(String.format(
-					"eatenFood = %f < 0.0", eatenFood));
+					"eatenFood == %f < 0.0", eatenFood));
 		}
 
 		if (eatenFood > foodAvailability) {
 			throw new IllegalArgumentException(String.format(
-					"eatenFood = %f > foodAvailability = %f", eatenFood,
+					"eatenFood == %f > foodAvailability == %f", eatenFood,
 					foodAvailability));
 		}
 

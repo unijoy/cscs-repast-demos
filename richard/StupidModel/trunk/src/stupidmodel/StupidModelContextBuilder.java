@@ -9,8 +9,7 @@ package stupidmodel;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import cern.jet.random.Normal;
+import java.util.List;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
@@ -25,6 +24,7 @@ import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
+import repast.simphony.space.continuous.StrictBorders;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
@@ -33,10 +33,13 @@ import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.agents.Bug;
 import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.agents.HabitatCell;
+import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
+import stupidmodel.common.SMUtils;
+import cern.jet.random.Normal;
 
 /**
- * Custom {@link ContextBuilder} implementation for the <i>StupidModel 1</i>.
+ * Custom {@link ContextBuilder} implementation for <i>StupidModel</i> versions.
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
@@ -46,44 +49,121 @@ import stupidmodel.common.Constants;
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
-	// FIXME How to infer generic types?
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * We perform the initialization, specifically: (i) parse the cell data
+	 * file, (ii) create the used space, grid instances, and initialize the
+	 * value layer associated with the displayed grid, (iii) populate the grid
+	 * with both {@link Bug} and {@link HabitatCell} agents.
+	 * </p>
+	 * 
+	 * <p>
+	 * Below <i>Model 15</i>, the world was an idealized toric world. Version
+	 * Model 15 and 16 uses real data, and toroidal borders were eliminated and
+	 * replaced by strict borders.
+	 * </p>
+	 * 
+	 * @see repast.simphony.dataLoader.ContextBuilder#build(repast.simphony.context.Context)
+	 */
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 		// Set a specified context ID
 		context.setId(Constants.CONTEXT_ID);
-		final Parameters parameters = RunEnvironment.getInstance()
-				.getParameters();
 
-		// Create a toridal space with random positioning with the specified
-		// dimensions
+		// ------------------------------------------------------------------------
+		// Model 15 extension: read the cell data from a specified file
+
+		final List<CellData> cellData = SMUtils
+				.readDataFile(Constants.STUPID_CELL_DATA_FILE);
+
+		// The first model specified a two-dimensional grid 100 * 100, but from
+		// Model 15 it has to be evaluated from the file input
+
+		// The +1s are added because the grid is indexed from 0, so we have to
+		// increase the actual size by 1
+
+		final int gridSizeX = Collections.max(cellData,
+				CellData.CELL_DATA_X_COMPARATOR).getX() + 1;
+
+		final int gridSizeY = Collections.max(cellData,
+				CellData.CELL_DATA_Y_COMPARATOR).getY() + 1;
+
+		// ------------------------------------------------------------------------
+
+		// Create a space with random positioning with the specified
+		// dimensions. From Model 15 we left the default WrapAroundBorders
+		// point translator.
+
 		final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
-				.createContinuousSpaceFactory(null) // No hints (?)
-				.createContinuousSpace(
-						Constants.SPACE_ID,
-						context,
+				.createContinuousSpaceFactory(null) // No hints
+				.createContinuousSpace(Constants.SPACE_ID, context,
 						new RandomCartesianAdder<Object>(),
-						new repast.simphony.space.continuous.WrapAroundBorders(),
-						Constants.GRID_SIZE, Constants.GRID_SIZE);
+						// From Model 15, stop using toroidal space
+						new StrictBorders(), gridSizeX, gridSizeY);
 
-		// Create a toridal space on which agents and cells located at
-		final Grid<Object> grid = GridFactoryFinder
-				.createGridFactory(null)
-				.createGrid(
-						Constants.GRID_ID,
-						context,
+		// Create a space on which agents and cells located at
+		final Grid<Object> grid = GridFactoryFinder.createGridFactory(null)
+				.createGrid(Constants.GRID_ID, context,
 						new GridBuilderParameters<Object>(
-								new repast.simphony.space.grid.WrapAroundBorders(),
+						// From Model 15, stop using toroidal space
+								new repast.simphony.space.grid.StrictBorders(),
 								// This is a simple implementation of an adder
 								// that doesn't perform any action
 								new SimpleGridAdder<Object>(),
 								// Each cell in the grid is multi-occupancy
 								true,
-								// Size of the grid (defined constants)
-								Constants.GRID_SIZE, Constants.GRID_SIZE));
+								// Size of the grid (as read from file)
+								gridSizeX, gridSizeY));
 
-		// ---------------------------------------------------------------------
-		// Create the specified number of Bug agents and assign them to the
-		// space and the grid
+		// Create a background layer for the displayed grid that represents the
+		// available (grown) food amount
+		final GridValueLayer foodValueLayer = new GridValueLayer(
+				Constants.FOOD_VALUE_LAYER_ID, // Access layer through context
+				true, // Densely populated
+				// FIXME Using an instance of
+				// repast.simphony.space.grid.StrictBorders() here results in an
+				// exception when rendering
+				new WrapAroundBorders(), // Not toroidal
+				// Size of the grid (defined constants)
+				gridSizeX, gridSizeY);
+
+		context.addValueLayer(foodValueLayer);
+
+		createBugs(context, space, grid);
+		createHabitatCells(context, cellData, grid, foodValueLayer);
+
+		// The model stopping rule is changed: the model stops after 1000 time
+		// steps have been executed... [*] (see activateAgents())
+		RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
+
+		return context;
+	}
+
+	/**
+	 * Create the specified number of Bug agents and assign them to the space
+	 * and the grid.
+	 * 
+	 * @param context
+	 *            context to assign for the agent; <i>should not be
+	 *            <code>null</code></i>
+	 * @param space
+	 *            space to assign for the agent; <i>should not be
+	 *            <code>null</code></i>
+	 * @param grid
+	 *            grid to assign for the agent; <i>should not be
+	 *            <code>null</code></i>
+	 * @since Model 15
+	 */
+	private void createBugs(final Context<Object> context,
+			final ContinuousSpace<Object> space, final Grid<Object> grid) {
+		assert (context != null);
+		assert (space != null);
+		assert (grid != null);
+
+		final Parameters parameters = RunEnvironment.getInstance()
+				.getParameters();
 
 		// Parameter usage I: Parameter is declared on the graphical user
 		// interface
@@ -103,8 +183,6 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		final Normal normal = RandomHelper.createNormal(initialBugSizeMean,
 				initialBugSizeSD);
 
-		// ---------------------------------------------------------------------
-
 		// Create Bug agents and add them to the context and to the grid as
 		// placed randomly by the RandomCartesianAdder of the space
 		for (int i = 0; i < bugCount; ++i) {
@@ -115,34 +193,41 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 			final NdPoint pt = space.getLocation(bug);
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
 		}
+	}
 
-		// Create a background layer for the displayed grid that represents the
-		// available (grown) food amount
-		final GridValueLayer foodValueLayer = new GridValueLayer(
-				Constants.FOOD_VALUE_LAYER_ID, // Access layer through context
-				true, // Densely populated
-				new WrapAroundBorders(), // Toric world
-				// Size of the grid (defined constants)
-				Constants.GRID_SIZE, Constants.GRID_SIZE);
+	/**
+	 * Fill up the context with cells, and add them to the created grid. Also
+	 * set the initial food values for the value layer.
+	 * 
+	 * @param context
+	 *            context to assign for the cell; <i>should not be
+	 *            <code>null</code></i>
+	 * @param cellData
+	 *            parsed cell data from the specified input file to create the
+	 *            cell agents; <i>should not be <code>null</code></i>
+	 * @param grid
+	 *            grid to assign for the cell; <i>should not be
+	 *            <code>null</code></i>
+	 * @param foodValueLayer
+	 *            value layer to assign for the cell; <i>should not be
+	 *            <code>null</code></i>
+	 * @since Model 15
+	 */
+	private void createHabitatCells(final Context<Object> context,
+			final List<CellData> cellData, final Grid<Object> grid,
+			final GridValueLayer foodValueLayer) {
+		assert (context != null);
+		assert (cellData != null);
+		assert (grid != null);
+		assert (foodValueLayer != null);
 
-		context.addValueLayer(foodValueLayer);
-
-		// Fill up the context with cells, and set the initial food values for
-		// the new layer. Also add them to the created grid.
-		for (int i = 0; i < Constants.GRID_SIZE; ++i) {
-			for (int j = 0; j < Constants.GRID_SIZE; ++j) {
-				final HabitatCell cell = new HabitatCell(i, j);
-				context.add(cell); // First add it to the context
-				grid.moveTo(cell, i, j);
-				foodValueLayer.set(cell.getFoodAvailability(), i, j);
-			}
+		for (final CellData act : cellData) {
+			final HabitatCell cell = new HabitatCell(act);
+			context.add(cell); // First add it to the context
+			grid.moveTo(cell, act.getX(), act.getY());
+			foodValueLayer.set(cell.getFoodAvailability(), act.getX(),
+					act.getY());
 		}
-
-		// The model stopping rule is changed: the model stops after 1000 time
-		// steps have been executed... [*] (see activateAgents())
-		RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
-
-		return context;
 	}
 
 	/**

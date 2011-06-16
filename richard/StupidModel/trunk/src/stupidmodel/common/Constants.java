@@ -47,9 +47,6 @@ public final class Constants {
 	/** The <code>Grid</code> ID. */
 	public static final String GRID_ID = "grid";
 
-	/** The first model specified a two-dimensional grid <code>100 * 100</code>. */
-	public static final int GRID_SIZE = 100;
-
 	/**
 	 * Unique ID for the parameter representing the initial number of bugs. It
 	 * is set to <code>100</code> by default on the graphical interface.
@@ -121,6 +118,24 @@ public final class Constants {
 	 * @since Model 12
 	 */
 	public static final double DEFAULT_END_AT = 1000.0;
+
+	/**
+	 * In <i>Model 15</i> and above the cell data is not random anymore: a
+	 * specified file with a given format is used to construct cell agents,
+	 * defined as follows.
+	 * 
+	 * @since Model 15
+	 */
+	public static final String STUPID_CELL_DATA_FILE = "Stupid_Cell.data";
+
+	/**
+	 * The file specifying how to construct cell agents has exactly
+	 * <code>3</code> lines of header messages that can be dropped when parsing
+	 * it.
+	 * 
+	 * @since Model 15
+	 */
+	public static final int CELL_DATA_FILE_HEADER_LINES = 3;
 
 	// ========================================================================
 

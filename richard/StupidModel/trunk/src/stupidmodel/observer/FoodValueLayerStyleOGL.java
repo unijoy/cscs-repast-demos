@@ -99,8 +99,12 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 							food));
 		}
 
-		final int strength = (int) Math.max(255 - 200 * food, 0);
-		return new Color(strength, 0xFF, strength); // 0xFFFFFF - white,
+		//final int strength = (int) Math.max(255 - 200 * food, 0);
+		//return new Color(strength, 0xFF, strength); // 0xFFFFFF - white,
 													// 0x00FF00 - green
+		// UPDATED
+		final int strength = (int) Math.min(200 * food, 255);
+		return new Color(0, strength, 0); // 0x000000 - black,
+										  // 0x00FF00 - green
 	}
 }

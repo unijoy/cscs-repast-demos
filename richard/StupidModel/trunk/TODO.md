@@ -19,6 +19,12 @@ This file contains some minor-major current TODO elements.
 	  The Bug's move action need a bit of update. 
 	* We use value layers and see the grass growing
 
+* Error reporting: revert everywhere to MessageCenter's functions (that is the standard Repast S way to do it)
+
 * Commit backwards:
 	* Bug#foodConsumption() from Model 3
 	* Multi occuppancy from Model 3
+	* Cell background should fade from black to green, not whit to green (pre-14)
+
+### FIXMEs ###
+* How to infer generic types with `StupidModelContextBuilder#init(Context)`?

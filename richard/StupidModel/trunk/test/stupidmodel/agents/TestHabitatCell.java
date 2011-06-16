@@ -25,7 +25,7 @@ import repast.simphony.query.space.grid.TestGridCellFactory;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.valueLayer.GridValueLayer;
-import stupidmodel.agents.HabitatCell.HabitatCellFoodAvailabilityComparator;
+import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
 
 /**
@@ -47,7 +47,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(Integer.MIN_VALUE, -1);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		new HabitatCell(x, y);
+		new HabitatCell(new CellData(x, y, 1.0));
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(Integer.MIN_VALUE, -1);
 
-		new HabitatCell(x, y);
+		new HabitatCell(new CellData(x, y, 1.0));
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 		Assert.assertEquals(x, cell.x);
 	}
 
@@ -84,7 +84,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 		Assert.assertEquals(y, cell.y);
 	}
 
@@ -93,14 +93,12 @@ public class TestHabitatCell {
 	 * for a {@link Bug} correctly.
 	 */
 	@Test
-	public void testDefaultMaximumFoodProductionRate() {
+	public void testDefaultFoodProductionRate() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
-
-		Assert.assertEquals(0.01, cell.maximumFoodProductionRate,
-				Constants.DELTA);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 0.01));
+		Assert.assertEquals(0.01, cell.foodProductionRate, Constants.DELTA);
 	}
 
 	/**
@@ -108,16 +106,13 @@ public class TestHabitatCell {
 	 * {@link HabitatCell#setMaximumFoodProductionRate(double)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testSetMaximumFoodProductionRateFailure() {
+	public void testSetDefaultFoodProductionRateFailure() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
-
-		final HabitatCell cell = new HabitatCell(x, y);
-
 		final double wrongValue = RandomHelper.nextDoubleFromTo(
 				-Double.MAX_VALUE, -Double.MIN_VALUE);
 
-		cell.setMaximumFoodProductionRate(wrongValue);
+		new HabitatCell(new CellData(x, y, wrongValue));
 	}
 
 	/**
@@ -125,17 +120,14 @@ public class TestHabitatCell {
 	 * properly.
 	 */
 	@Test
-	public void testSetMaximumFoodProductionRateWorks() {
+	public void testSetDefaultFoodProductionRateWorks() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
-
-		final HabitatCell cell = new HabitatCell(x, y);
-
 		final double value = RandomHelper.nextDoubleFromTo(0.0,
 				Double.MAX_VALUE);
 
-		cell.setMaximumFoodProductionRate(value);
-		Assert.assertEquals(value, cell.getMaximumFoodProductionRate(),
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, value));
+		Assert.assertEquals(value, cell.getFoodProductionRate(),
 				Constants.DELTA);
 	}
 
@@ -147,7 +139,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 0.0));
 
 		Assert.assertEquals(0.0, cell.getFoodAvailability(), Constants.DELTA);
 	}
@@ -161,7 +153,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 
 		final double wrongValue = RandomHelper.nextDoubleFromTo(
 				-Double.MAX_VALUE, -Double.MIN_VALUE);
@@ -177,7 +169,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 
 		final double value = RandomHelper.nextDoubleFromTo(0.0,
 				Double.MAX_VALUE);
@@ -195,7 +187,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 
 		{ // Some workaround to make the test see like if it was running
 			final Context<Object> context = new DefaultContext<Object>();
@@ -215,7 +207,8 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final double value = RandomHelper.nextDoubleFromTo(0, Double.MAX_VALUE);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, value));
 
 		final GridValueLayer valueLayer = mock(GridValueLayer.class);
 		when(valueLayer.getName()).thenReturn(Constants.FOOD_VALUE_LAYER_ID);
@@ -232,9 +225,8 @@ public class TestHabitatCell {
 
 		cell.growFood();
 
-		Assert.assertTrue(prevFood <= cell.getFoodAvailability());
-		Assert.assertTrue(cell.getFoodAvailability() <= prevFood
-				+ cell.getMaximumFoodProductionRate());
+		Assert.assertEquals(prevFood + cell.getFoodProductionRate(),
+				cell.getFoodAvailability(), Constants.DELTA);
 	}
 
 	/**
@@ -246,7 +238,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 		final double wrongValue = RandomHelper.nextDoubleFromTo(
 				-Double.MAX_VALUE, -Double.MIN_VALUE);
 		cell.foodConsumed(wrongValue);
@@ -261,7 +253,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 
 		final double wrongValue = RandomHelper.nextDoubleFromTo(
 				cell.getFoodAvailability(), Double.MAX_VALUE);
@@ -276,7 +268,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 
 		final double food = RandomHelper
 				.nextDoubleFromTo(0.0, Double.MAX_VALUE);
@@ -298,7 +290,7 @@ public class TestHabitatCell {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
 
-		final HabitatCell cell = new HabitatCell(x, y);
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
 		Assert.assertNotNull(cell.toString());
 	}
 
@@ -310,21 +302,22 @@ public class TestHabitatCell {
 	public void testComparatorBasicFunctionality() {
 		final ArrayList<GridCell<HabitatCell>> list = new ArrayList<GridCell<HabitatCell>>();
 
-		final HabitatCell cell = new HabitatCell(0, 0);
+		final HabitatCell cell = new HabitatCell(new CellData(0, 0, 1.0));
 		cell.setFoodAvailability(10);
 		final GridCell<HabitatCell> gc1 = TestGridCellFactory
 				.createGridCellToTest(new GridPoint(0, 0), HabitatCell.class,
 						cell);
 		list.add(gc1);
 
-		final HabitatCell bell = new HabitatCell(1, 1);
+		final HabitatCell bell = new HabitatCell(new CellData(1, 1, 1.0));
 		bell.setFoodAvailability(20);
 		final GridCell<HabitatCell> gc2 = TestGridCellFactory
 				.createGridCellToTest(new GridPoint(1, 1), HabitatCell.class,
 						bell);
 		list.add(gc2);
 
-		Collections.sort(list, new HabitatCellFoodAvailabilityComparator());
+		Collections.sort(list,
+				HabitatCell.HABITAT_CELL_FOOD_AVAILABILITY_COMPARATOR);
 		Assert.assertEquals(gc2, list.get(0));
 		Assert.assertEquals(gc1, list.get(1));
 	}
@@ -339,28 +332,29 @@ public class TestHabitatCell {
 	public void testComparator() {
 		final ArrayList<GridCell<HabitatCell>> list = new ArrayList<GridCell<HabitatCell>>();
 
-		final HabitatCell cell = new HabitatCell(0, 0);
+		final HabitatCell cell = new HabitatCell(new CellData(0, 0, 1.0));
 		cell.setFoodAvailability(15);
 		final GridCell<HabitatCell> gc1 = TestGridCellFactory
 				.createGridCellToTest(new GridPoint(0, 0), HabitatCell.class,
 						cell);
 		list.add(gc1);
 
-		final HabitatCell bell = new HabitatCell(1, 1);
+		final HabitatCell bell = new HabitatCell(new CellData(1, 1, 1.0));
 		bell.setFoodAvailability(10);
 		final GridCell<HabitatCell> gc2 = TestGridCellFactory
 				.createGridCellToTest(new GridPoint(1, 1), HabitatCell.class,
 						bell);
 		list.add(gc2);
 
-		final HabitatCell dell = new HabitatCell(2, 2);
+		final HabitatCell dell = new HabitatCell(new CellData(2, 2, 1.0));
 		dell.setFoodAvailability(20);
 		final GridCell<HabitatCell> gc3 = TestGridCellFactory
 				.createGridCellToTest(new GridPoint(2, 2), HabitatCell.class,
 						dell);
 		list.add(gc3);
 
-		Collections.sort(list, new HabitatCellFoodAvailabilityComparator());
+		Collections.sort(list,
+				HabitatCell.HABITAT_CELL_FOOD_AVAILABILITY_COMPARATOR);
 		Assert.assertEquals(gc3, list.get(0));
 		Assert.assertEquals(gc1, list.get(1));
 		Assert.assertEquals(gc2, list.get(2));
