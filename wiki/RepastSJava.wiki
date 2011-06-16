@@ -9,7 +9,7 @@ Detailed documentation about tool and the API can be found here:
 
   http://repast.sourceforge.net/docs.html
 
-It is advised that users with a workable knowledge of a Java-based languages (such as Groovy) and who want to use the features of the general purpose programming language should use their chosen language after reading the [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Repast Java Getting Started guide]
+It is advised that users with a workable knowledge of a Java-based languages (such as Groovy) and who want to use the features of the general-purpose programming language should use their chosen language after reading the [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Repast Java Getting Started guide].
 
 Users with a workable knowledge of Java who want highly customized models also should begin with the aforementioned guide.
 
