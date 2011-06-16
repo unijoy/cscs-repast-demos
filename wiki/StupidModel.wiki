@@ -1,6 +1,12 @@
 #summary StupidModel Demo project.
 #sidebar TableOfContents
 
+=Summary=
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/trunk/
+ * Platform     : [RepastSJava Repast Simphony Java]
+ * Mentor       : Dr. Eric Tatara
+ * Author       : [Richard Richard Oliver Legendi]
+
 = Introduction =
 This tutorial is based on the article _[http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms]_ by Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson, and guides through a creation of a very simple model with random moving agents to a basic model with different agents interacting with each other and their surroundings in [http://repast.sourceforge.net/ Repast Simphony].
 
