@@ -2,6 +2,10 @@
 #labels SwarmRobotics,AreaCoverage,MobileWirelessSensorNetwork
 #sidebar TableOfContents
 
+*Contents*
+
+<wiki:toc max_depth="2" />
+
 =Summary=
 
   * Model        : Cover 360
@@ -9,6 +13,7 @@
   * Platform     : [RepastSReLogo RepastS ReLogo]
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
+
 
 = 1. Before Getting Started=
 
@@ -35,7 +40,7 @@ the model
 <wiki:video url="http://www.youtube.com/watch?v=rYIkgG1nX4E"/>
 
 
-=Description= 
+=3. Description= 
 
 
 The guiding algorithm is fairly simple. Each agents, lets call it a "Mote", tries to move in the area where there are less number of motes initially available. This forces the overall colony of motes to expand and thus covering a given area. 
@@ -137,7 +142,7 @@ _to be added soon_
 
 _to be added soon_
 
-=Applications=
+=4. Applications=
 
 ==Swarm Robotics and Mobile Wireless Sensor Networks==
 
@@ -163,7 +168,7 @@ Each "Mote" or agent will decide its' movement on a local basis so no global com
 It will be useful for social simulation. It can be used to study the behavior of colonies when each individual is given such a characteristic. 
 
  
-=Extending the Model=
+=5. Extending the Model=
 
 
 ==Adding Initial Geometry==
@@ -180,7 +185,7 @@ The Motes can be given more specific properties and the indivisual behavior can 
 Application specific graphs, outputters and plug in can be incorporated in the given model. 
 
 
-=References=
+=6. References=
 
 
 * http://ccl.northwestern.edu/netlogo/models/RandomWalk360/
