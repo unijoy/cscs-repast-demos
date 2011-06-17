@@ -17,8 +17,8 @@ Common SVN problems.
  * *Question:* I was wondering how you created the folders and did your initial import of files?  I was able to see the SVN repositories in Simphony and was able to checkout.  But when I tried to create a a directory or upload anything, it always fails. I was hoping to at least create a directory like you did.
  * *Answer:*  The commit may fail because of the password: Google Code uses a different generated password for the Subversion repository than your usual Google account password. This generated password is accessible through the web interface. Login to the project site and click on the [http://code.google.com/p/cscs-repast-demos/source/checkout Source] tab. See section _"When prompted, enter your generated googlecode.com [http://code.google.com/hosting/settings password]."_ You can always regenerate that password there.
 
- * *Question* I am keep getting some `502 Bad Gateway` errors while using the SVN server. What am I doing wrong?
- * *Answer* There are some minor problems with the Subversion server at Google Code (e.g., see issues [http://code.google.com/p/support/issues/detail?id=730 here], [http://code.google.com/p/support/issues/detail?id=1409 here] or [http://code.google.com/p/support/issues/detail?id=1427 here]. It seems there is no ultimate solution for the issue, the only one is to keep trying: 1 out of 4 or 5 commits should work...
+ * *Question:* I am keep getting some `502 Bad Gateway` errors while using the SVN server. What am I doing wrong?
+ * *Answer:* There are some minor problems with the Subversion server at Google Code (e.g., see issues [http://code.google.com/p/support/issues/detail?id=730 here], [http://code.google.com/p/support/issues/detail?id=1409 here] or [http://code.google.com/p/support/issues/detail?id=1427 here]. It seems there is no ultimate solution for the issue, the only one is to keep trying: 1 out of 4 or 5 commits should work...
 
 ----
 
