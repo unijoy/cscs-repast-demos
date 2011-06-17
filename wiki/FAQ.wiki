@@ -7,7 +7,7 @@ This page contains some Frequently Asked Questions and Hints/Tips for the projec
 
  # [#Subversion_FAQ Subversion FAQ]
  # [#Wiki_FAQ Wiki FAQ]
- # [#Tutorials]
+ # [#Tutorials Tutorials]
 
 ----
 
