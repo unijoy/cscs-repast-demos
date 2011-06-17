@@ -33,6 +33,7 @@ import repast.simphony.valueLayer.GridValueLayer;
 import stupidmodel.agents.Bug;
 import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.agents.HabitatCell;
+import stupidmodel.agents.Predator;
 import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
@@ -132,6 +133,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		context.addValueLayer(foodValueLayer);
 
 		createBugs(context, space, grid);
+		createPredators(context, space, grid);
 		createHabitatCells(context, cellData, grid, foodValueLayer);
 
 		// The model stopping rule is changed: the model stops after 1000 time
@@ -192,6 +194,22 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 			context.add(bug);
 			final NdPoint pt = space.getLocation(bug);
 			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
+		}
+	}
+
+	// DOCME
+	private void createPredators(final Context<Object> context,
+			final ContinuousSpace<Object> space, final Grid<Object> grid) {
+		assert (context != null);
+		assert (space != null);
+		assert (grid != null);
+
+		for (int i = 0; i < Constants.PREDATOR_COUNT; ++i) {
+			final Predator predator = new Predator();
+
+			context.add(predator);
+			final NdPoint pt = space.getLocation(predator);
+			grid.moveTo(predator, (int) pt.getX(), (int) pt.getY());
 		}
 	}
 

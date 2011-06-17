@@ -9,6 +9,7 @@ package stupidmodel.common;
 
 import stupidmodel.StupidModelContextBuilder;
 import stupidmodel.agents.Bug;
+import stupidmodel.agents.Predator;
 
 /**
  * Dedicated class to store some model-specific constant values (e.g. bug vision
@@ -136,6 +137,14 @@ public final class Constants {
 	 * @since Model 15
 	 */
 	public static final int CELL_DATA_FILE_HEADER_LINES = 3;
+
+	/**
+	 * <i>Model 16</i> specified to create <code>200</code> {@link Predator}
+	 * agents.
+	 * 
+	 * @since Model 16
+	 */
+	public static final int PREDATOR_COUNT = 200;
 
 	// ========================================================================
 

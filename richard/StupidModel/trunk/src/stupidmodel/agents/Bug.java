@@ -545,9 +545,14 @@ public class Bug {
 	/**
 	 * Simple utility function to show how to delete an agent.
 	 * 
-	 * @since Model 12
+	 * <p>
+	 * In Model 16, it was modified since {@link Predator} agents can also kill
+	 * a {@link Bug}.
+	 * </p>
+	 * 
+	 * @since Model 12, Model 16
 	 */
-	protected void die() {
+	public void die() {
 		ContextUtils.getContext(this).remove(this);
 	}
 
