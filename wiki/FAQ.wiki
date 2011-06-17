@@ -7,6 +7,7 @@ This page contains some Frequently Asked Questions and Hints/Tips for the projec
 
  # [#Subversion_FAQ Subversion FAQ]
  # [#Wiki_FAQ Wiki FAQ]
+ # [#Tutorials]
 
 ----
 
@@ -30,3 +31,20 @@ Common SVN problems.
     }}}
 
   The sidebar is a simple Wiki page, it can be [http://code.google.com/p/cscs-repast-demos/wiki/TableOfContents customized here]. 
+
+----
+
+== Tutorials ===
+Some notes on the tutorials.
+
+A sample tutorial is accessible in the SVN at the following link:
+
+  https://cscs-repast-demos.googlecode.com/svn/common/tutorials/sample
+
+Note as it stands that kind of tutorial is more about ''"here is how to create this model from scratch"''.
+
+A more interesting task is creating documentation like NetLogo models all have, i.e., an explanation of the model, how to use it, interesting features of th e model as a system, and notes about interesting programming features, etc.
+
+If you are not familiar with those NetLogo style demos and docs, take a look at them at the [http://ccl.northwestern.edu/netlogo/models/ NetLogo Model Library].
+
+If we get a couple of the jzombies style tutorials thats good, but we don't expect that for every demo. But we do expect to have NetLogo style documentation for every one.
