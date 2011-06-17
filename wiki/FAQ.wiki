@@ -44,8 +44,8 @@ Some notes on the tutorials we have to create during the summer.
 
    Note as it stands that kind of tutorial is more about _"here is how to create this model from scratch"_.
 
-   A more interesting task is creating documentation like NetLogo models all have, i.e., an explanation of the model, how to use it, interesting features of th e model as a system, and notes about interesting programming features, etc.
+   A more interesting task is creating documentation like [http://ccl.northwestern.edu/netlogo/ NetLogo] models all have, i.e., an explanation of the model, how to use it, interesting features of th e model as a system, and notes about interesting programming features, etc.
 
-   If you are not familiar with those NetLogo style demos and docs, take a look at them at the [http://ccl.northwestern.edu/netlogo/models/ NetLogo Model Library].
+   If you are not familiar with those !NetLogo style demos and docs, take a look at them at the [http://ccl.northwestern.edu/netlogo/models/ NetLogo Model Library].
 
-   If we get a couple of the jzombies style tutorials thats good, but we don't expect that for every demo. But we do expect to have NetLogo style documentation for every one.
+   If we get a couple of the JZombies style tutorials thats good, but we don't expect that for every demo. But we do expect to have !NetLogo style documentation for every one.
