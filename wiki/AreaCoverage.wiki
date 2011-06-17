@@ -4,25 +4,28 @@
 
 =Summary=
 
- * Model        : Cover 360
+  * Model        : Cover 360
+  * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
+  * Platform     : [RepastSReLogo RepastS ReLogo]
+  * Mentor       : Dr. Eric Tatara
+  * Author       : [Mudit Mudit Raj Gupta]
 
- * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
+= 1. Before Getting Started=
 
- * Platform     : [RepastSReLogo RepastS ReLogo]
+Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
 
- * Mentor       : Dr. Eric Tatara
+Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
 
- * Author       : [Mudit Mudit Raj Gupta]
-
-
-=Introduction=
+= 2. Introduction=
 
 
 The model describes the area coverage pattern of a group of Agent, initially kept in a given geometry. The model is useful in studying the spread, the agent density at different radii and comparing the spread given different geometries. The model can be further extended and modified according to specific application. 
 
-The model is inspired by the following work. It implements an initial stage of the model. It is a general implementation and can be changed depending on application. The model is modified and new features are added.
+The model is inspired by the following work. 
 
 - * K Cheng, P. Dasgupta " Distributed Coverage of Environments using Multi-robot swarms with Memory and Communication Constrains." UNO Technical Report no. cst-2009-1, 2009*
+
+It implements an initial stage of the model. It is a general implementation and can be changed depending on application. The model is modified and new features are added.
 
 A presentation of the work can be found [http://docs.google.com/viewer?a=v&q=cache:rP_3HLYWTIUJ:disalw3.epfl.ch/Miscellaneous/Events_News/Docs/Dasgupta_seminar_17062009.pdf+Area+Coverage+npde+counting&hl=en&gl=in&pid=bl&srcid=ADGEESi2rlCzZdWo9tXTCaiw_XnCwWmjkBi5HNACd0W-NpDRNgi9nULXZmAPspzA8wuQ8i7fUnEcNQpTnCCRNyYawja1i4X0kDzQ3LzaFPEwMy7yMwhEjxVjztBgtGDNYiQoXXD1_BmS&sig=AHIEtbTZSsgGpYDDJxR2XHJ3Eua9XjERyQ&pli=1 here]:
 
@@ -30,6 +33,7 @@ The "Dispersing" section of this video was also an inspiration for making
 the model
 
 <wiki:video url="http://www.youtube.com/watch?v=rYIkgG1nX4E"/>
+
 
 =Description= 
 
@@ -75,13 +79,13 @@ Given, f(x,y) is the equation of the figure and x, y are the respective x and y 
 
 For Example, Consider a circle with center on the origin and radius r units
 
- * Equation             : x^2 + y^2 - r^2 = 0
+ * Equation             : x^2^ + y^2^ - r^2^ = 0
 
- * Points on the circle : x^2 + y^2 - r^2 = 0
+ * Points on the circle : x^2^ + y^2^ - r^2^ = 0
 
- * Inside               : x^2 + y^2 - r^2 < 0
+ * Inside               : x^2^ + y^2^ - r^2^ < 0
 
- * Outside              : x^2 + y^2 - r^2 > 0
+ * Outside              : x^2^ + y^2^ - r^2^ > 0
 
 
 One one fourth of the figure is generated, it is randomly reflected or not reflected. If reflected it can be randomly reflected along any of the axes (x axis or y axis). This algorithm can be used to create any symmetric figure and fill turtles randomly in it.
