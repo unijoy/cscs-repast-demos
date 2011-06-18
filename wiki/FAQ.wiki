@@ -35,7 +35,7 @@ Common SVN problems.
 <wiki:toc max_depth="2" />
     }}}
 
-  The table of contents will be made from the headings you include in your WikiPage. You can change the depth by changing the value in "".  
+  The table of contents will be made from the headings you include in your WikiPage. You can change the depth by changing the value in `""`.
 
 ----
 
