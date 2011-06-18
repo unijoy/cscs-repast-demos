@@ -2,23 +2,29 @@
 #labels SwarmRobotics,AreaCoverage,MobileWirelessSensorNetwork
 #sidebar TableOfContents
 
-{{{*Summary*
+*Summary*
 
   * Model        : Cover 360
   * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
   * Platform     : [RepastSReLogo RepastS ReLogo]
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
-}}}
+
+------
+
 *Contents*
 
 <wiki:toc max_depth="2" />
+
+------
 
 = 1. Before Getting Started=
 
 Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
 
 Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+
+-----
 
 = 2. Introduction=
 
@@ -38,6 +44,7 @@ the model
 
 <wiki:video url="http://www.youtube.com/watch?v=rYIkgG1nX4E"/>
 
+-----
 
 =3. Description= 
 
@@ -141,6 +148,8 @@ _to be added soon_
 
 _to be added soon_
 
+----
+
 =4. Applications=
 
 ==Swarm Robotics and Mobile Wireless Sensor Networks==
@@ -166,7 +175,8 @@ Each "Mote" or agent will decide its' movement on a local basis so no global com
 
 It will be useful for social simulation. It can be used to study the behavior of colonies when each individual is given such a characteristic. 
 
- 
+----
+
 =5. Extending the Model=
 
 
@@ -183,6 +193,7 @@ The Motes can be given more specific properties and the indivisual behavior can 
 
 Application specific graphs, outputters and plug in can be incorporated in the given model. 
 
+----
 
 =6. References=
 
