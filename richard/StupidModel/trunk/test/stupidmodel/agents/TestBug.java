@@ -26,6 +26,7 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.common.Constants;
+import stupidmodel.common.SMUtils;
 
 /**
  * Simple tests for the created {@link Bug} agents.
@@ -36,40 +37,6 @@ import stupidmodel.common.Constants;
  * @see Bug
  */
 public class TestBug {
-
-	/**
-	 * Test failure if there is no grid associated to this agent.
-	 */
-	@Test(expected = IllegalStateException.class)
-	public void testNoGrid() {
-		// Some workaround to make the test see like if it was running
-		final Context<Object> context = new DefaultContext<Object>();
-		RunState.init().setMasterContext(context);
-
-		final Bug bug = new Bug();
-		context.add(bug);
-		bug.getGrid(); // Should fail
-	}
-
-	/**
-	 * Test if grid is set it is returned by the agent.
-	 */
-	@Test
-	public void testGridQuery() {
-		// Some workaround to make the test see like if it was running
-		final Context<Object> context = new DefaultContext<Object>();
-		RunState.init().setMasterContext(context);
-
-		@SuppressWarnings("unchecked")
-		final Grid<Object> grid = mock(Grid.class);
-		when(grid.getName()).thenReturn(Constants.GRID_ID);
-
-		context.addProjection(grid);
-
-		final Bug bug = new Bug();
-		context.add(bug);
-		Assert.assertSame(grid, bug.getGrid());
-	}
 
 	/**
 	 * Test invalid argument for the {@link Bug#setSize()} function.

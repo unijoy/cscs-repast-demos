@@ -16,7 +16,7 @@ import org.junit.Test;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id: SMUtilsTest.java 183 2011-05-29 17:09:27Z
+ * @version $Id: TestSMUtils.java 183 2011-05-29 17:09:27Z
  *          richard.legendi@gmail.com $
  * @see Constants
  */

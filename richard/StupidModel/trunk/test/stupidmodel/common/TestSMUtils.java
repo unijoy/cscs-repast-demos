@@ -5,7 +5,10 @@
  *     $LastChangedRevision$
  *     $LastChangedBy$
  */
-package stupidmodel;
+package stupidmodel.common;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -16,10 +19,16 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import repast.simphony.context.Context;
+import repast.simphony.context.DefaultContext;
+import repast.simphony.engine.environment.RunState;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.TestGridCellFactory;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
+import stupidmodel.agents.Bug;
+import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
 
 /**
@@ -27,11 +36,11 @@ import stupidmodel.common.SMUtils;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id: SMUtilsTest.java 183 2011-05-29 17:09:27Z
+ * @version $Id: TestSMUtils.java 183 2011-05-29 17:09:27Z
  *          richard.legendi@gmail.com $
  * @see SMUtils
  */
-public class SMUtilsTest {
+public class TestSMUtils {
 
 	/**
 	 * Easy win to get coverage and eliminate noise in the report: putting the
@@ -240,6 +249,40 @@ public class SMUtilsTest {
 	@Test
 	public void testProbAlwaysTrue() {
 		Assert.assertTrue(SMUtils.prob(0.0));
+	}
+
+	/**
+	 * Test failure if there is no grid associated to this agent.
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void testNoGrid() {
+		// Some workaround to make the test see like if it was running
+		final Context<Object> context = new DefaultContext<Object>();
+		RunState.init().setMasterContext(context);
+
+		final Bug bug = new Bug();
+		context.add(bug);
+		SMUtils.getGrid(bug); // Should fail
+	}
+
+	/**
+	 * Test if grid is set it is returned by the agent.
+	 */
+	@Test
+	public void testGridQuery() {
+		// Some workaround to make the test see like if it was running
+		final Context<Object> context = new DefaultContext<Object>();
+		RunState.init().setMasterContext(context);
+
+		@SuppressWarnings("unchecked")
+		final Grid<Object> grid = mock(Grid.class);
+		when(grid.getName()).thenReturn(Constants.GRID_ID);
+
+		context.addProjection(grid);
+
+		final Bug bug = new Bug();
+		context.add(bug);
+		Assert.assertSame(grid, SMUtils.getGrid(bug));
 	}
 
 }
