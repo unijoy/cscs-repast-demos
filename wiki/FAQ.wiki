@@ -40,7 +40,6 @@ Common SVN problems.
 
  * *Question:* How do I add pictures to the Wiki pages?
  * *Answer:* First, find a proper place in the SVN to upload it, and then put the URL of it directly into the Wiki page, e.g.:
-
     {{{
 https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
     }}}
