@@ -26,7 +26,6 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.common.Constants;
-import stupidmodel.common.SMUtils;
 
 /**
  * Simple tests for the created {@link Bug} agents.
