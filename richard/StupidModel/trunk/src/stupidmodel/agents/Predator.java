@@ -21,44 +21,70 @@ import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
 
 /**
+ * In <i>Model 16</i>, we have a new agent type for predators.
+ * 
+ * <p>
+ * Predator agents have a really simple behaviour: they start random walking on
+ * the grid, and as soon as they find a {@link Bug} agent, they eat it and move
+ * to their position. All of the predator actions are scheduled after the
+ * {@link Bug} actions.
+ * </p>
+ * 
+ * <p>
+ * Since predator agents are actually very simple, they are visualized with the
+ * <code>DefaultStyleOGL2D</code> offered by the wizard on the graphical user
+ * interface.
+ * </p>
+ * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 16
  * @version $Id$
  */
 public class Predator {
+
+	/**
+	 * Creates a new instance of <code>Predator</code> agent.
+	 */
 	public Predator() {
 		super();
 	}
 
 	/**
-	 * Scheduled after all the {@link Bug} actions.
+	 * Predators move randomly and search for bugs in their surroundings. If
+	 * they find the first, the found {@link Bug} agent is killed and they move
+	 * to the location of the killed {@link Bug}.
+	 * 
+	 * <p>
+	 * <i>Scheduled after all the {@link Bug} actions.</i>
+	 * </p>
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = -1)
 	public void hunt() {
-		// Reference for the used grid
-		final Grid<Object> grid = getGrid();
-		// Get the grid location of this Bug
+		// Get the reference for the used grid
+		final Grid<Object> grid = SMUtils.getGrid(this);
+
+		// Get the grid location of this agent
 		final GridPoint location = grid.getLocation(this);
 
-		// TODO Make constants
-
 		// First, a predator looks through a shuffled list of its immediately
-		// neighboring cells (including its own cell).
-		// TODO Test if 1 neighbourhood not 0
+		// neighboring cells (including its own cell)
+
 		final List<GridCell<HabitatCell>> cellNeighborhood = new GridCellNgh<HabitatCell>(
-				grid, location, HabitatCell.class, 1, 1).getNeighborhood(true);
+				grid, location, HabitatCell.class,
+				Constants.PREDATOR_SIGHT_RANGE, Constants.PREDATOR_SIGHT_RANGE)
+				.getNeighborhood(true);
 
 		SimUtilities.shuffle(cellNeighborhood, RandomHelper.getUniform());
 
 		// As soon as the predator finds a bug in one of these cells it "kills"
-		// the bug and moves into the cell.
+		// the bug and moves into the cell
 
 		for (final GridCell<HabitatCell> cell : cellNeighborhood) {
 			if (hasAgent(grid, cell, Bug.class)) {
 				// (However, if the cell already contains a predator, the
 				// hunting predator simply quits and remains at its current
-				// location.)
+				// location)
 				if (hasAgent(grid, cell, Predator.class)) {
 					return;
 				}
@@ -70,12 +96,32 @@ public class Predator {
 		}
 
 		// If these cells contain no bugs, the predator moves randomly to one of
-		// them.
+		// them
 		final GridCell<HabitatCell> randomCell = SMUtils
 				.randomElementOf(cellNeighborhood);
 		moveTo(grid, randomCell);
 	}
 
+	/**
+	 * Utility function for {@link Predator} agents to determine if a given cell
+	 * whether has an agent from a specified type located at or not.
+	 * 
+	 * @param <T>
+	 *            the type of the agent we are searching for at the specified
+	 *            location
+	 * @param grid
+	 *            the grid on which the {@link Predator} agent is located at;
+	 *            <i>should not be <code>null</code></i>
+	 * @param cell
+	 *            the cell where specified agent type is searched; <i>should not
+	 *            be <code>null</code></i>
+	 * @param clazz
+	 *            the <code>{@literal Class<T>}</code> object of the agent we
+	 *            are searching for
+	 * @return <code>true</code> if the number of agent instances from the
+	 *         specified type at the given location is above zero;
+	 *         <code>false</code> otherwise
+	 */
 	private <T> boolean hasAgent(final Grid<Object> grid,
 			final GridCell<HabitatCell> cell, final Class<T> clazz) {
 		assert (grid != null);
@@ -92,6 +138,17 @@ public class Predator {
 		return (ctr > 0);
 	}
 
+	/**
+	 * The {@link Predator} agent kills the {@link Bug} agent located at the
+	 * specified grid cell.
+	 * 
+	 * @param grid
+	 *            the grid on which the {@link Predator} agent is located at;
+	 *            <i>should not be <code>null</code></i>
+	 * @param cell
+	 *            the cell where the {@link Bug} agent is located which has to
+	 *            be destroyed; <i>should not be <code>null</code></i>
+	 */
 	private void killBugAt(final Grid<Object> grid,
 			final GridCell<HabitatCell> cell) {
 		assert (grid != null);
@@ -105,6 +162,16 @@ public class Predator {
 		bugsAt.get(0).items().iterator().next().die();
 	}
 
+	/**
+	 * Moves this agent on the specified grid to the pointed new location.
+	 * 
+	 * @param grid
+	 *            the grid on which the {@link Predator} agent is located at;
+	 *            <i>should not be <code>null</code></i>
+	 * @param cell
+	 *            the cell where the agent should migrate to; <i>should not be
+	 *            <code>null</code></i>
+	 */
 	private void moveTo(final Grid<Object> grid,
 			final GridCell<HabitatCell> cell) {
 		assert (grid != null);
@@ -115,24 +182,21 @@ public class Predator {
 		grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
 	}
 
-	/**
-	 * Returns a reference to the grid on which the agent is located at.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @return the <code>Grid</code> on which the agent is located; <i>cannot be
-	 *         <code>null</code></i>
-	 * @since Model 2
+	 * @see java.lang.Object#toString()
 	 */
-	// TODO Generalize this
-	protected Grid<Object> getGrid() {
-		@SuppressWarnings("unchecked")
-		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
-				.getProjection(Constants.GRID_ID);
+	@Override
+	public String toString() {
+		// This may happen when testing
+		final String location = (ContextUtils.getContext(this) != null) ? SMUtils
+				.getGrid(this).getLocation(this).toString()
+				: "[?, ?]";
 
-		if (null == grid) {
-			throw new IllegalStateException("Cannot locate grid in context.");
-		}
-
-		return grid;
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("Predator @ location %s", location);
 	}
 
 }

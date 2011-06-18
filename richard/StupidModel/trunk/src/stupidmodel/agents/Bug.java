@@ -137,30 +137,10 @@ public class Bug {
 	private double survivalProbability = 0.95;
 
 	/**
-	 * Creates a new instance of <code>Bug</code> associated with the specified
-	 * {@link Grid}.
+	 * Creates a new instance of <code>Bug</code> agent.
 	 */
 	public Bug() {
 		super();
-	}
-
-	/**
-	 * Returns a reference to the grid on which the agent is located at.
-	 * 
-	 * @return the <code>Grid</code> on which the agent is located; <i>cannot be
-	 *         <code>null</code></i>
-	 * @since Model 2
-	 */
-	protected Grid<Object> getGrid() {
-		@SuppressWarnings("unchecked")
-		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
-				.getProjection(Constants.GRID_ID);
-
-		if (null == grid) {
-			throw new IllegalStateException("Cannot locate grid in context.");
-		}
-
-		return grid;
 	}
 
 	/**
@@ -200,7 +180,6 @@ public class Bug {
 	 * @return the value of {@link #maxConsumptionRate}
 	 * @since Model 5
 	 * @see StupidModelContextBuilder#build(repast.simphony.context.Context)
-	 * @field maxConsumptionRate
 	 */
 	@Parameter(displayName = "Bug maximum food consumption rate", usageName = "maxConsumptionRate")
 	public double getMaxConsumptionRate() {
@@ -270,7 +249,7 @@ public class Bug {
 	 */
 	public void step() {
 		// Reference for the used grid
-		final Grid<Object> grid = getGrid();
+		final Grid<Object> grid = SMUtils.getGrid(this);
 		// Get the grid location of this Bug
 		final GridPoint location = grid.getLocation(this);
 
@@ -336,7 +315,7 @@ public class Bug {
 						freeCells);
 
 		final ArrayList<GridCell<HabitatCell>> ret = new ArrayList<GridCell<HabitatCell>>();
-		final Grid<Object> grid = getGrid();
+		final Grid<Object> grid = SMUtils.getGrid(this);
 
 		// Iterate over the specified location with no associated Bug agents
 		for (final GridCell<Bug> gridCell : freeCells) {
@@ -423,9 +402,10 @@ public class Bug {
 	 * @since Model 3
 	 */
 	private HabitatCell getUnderlyingCell() {
-		final GridPoint location = getGrid().getLocation(this);
-		final Iterable<Object> objects = getGrid().getObjectsAt(
-				location.getX(), location.getY());
+		final Grid<Object> grid = SMUtils.getGrid(this);
+		final GridPoint location = grid.getLocation(this);
+		final Iterable<Object> objects = grid.getObjectsAt(location.getX(),
+				location.getY());
 
 		HabitatCell ret = null;
 
@@ -502,7 +482,7 @@ public class Bug {
 		final Context<Object> context = (Context<Object>) ContextUtils
 				.getContext(this);
 
-		final Grid<Object> grid = getGrid();
+		final Grid<Object> grid = SMUtils.getGrid(this);
 		final GridPoint location = grid.getLocation(this);
 
 		// Spawn the specified number of descendants
@@ -547,7 +527,7 @@ public class Bug {
 	 * 
 	 * <p>
 	 * In Model 16, it was modified since {@link Predator} agents can also kill
-	 * a {@link Bug}.
+	 * a {@link Bug}, so it was modified to a <code>public</code> method.
 	 * </p>
 	 * 
 	 * @since Model 12, Model 16
@@ -600,8 +580,9 @@ public class Bug {
 	@Override
 	public String toString() {
 		// This may happen when testing
-		final String location = (ContextUtils.getContext(this) != null) ? getGrid()
-				.getLocation(this).toString() : "[?, ?]";
+		final String location = (ContextUtils.getContext(this) != null) ? SMUtils
+				.getGrid(this).getLocation(this).toString()
+				: "[?, ?]";
 
 		// Override default Java implementation just to have a nicer
 		// representation

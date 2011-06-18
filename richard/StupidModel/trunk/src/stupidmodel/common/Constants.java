@@ -146,6 +146,14 @@ public final class Constants {
 	 */
 	public static final int PREDATOR_COUNT = 200;
 
+	/**
+	 * Specifies the default sight vision range for predators where they search
+	 * for {@link Bug} agents to eat.
+	 * 
+	 * @since Model 16
+	 */
+	public static final int PREDATOR_SIGHT_RANGE = 1;
+
 	// ========================================================================
 
 	/**

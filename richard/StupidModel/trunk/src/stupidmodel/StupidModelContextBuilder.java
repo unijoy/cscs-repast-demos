@@ -57,7 +57,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	 * We perform the initialization, specifically: (i) parse the cell data
 	 * file, (ii) create the used space, grid instances, and initialize the
 	 * value layer associated with the displayed grid, (iii) populate the grid
-	 * with both {@link Bug} and {@link HabitatCell} agents.
+	 * with {@link Bug}, {@link Predator} and {@link HabitatCell} agents.
 	 * </p>
 	 * 
 	 * <p>
@@ -133,7 +133,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		context.addValueLayer(foodValueLayer);
 
 		createBugs(context, space, grid);
-		createPredators(context, space, grid);
+		createPredators(context, space, grid); // Predators created after bugs
 		createHabitatCells(context, cellData, grid, foodValueLayer);
 
 		// The model stopping rule is changed: the model stops after 1000 time
@@ -148,13 +148,13 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	 * and the grid.
 	 * 
 	 * @param context
-	 *            context to assign for the agent; <i>should not be
+	 *            context to assign for the bug agents; <i>should not be
 	 *            <code>null</code></i>
 	 * @param space
-	 *            space to assign for the agent; <i>should not be
+	 *            space to assign for the bug agents; <i>should not be
 	 *            <code>null</code></i>
 	 * @param grid
-	 *            grid to assign for the agent; <i>should not be
+	 *            grid to assign for the bug agents; <i>should not be
 	 *            <code>null</code></i>
 	 * @since Model 15
 	 */
@@ -197,7 +197,23 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		}
 	}
 
-	// DOCME
+	/**
+	 * By specification, <code>200</code> predator objects are intialized and
+	 * randomly distributed as the {@link Bug} agents are. A cell may contain a
+	 * {@link Predator} as well as a {@link Bug}, so we do not have to deal with
+	 * any validation about the placement.
+	 * 
+	 * @param context
+	 *            context to assign for the predator agents; <i>should not be
+	 *            <code>null</code></i>
+	 * @param space
+	 *            space to assign for the predator agents; <i>should not be
+	 *            <code>null</code></i>
+	 * @param grid
+	 *            grid to assign for the predator agents; <i>should not be
+	 *            <code>null</code></i>
+	 * @since Model 16
+	 */
 	private void createPredators(final Context<Object> context,
 			final ContinuousSpace<Object> space, final Grid<Object> grid) {
 		assert (context != null);

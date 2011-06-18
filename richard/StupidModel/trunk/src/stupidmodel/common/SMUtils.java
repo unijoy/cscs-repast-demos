@@ -17,6 +17,9 @@ import java.util.List;
 
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.grid.Grid;
+import repast.simphony.util.ContextUtils;
+import stupidmodel.agents.Bug;
 
 /**
  * Dedicated class for declaring utility functions that is uninstantiable.
@@ -191,6 +194,35 @@ public final strictfp class SMUtils {
 		}
 
 		return Collections.unmodifiableList(ret);
+	}
+
+	/**
+	 * Returns a reference to the grid on which the specified agent is located
+	 * at.
+	 * 
+	 * <p>
+	 * It was a {@link Bug} level agent function, but was generalized because in
+	 * <i>Model 16</i> we have multiple agent instances requiring this
+	 * functionality.
+	 * </p>
+	 * 
+	 * @param o
+	 *            an object to find in the contexts and return its grid
+	 *            projection; <i>cannot be <code>null</code></i>
+	 * @return the <code>Grid</code> on which the agent is located; <i>cannot be
+	 *         <code>null</code></i>
+	 * @since Model 16
+	 */
+	public static Grid<Object> getGrid(final Object o) {
+		@SuppressWarnings("unchecked")
+		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(o)
+				.getProjection(Constants.GRID_ID);
+
+		if (null == grid) {
+			throw new IllegalStateException("Cannot locate grid in context.");
+		}
+
+		return grid;
 	}
 
 	// ========================================================================
