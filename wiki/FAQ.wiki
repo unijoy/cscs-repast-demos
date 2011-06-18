@@ -37,6 +37,20 @@ Common SVN problems.
 
   The table of contents will be made from the headings you include in your Wiki page. You can change the depth by changing the value in `""`.
 
+
+ * *Question:* How do I add pictures to the Wiki pages?
+ * *Answer:* First, find a proper place in the SVN to upload it, and then put the URL of it directly into the Wiki page, e.g.:
+
+  {{{
+  https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
+  }}}
+
+  It will display a Funny Panda:
+
+  https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
+
+  For further info, please refer to the [http://code.google.com/p/support/wiki/WikiSyntax#Links_to_external_pages WikiSyntax] documentation.
+
 ----
 
 == Tutorials ===
