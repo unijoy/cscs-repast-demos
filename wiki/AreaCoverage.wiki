@@ -24,7 +24,7 @@ Before trying to use the model, make sure that Repast Simphony is installed prop
 
 Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
 
-[WikiSyntax#Conents back to top]
+
 -----
 
 = 2. Introduction=
