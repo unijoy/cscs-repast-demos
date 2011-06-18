@@ -24,8 +24,8 @@ Record status after the group agrees on the assignment - planned,working,done
     * Done: _Nothing Yet_
   * *[Richard Richard Legendi]* (mentor: eric)
     * Planned: R demo
-    * Working: StupidModel 1-16
-    * Done: _Nothing yet_
+    * Working: StupidModel documentation
+    * Done: StupidModel
   * *[Grace Grace Lin]* (mentor: rick)
     * Planned: [Grace#Planned_Models Termites]; Rebellion; Sunflower Biomorphs
     * Working: [Grace#Planned_Models Fire]
