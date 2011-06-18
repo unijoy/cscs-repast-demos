@@ -34,7 +34,7 @@ public class Predator {
 	/**
 	 * Scheduled after all the {@link Bug} actions.
 	 */
-	@ScheduledMethod(start = 1, interval = 1, priority = 1)
+	@ScheduledMethod(start = 1, interval = 1, priority = -1)
 	public void hunt() {
 		// Reference for the used grid
 		final Grid<Object> grid = getGrid();
