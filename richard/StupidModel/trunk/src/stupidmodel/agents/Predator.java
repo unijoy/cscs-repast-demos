@@ -55,11 +55,11 @@ public class Predator {
 		// the bug and moves into the cell.
 
 		for (final GridCell<HabitatCell> cell : cellNeighborhood) {
-			if (hasBug(grid, cell)) {
+			if (hasAgent(grid, cell, Bug.class)) {
 				// (However, if the cell already contains a predator, the
 				// hunting predator simply quits and remains at its current
 				// location.)
-				if (hasPredator(grid, cell)) {
+				if (hasAgent(grid, cell, Predator.class)) {
 					return;
 				}
 
@@ -76,36 +76,27 @@ public class Predator {
 		moveTo(grid, randomCell);
 	}
 
-	// TODO Merge the next 2 functions, a type parameter T and a class may solve
-	// it
-	private boolean hasBug(final Grid<Object> grid,
-			final GridCell<HabitatCell> cell) {
+	private <T> boolean hasAgent(final Grid<Object> grid,
+			final GridCell<HabitatCell> cell, final Class<T> clazz) {
 		assert (grid != null);
 		assert (cell != null);
 
-		final int predatorCount = new GridCellNgh<Bug>(grid, cell.getPoint(),
-				Bug.class, 0, 0).getNeighborhood(true).size();
+		final List<GridCell<T>> neighborhood = new GridCellNgh<T>(grid,
+				cell.getPoint(), clazz, 0, 0).getNeighborhood(true);
 
-		return (predatorCount > 0);
-	}
+		assert (neighborhood != null);
+		assert (1 == neighborhood.size());
 
-	private boolean hasPredator(final Grid<Object> grid,
-			final GridCell<HabitatCell> cell) {
-		assert (grid != null);
-		assert (cell != null);
+		final int ctr = neighborhood.get(0).size();
 
-		final int predatorCount = new GridCellNgh<Predator>(grid,
-				cell.getPoint(), Predator.class, 0, 0).getNeighborhood(true)
-				.size();
-
-		return (predatorCount > 0);
+		return (ctr > 0);
 	}
 
 	private void killBugAt(final Grid<Object> grid,
 			final GridCell<HabitatCell> cell) {
 		assert (grid != null);
 		assert (cell != null);
-		assert (hasBug(grid, cell));
+		assert (hasAgent(grid, cell, Bug.class));
 
 		final List<GridCell<Bug>> bugsAt = new GridCellNgh<Bug>(grid,
 				cell.getPoint(), Bug.class, 0, 0).getNeighborhood(true);
