@@ -29,8 +29,13 @@ Common SVN problems.
     {{{
 #sidebar TableOfContents
     }}}
+ * *Question:* How do I add a table of contents to a page like the other pages have?
+ * *Answer:* If you create a new page, you can add the table of content to it by using the following pragma definition:
+    {{{
+<wiki:toc max_depth="2" />
+    }}}
 
-  The sidebar is a simple Wiki page, it can be [http://code.google.com/p/cscs-repast-demos/wiki/TableOfContents customized here]. 
+  The table of contents will be made from the headings you include in your WikiPage. You can change the depth by changing the value in "".  
 
 ----
 
