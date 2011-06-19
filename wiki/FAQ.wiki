@@ -41,19 +41,21 @@ Common SVN problems.
 ----
 
 = Wiki FAQ =
-== Adding Table of Contents to Wiki Pages ==
- * *Question:* How do I add a sidebar to a page like the other pages have?
- * *Answer:* If you create a new page, you can add the sidebar to it by using the following pragma definition:
-    {{{
-#sidebar TableOfContents
-    }}}
- * *Question:* How do I add a table of contents to a page like the other pages have?
- * *Answer:* If you create a new page, you can add the table of content to it by using the following pragma definition:
-    {{{
-<wiki:toc max_depth="2" />
-    }}}
+== How do I add a sidebar to a page like the other pages have? ==
+If you create a new page, you can add the sidebar to it by using the following pragma definition:
 
-  The table of contents will be made from the headings you include in your Wiki page. You can change the depth by changing the value in `""`.
+{{{
+#sidebar TableOfContents
+}}}
+
+== How do I add a table of contents to a page like the other pages have? ==
+If you create a new page, you can add the table of content to it by using the following pragma definition:
+
+{{{
+<wiki:toc max_depth="2" />
+}}}
+
+The table of contents will be made from the headings you include in your Wiki page. You can change the depth by changing the value in `""`.
 
 == How do I add pictures to the Wiki pages? ==
 First, find a proper place in the SVN to upload it, and then put the URL of it directly into the Wiki page, e.g.:
