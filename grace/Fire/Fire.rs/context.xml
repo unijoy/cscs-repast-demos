@@ -1,0 +1,6 @@
+<context id="Fire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+	<projection type="grid" id="Grid"></projection>
+	<projection type="value layer" id="State"></projection>
+	<projection type="continuous space" id="Space"></projection>
+
+</context>
