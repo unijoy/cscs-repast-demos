@@ -32,7 +32,8 @@ import stupidmodel.common.Constants;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: TestBug.java 428 2011-06-18 14:19:31Z richard.legendi@gmail.com
+ *          $
  * @see Bug
  */
 public class TestBug {
@@ -105,6 +106,73 @@ public class TestBug {
 		Assert.assertEquals(b2, list.get(0));
 		Assert.assertEquals(b1, list.get(1));
 		Assert.assertEquals(b3, list.get(2));
+	}
+
+	/**
+	 * Test if setting an unexpected value for maximum consumption rate.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testSettingWrongMaxCosnumptionRate() {
+		final Bug bug = new Bug();
+
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+
+		bug.setMaxConsumptionRate(wrongValue); // Should fail
+	}
+
+	/**
+	 * Test if setting a value for maximum consumption rate works as expected.
+	 */
+	@Test
+	public void testSettingMaxCosnumptionRate() {
+		final Bug bug = new Bug();
+
+		final double value = RandomHelper.nextDoubleFromTo(0, Double.MAX_VALUE);
+		bug.setMaxConsumptionRate(value);
+
+		Assert.assertEquals(value, bug.getMaxConsumptionRate(), Constants.DELTA);
+	}
+
+	/**
+	 * Test if setting an unexpected (negative) value for survival probability.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testSettingNegativeSurvivalProbability() {
+		final Bug bug = new Bug();
+
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+
+		bug.setSurvivalProbability(wrongValue); // Should fail
+	}
+
+	/**
+	 * Test if setting an unexpected (greater than one) value for survival
+	 * probability.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testSettingAboveOneSurvivalProbability() {
+		final Bug bug = new Bug();
+
+		final double wrongValue = RandomHelper.nextDoubleFromTo(1.0,
+				Double.MAX_VALUE);
+
+		bug.setSurvivalProbability(wrongValue); // Should fail
+	}
+
+	/**
+	 * Test if setting a value for survival probability works as expected.
+	 */
+	@Test
+	public void testSettingSurvivalProbability() {
+		final Bug bug = new Bug();
+
+		final double value = RandomHelper.nextDoubleFromTo(0, 1.0);
+		bug.setSurvivalProbability(value);
+
+		Assert.assertEquals(value, bug.getSurvivalProbability(),
+				Constants.DELTA);
 	}
 
 	/**
