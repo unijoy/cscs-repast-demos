@@ -72,7 +72,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 		assert (context != null);
-		
+
 		// Set a specified context ID
 		context.setId(Constants.CONTEXT_ID);
 
@@ -174,9 +174,10 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		// interface
 		final int bugCount = ((Integer) parameters
 				.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
-		
+
 		if (bugCount < 0) {
-			throw new IllegalParameterException("Parameter bugCount = " + bugCount + " must be non-negative");
+			throw new IllegalParameterException("Parameter bugCount = "
+					+ bugCount + " must be non-negative");
 		}
 
 		// Model 14 defines a new random normal distribution to use for the
@@ -338,7 +339,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 	 * @return list of bugs associated with the master (<i>root</i>) context
 	 * @since Model 9
 	 */
-	private ArrayList<Bug> getBugList() {
+	protected ArrayList<Bug> getBugList() {
 		@SuppressWarnings("unchecked")
 		final Iterable<Bug> bugs = RunState.getInstance().getMasterContext()
 				.getObjects(Bug.class);

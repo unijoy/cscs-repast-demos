@@ -171,8 +171,6 @@ public final strictfp class SMUtils {
 
 					ret.add(new CellData(x, y, foodProductionRate));
 				} catch (final NumberFormatException e) {
-					e.printStackTrace();
-
 					throw new IllegalArgumentException(String.format(
 							"File %s contains a malformed input line: %s",
 							cellDataFileName, line), e);
@@ -180,9 +178,9 @@ public final strictfp class SMUtils {
 			}
 
 		} catch (final FileNotFoundException e) {
-			e.printStackTrace();
+			throw new IllegalArgumentException(e);
 		} catch (final IOException e) {
-			e.printStackTrace();
+			throw new IllegalArgumentException(e);
 		} finally {
 			if (br != null) {
 				try {

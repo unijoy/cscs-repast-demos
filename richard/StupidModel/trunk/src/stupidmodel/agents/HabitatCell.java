@@ -176,7 +176,7 @@ public class HabitatCell {
 	}
 
 	/**
-	 * Sets the maximum food consumption rate of the current bug.
+	 * Sets the maximum food consumption rate of the current cell.
 	 * 
 	 * @param maximumFoodProductionRate
 	 *            the new value of {@link #maximumFoodProductionRate}; <i>must

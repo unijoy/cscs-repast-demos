@@ -152,7 +152,7 @@ public final class Constants {
 	 * 
 	 * @since Model 16
 	 */
-	public static final int PREDATOR_SIGHT_RANGE = 1;
+	public static final int PREDATOR_VISION_RANGE = 1;
 
 	// ========================================================================
 

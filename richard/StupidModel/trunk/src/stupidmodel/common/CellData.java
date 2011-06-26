@@ -26,7 +26,8 @@ import stupidmodel.agents.HabitatCell;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 15
- * @version $Id$
+ * @version $Id: CellData.java 428 2011-06-18 14:19:31Z
+ *          richard.legendi@gmail.com $
  */
 public class CellData {
 
@@ -177,6 +178,39 @@ public class CellData {
 		// representation
 		return String.format("CellData [x=%d, y=%d, foodProductionRate=%f", x,
 				y, foodProductionRate);
+	}
+
+	/**
+	 * Standard implementation for the <code>hashCode()</code> function.
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		final long temp = Double.doubleToLongBits(foodProductionRate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	/**
+	 * Standard implementation for the <code>equals()</code> function.
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(final Object obj) {
+		if (obj instanceof CellData) {
+			final CellData other = (CellData) obj;
+			return (x == other.x && y == other.y && Double
+					.doubleToLongBits(foodProductionRate) == Double
+					.doubleToLongBits(other.foodProductionRate));
+		}
+
+		return false;
 	}
 
 }

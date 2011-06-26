@@ -191,6 +191,16 @@ public class TestBug {
 	}
 
 	/**
+	 * Test invalid argument for the
+	 * {@link Bug#setInitialSize(cern.jet.random.Normal)} function.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidParameterForSetInitialSize() {
+		final Bug bug = new Bug();
+		bug.setInitialSize(null);
+	}
+
+	/**
 	 * Just to suppress <code>toString()</code> coverage noise.
 	 */
 	@Test

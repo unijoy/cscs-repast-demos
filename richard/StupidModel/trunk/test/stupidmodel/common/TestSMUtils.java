@@ -10,7 +10,10 @@ package stupidmodel.common;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.lang.reflect.Constructor;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,8 +31,6 @@ import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import stupidmodel.agents.Bug;
-import stupidmodel.common.Constants;
-import stupidmodel.common.SMUtils;
 
 /**
  * Test methods for the {@link SMUtils} class.
@@ -283,6 +284,62 @@ public class TestSMUtils {
 		final Bug bug = new Bug();
 		context.add(bug);
 		Assert.assertSame(grid, SMUtils.getGrid(bug));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithNullParameter() {
+		SMUtils.readDataFile(null); // Should fail
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithEmptyParameter() {
+		SMUtils.readDataFile(""); // Should fail
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithNoTarget() {
+		SMUtils.readDataFile("/some/unexistent/file"); // Should fail
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithLockedFile() {
+		final String lockedFile = "test/stupidmodel/common/Stupid_Cell_LockedFile.Data";
+		try {
+			final FileChannel in = new RandomAccessFile(lockedFile, "rw")
+					.getChannel();
+			final java.nio.channels.FileLock lock = in.lock();
+			try {
+				SMUtils.readDataFile(lockedFile); // Should fail
+			} finally {
+				lock.release();
+				in.close();
+			}
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithMissingData() {
+		SMUtils.readDataFile("test/stupidmodel/common/Stupid_Cell_Missing.Data"); // Should
+																					// fail
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testReadDataFileWithInvalidData() {
+		// Chtulhu
+		SMUtils.readDataFile("test/stupidmodel/common/Stupid_Cell_Invalid.Data"); // Should
+																					// fail
+	}
+
+	@Test
+	public void testReadDataFileWithSampleData() {
+		final List<CellData> data = SMUtils
+				.readDataFile("test/stupidmodel/common/Stupid_Cell_Sample.Data");
+
+		Assert.assertEquals(new CellData(5, 5, 0.1), data.get(0));
+		Assert.assertEquals(new CellData(10, 15, 0.2), data.get(1));
+		Assert.assertEquals(new CellData(3, 7, 0.3), data.get(2));
 	}
 
 }
