@@ -13,6 +13,8 @@ The overall design of the Boids algorithm is based on [http://www.red3d.com/cwr/
 
 These three rules can conflict with each other, as we will see, the way that we deal with those conflicts will influence the final behavior of the flocks of Boids.
 
+Boids is a study of the kind of algorithm that starlings might follow in order to create these spectacular clouds of birds:
+<wiki:video url="http://www.youtube.com/watch?v=eakKfY5aHmY"/>
 = Implementation =
 
 === Alignment ===
