@@ -1,15 +1,17 @@
 #summary Boids ReLogo/groovy implementation by R Copley
 #sidebar TableOfContents
 
-= Introduction =
-Boids is a relatively simple agent-based model based on the steering behavior of flocking birds. 
+= 0. Before Beginning = 
+Before we can do anything with Repast Simphony, we need to make sure that we have a proper installation of Repast Simphony 2.0. Instructions on downloading and installing Repast Simphony on various platforms can be found on the Repast website.
 
-There are three simple rules that each Boid must follow(0):
+= 1. What is Boids? =
+Boids is a relatively simple agent-based model which simulates the steering behavior of flocking birds. Applications range from studying Artificial Life to implementing the algorithm in a flock of robots. The advantage of Boids is the bottom-up approach to flocking, rather than the top-down approach: each individual Boid need only follow a few simple rules and flocks will emerge naturally.
+The overall design of the Boids algorithm is based on [http://www.red3d.com/cwr/boids/ Craig Reynold's original Boids] algorithm consists of three rules:
   * Alignment: Each Boid steers itself to align its heading with that of its neighbors
   * Cohesion: Each Boid steers itself to the average position of its flockmates
   * Separation: Each Boid steers itself in order not to crowd its neighbors
 
-Obviously, these three simple algorithms for determining the heading of each Boid at the next timestep are often conflicting. So the directions are averaged together. For variation, weights can be applied to each rule, so that it is more or less influential in the final direction.
+These three rules can conflict with each other, as we will see, the way that we deal with those conflicts will influence the final behavior of the flocks of Boids.
 
 = Implementation =
 
