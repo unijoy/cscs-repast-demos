@@ -12,7 +12,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Done: tba
   * *[Rowan Rowan Copley]* (mentor: nick)
     * Planned: tba
-    * Working: _Nothing yet_
+    * Working: N-Bodies
     * Done: [Boids Boids(groovy) alpha version]
   * *Kwame Green* (mentor: mike)
     * Planned: tba
