@@ -7,8 +7,7 @@
  */
 package stupidmodel.agents;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +16,7 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
@@ -25,7 +25,9 @@ import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import stupidmodel.agents.Bug.BugSizeComparator;
+import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
+import stupidmodel.common.TestUtils;
 
 /**
  * Simple tests for the created {@link Bug} agents.
@@ -198,6 +200,126 @@ public class TestBug {
 	public void testInvalidParameterForSetInitialSize() {
 		final Bug bug = new Bug();
 		bug.setInitialSize(null);
+	}
+
+	/**
+	 * Test if {@link Bug#grow()} increases the size as required.
+	 * 
+	 * <p>
+	 * Caution, used partial mocking here.
+	 * </p>
+	 */
+	@Test
+	public void testGrow() {
+		// Given
+		final Bug bugSpy = Mockito.spy(new Bug());
+
+		final double prevSize = RandomHelper.nextDoubleFromTo(0,
+				Double.MAX_VALUE);
+		bugSpy.setSize(prevSize);
+
+		final double availableFood = RandomHelper.nextDoubleFromTo(0,
+				Double.MAX_VALUE);
+
+		doReturn(availableFood).when(bugSpy).foodConsumption();
+
+		// When
+		bugSpy.grow();
+
+		// Then
+		Assert.assertEquals(prevSize + availableFood, bugSpy.getSize(),
+				Constants.DELTA);
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testGetUnderlyingCellWhenNoCellGiven() {
+		final Context<Object> context = TestUtils.initContext();
+		final Grid<Object> grid = TestUtils.initEmptyGrid(context);
+
+		final Bug bug = new Bug();
+		context.add(bug);
+		grid.moveTo(bug, 5, 5);
+
+		bug.getUnderlyingCell(); // Should fail: No underlying HabitatCell
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testGetUnderlyingCellWhenMultipleCellGiven() {
+		final Context<Object> context = TestUtils.initContext();
+		final Grid<Object> grid = TestUtils.initGrid(context);
+
+		final Bug bug = new Bug();
+		context.add(bug);
+		grid.moveTo(bug, 5, 5);
+
+		final HabitatCell secondCell = new HabitatCell(new CellData(5, 5, 0.02));
+		context.add(secondCell);
+		grid.moveTo(secondCell, 5, 5);
+
+		bug.getUnderlyingCell(); // Should fail: Multiple HabitatCells
+	}
+
+	@Test
+	public void testGetUnderlying() {
+		// Given
+		final Context<Object> context = TestUtils.initContext();
+		final Grid<Object> grid = TestUtils.initGrid(context);
+
+		// Leave here: after moving the bug agent to the same position the test
+		// may fail 50% of the times
+		final HabitatCell expectedCell = (HabitatCell) grid.getObjectAt(5, 5);
+
+		final Bug bug = new Bug();
+		context.add(bug);
+		grid.moveTo(bug, 5, 5);
+
+		// When
+		final HabitatCell actualCell = bug.getUnderlyingCell();
+
+		// Then
+		Assert.assertSame(expectedCell, actualCell);
+	}
+
+	@Test
+	public void testFoodConsumptionWhenCellHasLesserFood() {
+		// Given
+		// Bug consumes 1 food by default
+		final Bug bugSpy = Mockito.spy(new Bug());
+
+		// Cell has 0.5 food
+		final double food = 0.5;
+		final HabitatCell underlyingCell = new HabitatCell(new CellData(5, 5,
+				0.5));
+		underlyingCell.setFoodAvailability(food);
+
+		doReturn(underlyingCell).when(bugSpy).getUnderlyingCell();
+
+		// When
+		final double consumption = bugSpy.foodConsumption();
+
+		// Then consumption should be 0.5
+		Assert.assertEquals(food, consumption, Constants.DELTA);
+	}
+
+	@Test
+	public void testFoodConsumptionWhenCellHasMoreFood() {
+		// Given
+		// Bug consumes 1 food by default
+		final Bug bugSpy = Mockito.spy(new Bug());
+
+		// Cell has 1.5 food
+		final double food = 1.5;
+		final HabitatCell underlyingCell = new HabitatCell(new CellData(5, 5,
+				0.5));
+		underlyingCell.setFoodAvailability(food);
+
+		doReturn(underlyingCell).when(bugSpy).getUnderlyingCell();
+
+		// When
+		final double consumption = bugSpy.foodConsumption();
+
+		// Then consumption should be 1.0
+		Assert.assertEquals(1.0, consumption, Constants.DELTA);
 	}
 
 	/**

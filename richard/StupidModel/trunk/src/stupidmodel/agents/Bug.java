@@ -372,7 +372,7 @@ public class Bug {
 	 *         </i>
 	 * @since Model 3
 	 */
-	private double foodConsumption() {
+	protected double foodConsumption() {
 		final HabitatCell cell = getUnderlyingCell();
 		final double foodAvailable = cell.getFoodAvailability();
 
@@ -401,7 +401,7 @@ public class Bug {
 	 *         <code>non-null</code>
 	 * @since Model 3
 	 */
-	private HabitatCell getUnderlyingCell() {
+	protected HabitatCell getUnderlyingCell() {
 		final Grid<Object> grid = SMUtils.getGrid(this);
 		final GridPoint location = grid.getLocation(this);
 		final Iterable<Object> objects = grid.getObjectsAt(location.getX(),
