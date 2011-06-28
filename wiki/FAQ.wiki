@@ -39,10 +39,8 @@ Common SVN problems.
  * *Answer:* There are some minor problems with the Subversion server at Google Code (e.g., see issues [http://code.google.com/p/support/issues/detail?id=730 here], [http://code.google.com/p/support/issues/detail?id=1409 here] or [http://code.google.com/p/support/issues/detail?id=1427 here]). It seems there is no ultimate solution for the issue, the only one is to keep trying: 1 out of 4 or 5 commits should work...
 
 == 405 Method Not Allowed ==
- * *Question:* This error occurs when you try to commit: "Server sent unexpected return value (405 Method Not Allowed) in
-response to MKACTIVITY request for
-'/svn/!svn/act/_random hex characters_"
- * *Possible Solution:* This occurs when you try to make anonymous commits to the repository. Check to make sure that your Repository URL starts with 'https://' instead of 'http://'.
+ * *Question:* This error occurs when you try to commit: "Server sent unexpected return value (405 Method Not Allowed) in response to MKACTIVITY request for '/svn/!svn/act/_random hex characters_."
+ * *Possible Solution:* This occurs when you try to make anonymous commits to the repository. Check to make sure that your repository URL starts with 'https' instead of 'http.'
 ----
 
 = Wiki FAQ =
