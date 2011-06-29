@@ -18,7 +18,7 @@ Boids is a study of the kind of algorithm that starlings might follow in order t
 
 = 2. Implementation =
 
-Open Repast and switch to the ReLogo perspective. ....
+Open Repast and switch to the ReLogo perspective. Next, create a new project and name it 'Boids.'
 
 === Alignment ===
 
