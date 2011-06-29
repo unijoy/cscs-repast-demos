@@ -154,6 +154,11 @@ public final class Constants {
 	 */
 	public static final int PREDATOR_VISION_RANGE = 1;
 
+	/**
+	 * Maximum size of a bug when it should reproduce itself.
+	 */
+	public static final double MAX_BUG_SIZE = 10.0;
+
 	// ========================================================================
 
 	/**

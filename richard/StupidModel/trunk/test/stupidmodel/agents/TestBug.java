@@ -9,6 +9,7 @@ package stupidmodel.agents;
 
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ import repast.simphony.engine.environment.RunState;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
+import repast.simphony.util.collections.IndexedIterable;
 import stupidmodel.agents.Bug.BugSizeComparator;
 import stupidmodel.common.CellData;
 import stupidmodel.common.Constants;
@@ -320,6 +322,108 @@ public class TestBug {
 
 		// Then consumption should be 1.0
 		Assert.assertEquals(1.0, consumption, Constants.DELTA);
+	}
+
+	@Test
+	public void testMortalityWhenBugAlwaysSurvives() {
+		final Bug bugSpy = spy(new Bug());
+		bugSpy.setSize(0);
+		bugSpy.setSurvivalProbability(1.0);
+		doNothing().when(bugSpy).die();
+
+		bugSpy.mortality();
+
+		verify(bugSpy, never()).die();
+	}
+
+	@Test
+	public void testMortalityWhenBugDoesNotSurvives() {
+		final Bug bugSpy = spy(new Bug());
+		bugSpy.setSize(0);
+		bugSpy.setSurvivalProbability(0.0);
+		doNothing().when(bugSpy).die();
+
+		bugSpy.mortality();
+
+		verify(bugSpy).die();
+	}
+
+	@Test
+	public void testMortalityReproduction() {
+		final Bug bugSpy = spy(new Bug());
+		bugSpy.setSize(10.0);
+
+		doNothing().when(bugSpy).reproduce();
+		doNothing().when(bugSpy).die();
+
+		bugSpy.mortality();
+
+		verify(bugSpy).reproduce();
+		verify(bugSpy).die();
+	}
+
+	@Test
+	public void testReproduceWithEmptyCellsInRange() {
+		// Given
+		final Context<Object> context = TestUtils.initContext();
+		final Grid<Object> grid = TestUtils.initGrid(context);
+
+		final Bug bug = new Bug();
+		bug.setSize(10);
+		context.add(bug);
+		grid.moveTo(bug, 5, 5);
+
+		// When
+		bug.reproduce();
+		bug.die();
+
+		// Then
+		final int bugs = context.getObjects(Bug.class).size();
+		Assert.assertEquals(Constants.BUG_REPRODUCTION_RATE, bugs);
+	}
+
+	@Test
+	public void testReproduceWithNoEmptyCellsInRange() {
+		// Given
+		final Context<Object> context = TestUtils.initContext();
+		final Grid<Object> grid = TestUtils.initGrid(context);
+
+		final Bug bug = new Bug();
+		bug.setSize(10);
+		context.add(bug);
+		grid.moveTo(bug, 5, 5);
+
+		final ArrayList<Bug> prevBugs = new ArrayList<Bug>();
+
+		final int n = Constants.BUG_REPRODUCTION_RANGE;
+		for (int i = 5 - n; i <= 5 + n; ++i) {
+			for (int j = 5 - n; j <= 5 + n; ++j) {
+				if (5 == i && 5 == j) {
+					continue;
+				}
+
+				final Bug act = new Bug();
+				context.add(act);
+				grid.moveTo(act, i, j);
+				prevBugs.add(act);
+			}
+		}
+
+		// When
+		bug.reproduce();
+		bug.die();
+
+		// Then
+		final IndexedIterable<Object> newBugs = context.getObjects(Bug.class);
+		final int bugs = newBugs.size();
+
+		// There should be no new bug, and the reproduced one should be dead
+		Assert.assertEquals(prevBugs.size(), bugs);
+
+		// And only the original bugs should exist
+		for (final Object o : newBugs) {
+			Assert.assertTrue(prevBugs.contains(o));
+		}
 	}
 
 	/**

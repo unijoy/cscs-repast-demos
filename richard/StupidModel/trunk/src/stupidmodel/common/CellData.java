@@ -167,17 +167,21 @@ public class CellData {
 		return foodProductionRate;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Standard implementation for the <code>equals()</code> function.
 	 * 
-	 * @see java.lang.Object#toString()
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public String toString() {
-		// Override default Java implementation just to have a nicer
-		// representation
-		return String.format("CellData [x=%d, y=%d, foodProductionRate=%f", x,
-				y, foodProductionRate);
+	public boolean equals(final Object obj) {
+		if (obj instanceof CellData) {
+			final CellData other = (CellData) obj;
+			return (x == other.x && y == other.y && Double
+					.doubleToLongBits(foodProductionRate) == Double
+					.doubleToLongBits(other.foodProductionRate));
+		}
+
+		return false;
 	}
 
 	/**
@@ -196,21 +200,17 @@ public class CellData {
 		return result;
 	}
 
-	/**
-	 * Standard implementation for the <code>equals()</code> function.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public boolean equals(final Object obj) {
-		if (obj instanceof CellData) {
-			final CellData other = (CellData) obj;
-			return (x == other.x && y == other.y && Double
-					.doubleToLongBits(foodProductionRate) == Double
-					.doubleToLongBits(other.foodProductionRate));
-		}
-
-		return false;
+	public String toString() {
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("CellData [x=%d, y=%d, foodProductionRate=%f", x,
+				y, foodProductionRate);
 	}
 
 }
