@@ -43,7 +43,7 @@ import stupidmodel.common.TestUtils;
 public class TestBug {
 
 	/**
-	 * Test invalid argument for the {@link Bug#setSize()} function.
+	 * Test invalid argument for the {@link Bug#setSize(double)} function.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidParameterForSetSize() {
@@ -54,7 +54,7 @@ public class TestBug {
 	}
 
 	/**
-	 * Test illegal argument for {@link Bug#compareTo(Bug)}.
+	 * Test illegal argument for {@link BugSizeComparator}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testCompareToInvalidFirstParameter() {
@@ -63,7 +63,7 @@ public class TestBug {
 	}
 
 	/**
-	 * Test illegal argument for {@link Bug#compareTo(Bug)}.
+	 * Test illegal argument for {@link BugSizeComparator}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testCompareToInvalidSecondParameter() {

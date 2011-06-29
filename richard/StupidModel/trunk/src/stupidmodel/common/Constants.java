@@ -53,8 +53,8 @@ public final class Constants {
 	 * is set to <code>100</code> by default on the graphical interface.
 	 * 
 	 * @since Model 5
-	 * @see <code>parameters.xml</code> in the <code>StupidModel.rs</code>
-	 *      directory for details
+	 * @see "<code>parameters.xml</code> in the <code>StupidModel.rs</code>
+	 *      directory for details"
 	 */
 	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
 

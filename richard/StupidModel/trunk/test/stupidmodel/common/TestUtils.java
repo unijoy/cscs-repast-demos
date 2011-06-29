@@ -7,7 +7,6 @@
  */
 package stupidmodel.common;
 
-import static stupidmodel.common.TestUtils.TEST_GRID_SIZE;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.grid.GridFactoryFinder;

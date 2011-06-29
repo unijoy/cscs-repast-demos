@@ -111,8 +111,7 @@ public class TestHabitatCell {
 	}
 
 	/**
-	 * Test invalid parameter for
-	 * {@link HabitatCell#setMaximumFoodProductionRate(double)}.
+	 * Test invalid parameter for {@link HabitatCell#foodProductionRate}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetDefaultFoodProductionRateFailure() {
@@ -125,8 +124,7 @@ public class TestHabitatCell {
 	}
 
 	/**
-	 * Test if {@link HabitatCell#setMaximumFoodProductionRate(double)} works
-	 * properly.
+	 * Test if {@link HabitatCell#foodProductionRate} works properly.
 	 */
 	@Test
 	public void testSetDefaultFoodProductionRateWorks() {

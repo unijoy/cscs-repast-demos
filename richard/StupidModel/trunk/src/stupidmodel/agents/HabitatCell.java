@@ -166,7 +166,7 @@ public class HabitatCell {
 	 * parameters declared at the level of agents.
 	 * </p>
 	 * 
-	 * @return the value of {@link #maximumFoodProductionRate}
+	 * @return the value of {@link #foodProductionRate}
 	 * @since Model 5, Model 15
 	 * @see StupidModelContextBuilder#build(repast.simphony.context.Context)
 	 */
@@ -178,8 +178,8 @@ public class HabitatCell {
 	/**
 	 * Sets the maximum food consumption rate of the current cell.
 	 * 
-	 * @param maximumFoodProductionRate
-	 *            the new value of {@link #maximumFoodProductionRate}; <i>must
+	 * @param foodProductionRate
+	 *            the new value of {@link #foodProductionRate}; <i>must
 	 *            be non-negative</i>
 	 * @since Model 5, Model 15
 	 */
