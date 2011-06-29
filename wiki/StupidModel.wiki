@@ -38,22 +38,22 @@ The documentation for each version states its purpose-what tool or technique is 
 
 The complete !StupidModel list:
 
- # Basic !StupidModel 
- # Bug Growth 
- # Habitat Cells and Resource 
- # Cell and Bug Probes 
- # Parameters and Parameter Displays
- # Histogram Output
- # Stopping the Model 
- # File Output 
- # Randomized Agent Actions 
- # Sorted Agent Actions 
- # Optimal Movement 
- # Bug Mortality and Reproduction 
- # Population Abundance Graph
- # Random Normal Initial Size 
- # Habitat Data from File Input 
- # Predators
+ # [#Basic_StupidModel Basic !StupidModel]
+ # [#Bug_Growth Bug Growth]
+ # [#Habitat_Cells_and_Resource Habitat Cells and Resource]
+ # [#Cell_and_Bug_Probes Cell and Bug Probes]
+ # [#Parameters_and_Parameter_Displays Parameters and Parameter Displays]
+ # [#Histogram_Output Histogram Output]
+ # [#Stopping_the_Model Stopping the Model]
+ # [#File_Output File Output]
+ # [#Randomized_Agent_Actions Randomized Agent Actions]
+ # [#Sorted_Agent_Actions Sorted Agent Actions]
+ # [#Optimal_Movement Optimal Movement]
+ # [#Bug_Mortality_and_Reproduction Bug Mortality and Reproduction]
+ # [#Population_Abundance_Graph Population Abundance Graph]
+ # [#Random_Normal_Initial_Size Random Normal Initial Size]
+ # [#Habitat_Data_from_File_Input Habitat Data from File Input]
+ # [#Predators Predators]
 
 == Basic !StupidModel ==
 
