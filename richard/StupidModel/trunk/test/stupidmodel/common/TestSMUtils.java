@@ -10,6 +10,7 @@ package stupidmodel.common;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.lang.reflect.Constructor;
@@ -286,21 +287,41 @@ public class TestSMUtils {
 		Assert.assertSame(grid, SMUtils.getGrid(bug));
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails for <code>null</code>
+	 * argument.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithNullParameter() {
 		SMUtils.readDataFile(null); // Should fail
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails for empty file name.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithEmptyParameter() {
 		SMUtils.readDataFile(""); // Should fail
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails for some nonexistent
+	 * file.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithNoTarget() {
-		SMUtils.readDataFile("/some/unexistent/file"); // Should fail
+		// Check if the file is not existing (it would be a miracle, but it is
+		// always good to be sure
+		Assert.assertFalse(new File("/some/unexistent/file/here").exists());
+
+		SMUtils.readDataFile("/some/unexistent/file/here"); // Should fail
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails when opening can be done
+	 * but reading fails due to some reason (here we create a lock on the file
+	 * with <code>java.nio</code>).
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithLockedFile() {
 		final String lockedFile = "test/stupidmodel/common/Stupid_Cell_LockedFile.Data";
@@ -319,19 +340,33 @@ public class TestSMUtils {
 		}
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails when the specified input
+	 * file is missing data (here there is only <code>x</code> and
+	 * <code>y</code> coordinates in one of the lines).
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithMissingData() {
 		SMUtils.readDataFile("test/stupidmodel/common/Stupid_Cell_Missing.Data"); // Should
 																					// fail
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} fails when the specified input
+	 * file has invalid data (here we have a string instead of a number in one
+	 * of the lines).
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testReadDataFileWithInvalidData() {
-		// Chtulhu
+		// Chtulhu makes the test fail :-)
 		SMUtils.readDataFile("test/stupidmodel/common/Stupid_Cell_Invalid.Data"); // Should
 																					// fail
 	}
 
+	/**
+	 * Test {@link SMUtils#readDataFile(String)} when we have a well-formed
+	 * sample data.
+	 */
 	@Test
 	public void testReadDataFileWithSampleData() {
 		final List<CellData> data = SMUtils

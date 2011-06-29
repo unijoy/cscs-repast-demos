@@ -233,6 +233,10 @@ public class TestBug {
 				Constants.DELTA);
 	}
 
+	/**
+	 * Test {@link Bug#getUnderlyingCell()} when there is no associated
+	 * underlying cell.
+	 */
 	@Test(expected = IllegalStateException.class)
 	public void testGetUnderlyingCellWhenNoCellGiven() {
 		final Context<Object> context = TestUtils.initContext();
@@ -245,6 +249,10 @@ public class TestBug {
 		bug.getUnderlyingCell(); // Should fail: No underlying HabitatCell
 	}
 
+	/**
+	 * Test {@link Bug#getUnderlyingCell()} when there is multiple associated
+	 * underlying cells.
+	 */
 	@Test(expected = IllegalStateException.class)
 	public void testGetUnderlyingCellWhenMultipleCellGiven() {
 		final Context<Object> context = TestUtils.initContext();
@@ -261,6 +269,9 @@ public class TestBug {
 		bug.getUnderlyingCell(); // Should fail: Multiple HabitatCells
 	}
 
+	/**
+	 * Test the default behaviour of {@link Bug#getUnderlyingCell()}.
+	 */
 	@Test
 	public void testGetUnderlying() {
 		// Given
@@ -282,6 +293,10 @@ public class TestBug {
 		Assert.assertSame(expectedCell, actualCell);
 	}
 
+	/**
+	 * Test if food consumption of a {@link Bug} is capped at the food
+	 * availability of the current cell.
+	 */
 	@Test
 	public void testFoodConsumptionWhenCellHasLesserFood() {
 		// Given
@@ -303,6 +318,11 @@ public class TestBug {
 		Assert.assertEquals(food, consumption, Constants.DELTA);
 	}
 
+	/**
+	 * Test if food consumption of a {@link Bug} is capped at the food
+	 * consumption level of the current agent (which is <code>1.0</code> by
+	 * default).
+	 */
 	@Test
 	public void testFoodConsumptionWhenCellHasMoreFood() {
 		// Given
@@ -324,6 +344,10 @@ public class TestBug {
 		Assert.assertEquals(1.0, consumption, Constants.DELTA);
 	}
 
+	/**
+	 * Test if the Bug has <code>100%</code> survival probability, it always
+	 * survives.
+	 */
 	@Test
 	public void testMortalityWhenBugAlwaysSurvives() {
 		final Bug bugSpy = spy(new Bug());
@@ -336,6 +360,10 @@ public class TestBug {
 		verify(bugSpy, never()).die();
 	}
 
+	/**
+	 * Test if the Bug has <code>0%</code> survival probability, it never
+	 * survives.
+	 */
 	@Test
 	public void testMortalityWhenBugDoesNotSurvives() {
 		final Bug bugSpy = spy(new Bug());
@@ -348,6 +376,10 @@ public class TestBug {
 		verify(bugSpy).die();
 	}
 
+	/**
+	 * Test if the {@link Bug#mortality()} action results in reproduction when
+	 * the bug reaches a size of <code>10.0</code>.
+	 */
 	@Test
 	public void testMortalityReproduction() {
 		final Bug bugSpy = spy(new Bug());
@@ -362,6 +394,10 @@ public class TestBug {
 		verify(bugSpy).die();
 	}
 
+	/**
+	 * Test reproduction by checking the number of freshly spawned {@link Bug}
+	 * agents.
+	 */
 	@Test
 	public void testReproduceWithEmptyCellsInRange() {
 		// Given
@@ -382,6 +418,10 @@ public class TestBug {
 		Assert.assertEquals(Constants.BUG_REPRODUCTION_RATE, bugs);
 	}
 
+	/**
+	 * Test reproduction by checking there is no new {@link Bug} agents if there
+	 * is no place to put them.
+	 */
 	@Test
 	public void testReproduceWithNoEmptyCellsInRange() {
 		// Given

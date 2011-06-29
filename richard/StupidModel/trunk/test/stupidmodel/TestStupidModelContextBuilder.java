@@ -46,23 +46,67 @@ import stupidmodel.common.Constants;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id$
+ * @see StupidModelContextBuilder
  */
 public class TestStupidModelContextBuilder {
 
+	// ========================================================================
+	// === Test Utilities =====================================================
+
+	/**
+	 * Creates a context with no bugs by default.
+	 * 
+	 * @return a properly initialized context with
+	 *         {@link TestStupidModelContextBuilder}
+	 */
 	private Context<Object> initContext() {
 		return initContext(0);
 	}
 
+	/**
+	 * Creates a context with the specified number of bugs by default with a new
+	 * context builder instance.
+	 * 
+	 * @param bugCount
+	 *            the number of bugs to create
+	 * @return a properly initialized context with
+	 *         {@link TestStupidModelContextBuilder}
+	 */
 	private Context<Object> initContext(final int bugCount) {
 		final StupidModelContextBuilder contextBuilder = new StupidModelContextBuilder();
 		return initContext(bugCount, contextBuilder);
 	}
 
+	/**
+	 * Creates a context with the specified number of bugs by default with the
+	 * specified context builder.
+	 * 
+	 * @param bugCount
+	 *            the number of bugs to create
+	 * @param contextBuilder
+	 *            the context builder instance to use for creation
+	 * @return a properly initialized context with
+	 *         {@link TestStupidModelContextBuilder}
+	 */
 	private Context<Object> initContext(final int bugCount,
 			final StupidModelContextBuilder contextBuilder) {
 		return initContext(bugCount, contextBuilder, null);
 	}
 
+	/**
+	 * Creates a context with the specified number of bugs by default with the
+	 * specified context builder.
+	 * 
+	 * @param bugCount
+	 *            the number of bugs to create
+	 * @param contextBuilder
+	 *            the context builder instance to use for creation
+	 * @param runner
+	 *            the <code>Runner</code> instance to use for the creation
+	 *            (otherwise it is <code>null</code>)
+	 * @return a properly initialized context with
+	 *         {@link TestStupidModelContextBuilder}
+	 */
 	private Context<Object> initContext(final int bugCount,
 			final StupidModelContextBuilder contextBuilder, final Runner runner) {
 		final Context<Object> context = new DefaultContext<Object>();
@@ -84,6 +128,12 @@ public class TestStupidModelContextBuilder {
 		return context;
 	}
 
+	// ========================================================================
+	// === Test cases =========================================================
+
+	/**
+	 * Test if the created context assigns the space.
+	 */
 	@Test
 	public void testBuildAssignsSpace() {
 		final Context<Object> context = initContext();
@@ -91,6 +141,9 @@ public class TestStupidModelContextBuilder {
 		Assert.assertNotNull(context.getProjection(Constants.SPACE_ID));
 	}
 
+	/**
+	 * Test if the created context the grid.
+	 */
 	@Test
 	public void testBuildAssignsGrid() {
 		final Context<Object> context = initContext();
@@ -98,6 +151,9 @@ public class TestStupidModelContextBuilder {
 		Assert.assertNotNull(context.getProjection(Constants.GRID_ID));
 	}
 
+	/**
+	 * Test if the created context the value layer.
+	 */
 	@Test
 	public void testBuildAssignsGridValueLayer() {
 		final Context<Object> context = initContext();
@@ -106,6 +162,9 @@ public class TestStupidModelContextBuilder {
 				.getValueLayer(Constants.FOOD_VALUE_LAYER_ID));
 	}
 
+	/**
+	 * Test initialization if invalid bug count is assigned.
+	 */
 	@Test(expected = IllegalParameterException.class)
 	public void testNegativeBugCountParameter() {
 		final int wrongValue = RandomHelper
@@ -114,6 +173,10 @@ public class TestStupidModelContextBuilder {
 		initContext(wrongValue); // Should fail
 	}
 
+	/**
+	 * Test number of bugs when there is no proper <code>RunState</code>
+	 * initialized.
+	 */
 	@Test
 	public void testUninitializedRunStateBugCount() {
 		final int bugCount = RandomHelper.nextIntFromTo(0, 100);
@@ -127,6 +190,9 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(0, contextBuilder.bugCount());
 	}
 
+	/**
+	 * Test number of bugs when there is no proper root context initialized.
+	 */
 	@Test
 	public void testUnassignedContextBugCount() {
 		final int bugCount = RandomHelper.nextIntFromTo(0, 100);
@@ -138,6 +204,10 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(0, contextBuilder.bugCount());
 	}
 
+	/**
+	 * Test the {@link StupidModelContextBuilder#bugCount() bugCount()} if the
+	 * model is properly initialized.
+	 */
 	@Test
 	public void testBugCount() {
 		final int bugCount = RandomHelper.nextIntFromTo(0, 200);
@@ -147,6 +217,10 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(bugCount, contextBuilder.bugCount());
 	}
 
+	/**
+	 * Test the {@link StupidModelContextBuilder#getBugList() getBugList()} if
+	 * the model is properly initialized.
+	 */
 	@Test
 	public void testBugListSize() {
 		final int bugCount = RandomHelper.nextIntFromTo(0, 200);
@@ -156,6 +230,10 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(bugCount, contextBuilder.getBugList().size());
 	}
 
+	/**
+	 * Test the bug instances of {@link StupidModelContextBuilder#getBugList()
+	 * getBugList()} if the model is properly initialized.
+	 */
 	@Test
 	public void testBugListComponents() {
 		final int bugCount = RandomHelper.nextIntFromTo(0, 200);
@@ -169,6 +247,10 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(bugList.size(), bugSet.size());
 	}
 
+	/**
+	 * Test if the proper number of {@link Bug} agents created if the model is
+	 * properly initialized.
+	 */
 	@Test
 	public void testBuildCreatesBugs() {
 		final int bugCtr = 100;
@@ -187,6 +269,10 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(bugCtr, ctr);
 	}
 
+	/**
+	 * Test if the proper number of {@link Predator} agents created if the model
+	 * is properly initialized.
+	 */
 	@Test
 	public void testBuildCreatesPredators() {
 		final Context<Object> context = initContext();
@@ -204,6 +290,11 @@ public class TestStupidModelContextBuilder {
 		Assert.assertEquals(Constants.PREDATOR_COUNT, ctr);
 	}
 
+	/**
+	 * Test if the proper number of {@link HabitatCell} agents created if the
+	 * model is properly initialized (also check if one grid cell contains only
+	 * one of the instances).
+	 */
 	@Test
 	public void testBuildCreatesCells() {
 		final Context<Object> context = initContext();
@@ -243,6 +334,9 @@ public class TestStupidModelContextBuilder {
 		}
 	}
 
+	/**
+	 * Check if the actual execution of the agent actions fit the specification.
+	 */
 	@Test
 	public void testActivateAgentsOrdering() {
 		final StupidModelContextBuilder contextBuilder = new StupidModelContextBuilder();
@@ -274,6 +368,10 @@ public class TestStupidModelContextBuilder {
 		order.verify(bugWithSize5).mortality();
 	}
 
+	/**
+	 * Check if the simulation is stopped if all of the {@link Bug} agents
+	 * disappear.
+	 */
 	@Test
 	public void testSimulationEndsIfAgents() {
 		final StupidModelContextBuilder contextBuilder = new StupidModelContextBuilder();

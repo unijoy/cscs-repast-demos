@@ -39,6 +39,9 @@ import stupidmodel.common.Constants;
  */
 public class TestHabitatCell {
 
+	/**
+	 * Test if constructor get an invalid parameter (<code>null</code>).
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalidCreation() {
 		new HabitatCell(null); // Should fail
@@ -184,6 +187,9 @@ public class TestHabitatCell {
 		Assert.assertEquals(value, cell.getFoodAvailability(), Constants.DELTA);
 	}
 
+	/**
+	 * Test if setting the food production rate of a cell to an invalid value.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testFoodProductionRateFailure() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
@@ -197,6 +203,9 @@ public class TestHabitatCell {
 		cell.setFoodProductionRate(wrongValue);
 	}
 
+	/**
+	 * Test if setting the food production rate works as expected.
+	 */
 	@Test
 	public void testSetFoodProductionRate() {
 		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);

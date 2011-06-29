@@ -10,6 +10,7 @@ package usecases;
 import static stupidmodel.common.TestUtils.TEST_GRID_SIZE;
 import static stupidmodel.common.TestUtils.initContext;
 import static stupidmodel.common.TestUtils.initGrid;
+import static stupidmodel.common.TestUtils.tr;
 
 import java.util.ArrayList;
 
@@ -28,15 +29,15 @@ import stupidmodel.common.Constants;
 import stupidmodel.common.SMUtils;
 
 /**
- * DOCME
+ * Minimal artificial simulation snapshots to check if the {@link Bug} actions
+ * like movement works properly.
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id$
+ * @see Bug
  */
 public class TestBugMovement {
-
-	// ========================================================================
 
 	/**
 	 * Test if a {@link Bug} movement performed correctly when every cell in the
@@ -109,18 +110,6 @@ public class TestBugMovement {
 
 		Assert.assertTrue(location + " not in " + expectedLocations,
 				expectedLocations.contains(location));
-	}
-
-	private int tr(int i) {
-		if (i < 0) {
-			return i += TEST_GRID_SIZE;
-		}
-
-		if (TEST_GRID_SIZE <= i) {
-			return i -= TEST_GRID_SIZE;
-		}
-
-		return i;
 	}
 
 	/**
