@@ -137,58 +137,52 @@ public final strictfp class SMUtils {
 
 		final ArrayList<CellData> ret = new ArrayList<CellData>();
 
-		BufferedReader br = null;
-
 		try {
-			br = new BufferedReader(new FileReader(cellDataFileName));
+			final BufferedReader br = new BufferedReader(new FileReader(
+					cellDataFileName));
 
-			// Skip header
-			for (int i = 0; i < Constants.CELL_DATA_FILE_HEADER_LINES; ++i) {
-				br.readLine();
-			}
-
-			// Read lines, parse data and add a new CellData for each one
-
-			String line = null;
-
-			while ((line = br.readLine()) != null) {
-				// Split the line around whitespaces
-				final String[] data = line.split("\\s+");
-
-				// Check if current line seems all right
-				if (data.length != 3) {
-					throw new IllegalArgumentException(String.format(
-							"File %s contains a malformed input line: %s",
-							cellDataFileName, line));
+			try {
+				// Skip header
+				for (int i = 0; i < Constants.CELL_DATA_FILE_HEADER_LINES; ++i) {
+					br.readLine();
 				}
 
-				try {
-					int idx = 0;
-					final int x = Integer.parseInt(data[idx++]);
-					final int y = Integer.parseInt(data[idx++]);
-					final double foodProductionRate = Double
-							.parseDouble(data[idx++]);
+				// Read lines, parse data and add a new CellData for each one
 
-					ret.add(new CellData(x, y, foodProductionRate));
-				} catch (final NumberFormatException e) {
-					throw new IllegalArgumentException(String.format(
-							"File %s contains a malformed input line: %s",
-							cellDataFileName, line), e);
+				String line = null;
+
+				while ((line = br.readLine()) != null) {
+					// Split the line around whitespaces
+					final String[] data = line.split("\\s+");
+
+					// Check if current line seems all right
+					if (data.length != 3) {
+						throw new IllegalArgumentException(String.format(
+								"File %s contains a malformed input line: %s",
+								cellDataFileName, line));
+					}
+
+					try {
+						int idx = 0;
+						final int x = Integer.parseInt(data[idx++]);
+						final int y = Integer.parseInt(data[idx++]);
+						final double foodProductionRate = Double
+								.parseDouble(data[idx++]);
+
+						ret.add(new CellData(x, y, foodProductionRate));
+					} catch (final NumberFormatException e) {
+						throw new IllegalArgumentException(String.format(
+								"File %s contains a malformed input line: %s",
+								cellDataFileName, line), e);
+					}
 				}
+			} finally {
+				br.close();
 			}
-
 		} catch (final FileNotFoundException e) {
 			throw new IllegalArgumentException(e);
 		} catch (final IOException e) {
 			throw new IllegalArgumentException(e);
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (final IOException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 
 		return Collections.unmodifiableList(ret);
