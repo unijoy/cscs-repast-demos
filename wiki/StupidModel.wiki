@@ -38,7 +38,7 @@ The documentation for each version states its purpose-what tool or technique is 
 
 The complete !StupidModel list:
 
- # [#Basic_StupidModel Basic !StupidModel]
+ # [#Basic_StupidModel Basic StupidModel]
  # [#Bug_Growth Bug Growth]
  # [#Habitat_Cells_and_Resource Habitat Cells and Resource]
  # [#Cell_and_Bug_Probes Cell and Bug Probes]
