@@ -44,7 +44,7 @@ Common SVN problems.
 
 == Publish HTML on Google Code ==
  * *Question:* I would like to make an HTML file accessible with direct link from the Google Code SVN (e.g., generated Javadoc). Is it possible to do it?
- * *Answer:* Sure, just make sure you set the `svn:mime-type=text/html` SVN property. To make it automatically, [http://stuffthathappens.com/blog/2007/11/09/howto-publish-javadoc-on-google-code/ set a default auto enabled property for new HTML files] (see the details [http://islandlinux.org/howto/enable-auto-properties-auto-props-subversion-subclipse-eclipse here for Subclipse], or [http://stackoverflow.com/questions/1764521/recursive-svn-propset create a small script] that sets the required properties for existing files from the command line.
+ * *Answer:* Sure, just make sure you set the `svn:mime-type=text/html` SVN property. To make it automatically, [http://stuffthathappens.com/blog/2007/11/09/howto-publish-javadoc-on-google-code/ set a default auto enabled property for new HTML files] (see the details [http://islandlinux.org/howto/enable-auto-properties-auto-props-subversion-subclipse-eclipse here for Subclipse]), or [http://stackoverflow.com/questions/1764521/recursive-svn-propset create a small script] that sets the required properties for existing files from the command line. See an example [http://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/trunk/docs/cobertura/index.html here].
 
 ----
 
