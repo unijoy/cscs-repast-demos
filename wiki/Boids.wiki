@@ -1,4 +1,4 @@
-#summary Boids ReLogo/groovy implementation by R Copley
+#summary Boids ReLogo/groovy implementation by Rowan Copley
 #sidebar TableOfContents
 
 = 0. Before Beginning = 
