@@ -23,7 +23,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: AreaCoverage, GuidingBots
     * Done: _Nothing Yet_
   * *[Richard Richard Legendi]* (mentor: eric)
-    * Planned: R demo
+    * Planned: [ElFarol El Farol]
     * Working: StupidModel documentation
     * Done: StupidModel
   * *[Grace Grace Lin]* (mentor: rick)
@@ -69,9 +69,9 @@ Scratch area to list preferences, from which we will figure out the actual assig
 
   * *[Richard Richard Legendi]*
     # [Richard#Implementation_of_the_StupidModel StupidModel1-16] (_Java_)
+    # [Richard#El_Farol El Farol] (e.g. linking Repast S with a GA library)
     # [Richard#Statistics R demo]
     # [Richard#Population_Dynamics Matlab/Maple/Octave demo] (e.g. population dynamics)
-    # [Richard#El_Farol El Farol] (e.g. linking Repast S with a GA library)
 
   * *[Grace Grace Lin]*
     # [Grace#Planned_Models Fire]
