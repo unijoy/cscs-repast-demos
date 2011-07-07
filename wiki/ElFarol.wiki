@@ -36,4 +36,4 @@ Most of my ideas of what would be ideal, tho maybe not doable, are listed below:
 
 = References =
  * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994.
- * Rand, W. and Wilensky, U. (2007). NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
+ * Rand, W. and Wilensky, U. (2007). !NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
