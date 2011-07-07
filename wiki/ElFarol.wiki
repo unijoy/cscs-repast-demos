@@ -1,0 +1,23 @@
+#summary One-sentence summary of this page.
+#sidebar TableOfContents
+
+=Summary=
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/richard/ElFarol/trunk/
+ * Platform     : [RepastSJava Repast Simphony Java]
+ * Mentor       : Dr. Eric Tatara
+ * Author       : [Richard Richard Oliver Legendi]
+
+=Contents=
+<wiki:toc max_depth="2" />
+
+-----
+
+= Description =
+The El Farol bar problem is a problem in game theory. Based on a bar in Santa Fe, New Mexico, it was created in 1994 by W. Brian Arthur. [http://en.wikipedia.org/wiki/El_Farol_Bar_problem Details]
+
+= Rick's Suggestions =
+
+= References =
+ * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994.
+ * Rand, W. and Wilensky, U. (2007). NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
+- Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
