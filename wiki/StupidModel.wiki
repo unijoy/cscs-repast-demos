@@ -77,9 +77,161 @@ This is the basic !StupidModel, an extremely simple individual-based model used 
  * Instead of specifying which random number generation algorithm to use, the default generator for each platform is used.
 
 === Implementation Notes ===
+First, start up Repast Simphony. If it is the first time the modelling environment is started, it asks for a default workspace. The _workspace_ is a directory used to store the models created, along with several settings. Please also make sure to switch to the _Java perspective_ by clicking the _Java_ button on the upper right corner.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/switching_to_java_perspective.png
+
+The outlook should change a bit: an Eclipse perspective determines the visible actions, buttons and views within the development environment. However, they all may be customized, and even new ones may be created afterwards.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/java_perspective.png
+
+The next step is to create our very fist Repast Simphony project! This may be done several ways, e.g.:
+
+ * Click on the _File --> New --> Other..._ in the menu bar
+ * Right-click on the _Project Explorer_ and select _New --> Other_ from the popup menu
+ * Or, simply press the _Ctrl + N_ hotkey
+
+A wizard dialogue shows up to create a new element on the workspace. 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/create_new_simphony_project.png
+
+Click on the _Next >_ button. A new wizard page is shown where the name of the project may be specified. Type `stupidmodel` into the _Project name_ text field, and press _Finish_.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_sipmohy_project.png
+
+*Note* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
+
+After pressing the _Finish_ button, the freshly created project of the model should be shown in the _Package Explorer_ view.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_project_created.png
+
+As we stated in the [#Prerequisites preface], Simphony offers several ways to define a model. By default, it offers some skeleton files to start with for Groovy or Flowchart development. These files are `ModelInitializer.groovy` and `ModelInitializer.agent`, which may be deleted, since in the current tutorial we create a model using the standard Repast Simphony Java API. They may be deleted either by right-clicking on the resources and selecting _Delete_ from the popup menu as shown below, or by simply pressing the _Del_ button on the keyboard. 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/delete_unnecessary_resources.png
+
+==== Creating a Bug Agent ====
+
+Our first task is to create a simple `Bug` agent. When using the standard Repast Simphony Java API, agents have not got to be additionally annotated: they are simple Java classes. So, the first step is to create a simple Java class file by pressing _Ctrl + N_ and selecting `Class` from the possibilities. On the next screen, assign `stupidmodel.agents` as the package of the new class, and `Bug` as its name. Press _Finish_.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/create_new_bug_agent_class.png
+
+A simple, empty Java class definition is created:
+
+{{{
+package stupidmodel.agents;
+
+public class Bug {
+
+}
+}}}
+
+*Note* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/enabling_line_numbers.png
+
+We will also need a dedicated class to store model-specific constant values. It is usually a good and common practice to put these constants into one place (so when they had to be changed it may be done by modifying a simple value). The basic model has a few such values, namely:
+
+ # The size of the two-dimensional grid (`100`)
+ # The number of `Bug` agents to create at initialization (`100`) 
+ # Tha vision range of `Bug` agents (`4`)
+
+Create a new class named `Constants` in the package `stupidmodel.common`, and put these constant definitions into it as follows:
+
+{{{
+package stupidmodel.common;
+
+public final class Constants {
+        public static final int GRID_SIZE = 100;
+        public static final int BUG_COUNT = 100;
+        public static final int BUG_VISION_RANGE = 4;
+}
+}}}
+
+Now, back to the `Bug` class. In the first demo version, the `Bug` agents will be located on a simple `Grid`. In Repast Simphony, the superclass of all type of grids is the `repast.simphony.space.grid.Grid` interface. In their constructors, we assing the associated `Grid` instance with the agents:
+
+{{{
+import repast.simphony.space.grid.Grid;
+
+public class Bug {
+        private final Grid<Object> grid;
+
+        public Bug(final Grid<Object> grid) {
+                this.grid = grid;
+        }
+}
+}}}
+
+The grid is assigned the Object generic type parameter, because in further models some other type of agents may be placed on it (i.e., `HabitatCell` and `Predator` instances, but more of them later on). 
+
+For debugging we also add a default `toString()` implementation for the `Bug` agents. This comes handy when printing out an agent to the console or when debugging the simulation. The most important information about our agent is its current position at the grid, so we query it from the grid by the `getLocation()` function:
+
+{{{
+	@Override
+        public String toString() {
+                return String.format("Bug @ location ", grid.getLocation(this));
+        }
+}}}
+
+==== Creating a Utility Class ====
+
+We would like to create simple agent behaviour, so creating a separate class for common utility functions sounds reasonable. Create a new class named `SMUtils` in the package `stupidmodel.common`, and add the following static utility method definitions:
+
+{{{
+package stupidmodel.common;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import repast.simphony.query.space.grid.GridCell;
+import repast.simphony.random.RandomHelper;
+import repast.simphony.space.grid.GridPoint;
+
+public final strictfp class SMUtils {
+        public static <T> T randomElementOf(final List<T> list) {
+                return list.get(RandomHelper.nextIntFromTo(0, list.size() - 1));
+        }
+
+        public static <T> List<GridCell<T>> getFreeGridCells(
+                        final List<GridCell<T>> neighborhood) {
+                final ArrayList<GridCell<T>> ret = new ArrayList<GridCell<T>>();
+
+                for (final GridCell<T> act : neighborhood) {
+                        if (0 == act.size()) {
+                                ret.add(act);
+                        }
+                }
+
+                return ret;
+        }
+}
+}}}
+
+The first function, `randomElementOf()` is really simple: by utilizing the `repast.simphony.random.RandomHelper` class (which is the class in the Repast Simphony Java API that offers several utility functions to handle pseudorandom number generators) it returns one of the elements of the specified list randomly (based on a uniform distribution).
+
+The other one, `getFreeGridCells()` may look a bit complicated for the first sight, but it is really simple on a second look. All of the created `Grid` objects contain `GridCell` instances on them. As the model defines, we would like to know if whether such a cell is empty or not: comparing the `size()` of the objects located on a `GridCell` to zero answers that question. The method, however, is a bit generalized, and accepts any list of `GridCell` objects.
+
+==== Specifying an Agent Action ====
+
+The last thing we need to add to our first `Bug` implementation is its `step()` action.
+
+In Repast Simphony, one of the most convenient ways to define an agent action is to use the `@ScheduleMethod` annotation, which accepts several parameters, e.g., the first time step when the action should be activated, and the interval how often it should be executed (if it is a cyclic event). To define such an action, add the following method definition to the `Bug` class:
+
+{{{
+	@ScheduledMethod(start = 1, interval = 1)
+        public void step() {
+		...
+        }
+
+}}}
+
+Ok, so now we have an action. Now, as the model defines, the first thing a `Bug` should do is to find its location, and query its neighbourhood.
+
+CONTINUE
 
 === Further Fun ===
 
+ * When the new Repast Simphony project is instantiated, it created a several important directories. It represents a _suggested_ project layout, feel free to modify the layout if preferred, however, using conventions help other modelers understand your simulation, and make it running easier if the required resources may be found in the same places. Take some time to check the directory structure, and find a proper place to create a simple documentation for your model containing your name as the author and a link to the StupidModel documentation.
+ * It is always good to know the API than to reinvent the wheel. Spend some time by checking out the utility methods offered by the Repast Simphony Java API, it can really save some time since they offer solutions and covers most of the common tasks. 
  * There are alternative ways to access any grid or space elements (in particular, any defined _projection_) through the context. In this version of the model, we directly passed a reference to the created agents. Can you figure out how to access the same grid instance with the defined `GRID_ID` through the context in which the agent is? *Hint:* An agent's context may be accessed anytime with a call to `ContextUtils.getContext(this)`.
  * Try the simulation out with different different vision ranges for the agents. Run the model with different number of agents to check they are moving correctly.
  * It is quite easy to set different visualization settings, spend a little time with playing them:
