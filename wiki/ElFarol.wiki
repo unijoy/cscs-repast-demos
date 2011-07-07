@@ -26,18 +26,14 @@ Most of my ideas of what would be ideal, tho maybe not doable, are listed below:
 || threshold ||     .50x                 ||  0.60 (or other values) ||
 || strategy  ||  m-history/Go-Not rules  ||  Various                ||
 
-So it might be possible to make it easy to select various options to get El Farol or Minority Game and it would be great if it was structured so its easy to add/switch in/out new types of strategy represenation.
+  So it might be possible to make it easy to select various options to get El Farol or Minority Game and it would be great if it was structured so its easy to add/switch in/out new types of strategy represenation.
 
-It would be really cool if it was set up so that users could specifiy, say in an initialization file, strategies for some agents to use.  (built in agents could have some default rules, which might even evolve/learn.)
+  It would be really cool if it was set up so that users could specifiy, say in an initialization file, strategies for some agents to use.  (built in agents could have some default rules, which might even evolve/learn.)
 
-So...if any of you are thinking of doing things not on your
-current list, i'd sure like to see someting along these
-lines...even a simple demo to start.
-(Eg see the netlogo one that implements the Fogel etal version.)
+  So...if any of you are thinking of doing things not on your current list, i'd sure like to see someting along these lines...even a simple demo to start. (Eg see the netlogo one that implements the Fogel etal version.)
 
  * It might be interesting to have 2 people working on this, or at least to have one person make the basic demo and then someone extend it, including documenting what had to be done to  extend it... Sort of a demo of "how to extend a repasts model..."
 
 = References =
  * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994.
  * Rand, W. and Wilensky, U. (2007). NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-- Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
