@@ -10,11 +10,12 @@
    * [Ben]
    * [Rowan]
  * Models
-   * [StupidModel]
    * [AreaCoverage]
    * [Boids]
+   * [ElFarol El Farol]
    * [GuidingBots]
    * [NBodies]
+   * [StupidModel]
  * Platforms
    * [RepastSReLogo ReLogo]
    * [RepastSJava Java]
