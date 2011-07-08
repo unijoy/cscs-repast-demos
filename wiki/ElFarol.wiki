@@ -38,7 +38,5 @@ Most of my ideas of what would be ideal, tho maybe not doable, are listed below:
 
 = References =
  * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994. [http://www.santafe.edu/arthur/Papers/El_Farol.html Online copy here.]
- * Fogel etal. "Inductive Reasoning and Bounded Rationality
-Reconsidered." IEEE Trans. on Evolutionary Computation , vol. 3,
-no. 2, pp. 142-146, July. 1999.
+ * Fogel etal. "Inductive Reasoning and Bounded Rationality Reconsidered." IEEE Trans. on Evolutionary Computation 3(2):  142-146, July. 1999.
  * Rand, W. and Wilensky, U. (2007). !NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
