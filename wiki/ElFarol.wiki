@@ -12,8 +12,10 @@
 
 -----
 
-= Description =
+= Introduction =
 The El Farol bar problem is a problem in game theory. Based on a bar in Santa Fe, New Mexico, it was created in 1994 by W. Brian Arthur. [http://en.wikipedia.org/wiki/El_Farol_Bar_problem Details]
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/ElFarol/simulation.png
 
 = Rick's Suggestions =
 Most of my ideas of what would be ideal, tho maybe not doable, are listed below:
