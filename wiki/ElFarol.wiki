@@ -37,5 +37,8 @@ Most of my ideas of what would be ideal, tho maybe not doable, are listed below:
  * It might be interesting to have 2 people working on this, or at least to have one person make the basic demo and then someone extend it, including documenting what had to be done to extend it. Sort of a demo of _"how to extend a repasts model."_.
 
 = References =
- * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994.
+ * W. Brian Arthur, “Inductive Reasoning and Bounded Rationality”, American Economic Review (Papers and Proceedings), 84,406–411, 1994. [http://www.santafe.edu/arthur/Papers/El_Farol.html Online copy here.]
+* Fogel etal. "Inductive Reasoning and Bounded Rationality
+Reconsidered." IEEE Trans. on Evolutionary Computation , vol. 3,
+no. 2, pp. 142-146, July. 1999.
  * Rand, W. and Wilensky, U. (2007). !NetLogo El Farol model. http://ccl.northwestern.edu/netlogo/models/ElFarol. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
