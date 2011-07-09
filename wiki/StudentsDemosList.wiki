@@ -63,7 +63,10 @@ Scratch area to list preferences, from which we will figure out the actual assig
 
   * *[Mudit Mudit Raj Gupta]*
     # [AreaCoverage AreaCoverage(Cover 360)]
-    # [Mudit#Guiding Guiding Bots]
+    # [Moth_Basic]
+    # [BugCatcher]
+    # [Moth_Advance]
+    # [Guiding Guiding Bots]
     # [Mudit#Ants Ants]
     # [Mudit#Preferential Preferential Linking]
 
