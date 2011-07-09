@@ -33,7 +33,25 @@ It is suggested that you go through the following models before this model
 
 = 2. Introduction=
 
-_to be added soon_
+This is a Bio-inspired model. The behavior of Moths and their fascination towards light make them an excellent subject to study agent base analysis. The following page gives an introduction about the behavior and the hypothesis about the attraction of Moths towards light. For more details you can check out the following  [http://en.wikipedia.org/wiki/Moth page]    
+
+The following video gives you a visual picture of the Moths' behavior towards light.
+
+<wiki:video url="http://www.youtube.com/watch?v=s_Wgukkj-cg"/>
+
+
+==Moth (A bit of Biology)==
+
+Moth is an insect closely related to the butterfly, both being of the order Lepidoptera. Moths form the majority of this order; there are thought to be 150,000 to 250,000 different species of moth (about ten times the number of species of butterfly), with thousands of species yet to be described.Most species of moth are nocturnal, but there are crepuscular and diurnal species.[1]
+
+
+==Moth and Light Source==
+
+Moths are frequently found to circle artificial lights, although the reason for this behavior remains unknown. One hypothesis advanced to explain this behavior is that moths use a technique of celestial navigation called transverse orientation. By maintaining a constant angular relationship to a bright celestial light, such as the Moon, they can fly in a straight line. Celestial objects are so far away, that even after traveling great distances, the change in angle between the moth and the light source is negligible; further, the moon will always be in the upper part of the visual field or on the horizon. When a moth encounters a much closer artificial light and uses it for navigation, the angle changes noticeably after only a short distance, in addition to being often below the horizon.[2]
+
+It has been suggested that the reason for moths circling lights may have to do with a visual distortion called a Mach band.[11] The theory says that in the pursuit of cover and safety, moths fly towards the dark areas of the sky and are thus inclined to circle ambient objects in the Mach band region. The celestial navigation theory should cause moths to circle lights, not to head directly toward them, as many are seen to do. Mach conjectures that moths, which are nocturnal creatures, must find a place to hide from predators when daylight comes, but cannot do so in darkness. Their instinct when morning comes is to fly toward the light (presumably up) and then down again, with some probability of landing on a surface which matches their camouflage.[10]
+
+A theory which has been advanced in an attempt to explain the attraction male moths have for candles specifically is based on olfaction. There is evidence that olfaction might be, in some cases, mediated by detection of the infra-red spectra of substances.[12] The spiky infrared spectra of a candle flame happens to contain a number of emission lines which coincide with the vibrational frequencies of the female moth's pheromone.[13] The male moth is thereby powerfully attracted to the flame. Other sources with different spike patterns, e.g. hurricane lamps, are less powerful attractants.
 
 -----
 
