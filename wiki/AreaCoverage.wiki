@@ -64,7 +64,37 @@ The initial position of motes lie inside a regular figure/geometry. The dimensio
 
 All the Mote positions are random values generated within the boundary of the selected geometries. The code had embedded comments to aptly explain the formation of these initial geometries and random position generation. The following page in the Description Section details about the initial geometry formation.
 
-Each mote moves depending on the value of their Moore's neighbor. Depending on the number of neighbours they select a direction (where the value is less). After selecting the value they face that direction and finally move to that position.
+Each mote moves depending on the value of their Moore's neighbor. Depending on the number of neighbours they select a direction (where the value is less). After selecting the value they face that direction and finally move to that position. The following code segment describes the behavior of the motes.
+
+{{{
+
+class Mote extends BaseTurtle 
+{
+	//For giving behavior to a mote
+
+	def step()
+	{
+
+		//Finds the direction witch points to least number of motes
+
+		def dir = minOneOf(neighbors()) 
+		{
+			count(motesOn(it))
+		}
+		
+		//Faces the direction witch points to least number of motes
+
+		face(dir)
+		
+		//Moves forward number of steps as specified by the user
+		forward(stepSize)
+		
+		}
+		
+		
+}
+
+}}}
 
 The model also comes with a check box for automatically filling the motes in the selected geometry. 
 
@@ -102,6 +132,45 @@ For Example, Consider a circle with center on the origin and radius r units
 
 One one fourth of the figure is generated, it is randomly reflected or not reflected. If reflected it can be randomly reflected along any of the axes (x axis or y axis). This algorithm can be used to create any symmetric figure and fill turtles randomly in it.
 
+The following is the code that explains the circle formulation.
+
+{{{
+
+	//Creates the number of motes specified by the user
+		createMotes(numMotes)
+		{
+
+			//generates a random value less than radius
+
+			x=random((initVal/2)+1)
+
+                        //shifting of origin
+
+			theta=((initVal/2)-x)
+                        generating random y value withing the circle
+			y =random(sqrt(((initVal/2)*(initVal 2))-(theta*theta))+1)
+                       
+                         //shifting of origin
+			
+                         x=x-(initVal/2)
+
+                        //randomly setting sign to the coordinates
+
+			if(random(2))
+			{
+				x=(-1)*x
+			}
+			if(random(2))
+			{
+				y=(-1)*y
+			}
+
+			//Sets the coordinate where the mote will be created
+			
+                       setxy(x,y)
+		}
+
+}}}
 
 ==User Panel==
 
