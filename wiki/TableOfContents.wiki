@@ -12,8 +12,11 @@
  * Models
    * [AreaCoverage]
    * [Boids]
+   * [BugCatcher]
    * [ElFarol El Farol]
    * [GuidingBots]
+   * [Moth_Basic]
+   * [Moth_Advance]
    * [NBodies]
    * [StupidModel]
  * Platforms
