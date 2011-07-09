@@ -1,10 +1,10 @@
-#summary A hybrid of Moth_Basic and Bug Catcher
+#summary The Bug Catcher Model
 #sidebar TableOfContents
 
 *Summary*
 
   * Model        : Moth_Advance
-  * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/
+  * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/BugCatcher/
   * Platform     : [RepastSReLogo RepastS ReLogo]
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
