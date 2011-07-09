@@ -1,6 +1,10 @@
 #summary Mudit's Introduction and Work
 #sidebar TableOfContents
 
+=*Contents*=
+
+<wiki:toc max_depth="2" />
+
 =*General Information*=
  
 
@@ -31,12 +35,25 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 =*Models*=
 
+==*Area Coverage*==
 
- * AreaCoverage
- * GuidingBots
- * BugCatcher
- * Moth_Basic
- * Moth_Advance
+For Details Check AreaCoverage
+
+==*Guiding Bots*==
+
+For Details Check GuidingBots
+
+==*Bug Catcher*==
+
+For Details Check BugCatcher
+
+==*Moth Basic*==
+
+For Details Check Moth_Basic
+
+==*Moth Advance*==
+
+For Details Check Moth_Advance
 
 =*Planned*=
 
