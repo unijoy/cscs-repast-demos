@@ -3,7 +3,7 @@
 
 *Summary*
 
-  * Model        : Moth_Advance
+  * Model        : BugCatcher
   * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/BugCatcher/
   * Platform     : [RepastSReLogo RepastS ReLogo]
   * Mentor       : Dr. Eric Tatara
