@@ -55,11 +55,11 @@ Moths are frequently found to circle artificial lights, although the reason for 
 
 The basic algorithm used in the following model is an amalgamation of the BugCatcher model algorithm and the Moth_Basic Algorithm. Although the in this model the implementation approach is quite different.
 
-In the Moth_Basic model we created moths and gave them a few features. Like the are attracted to light and various parameters were adjustable by the user. Please refer to the documentation of Moth_Advance for details.
+In the Moth_Basic model we created moths and gave them a few features. Like the are attracted to light and various parameters were adjustable by the user. Please refer to the documentation of Moth_Basic for details.
 
 The only assumption in the model was that, it was for a single light source at the center of the model.
 
-The second model.
+The second model which catches bugs in the Moore's Neighborhood has some borrowed concept from this model. Please refer to the BugCatcher.
 
 
 ==User Panel==
