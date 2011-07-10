@@ -1,7 +1,7 @@
 #summary A hybrid of Moth_Basic and Bug Catcher
 #sidebar TableOfContents
 
-*Summary*
+=*Summary*=
 
   * Model        : Moth_Advance
   * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/
@@ -11,7 +11,7 @@
 
 ------
 
-*Contents*
+=*Contents*=
 
 <wiki:toc max_depth="2" />
 
