@@ -23,6 +23,7 @@ import repast.simphony.space.grid.WrapAroundBorders;
 import repast.simphony.valueLayer.GridValueLayer;
 
 /**
+ * TreeBuilder
  * @author grace
  *
  */
@@ -31,13 +32,20 @@ public class TreeBuilder implements ContextBuilder<Tree> {
 	@Override
 	public Context<Tree> build(Context<Tree> context) {
 		
-		// get environment variables
+		// get environment variables from GUI
 		Parameters p = RunEnvironment.getInstance().getParameters();
+		// grid width and height
 		int gridWidth = (Integer)p.getValue("gridWidth");
 		int gridHeight = (Integer)p.getValue("gridHeight");
+		// initial tree count
 		int treeCount = (Integer)p.getValue("initialTrees");
+		// a tree's visibility of neighbors
 		int neighborSize = (Integer)p.getValue("neighborSize");
+		// burn probability for all neighboring trees
 		float probAll = (Float)p.getValue("probAll");
+		// percent of neighboring trees to set probability
+		double percBurn = (Double)p.getValue("percBurn");
+		// directed burn probability; works only if probAll=0
 		HashMap<String, Float> directedProb = new HashMap<String, Float>();
 		directedProb.put("probE", (Float)p.getValue("probE"));
 		directedProb.put("probN", (Float)p.getValue("probN"));
@@ -47,22 +55,15 @@ public class TreeBuilder implements ContextBuilder<Tree> {
 		directedProb.put("probSE", (Float)p.getValue("probSE"));
 		directedProb.put("probSW", (Float)p.getValue("probSW"));
 		directedProb.put("probW", (Float)p.getValue("probW"));
-		HashMap<String, String> windProb = new HashMap<String, String>();
-		windProb.put("windE", (String) p.getValue("windE"));
-		windProb.put("windN", (String) p.getValue("windN"));
-		windProb.put("windNE", (String) p.getValue("windNE"));
-		windProb.put("windNW", (String)p.getValue("windNW"));
-		windProb.put("windS", (String)p.getValue("windS"));
-		windProb.put("windSE", (String)p.getValue("windSE"));
-		windProb.put("windSW", (String)p.getValue("windSW"));
-		windProb.put("windW", (String)p.getValue("windW"));
-		boolean useProbAll = true;
+		// wind strength: strong, medium, weak
+		String windStrength = (String)p.getValue("windStrength");
+		String windDir = (String)p.getValue("windDir");
 		 
-		
 		// Create a space with random positioning with the specified
 		// dimensions
 		ContinuousSpaceFactory spaceFactory =
 			ContinuousSpaceFactoryFinder . createContinuousSpaceFactory ( null );
+		
 		ContinuousSpace<Tree> space = spaceFactory
 				.createContinuousSpace(
 						"Space",
@@ -71,44 +72,23 @@ public class TreeBuilder implements ContextBuilder<Tree> {
 						new repast.simphony.space.continuous.WrapAroundBorders(),
 						gridWidth, gridHeight);
 		
-		// Create the grid for the CAs
+		// Create grid
 		Grid<Tree> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", 
 				context, new GridBuilderParameters<Tree>(new WrapAroundBorders(), 
 				new RandomGridAdder<Tree>(), false, gridWidth, gridHeight));
 
-		// Create a value layer to store the state for each CA
+		// Create a value layer
 		GridValueLayer valueLayer = new GridValueLayer("State", true,
 				new WrapAroundBorders(), gridWidth, gridHeight);
 
 		// Add the value layers to the context 
 		context.addValueLayer(valueLayer);
-		
-		// create trees and add to context
-		// todo: have user pick one
-		// Create and place a new Tree in each grid location.
-		/*
-		for (int j=0; j<gridHeight; j++){
-			for (int i=0; i<gridWidth; i++){
-				Tree t = new Tree();
-				context.add(t);
-				grid.moveTo(t, i, j);
-			}
-		}
-		*/
-		
-		// figure out whether to use probAll (same prob for all directions)
-		// or use individual directions
-		if (probAll!=0) {
-			useProbAll = true;
-		} else {
-			useProbAll = false;
-		}
 
-
-		// "Seed" the the center CA.
-		for (int j=gridHeight/2; j<gridHeight/2+1; j++){
+		// Create an initial burning tree at center 
+ 		for (int j=gridHeight/2; j<gridHeight/2+1; j++){
 			for (int i=gridWidth/2; i<gridWidth/2+1; i++){
-				Tree t = new Tree(grid, space, neighborSize, probAll, directedProb, windProb);
+				Tree t = new Tree(grid, space, neighborSize, probAll, percBurn,
+						directedProb, windStrength, windDir);
 				context.add(t);
 				grid.moveTo(t, i, j);
 				ScheduleParameters scheduleParams = ScheduleParameters.createOneTime(0);
@@ -118,11 +98,12 @@ public class TreeBuilder implements ContextBuilder<Tree> {
 			}
 		}
 
-		// Create specified num of trees and add to context
+		// Create specified number of trees and add to context
 		// and to the grid as placed randomly by the 
 		// RandomCartesianAdder of the space
 		for (int i = 0; i < treeCount; ++i) {
-			Tree t = new Tree(grid, space, neighborSize, probAll, directedProb, windProb);
+			Tree t = new Tree(grid, space, neighborSize, probAll, percBurn, 
+					directedProb, windStrength, windDir);
 			context.add(t);
 			NdPoint pt = space.getLocation(t);
 			grid.moveTo(t, (int) pt.getX(), (int) pt.getY());
