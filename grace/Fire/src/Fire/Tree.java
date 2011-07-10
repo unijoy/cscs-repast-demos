@@ -132,7 +132,7 @@ public class Tree {
 			if (cell.size()>0 && count<treesToInfect) {
 				GridPoint pt1 = cell.getPoint();
 				grid.getObjectAt(pt1.getX(), pt1.getY()).infected = true;
-				System.out.println("set infected");
+				//System.out.println("set infected");
 			}
 			count++;
 		}
@@ -311,13 +311,13 @@ public class Tree {
 			// regular burning tree
 			num = RandomHelper.nextDoubleFromTo(0, 1);
 			if (this.burnProb>0 && num <= this.burnProb){
-				System.out.println("set burn tree "+grid.getLocation(this).getX()+grid.getLocation(this).getY());
+				System.out.println("set burn tree "+grid.getLocation(this).getX()+" "+grid.getLocation(this).getY());
 				vl.set(6, grid.getLocation(this).getX(), grid.getLocation(this).getY());
 			}
 			// burning tree from wind
 			num = RandomHelper.nextDoubleFromTo(0, 1);
 			if (this.burnFromWindProb>0 && num <= this.burnFromWindProb){
-				System.out.println("set burn tree from wind "+grid.getLocation(this).getX()+grid.getLocation(this).getY());
+				System.out.println("set burn tree from wind "+grid.getLocation(this).getX()+" "+grid.getLocation(this).getY());
 				vl.set(6, grid.getLocation(this).getX(), grid.getLocation(this).getY());
 			}		
 			
@@ -349,7 +349,7 @@ public class Tree {
 			setWindProb();
 			
 		} else if (this.state == TreeState.ASH) {
-			System.out.println("set ash tree");
+			//System.out.println("set ash tree");
 			vl.set(2, grid.getLocation(this).getX(), grid.getLocation(this).getY());
 		}
 	}
