@@ -6,12 +6,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="windSE" displayName="Wind South East" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
 				<parameter name="probS" displayName="Probability South" type="float" 
 						defaultValue="0.5" 
 						isReadOnly="false" 
@@ -30,26 +24,14 @@
 						converter="repast.simphony.parameter.StringConverterFactory$FloatConverter"
 									
 		/>
-				<parameter name="windAll" displayName="Wind All" type="java.lang.String" 
-						defaultValue="strong" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
 				<parameter name="initialTrees" displayName="Initial Trees" type="int" 
-						defaultValue="100" 
+						defaultValue="1000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="windNE" displayName="Wind North East" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="neighborSize" displayName="Nighborhood Size" type="int" 
-						defaultValue="4" 
+				<parameter name="neighborSize" displayName="Neighbor Size" type="int" 
+						defaultValue="2" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
@@ -66,28 +48,16 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="windE" displayName="Wind East" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
 				<parameter name="probE" displayName="Probability East" type="float" 
 						defaultValue="0.5" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$FloatConverter"
 									
 		/>
-				<parameter name="windNW" displayName="Wind North West" type="java.lang.String" 
-						defaultValue="none" 
+				<parameter name="percBurn" displayName="Percentage to Burn" type="double" 
+						defaultValue="0.5" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="windN" displayName="Wind North" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 				<parameter name="gridHeight" displayName="Grid Height" type="int" 
@@ -96,14 +66,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="windSW" displayName="Wind South West" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="windW" displayName="Wind West" type="java.lang.String" 
-						defaultValue="none" 
+				<parameter name="windStrength" displayName="Wind Strength" type="java.lang.String" 
+						defaultValue="strong" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									
@@ -120,16 +84,16 @@
 						converter="repast.simphony.parameter.StringConverterFactory$FloatConverter"
 									
 		/>
-				<parameter name="windS" displayName="Wind South" type="java.lang.String" 
-						defaultValue="none" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
 				<parameter name="probW" displayName="Probability West" type="float" 
 						defaultValue="0.5" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$FloatConverter"
+									
+		/>
+				<parameter name="windDir" displayName="Wind Direction" type="java.lang.String" 
+						defaultValue="north" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									
 		/>
 				<parameter name="probAll" displayName="Probability All Direction" type="float" 
