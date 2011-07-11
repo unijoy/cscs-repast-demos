@@ -29,12 +29,18 @@ We now have a new Repast Java project. The only files we're going to create for 
 Now let's write the driving method for each Boid object. This will be the method that is called at each tick (the unit of time for Repast). 
 
 == step() method ==
+We will be changing this method later.
 
-
+== forward() method ==
 
 = 3. Alignment =
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
+
+== neighborhood() method ==
+
+== alignmentDirection() method ==
+We will be changing this method later when we add random weights.
 
 = 4. Cohesion =
 
@@ -42,11 +48,17 @@ In order for a group of birds to be labeled a flock, or a group of fish to be la
 
 If this is the only rule that the Boids follow, then we end up with vaguely pentagram-shaped clusters of Boids in which each Boid is continually travelling a straight line through the cluster of Boids and then turning 180 degrees and doing the same thing again. This is a fairly static end to the computation, and not very complex or interesting in the long run. 
 
-*The Cohesion demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_cohesion/ here].*
+== cohesionDirection() method ==
+We will be changing this method later when we add random weights.
 
 = 5. Separation =
 
 Real flocks also have another key trait: the units comprising them are evenly spaced, and no one unit is crowded out. This can be accomplished very similarly to the Cohesion method above -- a set of the neighboring Boids is made. However, all Boids which are not too close (not within the desiredDistance) can be ignored. The other difference is that the Boid must turn away from, not towards, the other Boids -- but turning the complete opposite direction is too far. Thus, we can introduce a turnSpeed which determines how much the Boid is to turn away from the other Boids. 
+
+== toMyLeft() method ==
+
+== separationDirection() method ==
+We will be changing this method later when we add random weights.
 
 = 6. Putting it all together =
 
