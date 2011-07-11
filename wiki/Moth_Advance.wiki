@@ -122,6 +122,10 @@ A random coordinate in a given radius is generated and then the value is shifted
 
 The code is self explanatory (and well commented, just in case of doubts).
 
+If the condition is false then the moth can move randomly in any direction (distance <200). A random point is generated where the moth faces and moves forward with normal speed.
+
+Code is self explanatory. Check out the [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#facexy%28Number,%20Number%29 facexy()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#fd%28Number%29 fd()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#random%28Number%29 random()] function from the documentation. 
+
 Next we move on to the static motes i.e. light. There isn't much in lights behavior and thus it is skipped in this description section. This is followed by [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/UserObserver.groovy UserObserver.groovy] 
 
 
