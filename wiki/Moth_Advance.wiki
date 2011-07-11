@@ -59,8 +59,16 @@ In the Moth_Basic model we created moths and gave them a few features. Like the 
 
 The only assumption in the model was that, it was for a single light source at the center of the model.
 
-The second model which catches bugs in the Moore's Neighborhood has some borrowed concept from this model. Please refer to the BugCatcher.
+The second model which catches bugs in the Moore's Neighborhood has some borrowed concept from this model. Please refer to the BugCatcher documentation for detail.
 
+==Algorithm and Implementation==
+
+The guiding algorithm is fairly simple, the model has two different types of motes:
+
+ # Moths (Dynamic)
+ # Lights (Static)
+
+The moths wander aimlessly in the area, as soon as a moth senses light intensity, it tries to move to a point where there is light intensity. The light source size and the intensity are both adjustable by the user.  
 
 ==User Panel==
 
