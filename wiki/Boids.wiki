@@ -6,8 +6,10 @@ _Wiki note: this will become two separate tutorials for the two implementations,
 = 0. Before Beginning = 
 Before we can do anything with Repast Simphony, we need to make sure that we have a proper installation of Repast Simphony 2.0. Instructions on downloading and installing Repast Simphony on various platforms can be found on the Repast website.
 
+This tutorial will assume a familiarity with Java. The structure will be as follows: an introduction to the model; getting a framework for the model written in Java; adding the three main rules as functions; synthesizing the outputs of each rule in a useful way, and finally ideas for further extending the model.
+
 = 1. What is Boids? =
-Boids is a relatively simple agent-based model which simulates the steering behavior of flocking birds. Applications range from studying Artificial Life to implementing the algorithm in a flock of robots. The advantage of Boids is the bottom-up approach to flocking, rather than the top-down approach: each individual Boid need only follow a few simple rules and flocks will emerge naturally.
+Boids is an agent-based model which simulates the steering behavior of flocking birds using simple to understand rules. Applications of the model range from studying Artificial Life to implementing the algorithm in a flock of robots. The advantage of Boids is the bottom-up approach to flocking, rather than the top-down approach: each individual Boid need only follow a few simple rules and flocks will emerge naturally.
 The overall design of the Boids algorithm is based on [http://www.red3d.com/cwr/boids/ Craig Reynold's original Boids] algorithm consists of three rules:
   * Alignment: Each Boid steers itself to align its heading with that of its neighbors
   * Cohesion: Each Boid steers itself to the average position of its flockmates
@@ -20,14 +22,19 @@ Boids is a study of the kind of algorithm that starlings might follow in order t
 
 = 2. Setting up the framework =
 
-Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the selection box and click it, then click Next, then click Finish. 
+Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the selection box and click it. Make sure to name your project Boids, then click Next, then click Finish. 
+
+We now have a new Repast Java project. The only files we're going to create for now are in the /src subfolder, so the rest of the project files can safely be ignored. Click on the arrow to the left of the /src subfolder. A subfolder with your project's name will drop down underneath /src. The two files inside of this subfolder can safely be deleted. In their place we can make a new Java file called Boid. To do this, right-click on the folder called Boids inside /src and click New, then click Class. Name it Boid and click Finish. 
+
+Now let's write the driving method for each Boid object. This will be the method that is called at each tick (the unit of time for Repast). 
+
+== step() method ==
+
+
 
 = 3. Alignment =
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
-
-*The Alignment demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_avgheading/ here].*
-
 
 = 4. Cohesion =
 
@@ -43,8 +50,8 @@ Real flocks also have another key trait: the units comprising them are evenly sp
 
 = 6. Putting it all together =
 
-= 7. Adding random weights =
+== Adding random weights ==
 
-= 8. Extending the model =
+= 7. Extending the model =
 
 (0) http://www.red3d.com/cwr/boids/
