@@ -1,5 +1,7 @@
-#summary Boids ReLogo/groovy implementation by Rowan Copley
+#summary Boids Java implementation by Rowan Copley
 #sidebar TableOfContents
+
+_Wiki note: this will become two separate tutorials for the two implementations, with only code changed for each. For now this will be only the Java tutorial._
 
 = 0. Before Beginning = 
 Before we can do anything with Repast Simphony, we need to make sure that we have a proper installation of Repast Simphony 2.0. Instructions on downloading and installing Repast Simphony on various platforms can be found on the Repast website.
@@ -16,18 +18,18 @@ These three rules can conflict with each other, as we will see, the way that we 
 Boids is a study of the kind of algorithm that starlings might follow in order to create these spectacular clouds of birds:
 <wiki:video url="http://www.youtube.com/watch?v=eakKfY5aHmY"/>
 
-= 2. Implementation =
+= 2. Setting up the framework =
 
-Open Repast and switch to the ReLogo perspective. Next, create a new project and name it 'Boids.'
+Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the selection box and click it, then click Next, then click Finish. 
 
-=== Alignment ===
+= Rule #1: Alignment =
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
 
 *The Alignment demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_avgheading/ here].*
 
 
-=== Cohesion === 
+= Rule #2: Cohesion =
 
 In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. In order to fly close to their flockmates, each Boid takes all its neighboring Boids (again, defined as all the Boids which are closer than the distance defined by neighborhood radius) and determines the average direction of them from itself. (So if there were two Boids in the neighborhood set of a particular Boid, and they were North and West or 0 and 270 degrees respectively, then the average direction of the Boids would be Northwest or 315 degrees.) If the neighboring Boids are, on average, too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids. 
 
