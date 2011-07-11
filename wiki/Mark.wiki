@@ -1,6 +1,6 @@
 #summary Mark's project and task description
 
-= General Information =
+= General Information = 
 
 == Introduction ==
 
