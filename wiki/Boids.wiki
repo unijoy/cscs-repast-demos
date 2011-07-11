@@ -22,14 +22,14 @@ Boids is a study of the kind of algorithm that starlings might follow in order t
 
 Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the selection box and click it, then click Next, then click Finish. 
 
-= Rule #1: Alignment =
+= 3. Alignment =
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
 
 *The Alignment demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_avgheading/ here].*
 
 
-= Rule #2: Cohesion =
+= 4. Cohesion =
 
 In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. In order to fly close to their flockmates, each Boid takes all its neighboring Boids (again, defined as all the Boids which are closer than the distance defined by neighborhood radius) and determines the average direction of them from itself. (So if there were two Boids in the neighborhood set of a particular Boid, and they were North and West or 0 and 270 degrees respectively, then the average direction of the Boids would be Northwest or 315 degrees.) If the neighboring Boids are, on average, too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids. 
 
@@ -37,18 +37,14 @@ If this is the only rule that the Boids follow, then we end up with vaguely pent
 
 *The Cohesion demo can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_cohesion/ here].*
 
-=== Separation ===
+= 5. Separation =
 
 Real flocks also have another key trait: the units comprising them are evenly spaced, and no one unit is crowded out. This can be accomplished very similarly to the Cohesion method above -- a set of the neighboring Boids is made. However, all Boids which are not too close (not within the desiredDistance) can be ignored. The other difference is that the Boid must turn away from, not towards, the other Boids -- but turning the complete opposite direction is too far. Thus, we can introduce a turnSpeed which determines how much the Boid is to turn away from the other Boids. 
 
-_TODO: upload Separation demo_
+= 6. Putting it all together =
 
-=== Putting it all together ===
+= 7. Adding random weights =
 
-_TODO: upload Alpha minus weights_
-
-=== Adding random weights ===
-
-*The Alpha can be found [http://cscs-repast-demos.googlecode.com/svn/rowan/Boids_relogo_cohesion/ here].*
+= 8. Extending the model =
 
 (0) http://www.red3d.com/cwr/boids/
