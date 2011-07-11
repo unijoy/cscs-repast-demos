@@ -82,9 +82,49 @@ def N = count(inRadius(lights(),(source+intensity))
 
 }}}
 
-The functions used here are [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#inRadius%28List,%20Number%29 inRadius()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#count%28List%29 count()] .
+The functions used here are [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#inRadius%28List,%20Number%29 inRadius()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#count%28List%29 count()]. You can check out the links. inRadius returns an agent set which is a subset of the parameter 1 (lights()) and is in the distance (source+intensity) from the caller.
+count() returns the number of agents in that agent set.
 
-   
+Depending on the value of N the behavior of the moths is decided. If there is a light source in vicinity.
+
+{{{
+                if(N>0)	
+		{
+                        //generate random values within source+intensity radius
+
+			x = (random((source+intensity)))
+			y = random(sqrt(((source+intensity)*    (source+intensity))-(x*x)))
+
+                        //randomly assign signs
+
+			if(random(2))
+			{
+				x=(-1)*x
+			}
+			if(random(2))
+			{
+				y=(-1)*y
+			}
+                      
+                        //Shift the coordinates
+
+			x = x + oneOf(inRadius(lights(),(source+intensity))).x 
+			y = y + oneOf(inRadius(lights(),(source+intensity))).y 
+
+                        //face the coordinates and move 
+			facexy(x,y)
+			fd(exSpeed*0.5)
+		
+		}
+}}}
+
+A random coordinate in a given radius is generated and then the value is shifted according to the position of the light source. The moth will face a point in the illuminated region then and move forward according to the selected excited speed.
+
+The code is self explanatory (and well commented, just in case of doubts).
+
+Next we move on to the static motes i.e. light. There isn't much in lights behavior and thus it is skipped in this description section. This is followed by [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/UserObserver.groovy UserObserver.groovy] 
+
+
 
 ==User Panel==
 
