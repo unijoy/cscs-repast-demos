@@ -68,7 +68,23 @@ The guiding algorithm is fairly simple, the model has two different types of mot
  # Moths (Dynamic)
  # Lights (Static)
 
-The moths wander aimlessly in the area, as soon as a moth senses light intensity, it tries to move to a point where there is light intensity. The light source size and the intensity are both adjustable by the user.  
+The moths wander aimlessly in the area, as soon as a moth senses light intensity, it tries to move to a point where there is light intensity. The light source size and the intensity are both adjustable by the user. The population of the moth's can be changed by the user. Initial version does not have a turn angle control but you can add one. Check out Extending the model section for helps, tips and hints on the same. The number of light source are also adjustable. Please refer to the User Panel description for details.
+
+*Note:* The complete source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/ here]. The explanation of certain code segments (from the source code) is available here to make the reader understand the basic concept and design. 
+
+Let us first start by talking about [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/Moth.groovy moth.groovy]. This defines the characteristics of a moth.
+
+The first thing that we need to check is weather the mote is in the vicinity on any light source or not. This is done by checking weather the there is a light source in radius of (size of the source + intensity) from the moth. This is checked by the following code segment.
+
+{{{
+
+def N = count(inRadius(lights(),(source+intensity))
+
+}}}
+
+The functions used here are [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#inRadius%28List,%20Number%29 inRadius()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#count%28List%29 count()] .
+
+   
 
 ==User Panel==
 
