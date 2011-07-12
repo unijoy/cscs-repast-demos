@@ -9,6 +9,8 @@
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Moth_Advance(Index).JPG
+
 ------
 
 =*Contents*=
@@ -166,7 +168,7 @@ Rest of the code is either unedited or self - explanatory. Although [http://cscs
 
 ==User Panel=
 
-http://code.google.com/svn/wiki/Images_Mudit/Moth_Advance(Usr).JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Moth_Advance(Usr).JPG
 
 ==Data Sets==
 
