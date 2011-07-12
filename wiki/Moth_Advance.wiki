@@ -126,7 +126,24 @@ If the condition is false then the moth can move randomly in any direction (dist
 
 Code is self explanatory. Check out the [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#facexy%28Number,%20Number%29 facexy()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#fd%28Number%29 fd()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#random%28Number%29 random()] function from the documentation. 
 
-Next we move on to the static motes i.e. light. There isn't much in lights behavior and thus it is skipped in this description section. This is followed by [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/UserObserver.groovy UserObserver.groovy] 
+Next we move on to the static motes i.e. light. There isn't much in lights behavior and thus it is skipped in this description section. This is followed by [https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/UserObserver.groovy UserObserver.groovy]. In this we have two basic functions *setup()* and *go()*. In the setup() function [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#clearAll%28%29 clearAll()]. To clear the space. A user-entered number of Moths of default shape are created at random X and Y coordinates. 
+
+{{{
+
+                //Given number of Moths created at random X and Y coordinates
+
+                setDefaultShape(Moth,"default")
+
+		createMoths(numMoths)
+                {
+			setxy(randomXcor(),randomYcor())
+		}
+
+
+}}}
+
+You can check out the documentation of Relogo, to check out the functions (built-in) used in the following block. The details of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#setDefaultShape%28Class,%20String%29 setDefaultShape()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#createTurtles%28int%29 createMoths()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#setxy%28Number,%20Number%29 setxy()] and other functions can be found [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/ReLogoPrimitives.html here]
+
 
 
 
