@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This model simulates any number of bodies with a gravitational hold on each other, using a Newtonian model of physics.
+This model simulates any number of bodies interacting through gravity. It demonstrates the complexity that arises when more than two bodies interact. For example, compare the Wikipedia articles on the [http://en.wikipedia.org/wiki/Two-body_problem Two-Body Problem] with the [http://en.wikipedia.org/wiki/Three-body_problem Three-Body] one. It uses a Newtonian model of physics.
 
 = How to Use = 
 
