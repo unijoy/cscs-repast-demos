@@ -2,9 +2,8 @@
 #labels SwarmRobotics,AreaCoverage,MobileWirelessSensorNetwork
 #sidebar TableOfContents
 
-https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
 
-*Summary*
+=*Summary*=
 
   * Model        : Cover 360
   * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Area%20Coverage/
@@ -12,9 +11,11 @@ https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
+https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/Area.jpg
+
 ------
 
-*Contents*
+=*Contents*=
 
 <wiki:toc max_depth="2" />
 
