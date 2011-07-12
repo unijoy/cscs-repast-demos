@@ -44,25 +44,31 @@ We will be changing this method later when we add random weights.
 
 = 4. Cohesion =
 
-In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. In order to fly close to their flockmates, each Boid takes all its neighboring Boids (again, defined as all the Boids which are closer than the distance defined by neighborhood radius) and determines the average direction of them from itself. (So if there were two Boids in the neighborhood set of a particular Boid, and they were North and West or 0 and 270 degrees respectively, then the average direction of the Boids would be Northwest or 315 degrees.) If the neighboring Boids are, on average, too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids. 
+In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. The direction that the Boid should turn in order to get closer to its neighboring Boids is returned by the method cohesionDirection().
 
-If this is the only rule that the Boids follow, then we end up with vaguely pentagram-shaped clusters of Boids in which each Boid is continually travelling a straight line through the cluster of Boids and then turning 180 degrees and doing the same thing again. This is a fairly static end to the computation, and not very complex or interesting in the long run. 
 
 == cohesionDirection() method ==
 We will be changing this method later when we add random weights.
 
+In order to fly close to their flockmates, each Boid takes all its neighboring Boids (again, defined as all the Boids which are closer than the distance defined by neighborhood radius) and determines the average direction of them from itself. (So if there were two Boids in the neighborhood set of a particular Boid, and they were North and West or 0 and 270 degrees respectively, then the average direction of the Boids would be Northwest or 315 degrees.) If the neighboring Boids are, on average, too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids. 
+
 = 5. Separation =
-
-Real flocks also have another key trait: the units comprising them are evenly spaced, and no one unit is crowded out. This can be accomplished very similarly to the Cohesion method above -- a set of the neighboring Boids is made. However, all Boids which are not too close (not within the desiredDistance) can be ignored. The other difference is that the Boid must turn away from, not towards, the other Boids -- but turning the complete opposite direction is too far. Thus, we can introduce a turnSpeed which determines how much the Boid is to turn away from the other Boids. 
-
-== toMyLeft() method ==
+Real flocks have another key trait: the units comprising them are fairly evenly spaced, and no one unit is crowded out. 
 
 == separationDirection() method ==
 We will be changing this method later when we add random weights.
 
+This can be accomplished very similarly to the Cohesion method above -- a set of the neighboring Boids is made. However, all Boids which are not too close (not within the desiredDistance) can be ignored. The other difference is that the Boid must turn away from, not towards, the other Boids -- but turning the complete opposite direction is too far. Thus, we can introduce a turnSpeed which determines how much the Boid is to turn away from the other Boids. 
+
+== toMyLeft() method ==
+
 = 6. Putting it all together =
 
+We now combine the three steering methods we established above into the single method, step().
+
 == Adding random weights ==
+
+To make this model look more lifelike, we can add random weighting to the three steering methods as well as the methods which allow the Boid to move sideways (moveTowards() and moveAwayFrom()).
 
 = 7. Extending the model =
 
