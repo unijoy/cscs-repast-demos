@@ -162,6 +162,8 @@ Ask() function (in the code segment below) is also used. Ask takes two parameter
 
 }}}  
 
+Rest of the code is either unedited or self - explanatory. Although [ http://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Advance/src/moth_advance/relogo/UserGlobalsAndPanelFactory.groovy UserPanelFacrory.groovy] is dealt with in the next section.
+
 ==User Panel==
 
 _to be added soon_
