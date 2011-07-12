@@ -177,6 +177,9 @@ The following is the code that explains the circle formulation.
 
 ==User Panel==
 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Area(Usr).JPG
+
 The section briefly describes the elements of the User Panel and the parameters they control. 
 
  * Push Buttons (that rebounds) 
