@@ -2,8 +2,7 @@
 #labels SwarmRobotics,AreaCoverage,MobileWirelessSensorNetwork
 #sidebar TableOfContents
 
-
-https://code.google.com/p/cscs-repast-demos/source/browse/wiki/AreaCoverage/Area.jpg
+https://cscs-repast-demos.googlecode.com/svn/common/test/Funny-Panda.jpg
 
 *Summary*
 
