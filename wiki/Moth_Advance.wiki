@@ -144,8 +144,23 @@ Next we move on to the static motes i.e. light. There isn't much in lights behav
 
 You can check out the documentation of Relogo, to check out the functions (built-in) used in the following block. The details of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#setDefaultShape%28Class,%20String%29 setDefaultShape()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#createTurtles%28int%29 createMoths()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#setxy%28Number,%20Number%29 setxy()] and other functions can be found [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/ReLogoPrimitives.html here]
 
+If you find the concept of shapes abstract, check out the shapes folder in your project explorer task bar. You will find the details of the shapes that are already made for you. You can also add your custom made shapes. These shapes can be applied to your agents just by using their names. An example of the same is in the code segment above. "default" is one of the shapes in the shape folder.
+
+Similarly, a user defined number of lights are created.
+
+Ask() function (in the code segment below) is also used. Ask takes two parameters, the first one is a List, which is moths() in the given case. The other one is a closure i.e. an operation. Like we intend to call the step() function of each mote and then same for the lights(). This is accomplished by the following code segment of the project.
+
+{{{
+
+               ask(moths())
+               {
+                        //Calls the step() function of moths 
+                        
+			step()
+	       }
 
 
+}}}  
 
 ==User Panel==
 
