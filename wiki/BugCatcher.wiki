@@ -62,7 +62,7 @@ The population of the bugs and the number of bug catching machines are both adju
 
 ==User Panel==
 
-_to be added soon_
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
 
 ==Data Sets==
 
