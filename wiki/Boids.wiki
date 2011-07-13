@@ -76,9 +76,34 @@ In order to understand this block of code, you must first understand the underly
 
 Whenever an object moves itself and we are using these two projections, we need to update both in order for them to make sense. This means that we will need to convert between one projection's co-ordinates and another's. So the first line of code in the method creates an object of type NdPoint which contains a representation of the Boid's current co-ordinates in the continuous space. The second and third lines in the method take the Boid's current co-ordinates and change them so that the Boid has moved by a total of 0.3, the value in distance, in the direction of the variable heading.
 
-== forward() method ==
-
 == Context Builder ==
+
+Create a new class in the Boids package and name it BoidsContextBuilder. Here is what the code for it should look like:
+
+{{{
+public Context build(Context<Object> context) {
+		context.setId("Boids_java");
+		Parameters p = RunEnvironment.getInstance().getParameters();
+		int gridWidth = 16;
+		int numBoids = 20;
+		
+		ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
+		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace("space",context,new RandomCartesianAdder<Object>(), new repast.simphony.space.continuous.WrapAroundBorders(), gridWidth,gridWidth);
+		
+		Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", context, new GridBuilderParameters<Object>(
+				   new WrapAroundBorders(),
+				   new SimpleGridAdder<Object>(),true,
+				   gridWidth,gridWidth));
+		
+		for(int i = 0; i < numBoids; i++){
+			Boid boid = new Boid(space, grid);
+			context.add(boid);
+			NdPoint pt = space.getLocation(boid);
+			grid.moveTo(boid, (int)pt.getX(), (int)pt.getY());
+		}
+		return context;
+	}
+}}}
 
 == Boid() ==
 
