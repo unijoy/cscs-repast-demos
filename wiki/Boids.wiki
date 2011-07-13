@@ -32,14 +32,17 @@ Your project's hierarchy should look like Fig. xxx. Next, add in code to your Bo
 package Boids;
 
 public class Boid {
-	public Boid(){
-		
-	}
+   double distance;
+   double heading;
+   public Boid(){
+      distance = 0.3;
+      heading = randomRadian();
+   }
 	
-        @ScheduledMethod(start = 1, interval = 1)
-	public void step(){
+   @ScheduledMethod(start = 1, interval = 1)
+   public void step(){
 		
-	}
+   }
 }
 }}}
 
@@ -69,7 +72,9 @@ public void forward(){
 }
 }}}
 
+In order to understand this block of code, you must first understand the underlying representations of space that Repast uses. In this particular model, we use both kinds: we use a grid, where each object has a location on a grid of discrete cells defined by two integers; and we use a continuous space, where each object has a location defined by two doubles. If we were making a three-dimensional model, we would have three integers and three doubles for the grid and the continuous space, respectively. Both the grid representation of space and the continuous space representation of space are called projections. We will see later why we use both projections.
 
+Whenever an object moves itself and we are using these two projections, we need to update both in order for them to make sense. This means that we will need to convert between one projection's co-ordinates and another's. So the first line of code in the method creates an object of type NdPoint which contains a representation of the Boid's current co-ordinates in the continuous space. The second and third lines in the method take the Boid's current co-ordinates and change them so that the Boid has moved by a total of 0.3, the value in distance, in the direction of the variable heading.
 
 == forward() method ==
 
