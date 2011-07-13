@@ -78,34 +78,44 @@ Whenever an object moves itself and we are using these two projections, we need 
 
 == Context Builder ==
 
-Create a new class in the Boids package and name it BoidsContextBuilder. Here is what the code for it should look like:
+Create a new class in the Boids package and name it BoidsContextBuilder. Let's do the simple stuff first:
 
 {{{
 public Context build(Context<Object> context) {
-		context.setId("Boids_java");
-		Parameters p = RunEnvironment.getInstance().getParameters();
-		int gridWidth = 16;
-		int numBoids = 20;
+   context.setId("Boids");
+   int width = 16;
+   int height = 16;
+   int numBoids = 20;
 		
-		ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
-		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
-("space",context,new RandomCartesianAdder<Object>(), new repast.simphony.space.continuous.WrapAroundBorders(), gridWidth,gridWidth);
-		
-		Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", context, new GridBuilderParameters<Object>(
-				   new WrapAroundBorders(),
-				   new SimpleGridAdder<Object>(),true,
-				   gridWidth,gridWidth));
-		
-		for(int i = 0; i < numBoids; i++){
-			Boid boid = new Boid(space, grid);
-			context.add(boid);
-			NdPoint pt = space.getLocation(boid);
-			grid.moveTo(boid, (int)pt.getX(), (int)pt.getY());
-		}
-		return context;
-	}
+   //placeholder
+
+   return context;
+}
 }}}
 
+Next, we need to create the two space projections, our grid and our continuous space. This will go where our placeholder comment is right now. Here is the code:
+
+{{{
+ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
+ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
+("space",context,new RandomCartesianAdder<Object>(), new 
+repast.simphony.space.continuous.WrapAroundBorders(), width,height);
+		
+Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", 
+context, new GridBuilderParameters<Object>(new WrapAroundBorders(), new
+ SimpleGridAdder<Object>(),true, width,height));
+}}}
+
+And lastly, we need to create the Boids and add them to the context. We do that with this code snippet, which goes right underneath the last snippet of code:
+
+{{{
+for(int i = 0; i < numBoids; i++){
+   Boid boid = new Boid(space, grid);
+   context.add(boid);
+   NdPoint pt = space.getLocation(boid);
+   grid.moveTo(boid, (int)pt.getX(), (int)pt.getY());
+}
+}}}
 == Boid() ==
 
 = 3. Alignment =
