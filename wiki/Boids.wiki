@@ -22,16 +22,37 @@ Boids is a study of the kind of algorithm that starlings might follow in order t
 
 = 2. Setting up the framework =
 
-Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the selection box and click it. Make sure to name your project Boids, then click Next, then click Finish. 
+Open Repast and switch to the Java perspective by clicking the Java button in the upper. Next, we need to create a new Java project for Repast. To do this properly, click File, go to New, and click Other. Find Repast Simphony Project in the Wizard selection box and click it, then click Next. Nname your project Boids and click Finish. 
 
 We now have a new Repast Java project. The only files we're going to create for now are in the /src subfolder, so the rest of the project files can safely be ignored. Click on the arrow to the left of the /src subfolder. A subfolder with your project's name will drop down underneath /src. The two files inside of this subfolder can safely be deleted. In their place we can make a new Java file called Boid. To do this, right-click on the folder called Boids inside /src and click New, then click Class. Name it Boid and click Finish. 
 
-Now let's write the driving method for each Boid object. This will be the method that is called at each tick (the unit of time for Repast). 
+Your project's hierarchy should look like Fig. xxx. Next, add in code to your Boid class so it looks like this:
+
+{{{
+package Boids;
+
+public class Boid {
+	public Boid(){
+		
+	}
+	
+        @ScheduledMethod(start = 1, interval = 1)
+	public void step(){
+		
+	}
+}
+}}}
+
+The method named Boid will be a constructor that we'll return to when we create the Context Builder for Boids. The step() method is a method that will be called at every tick, or time step, of the simulation. This is delineated by line xxx of the code above. 
 
 == step() method ==
 We will be changing this method later.
 
 == forward() method ==
+
+== Context Builder ==
+
+== Boid() ==
 
 = 3. Alignment =
 
