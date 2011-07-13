@@ -103,7 +103,7 @@ Click on the _Next >_ button. A new wizard page is shown where the name of the p
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_sipmohy_project.png
 
-*Note* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
+*Remark* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
 
 After pressing the _Finish_ button, the freshly created project of the model should be shown in the _Package Explorer_ view.
 
@@ -129,7 +129,7 @@ public class Bug {
 }
 }}}
 
-*Note* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
+*Remark* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/enabling_line_numbers.png
 
@@ -228,9 +228,106 @@ In Repast Simphony, one of the most convenient ways to define an agent action is
 
 }}}
 
-Ok, so now we have an action. Now, as the model defines, the first thing a `Bug` should do is to find its location, and query its neighbourhood.
+*Remark* From now on, for the sake of simplicity, we omit the fully qualified class names and `import` statements. Eclipse automatically inserts these, and in case of uncertainity the `Ctrl + Space` (_auto-complete feature_) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the `Ctrl + Shift + O` (_organize imports_) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance).
+  Using the hotkeys may really boost up the development speed. Press `Ctrl+Shift+L` to get a full list of usable hotkey combinations in the current context (e.g., in the Java editor), or see the full list of available ones through _Window -> Preferences -> General -> Keys_ settings page.
 
-CONTINUE
+We defined an action that is executed for all `Bug` instance from the beginning (`start = 1`) of the simulation in each time step (`interval = 1`). Now, as the model defines, the first thing a `Bug` should do is to find its location, and query its neighbourhood.
+
+Fortunately, there is a method we can use to find the neighborhood of an agent offered by the standard Repast Java API. We have to create an instance of class `GridCellNgh` and call its `getNeighborhood()` function.
+
+ * To create a `GridCellNgh` instance, we have to specify the grid, the center location of the neighborhood and the extent (width, height) of the required neighborhood relation.
+ * Calling the `getNeighborhood()` function is then quite straightforward: it requires only a logical parameter which determines to whether include the center location in the returned list or not. 
+
+The result is a list of `GridCell` instances that make up the neighborhood.
+
+{{{
+	final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
+	location, Bug.class, Constants.BUG_VISION_RANGE,
+	Constants.BUG_VISION_RANGE).getNeighborhood(false);
+}}}
+
+We have a utility function that returns the filtered list of empty cells, and it is easy to use:
+
+{{{
+	final List<GridCell<Bug>> freeCells = SMUtils
+			.getFreeGridCells(bugNeighborhood);
+}}}
+
+As the model specifies the agent should not move if there is no available free cell in its neighborhood. In this case, we simply stop the execution of the action by calling a `return` statement.
+
+{{{
+	if (freeCells.isEmpty()) {
+		return;
+	}
+}}}
+
+The model specifies to choose a random element from the list. It may be done this way:
+
+{{{
+	SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+}}}
+
+However, it is more convenient to choose a random element directly from the list of free cells as follows:
+
+{{{
+	TODO
+	SMUtils.randomElementOf(freeCells);
+}}}
+
+After evaluating a new empty place for the agent, we can move it by calling the `moveTo()` method of the used `Grid` instance in order to relocate the agent. The functino has three parameters: the agent to move on the grid, and its new `x` and `y` locations (there may be arbitrary number of coordinates if requried, but in this example model we use a two-dimensional discrete space).
+
+{{{
+	final GridPoint newGridPoint = chosenFreeCell.getPoint();
+	grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+}}}
+
+The whole body of the created action method is shown in the following code listing:
+
+{{{
+	final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
+	location, Bug.class, Constants.BUG_VISION_RANGE,
+	Constants.BUG_VISION_RANGE).getNeighborhood(false);
+
+	final List<GridCell<Bug>> freeCells = SMUtils
+			.getFreeGridCells(bugNeighborhood);
+
+	if (freeCells.isEmpty()) {
+		return;
+	}
+
+	SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+
+	final GridCell<HabitatCell> chosenFreeCell = habitatCells.get(0);
+
+	final GridPoint newGridPoint = chosenFreeCell.getPoint();
+	grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+}}}
+
+==== Creating the Simulation Context ====
+One last part is needed to complete the whole picture: a custom context builder implementation which is responsible to perform the initialization.
+
+This is the only part where a minor _"magic"_ is required. Open up the file `stupidmodel.rs/context.xml`. Repast Simphony includes a nice XML file editor, where the elements may be added through a graphical interface. After clicking on the _Source_ tab, the default content for the file should look something like this:
+
+{{{
+<context id="stupidmodel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+</context>
+}}}
+
+In order to let the observer (the Repast S GUI and its several wizards) know about the projections we added to our model, the following modifications must be done:
+
+{{{
+<context id="stupidmodel"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+	<projection id="space" type="continuous space" />
+	<projection id="grid" type="grid" /> 
+</context>
+}}}
+
+Start the model.
+
 
 === Further Fun ===
 
