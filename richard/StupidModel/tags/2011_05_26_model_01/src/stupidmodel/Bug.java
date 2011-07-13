@@ -97,7 +97,10 @@ public class Bug {
 			return;
 		}
 
-		// CHECKME Is it needed?
+		// This is the way to shuffle an arbitrary list
+		// The description of the model suggests using it, however, we choose a
+		// random element from the list instead of the first one so it is not
+		// vital
 		SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 
 		// Get a random free location within sight range
