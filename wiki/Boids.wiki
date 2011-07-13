@@ -88,7 +88,8 @@ public Context build(Context<Object> context) {
 		int numBoids = 20;
 		
 		ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
-		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace("space",context,new RandomCartesianAdder<Object>(), new repast.simphony.space.continuous.WrapAroundBorders(), gridWidth,gridWidth);
+		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
+("space",context,new RandomCartesianAdder<Object>(), new repast.simphony.space.continuous.WrapAroundBorders(), gridWidth,gridWidth);
 		
 		Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", context, new GridBuilderParameters<Object>(
 				   new WrapAroundBorders(),
