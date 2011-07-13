@@ -460,10 +460,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/specify_context_bu
 The next task is to create a simple display to see the agents moving.
 
  # Right-click on _Displays_ in the _Scenario Tree_ and click _Add Display_
- # In the _Display configuration_ dialog, type Grid Display for name. Leave 2D as the type. Select the _grid_ projection as the one to display. Click on _grid_ in the _Projection and Value Layers_ section and then click the green right arrow. The projections on the right are the ones will be displaying and those on the left are all the possible projections to display.
-
-https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation.png
-
+ # In the _Display configuration_ dialog, type Grid Display for name. Leave 2D as the type. Select the _grid_ projection as the one to display. Click on _grid_ in the _Projection and Value Layers_ section and then click the green right arrow. The projections on the right are the ones will be displaying and those on the left are all the possible projections to display. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation.png
  # Click _Next_.
  # Select _Bug_ agents as the types to display. Do this by selecting it in the left and then clicking the green right arrow to move them to right. If we would have several agents displayed on the grid, the order how they would have been drawn on the display is from the bottom of this list to the up (e.g., the last element of the list on the right is drawn first and the first drawn last). 
 
@@ -496,14 +493,14 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/stupid_model_1_fin
 
 === Further Fun ===
 
+ * It is quite easy to set different visualization settings, spend a little time with playing them:
+   * Try setting an icon for the bugs. It is pretty easy and makes the model look nicer.
+   * Set a custom background color for the simulation.
+ * Try to modify the current implementation to allow multiple agents stay on the same territory.
  * When the new Repast Simphony project is instantiated, it created a several important directories. It represents a _suggested_ project layout, feel free to modify the layout if preferred, however, using conventions help other modelers understand your simulation, and make it running easier if the required resources may be found in the same places. Take some time to check the directory structure, and find a proper place to create a simple documentation for your model containing your name as the author and a link to the StupidModel documentation.
  * It is always good to know the API than to reinvent the wheel. Spend some time by checking out the utility methods offered by the Repast Simphony Java API, it can really save some time since they offer solutions and covers most of the common tasks. 
  * There are alternative ways to access any grid or space elements (in particular, any defined _projection_) through the context. In this version of the model, we directly passed a reference to the created agents. Can you figure out how to access the same grid instance with the defined `GRID_ID` through the context in which the agent is? *Hint:* An agent's context may be accessed anytime with a call to `ContextUtils.getContext(this)`.
  * Try the simulation out with different different vision ranges for the agents. Run the model with different number of agents to check they are moving correctly.
- * It is quite easy to set different visualization settings, spend a little time with playing them:
-   * Try setting an icon for the bugs. It is pretty easy and makes the model look nicer.
-   * Set a custom background color for the simulation!
- * Try to modify the current implementation to allow multiple agents stay on the same territory!
 
 == Bug Growth ==
 === Purpose ===
