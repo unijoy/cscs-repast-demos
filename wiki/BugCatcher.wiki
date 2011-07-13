@@ -39,10 +39,26 @@ It is suggested that you go through the following models also, as the guiding al
 
 = 2. Introduction=
 
+A fly-killing device is used for pest control. A fly-killing device typically attracts flying insects, for example houseflies, wasps, moths and mosquitoes. The insects are killed or released. We have modeled such a device which kills the bugs after a user specified time. It is based on Bug Zapper. 
+
+A bug zapper is a device that attracts and kills insects that are attracted by light. A light source attracts insects to an electrical grid, where they are electrocuted by touching two wires with a high voltage between them. The name stems from the characteristic zap sound produced when an insect is electrocuted.
+
+A similar system is modeled here. Read the Description section to figure out the difference between the Moth_Advance model and BugCatcher Model. 
 
 -----
 
 =Description=
+
+
+The Bug Catcher model looks quite similar to the Moth_Advance model. In Moth_Advance model the intensity of the light source and the size of the light source are both adjustable, while when BugCatcher was modeled, it was assumed that the machine can catch bugs only in it's Moore's Neighborhood and this is fixed for all bug catching machines. The BugCatcher model can be made from the Moth_Advance model, but the way in which the two models are approached are different.
+
+In the BugCatcher model, bugs move around randomly in an area and the bug catching machines are at various positions. The bugs get attracted towards (the center) the bug catching machines and get caught in them. They are electrocuted after and they die after some time. 
+
+The population of the bugs and the number of bug catching machines are both adjustable by the user through the User Panel. The time between electrocution and death can also be changed by the user through the User Panel. The bug speed can also be controlled by the same.  
+
+
+==
+
 
 ==User Panel==
 
