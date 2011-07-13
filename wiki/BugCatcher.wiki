@@ -9,8 +9,7 @@
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
-https://code.google.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
-
+https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/Bug(Usr).JPG
 ------
 
 =*Content*=
