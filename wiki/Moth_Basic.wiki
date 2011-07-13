@@ -1,7 +1,7 @@
 #summary The Moth_Basic model detail
 #sidebar TableOfContents
 
-*Summary*
+=*Summary*=
 
   * Model        : Moth_Basic
   * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Moth_Basic/
@@ -9,9 +9,11 @@
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Basic(Index).JPG
+
 ------
 
-*Contents*
+=*Contents*=
 
 <wiki:toc max_depth="2" />
 
