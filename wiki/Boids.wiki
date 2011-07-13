@@ -116,7 +116,20 @@ for(int i = 0; i < numBoids; i++){
    grid.moveTo(boid, (int)pt.getX(), (int)pt.getY());
 }
 }}}
+
+Lastly, we modify the Boid constructor.
+
 == Boid() ==
+
+This is how the constructor in the Boid class should look:
+
+{{{
+public Boid(ContinuousSpace<Object> space, Grid<Object> grid){
+   this.space = space;
+   this.grid = grid;
+   heading = randomRadian();
+}
+}}}
 
 = 3. Alignment =
 
