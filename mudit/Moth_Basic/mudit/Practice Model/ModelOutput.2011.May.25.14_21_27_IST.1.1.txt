@@ -1,0 +1,2 @@
+"timestamp","remainingHumans","remainingZombies","RelogoRun"
+1.0,50,5,1

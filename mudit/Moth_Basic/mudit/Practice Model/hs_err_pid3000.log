@@ -1,0 +1,209 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x77b55b57, pid=3000, tid=3592
+#
+# JRE version: 6.0_22-b04
+# Java VM: Java HotSpot(TM) Client VM (17.1-b03 mixed mode windows-x86 )
+# Problematic frame:
+# C  [ntdll.dll+0x55b57]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x27b31400):  JavaThread "AWT-EventQueue-0" [_thread_in_native, id=3592, stack(0x28d20000,0x29720000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x419a3624
+
+Registers:
+EAX=0x00260000, EBX=0x00001389, ECX=0x2ccbb480, EDX=0x419a3624
+ESP=0x2971f21c, EBP=0x2971f2ec, ESI=0x2ccbb478, EDI=0x43ee9041
+EIP=0x77b55b57, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x2971f21c)
+0x2971f21c:   5ef3dfa0 00000000 00000000 00260000
+0x2971f22c:   00263ae0 00263ae0 28b75388 00263b54
+0x2971f23c:   020c02cb 00000101 9a001389 00263ae0
+0x2971f24c:   77b522c6 00263ae0 00000000 2ccbb480
+0x2971f25c:   00260000 00000201 00260138 000007ff
+0x2971f26c:   00000067 5ef3dfb8 00000000 0026019c
+0x2971f27c:   00000000 02000002 419a3624 005f0092
+0x2971f28c:   77b522c6 5ef3de58 00000000 002601ac 
+
+Instructions: (pc=0x77b55b57)
+0x77b55b47:   02 00 8d 4e 08 8b 39 89 7d b8 8b 56 0c 89 55 98
+0x77b55b57:   8b 12 8b 7f 04 3b d7 0f 85 e5 22 02 00 3b d1 0f 
+
+
+Stack: [0x28d20000,0x29720000],  sp=0x2971f21c,  free space=27fc2971ed38k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [ntdll.dll+0x55b57]
+C  [ntdll.dll+0x534df]
+C  [KERNELBASE.dll+0xc495]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.sun.opengl.impl.GLImpl.glPopAttrib()V+0
+j  com.sun.opengl.util.j2d.TextureRenderer.endRendering(Z)V+63
+j  com.sun.opengl.util.j2d.TextureRenderer.end3DRendering()V+2
+j  com.sun.opengl.util.j2d.TextRenderer.endRendering(Z)V+63
+j  com.sun.opengl.util.j2d.TextRenderer.end3DRendering()V+2
+j  saf.v3d.scene.VLabelLayer.doDraw(Ljavax/media/opengl/GL;Lsaf/v3d/render/RenderState;)V+79
+J  saf.v3d.scene.VSpatial.draw(Ljavax/media/opengl/GL;Lsaf/v3d/render/RenderState;)V
+J  saf.v3d.scene.VComposite.doDraw(Ljavax/media/opengl/GL;Lsaf/v3d/render/RenderState;)V
+J  saf.v3d.scene.VSpatial.draw(Ljavax/media/opengl/GL;Lsaf/v3d/render/RenderState;)V
+j  saf.v3d.Canvas2D.display(Ljavax/media/opengl/GLAutoDrawable;)V+123
+j  com.sun.opengl.impl.GLDrawableHelper.display(Ljavax/media/opengl/GLAutoDrawable;)V+29
+j  javax.media.opengl.GLCanvas$DisplayAction.run()V+80
+j  com.sun.opengl.impl.GLDrawableHelper.invokeGL(Ljavax/media/opengl/GLDrawable;Ljavax/media/opengl/GLContext;Ljava/lang/Runnable;Ljava/lang/Runnable;)V+418
+j  javax.media.opengl.GLCanvas$DisplayOnEventDispatchThreadAction.run()V+35
+j  java.awt.event.InvocationEvent.dispatch()V+11
+j  java.awt.EventQueue.dispatchEvent(Ljava/awt/AWTEvent;)V+26
+J  java.awt.EventDispatchThread.pumpOneEventForFilters(I)Z
+j  java.awt.EventDispatchThread.pumpEventsForFilter(ILjava/awt/Conditional;Ljava/awt/EventFilter;)V+30
+j  java.awt.EventDispatchThread.pumpEventsForHierarchy(ILjava/awt/Conditional;Ljava/awt/Component;)V+11
+j  java.awt.EventDispatchThread.pumpEvents(ILjava/awt/Conditional;)V+4
+j  java.awt.EventDispatchThread.pumpEvents(Ljava/awt/Conditional;)V+3
+j  java.awt.EventDispatchThread.run()V+9
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x2826dc00 JavaThread "SwingWorker-pool-1-thread-2" daemon [_thread_blocked, id=3932, stack(0x2e530000,0x2ef30000)]
+  0x27e3b400 JavaThread "SwingWorker-pool-1-thread-1" daemon [_thread_blocked, id=416, stack(0x2db30000,0x2e530000)]
+  0x27c5a400 JavaThread "Image Fetcher 0" daemon [_thread_blocked, id=1232, stack(0x2d130000,0x2db30000)]
+  0x27c5a000 JavaThread "Thread-4" [_thread_blocked, id=2280, stack(0x2af70000,0x2b970000)]
+  0x281a7400 JavaThread "Batik CleanerThread" daemon [_thread_blocked, id=1432, stack(0x27060000,0x27a60000)]
+  0x01289400 JavaThread "DestroyJavaVM" [_thread_blocked, id=3680, stack(0x015c0000,0x01fc0000)]
+=>0x27b31400 JavaThread "AWT-EventQueue-0" [_thread_in_native, id=3592, stack(0x28d20000,0x29720000)]
+  0x24977000 JavaThread "AWT-Shutdown" [_thread_blocked, id=1168, stack(0x257d0000,0x261d0000)]
+  0x27c39800 JavaThread "TimerQueue" daemon [_thread_blocked, id=3204, stack(0x29720000,0x2a120000)]
+  0x2454f800 JavaThread "AWT-Windows" daemon [_thread_in_native, id=3168, stack(0x261d0000,0x26bd0000)]
+  0x2454ec00 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=3660, stack(0x24dd0000,0x257d0000)]
+  0x02082800 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=2260, stack(0x23a90000,0x24490000)]
+  0x0207c400 JavaThread "CompilerThread0" daemon [_thread_blocked, id=2664, stack(0x23a40000,0x23a90000)]
+  0x0207b400 JavaThread "Attach Listener" daemon [_thread_blocked, id=1156, stack(0x23040000,0x23a40000)]
+  0x02078400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=968, stack(0x22640000,0x23040000)]
+  0x0204ac00 JavaThread "Finalizer" daemon [_thread_blocked, id=1252, stack(0x21c40000,0x22640000)]
+  0x02049800 JavaThread "Reference Handler" daemon [_thread_blocked, id=2480, stack(0x21240000,0x21c40000)]
+
+Other Threads:
+  0x02047000 VMThread [stack: 0x01290000,0x012e0000] [id=1280]
+  0x02094c00 WatcherThread [stack: 0x24490000,0x244e0000] [id=3492]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 27776K, used 14830K [0x040c0000, 0x05ee0000, 0x0c610000)
+  eden space 24704K,  57% used [0x040c0000, 0x04ea5528, 0x058e0000)
+  from space 3072K,  19% used [0x058e0000, 0x059763a0, 0x05be0000)
+  to   space 3072K,   0% used [0x05be0000, 0x05be0000, 0x05ee0000)
+ tenured generation   total 61660K, used 38733K [0x0c610000, 0x10247000, 0x1d0c0000)
+   the space 61660K,  62% used [0x0c610000, 0x0ebe3660, 0x0ebe3800, 0x10247000)
+ compacting perm gen  total 35328K, used 35186K [0x1d0c0000, 0x1f340000, 0x210c0000)
+   the space 35328K,  99% used [0x1d0c0000, 0x1f31c970, 0x1f31ca00, 0x1f340000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x00424000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\javaw.exe
+0x77b00000 - 0x77c3d000 	C:\Windows\SYSTEM32\ntdll.dll
+0x76b50000 - 0x76c24000 	C:\Windows\system32\kernel32.dll
+0x75cb0000 - 0x75cfa000 	C:\Windows\system32\KERNELBASE.dll
+0x76a00000 - 0x76aa0000 	C:\Windows\system32\ADVAPI32.dll
+0x77880000 - 0x7792c000 	C:\Windows\system32\msvcrt.dll
+0x762d0000 - 0x762e9000 	C:\Windows\SYSTEM32\sechost.dll
+0x76540000 - 0x765e1000 	C:\Windows\system32\RPCRT4.dll
+0x76000000 - 0x760c9000 	C:\Windows\system32\USER32.dll
+0x77ab0000 - 0x77afe000 	C:\Windows\system32\GDI32.dll
+0x763c0000 - 0x763ca000 	C:\Windows\system32\LPK.dll
+0x75f60000 - 0x75ffd000 	C:\Windows\system32\USP10.dll
+0x76b30000 - 0x76b4f000 	C:\Windows\system32\IMM32.DLL
+0x762f0000 - 0x763bc000 	C:\Windows\system32\MSCTF.dll
+0x7c340000 - 0x7c396000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\msvcr71.dll
+0x6d7f0000 - 0x6da97000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\client\jvm.dll
+0x74420000 - 0x74452000 	C:\Windows\system32\WINMM.dll
+0x75b60000 - 0x75bab000 	C:\Windows\system32\apphelp.dll
+0x6d7a0000 - 0x6d7ac000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\verify.dll
+0x6d320000 - 0x6d33f000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\java.dll
+0x6d280000 - 0x6d288000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\hpi.dll
+0x77c60000 - 0x77c65000 	C:\Windows\system32\PSAPI.DLL
+0x6d7e0000 - 0x6d7ef000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\zip.dll
+0x6d000000 - 0x6d14a000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\awt.dll
+0x71980000 - 0x719d1000 	C:\Windows\system32\WINSPOOL.DRV
+0x765f0000 - 0x7674c000 	C:\Windows\system32\ole32.dll
+0x74ba0000 - 0x74d3e000 	C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7600.16661_none_420fe3fa2b8113bd\COMCTL32.dll
+0x76ad0000 - 0x76b27000 	C:\Windows\system32\SHLWAPI.dll
+0x745f0000 - 0x74603000 	C:\Windows\system32\DWMAPI.DLL
+0x74a20000 - 0x74a60000 	C:\Windows\system32\uxtheme.dll
+0x00240000 - 0x0024d000 	C:\Program Files\MMX310G 3G USB Manager\Driver\modemInst.dll
+0x75bb0000 - 0x75bbc000 	C:\Windows\system32\CRYPTBASE.dll
+0x6d230000 - 0x6d27f000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\fontmanager.dll
+0x76c30000 - 0x77879000 	C:\Windows\system32\shell32.dll
+0x6d600000 - 0x6d613000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\net.dll
+0x77c70000 - 0x77ca5000 	C:\Windows\system32\WS2_32.dll
+0x77c40000 - 0x77c46000 	C:\Windows\system32\NSI.dll
+0x75670000 - 0x756ac000 	C:\Windows\system32\mswsock.dll
+0x75660000 - 0x75666000 	C:\Windows\System32\wship6.dll
+0x6d620000 - 0x6d629000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\nio.dll
+0x763d0000 - 0x7645f000 	C:\Windows\system32\OLEAUT32.DLL
+0x76460000 - 0x764e3000 	C:\Windows\system32\CLBCatQ.DLL
+0x756b0000 - 0x756c6000 	C:\Windows\system32\CRYPTSP.dll
+0x75450000 - 0x7548b000 	C:\Windows\system32\rsaenh.dll
+0x75290000 - 0x752a7000 	C:\Windows\system32\USERENV.dll
+0x75c30000 - 0x75c3b000 	C:\Windows\system32\profapi.dll
+0x74710000 - 0x74720000 	C:\Windows\system32\NLAapi.dll
+0x75530000 - 0x75574000 	C:\Windows\system32\DNSAPI.dll
+0x715f0000 - 0x715f8000 	C:\Windows\System32\winrnr.dll
+0x716a0000 - 0x716b0000 	C:\Windows\system32\napinsp.dll
+0x71680000 - 0x71692000 	C:\Windows\system32\pnrpnsp.dll
+0x751c0000 - 0x751c5000 	C:\Windows\System32\wshtcpip.dll
+0x73f00000 - 0x73f1c000 	C:\Windows\system32\IPHLPAPI.DLL
+0x73ef0000 - 0x73ef7000 	C:\Windows\system32\WINNSI.DLL
+0x71670000 - 0x71676000 	C:\Windows\system32\rasadhlp.dll
+0x73270000 - 0x732a8000 	C:\Windows\System32\fwpuclnt.dll
+0x26ed0000 - 0x26f1d000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\jogl.dll
+0x703f0000 - 0x704b8000 	C:\Windows\system32\OPENGL32.dll
+0x73590000 - 0x735b2000 	C:\Windows\system32\GLU32.dll
+0x68f40000 - 0x69027000 	C:\Windows\system32\DDRAW.dll
+0x74b90000 - 0x74b96000 	C:\Windows\system32\DCIMAN32.dll
+0x76860000 - 0x769fd000 	C:\Windows\system32\SETUPAPI.dll
+0x75d30000 - 0x75d57000 	C:\Windows\system32\CFGMGR32.dll
+0x75f10000 - 0x75f22000 	C:\Windows\system32\DEVOBJ.dll
+0x6d350000 - 0x6d356000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\jawt.dll
+0x26d10000 - 0x26d15000 	C:\RepastSimphony-2.0-beta\eclipse\jre\bin\jogl_awt.dll
+0x28710000 - 0x28b02000 	C:\Windows\system32\ig4icd32.dll
+0x2b970000 - 0x2bc0a000 	C:\Windows\system32\ig4dev32.dll
+
+VM Arguments:
+jvm_args: -Xss10M -Xmx400M -Dfile.encoding=Cp1252 
+java_command: repast.simphony.runtime.RepastMain C:\RepastSimphony-2.0-beta\workspace\Zombies/Zombies.rs
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:/RepastSimphony-2.0-beta/eclipse/jre/bin/client;C:/RepastSimphony-2.0-beta/eclipse/jre/bin;C:/RepastSimphony-2.0-beta/eclipse/jre/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2010a\runtime\win32;C:\Program Files\MATLAB\R2010a\bin;C:\wamp\bin\php\php5.2.6;C:\wamp\www\framework
+USERNAME=RAAJ
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 Build 7600 
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+Memory: 4k page, physical 3135464k(1760840k free), swap 6269164k(4836204k free)
+
+vm_info: Java HotSpot(TM) Client VM (17.1-b03) for windows-x86 JRE (1.6.0_22-b04), built on Sep 15 2010 00:56:36 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Wed May 25 14:19:11 2011
+elapsed time: 71 seconds
+
