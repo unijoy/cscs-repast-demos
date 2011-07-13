@@ -223,7 +223,7 @@ In Repast Simphony, one of the most convenient ways to define an agent action is
 {{{
 @ScheduledMethod(start = 1, interval = 1)
 public void step() {
-	...
+	// ...
 }
 }}}
 
@@ -341,7 +341,7 @@ public final class Constants {
 	public static final String GRID_ID = "grid";
 
 	// Other definitions omitted
-	...
+	// ...
 }
 }}}
 
@@ -502,14 +502,117 @@ Illustrate adding instance variables and methods to the agents.
 
 === Implementation Notes ===
 
-=== Further Fun ===
- * Try to schedule the `grow()` and `move()` actions with the same priority, run the model and check in which order are the actions executed.
- * Try to create different rainbow color maps for the agents.
- * Agents' `size` property is changed by the same fixed number. Try to introduce minor heterogeneity through randomizing the `grow()` action: make the `size` property increased by a random value between the interval `[0.5, 1.5]`.
+==== Extending Agents with New Attributes and Actions ====
+Adding a new field and action to the `Bug` agenst should be an easy task. First we declare a new constant for bug growth rate as the description specifies:
+
+{{{
+public final class Constants {
+	public static final double BUG_GROWTH_RATE = 1.0;
+	
+	// ...
+}
+}}}
+
+Next we extend the `Bug` class with a member variable called `size` and a getter function for the field. We also create a new function called `grow()` and annotate it as an action. The only issue here is the `priority` attribute of the `ScheduledMethod` annotation: using this attribute the order of actions can be specified with regards to other actions scheduled for the same tick. The action with greater value is activated first, so we assign `0` to `step()` and `-1` to `grow()`.
+
+{{{
+public class Bug {
+	private double size = 1.0;
+
+	// ...
+
+	public double getSize() {
+		return size;
+	}
+
+	@ScheduledMethod(start = 1, interval = 1, priority = 0)
+	public void step() {
+		// ...
+	}
+
+	@ScheduledMethod(start = 1, interval = 1, priority = -1)
+	public void grow() {
+		size += Constants.BUG_GROWTH_RATE;
+	}
+
+	// ...
+}
+}}}
+
+We also improve some other parts of the class. First, we modify the constructor to show how to acquire a reference of a projection from the context the agent is associated with through a utility function called `getGrid()`. This is why the different projection IDs are so important. The `toString()` method is updated as well and it is extended to reflect the `size` attribute too.
+
+{{{
+	public Bug() {
+		super();
+	}
+
+	public Grid<Object> getGrid() {
+		return (Grid<Object>) ContextUtils.getContext(this)
+				.getProjection(Constants.GRID_ID);
+	}
+
+	// ...
+
+	@Override
+	public String toString() {
+		// This may happen when testing
+		final String location = (ContextUtils.getContext(this) != null) ? getGrid()
+				.getLocation(this).toString() : "[?, ?]";
+
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("Bug @ location %s, size=%f", location, size);
+	}
+}}}
+
+Do not forget to update the constructor calls and remove the unnecessary `grid` parameter in the `build()` function of `StupidModelContextBuilder`.
+
+==== Creating a Custom Agent Display Style ====
+
+This may seem a bit low-level programming due to the colors but unfortulately it is unavoidable when dealing with rainbow colors.
+
+For a new custom agent display style, create a new class `stupidmodel.observer.BugStyleOGL2D` that extends `DefaultStyleOGL2D`. It has several default implementations already for the common methods (as abstract classes usually have), we have to deal only with the `getColor()` function currently. After getting the `size` attribute of the agent, we create a color with maximum red component (`0xFF` == `255`) and a scaled `strength` value as follows:
+
+{{{
+public class BugStyleOGL2D extends DefaultStyleOGL2D {
+	@Override
+	public Color getColor(final Object agent) {
+		if (agent instanceof Bug) {
+			final Bug bug = (Bug) agent;
+
+			final int strength = (int) Math.max(200 - 20 * bug.getSize(), 0);
+			return new Color(0xFF, strength, strength); // 0xFFFFFF - white,
+								    // 0xFF0000 - red
+		}
+
+		return super.getColor(agent);
+	}
+}
+}}}
+
+After starting up the simulation, edit the settings of _Grid Display_ by double-clicking on it and select `BugStyleOGL2D` for `Bug` agents in the _Style Class_ drop-down menu at the _Agent Style_ tab.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/edit_grid_display_use_custom_bugstyle_implementation.png
+
+Click _Ok_.
+
+We are ready with the configuration of the second !StupidModel version! Click on the _Initialize Run_ button to make the grid show up, and click _Start Run_ to allow agents start moving on the display. If everything goes well the agents should be a bit transparent in the beginning:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/styled_bug_agent_screenshot_beginning.png
+
+And become absolutely red after a few simulation ticks:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/styled_bug_agent_screenshot_end.png
 
 === Complete Model ===
 
  * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN tag directly.
+
+=== Further Fun ===
+ * Try to schedule the `grow()` and `move()` actions with the same priority, run the model and check in which order are the actions executed.
+ * Try to create different rainbow color maps for the agents.
+ * Agents' `size` property is changed by the same fixed number. Try to introduce minor heterogeneity through randomizing the `grow()` action: make the `size` property increased by a random value between the interval `[0.5, 1.5]`.
+ * Try to create specific labels displaying the `size` value for the agents through the `BugStyleOGL2D` implementation (*Hint:* override the `getLabel()` function).
 
 == Habitat Cells and Resource ==
 === Purpose ===
