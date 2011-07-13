@@ -45,8 +45,31 @@ public class Boid {
 
 The method named Boid will be a constructor that we'll return to when we create the Context Builder for Boids. The step() method is a method that will be called at every tick, or time step, of the simulation. This is delineated by line xxx of the code above. 
 
-== step() method ==
-We will be changing this method later.
+You'll notice that the @ScheduledMethod command is underlined in red. This is because we haven't made the necessary import for the command. There are two ways of doing this; either hover over the command until a popup window appears and click on "Import ScheduledMethod." The second way is to click on Source in the top menu and click on Organize Imports. As we add more code, you should automatically check for an import any time a command is underlined in red.
+
+== step() and forward() methods ==
+
+Here is the code we'll use for now for step():
+
+{{{
+public void step(){
+   forward();
+}
+}}}
+
+Now create the forward method below step():
+
+{{{
+public void forward(){
+	NdPoint pt = space.getLocation(this);
+	double moveX = pt.getX() + Math.cos(heading)*distance;
+	double moveY = pt.getY() + Math.sin(heading)*distance;
+	space.moveTo(this, moveX, moveY);
+	grid.moveTo(this, (int)moveX, (int)moveY);
+}
+}}}
+
+
 
 == forward() method ==
 
