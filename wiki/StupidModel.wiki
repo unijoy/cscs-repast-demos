@@ -356,18 +356,36 @@ public Context<Object> build(final Context<Object> context) {
 }	
 }}}
 
-As we written above contexts can also have `Projections` associated with them. A `Projection` takes the agents in a `Context` and imposes some sort of structure on them. We will use a `ContinuousSpace` and a `Grid`: both of them are projections, and they take agents and locate them in a continuous space and a matrix-like grid, respectively. In the `build()` method we are thus going to create these `Projection` instances and assign them to the `Context` by the following way:
+As we written above contexts can also have `Projections` associated with them. A `Projection` takes the agents in a `Context` and imposes some sort of structure on them. We will use a `ContinuousSpace` and a `Grid`: both of them are projections, and they take agents and locate them in a continuous space and a matrix-like grid, respectively. In the `build()` method we are thus going to create these `Projection` instances and assign them to the `Context`.
+
+To create a new space instance, first we need a space factory, this is done by creating a simple default factory by calling method `ContinuousSpaceFactoryFinder.createContinuousSpaceFactory()`. Creating a space may be a complex task, and in order to create an optimal representation (or for better performance) the function accepts _hints_. This is useful when creating e.g. multidimensional spaces. Here we specify `null` since the default settings are prefect for us.
+
+Next, using this factory we can create a space instance by assigning:
+
+ * its unique ID,
+ * the context to associate the space with,
+ * an instance of `Adder` that specifies how to add new elements to the space. We use a default implementation, the `RandomCartesianAdder` which adds new agents to the space to a random location.
+ * an instance of `PointTranslator` that determines how to handle the border cells. We use default implementation, the `WrapAroundBorders` which makes the space a toroid one.
+ * and lastly of course, the _X_ and _Y_ size of the grid.
+
+  <b>Remark</b> There is two class here with the same name, both offering the same functionality, but `repast.simphony.space.continuous.WrapAroundBorders` is used for spaces and `repast.simphony.space.grid.WrapAroundBorders` is used for grids.
+
+Creating the space instance may be done as follows:
 
 {{{
 final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
-		.createContinuousSpaceFactory(null) // No hints
+		.createContinuousSpaceFactory(null)
 		.createContinuousSpace(
 				Constants.SPACE_ID,
 				context,
 				new RandomCartesianAdder<Object>(),
 				new repast.simphony.space.continuous.WrapAroundBorders(),
 				Constants.GRID_SIZE, Constants.GRID_SIZE);
+}}}
 
+Create a grid is similar to creating a space, except it has a utility class to assign its parameters called `GridBuilderParameters`. In this case, we use SimpleGridAdder which does not assigns any positions for the agents on the grid by default, they will be moved to their initial position later on. There is an additional logical parameter called `multi` that determines if each cell in the grid is single occupancy. The other parameters are identical.
+
+{{{
 final Grid<Object> grid = GridFactoryFinder
 		.createGridFactory(null)
 		.createGrid(
@@ -375,16 +393,28 @@ final Grid<Object> grid = GridFactoryFinder
 				context,
 				new GridBuilderParameters<Object>(
 						new repast.simphony.space.grid.WrapAroundBorders(),
-						// This is a simple implementation of an adder
-						// that doesn't perform any action
 						new SimpleGridAdder<Object>(),
-						// Each cell in the grid is single occupancy
 						false,
-						// Size of the grid (defined constants)
 						Constants.GRID_SIZE, Constants.GRID_SIZE));
-
 }}}
 
+
+Creating the agents is an easy task after this: we create the specified number of agents by their defined constructor, and assign them to the context and to the grid to their random position where they were added initially. This is done with the `context.add()`, `space.getLocation()` and `grid.moveTo()` methods.
+
+{{{
+		for (int i = 0; i < Constants.BUG_COUNT; ++i) {
+			final Bug bug = new Bug(grid);
+			context.add(bug);
+			final NdPoint pt = space.getLocation(bug);
+			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
+		}
+
+		return context;
+}}}
+
+  <b>Remark</b> As the definition of the model did not specificied it in details, we allow multiple agents spawned on the same position in the first tick of the simulation. However, they are not allowed to move to occupied territories later on.
+
+That is all! We have finished the implementation of _StupidModel 1_. The last task is to start the graphical interface and create some visualization through the point & click interface.
 
 ==== Configure Projections ====
 This is the only part where a minor _"magic"_ is required. Open up the file `stupidmodel.rs/context.xml`. Repast Simphony includes a nice XML file editor, where the elements may be added through a graphical interface. After clicking on the _Source_ tab, the default content for the file should look something like this:
