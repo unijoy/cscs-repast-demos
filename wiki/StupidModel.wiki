@@ -241,8 +241,8 @@ The result is a list of `GridCell` instances that make up the neighborhood.
 
 {{{
 final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
-location, Bug.class, Constants.BUG_VISION_RANGE,
-Constants.BUG_VISION_RANGE).getNeighborhood(false);
+	location, Bug.class, Constants.BUG_VISION_RANGE,
+	Constants.BUG_VISION_RANGE).getNeighborhood(false);
 }}}
 
 We have a utility function that returns the filtered list of empty cells, and it is easy to use:
@@ -285,8 +285,8 @@ The whole body of the created action method is shown in the following code listi
 @ScheduledMethod(start = 1, interval = 1)
 public void step() {
 	final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
-	location, Bug.class, Constants.BUG_VISION_RANGE,
-	Constants.BUG_VISION_RANGE).getNeighborhood(false);
+		location, Bug.class, Constants.BUG_VISION_RANGE,
+		Constants.BUG_VISION_RANGE).getNeighborhood(false);
 
 	final List<GridCell<Bug>> freeCells = SMUtils
 			.getFreeGridCells(bugNeighborhood);
@@ -305,7 +305,33 @@ public void step() {
 }}}
 
 ==== Creating the Simulation Context ====
-One last part is needed to complete the whole picture: a custom context builder implementation which is responsible to perform the initialization.
+One last piece is needed to complete the whole picture: a custom context builder implementation which is responsible to perform the initialization. This is done by creating a class that implements the `ContextBuilder<T>` interface, where `T` refers for the types added to the used context. Since we have different type of agents (i.e., `Bug`, `HabitatCell` and `Predator` agents), as mentioned previously we use `Object` as `T` (cf. the definition of `Bug` agents containing `Grid<Object>` members).
+
+It is pretty simple to create a custom `ContextBuilder` implementation, because it declares only one function called `buildContext()`. The role of this function is to build and return a context. A default context instance is passed to the function that may be used when no special initialization is required, however, the returned context does not necessarily have to be the passed in context. Building a context consists of filling it with agents, adding projects and so forth.
+
+Create a new class called `StupidModelContextBuilder` through the new class file wizard, and add `ContextBuilder` as its interface. The IDE will show up a new empty file with an empty implementation for the `build()` method:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/create_stupidmodel_context_builder_class.png
+
+The file shows some compilation errors, we have to modify it a bit in order to solve the errors and the warnings by assigning the class type parameter to `Object` as follows:
+
+{{{
+package stupidmodel;
+
+import repast.simphony.context.Context;
+import repast.simphony.dataLoader.ContextBuilder;
+
+public class StupidModelContextBuilder implements ContextBuilder<Object> {
+	@Override
+	public Context<Object> build(Context<Object> context) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+}}}
+
+
+
 
 This is the only part where a minor _"magic"_ is required. Open up the file `stupidmodel.rs/context.xml`. Repast Simphony includes a nice XML file editor, where the elements may be added through a graphical interface. After clicking on the _Source_ tab, the default content for the file should look something like this:
 
