@@ -383,7 +383,7 @@ final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
 				Constants.GRID_SIZE, Constants.GRID_SIZE);
 }}}
 
-Create a grid is similar to creating a space, except it has a utility class to assign its parameters called `GridBuilderParameters`. In this case, we use SimpleGridAdder which does not assigns any positions for the agents on the grid by default, they will be moved to their initial position later on. There is an additional logical parameter called `multi` that determines if each cell in the grid is single occupancy. The other parameters are identical.
+Creating a grid is similar to creating a space, except it has a utility class to assign its parameters called `GridBuilderParameters`. In this case, we use `SimpleGridAdder` which does not assigns any positions for the agents on the grid by default, they will be moved to their initial position later on. There is an additional logical parameter called `multi` that determines if each cell in the grid is single occupancy. The other parameters are identical.
 
 {{{
 final Grid<Object> grid = GridFactoryFinder
@@ -402,19 +402,19 @@ final Grid<Object> grid = GridFactoryFinder
 Creating the agents is an easy task after this: we create the specified number of agents by their defined constructor, and assign them to the context and to the grid to their random position where they were added initially. This is done with the `context.add()`, `space.getLocation()` and `grid.moveTo()` methods.
 
 {{{
-		for (int i = 0; i < Constants.BUG_COUNT; ++i) {
-			final Bug bug = new Bug(grid);
-			context.add(bug);
-			final NdPoint pt = space.getLocation(bug);
-			grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
-		}
+for (int i = 0; i < Constants.BUG_COUNT; ++i) {
+	final Bug bug = new Bug(grid);
+	context.add(bug);
+	final NdPoint pt = space.getLocation(bug);
+	grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
+}
 
-		return context;
+return context;
 }}}
 
   <b>Remark</b> As the definition of the model did not specificied it in details, we allow multiple agents spawned on the same position in the first tick of the simulation. However, they are not allowed to move to occupied territories later on.
 
-That is all! We have finished the implementation of _StupidModel 1_. The last task is to start the graphical interface and create some visualization through the point & click interface.
+That is all! We have finished the implementation of _!StupidModel 1_. The last task is to start the graphical interface and create some visualization through the point & click interface.
 
 ==== Configure Projections ====
 This is the only part where a minor _"magic"_ is required. Open up the file `stupidmodel.rs/context.xml`. Repast Simphony includes a nice XML file editor, where the elements may be added through a graphical interface. After clicking on the _Source_ tab, the default content for the file should look something like this:
@@ -437,8 +437,62 @@ In order to let the observer (the Repast S GUI and its several wizards) know abo
 </context>
 }}}
 
-Start the model.
+Many important settings may be defined here, please refer to the Repast Simphony Java Getting Started Guide and to the Repast Documentation for the details.
 
+==== Starting the Model ====
+To start the simulation, click on the small black triangle pointing downwards next to the _Run_ button in the toolbar. As you can see, several run configurations are available. Actually, there are three different configurations created by default for each model: to run it in batch mode, run the model with GUI and create an exportable installer for your model (this requires at least 80 Mbytes of free space). The fourth configuration launches the Repast Simphony simulation GUI without any model initialized.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/start_stupid_model_first_time.png
+
+Click on the button of the _Model_. Next time clicking on the _Run_ button activates the previously launched run configuration, as well as using the _Ctrl + F11_ key combination, so it becomes easier to start the model.
+
+This will start the Repast Simphony Runtime. Note that you may see some initial errors along the lines of `SpaceProjectionBuilder - Unable to build continuous space 'space' ...`. These can be ignored for now and in our next steps we are going to correct them. We need to do some runtime configuration before we run the model itself. We are going to setup the runtime to use our context builder to initialize the model and also create an initial display. We setup the runtime to use our context builder by specifying the data loader.
+
+ # In the _Scenario Tree_, right click on the Data Loaders node and click _Set Data Loader_. If the tree is not visible use the tab controls on the left side of the runtime frame to select the _Scenario Tree_.
+ # In the _Select Data Source Type_ window, click on _Custom ContextBuilder Implementation_. Click _Next_.
+ # You should see the name of our context builder class in the combo box, `stupidmodel.StupidModelContextBuilder`, if not, use the combo box to find it. If the box is empty, go back and check your code. This typically means that there was a compilation error. Click _Next_.
+ # Click Finish.
+
+You should now see `StupidModelContextBuilder` as the name of the Data Loader (see figure below).
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/specify_context_builder.png
+
+The next task is to create a simple display to see the agents moving.
+
+ # Right-click on _Displays_ in the _Scenario Tree_ and click _Add Display_
+ # In the _Display configuration_ dialog, type Grid Display for name. Leave 2D as the type. Select the _grid_ projection as the one to display. Click on _grid_ in the _Projection and Value Layers_ section and then click the green right arrow. The projections on the right are the ones will be displaying and those on the left are all the possible projections to display.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation.png
+
+ # Click _Next_.
+ # Select _Bug_ agents as the types to display. Do this by selecting it in the left and then clicking the green right arrow to move them to right. If we would have several agents displayed on the grid, the order how they would have been drawn on the display is from the bottom of this list to the up (e.g., the last element of the list on the right is drawn first and the first drawn last). 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agents.png
+
+ # Click _Next_.
+ # In this panel, the appearance of `Bug` agents may be configured. This can be done programmatically by specifying a class that implements `StyleOGL2D` (we have not created such a class yet) or via a simple wizard. For the current model, we use the wizard to create a simple style for the agents. Click the button to the right of the style class combo box.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agent_style.png
+
+ # A new dialogue, the _2D Shape Editor_ shows up where the default style of the agents may be customized, including the size, shape, color, icon, label and many more settings. Change the color to red by clicking the button with the blue square, and choosing a red color from the icon color dialog. Click _OK_ on the icon color box, then _OK_ on the _2D Shape Editor_ to modify settings.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_modifying_default_agent_style.png
+
+ # Click _OK_.
+ # If you would like, you can modify the outlook of the grid on this wizard page. Since the default settings are perfect for this demo model, click _Next_.
+ # If you would like, you can modify the refresh rate of the visualization on this wizard page. Since the default settings are perfect for this demo model, click click _Finish_.
+
+The Repast Simphony Runtime has several icons on its toolbar. Click on _Save_ in order to save the created settings (i.e., the context builder and grid display settings). _Do not forget to save after modifying the visualization since Repast Simphony does not save them automatically upon exit._
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/repast_simphony_runtime_toolbars.png
+
+We are ready with the configuration of the first !StupidModel version! Click on the _Initialize Run_ button to make the grid show up, and click _Start Run_ to allow agents start moving on the display. 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/stupid_model_1_finished_screenshot.png
+
+=== Complete Model ===
+
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN tag directly.
 
 === Further Fun ===
 
@@ -449,11 +503,7 @@ Start the model.
  * It is quite easy to set different visualization settings, spend a little time with playing them:
    * Try setting an icon for the bugs. It is pretty easy and makes the model look nicer.
    * Set a custom background color for the simulation!
- * Try to modify the current implementation to allow multiple agents stay on the same territory!.
-
-=== Complete Model ===
-
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN tag directly.
+ * Try to modify the current implementation to allow multiple agents stay on the same territory!
 
 == Bug Growth ==
 === Purpose ===
