@@ -16,7 +16,25 @@
  * Author       : [Mudit Mudit Raj Gupta]
 
 
-= Introduction =
+=Contents=
+
+<wiki:toc max_depth="2" />
+
+=1. Before Getting Started=
+
+Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
+
+Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+
+RepastS models can be created with [http://repast.sourceforge.net/docs/RepastFlowGettingStarted.pdf Flowcharts], a Logo-like language called [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf ReLogo], or purely in [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Java and/or Groovy], and even C++ with [http://repast.sourceforge.net/docs/RepastHPCManual.pdf Repast HPC].
+
+ReLogo was used to create the model. The documentations and other demo models on the same platform can be found [http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here].
+
+It is suggested that you go through the following models also, as the guiding algorithm is quite similar, although the implementation is entirely different.
+
+ # [AreaCoverage]
+
+=1. Introduction =
 
 
 This model is designed keeping in mind a very important problem in the Mobile Wireless Sensor Network Domain - Localization. This model is inspired by the work:
@@ -32,7 +50,7 @@ A similar method is used in the project demonstrated in the video. The differenc
 
 <wiki:video url="http://www.youtube.com/watch?v=xMDsKiTxD8g"/>
 
-=Description= 
+=2. Description= 
 
 
 _to be added soon_
@@ -69,17 +87,17 @@ _to be added soon_
 _to be added soon_
 
 
-=Applications=
+=3. Applications=
 
 
 It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transfered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
 
  
-=Extending the Model=
+=4. Extending the Model=
 
 _to be added soon_
 
-=References=
+=5. References=
 
 
 * http://en.wikipedia.org/wiki/Swarm_robotics
