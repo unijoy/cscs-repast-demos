@@ -131,6 +131,14 @@ public Boid(ContinuousSpace<Object> space, Grid<Object> grid){
 }
 }}}
 
+== Set up a display ==
+
+Click on the arrow to the right of the green play button to see the popup menu of all the run options for your models. Find "Boids Model" and click it. In a minute, a Java window will appear.
+
+...
+
+Your model should now run! Click on the blue power button, and then click on either the blue next button or the blue play button to step the simulation forward by one step or many steps, respectively. 
+
 = 3. Alignment =
 
 The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
