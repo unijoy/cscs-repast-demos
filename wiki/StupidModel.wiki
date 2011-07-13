@@ -307,7 +307,7 @@ public void step() {
 ==== Creating the Simulation Context ====
 One last piece is needed to complete the whole picture: a custom context builder implementation which is responsible to perform the initialization. This is done by creating a class that implements the `ContextBuilder<T>` interface, where `T` refers for the types added to the used context. Since we have different type of agents (i.e., `Bug`, `HabitatCell` and `Predator` agents), as mentioned previously we use `Object` as `T` (cf. the definition of `Bug` agents containing `Grid<Object>` members).
 
-It is pretty simple to create a custom `ContextBuilder` implementation, because it declares only one function called `buildContext()`. The role of this function is to build and return a context. A default context instance is passed to the function that may be used when no special initialization is required, however, the returned context does not necessarily have to be the passed in context. Building a context consists of filling it with agents, adding projects and so forth.
+It is pretty simple to create a custom `ContextBuilder` implementation, because it declares only one function called `buildContext()`. The role of this function is to build and return a context. A default context instance is passed to the function that may be used when no special initialization is required, however, the returned context does not necessarily have to be the passed in context. 
 
 Create a new class called `StupidModelContextBuilder` through the new class file wizard, and add `ContextBuilder` as its interface. The IDE will show up a new empty file with an empty implementation for the `build()` method:
 
@@ -330,9 +330,63 @@ public class StupidModelContextBuilder implements ContextBuilder<Object> {
 }
 }}}
 
+Building a context consists of filling it with agents, adding projects and so forth. In the few code blocks, we create and initialize a space and a grid, assign them and to the context unique IDs, and populate the context and the grid with Bug `agents`.
+
+To implement the `build()` method as described, first define a few other constants, the IDs for the used projections:
+
+{{{
+public final class Constants {
+	public static final String CONTEXT_ID = "StupidModel";
+	public static final String SPACE_ID = "space";
+	public static final String GRID_ID = "grid";
+
+	// Other definitions omitted
+	...
+}
+}}}
+
+These are simple strings, the only rule for these identificators is to be different.
+
+After we have these definitions, first we assign the context ID by the `setId()` function:
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	context.setId(Constants.CONTEXT_ID);
+}	
+}}}
+
+As we written above contexts can also have `Projections` associated with them. A `Projection` takes the agents in a `Context` and imposes some sort of structure on them. We will use a `ContinuousSpace` and a `Grid`: both of them are projections, and they take agents and locate them in a continuous space and a matrix-like grid, respectively. In the `build()` method we are thus going to create these `Projection` instances and assign them to the `Context` by the following way:
+
+{{{
+final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
+		.createContinuousSpaceFactory(null) // No hints
+		.createContinuousSpace(
+				Constants.SPACE_ID,
+				context,
+				new RandomCartesianAdder<Object>(),
+				new repast.simphony.space.continuous.WrapAroundBorders(),
+				Constants.GRID_SIZE, Constants.GRID_SIZE);
+
+final Grid<Object> grid = GridFactoryFinder
+		.createGridFactory(null)
+		.createGrid(
+				Constants.GRID_ID,
+				context,
+				new GridBuilderParameters<Object>(
+						new repast.simphony.space.grid.WrapAroundBorders(),
+						// This is a simple implementation of an adder
+						// that doesn't perform any action
+						new SimpleGridAdder<Object>(),
+						// Each cell in the grid is single occupancy
+						false,
+						// Size of the grid (defined constants)
+						Constants.GRID_SIZE, Constants.GRID_SIZE));
+
+}}}
 
 
-
+==== Configure Projections ====
 This is the only part where a minor _"magic"_ is required. Open up the file `stupidmodel.rs/context.xml`. Repast Simphony includes a nice XML file editor, where the elements may be added through a graphical interface. After clicking on the _Source_ tab, the default content for the file should look something like this:
 
 {{{
