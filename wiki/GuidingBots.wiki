@@ -20,7 +20,7 @@
 
 <wiki:toc max_depth="2" />
 
-=1. Before Getting Started=
+=0. Before Getting Started=
 
 Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
 
