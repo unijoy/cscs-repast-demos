@@ -103,7 +103,7 @@ Click on the _Next >_ button. A new wizard page is shown where the name of the p
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_sipmohy_project.png
 
-*Remark* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
+  *Remark* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
 
 After pressing the _Finish_ button, the freshly created project of the model should be shown in the _Package Explorer_ view.
 
@@ -129,7 +129,7 @@ public class Bug {
 }
 }}}
 
-*Remark* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
+  *Remark* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/enabling_line_numbers.png
 
@@ -170,10 +170,10 @@ The grid is assigned the Object generic type parameter, because in further model
 For debugging we also add a default `toString()` implementation for the `Bug` agents. This comes handy when printing out an agent to the console or when debugging the simulation. The most important information about our agent is its current position at the grid, so we query it from the grid by the `getLocation()` function:
 
 {{{
-	@Override
-        public String toString() {
-                return String.format("Bug @ location ", grid.getLocation(this));
-        }
+@Override
+public String toString() {
+	return String.format("Bug @ location ", grid.getLocation(this));
+}
 }}}
 
 ==== Creating a Utility Class ====
@@ -221,14 +221,13 @@ The last thing we need to add to our first `Bug` implementation is its `step()` 
 In Repast Simphony, one of the most convenient ways to define an agent action is to use the `@ScheduleMethod` annotation, which accepts several parameters, e.g., the first time step when the action should be activated, and the interval how often it should be executed (if it is a cyclic event). To define such an action, add the following method definition to the `Bug` class:
 
 {{{
-	@ScheduledMethod(start = 1, interval = 1)
-        public void step() {
-		...
-        }
-
+@ScheduledMethod(start = 1, interval = 1)
+public void step() {
+	...
+}
 }}}
 
-*Remark* From now on, for the sake of simplicity, we omit the fully qualified class names and `import` statements. Eclipse automatically inserts these, and in case of uncertainity the `Ctrl + Space` (_auto-complete feature_) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the `Ctrl + Shift + O` (_organize imports_) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance).
+  *Remark* From now on, for the sake of simplicity, we omit the fully qualified class names and `import` statements. Eclipse automatically inserts these, and in case of uncertainity the `Ctrl + Space` (_auto-complete feature_) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the `Ctrl + Shift + O` (_organize imports_) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance).
   Using the hotkeys may really boost up the development speed. Press `Ctrl+Shift+L` to get a full list of usable hotkey combinations in the current context (e.g., in the Java editor), or see the full list of available ones through _Window -> Preferences -> General -> Keys_ settings page.
 
 We defined an action that is executed for all `Bug` instance from the beginning (`start = 1`) of the simulation in each time step (`interval = 1`). Now, as the model defines, the first thing a `Bug` should do is to find its location, and query its neighbourhood.
@@ -241,49 +240,50 @@ Fortunately, there is a method we can use to find the neighborhood of an agent o
 The result is a list of `GridCell` instances that make up the neighborhood.
 
 {{{
-	final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
-	location, Bug.class, Constants.BUG_VISION_RANGE,
-	Constants.BUG_VISION_RANGE).getNeighborhood(false);
+final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
+location, Bug.class, Constants.BUG_VISION_RANGE,
+Constants.BUG_VISION_RANGE).getNeighborhood(false);
 }}}
 
 We have a utility function that returns the filtered list of empty cells, and it is easy to use:
 
 {{{
-	final List<GridCell<Bug>> freeCells = SMUtils
-			.getFreeGridCells(bugNeighborhood);
+final List<GridCell<Bug>> freeCells = SMUtils
+		.getFreeGridCells(bugNeighborhood);
 }}}
 
 As the model specifies the agent should not move if there is no available free cell in its neighborhood. In this case, we simply stop the execution of the action by calling a `return` statement.
 
 {{{
-	if (freeCells.isEmpty()) {
-		return;
-	}
+if (freeCells.isEmpty()) {
+	return;
+}
 }}}
 
 The model specifies to choose a random element from the list. It may be done this way:
 
 {{{
-	SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 }}}
 
-However, it is more convenient to choose a random element directly from the list of free cells as follows:
+However, it is more convenient to choose a random element directly from the list of free cells as follows, so it is not a vital element of the activity:
 
 {{{
-	TODO
-	SMUtils.randomElementOf(freeCells);
+final GridCell<Bug> chosenFreeCell = SMUtils.randomElementOf(freeCells);
 }}}
 
 After evaluating a new empty place for the agent, we can move it by calling the `moveTo()` method of the used `Grid` instance in order to relocate the agent. The functino has three parameters: the agent to move on the grid, and its new `x` and `y` locations (there may be arbitrary number of coordinates if requried, but in this example model we use a two-dimensional discrete space).
 
 {{{
-	final GridPoint newGridPoint = chosenFreeCell.getPoint();
-	grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+final GridPoint newGridPoint = chosenFreeCell.getPoint();
+grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
 }}}
 
 The whole body of the created action method is shown in the following code listing:
 
 {{{
+@ScheduledMethod(start = 1, interval = 1)
+public void step() {
 	final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(grid,
 	location, Bug.class, Constants.BUG_VISION_RANGE,
 	Constants.BUG_VISION_RANGE).getNeighborhood(false);
@@ -301,6 +301,7 @@ The whole body of the created action method is shown in the following code listi
 
 	final GridPoint newGridPoint = chosenFreeCell.getPoint();
 	grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+}
 }}}
 
 ==== Creating the Simulation Context ====
@@ -498,7 +499,7 @@ Show how to create multiple classes of agents that interact.
 = Conclusion =
 
 = References =
- # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _'!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms'_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
- # Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_, Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html
- # Richard O. Legendi, Attila Szabo: _'[http://distributedabm.elte.hu/letoltesek/publikaciok/2010_01_ICAI_Advantages_of_Fables_paper.pdf Advantages of a Multi-Paradigm Programming Language in Agent-Based Model Definition]'_, ICAI 2010 - 8th International Conference on Applied Informatics (Eger, Hungary, January 27 - 30, 2010)
+ # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _"!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms"_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
+ # Isaac, Alan G.: _"The ABM Template Models: A Reformulation with Reference Implementations"_, Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html
+ # Richard O. Legendi, Attila Szabo: _[http://distributedabm.elte.hu/letoltesek/publikaciok/2010_01_ICAI_Advantages_of_Fables_paper.pdf "Advantages of a Multi-Paradigm Programming Language in Agent-Based Model Definition"]_, ICAI 2010 - 8th International Conference on Applied Informatics (Eger, Hungary, January 27 - 30, 2010)
 
