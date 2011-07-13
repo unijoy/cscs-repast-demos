@@ -129,7 +129,7 @@ public class Bug {
 }
 }}}
 
-  *Remark* Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
+  <b>Remark</b> Java classes are shown in a special editor that has very nice features. Since we are going to refer to specific line numbers in the following sections, it is recommended to turn on the line numbering feature. Right-click on the left side of the editor and select _Show line numbers_ from the popup menu.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/enabling_line_numbers.png
 
