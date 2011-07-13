@@ -103,7 +103,7 @@ Click on the _Next >_ button. A new wizard page is shown where the name of the p
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_sipmohy_project.png
 
-  *Remark* You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
+  <b>Remark</b> You may also proceed to the next wizard page instead of pressing the finish button. Since a Repast Simphony project is generally a Java project, you may set some Java-specific settings on this page (e.g., the concrete build path with additional libraries, their ordering in the `CLASSPATH` variable, source and build paths, etc.). These settings are important principally when using Eclipse for Java development or for advanced users creating simulations with several 3rd party libraries. For the current model, the default settings are perfect for us.
 
 After pressing the _Finish_ button, the freshly created project of the model should be shown in the _Package Explorer_ view.
 
@@ -227,7 +227,7 @@ public void step() {
 }
 }}}
 
-  *Remark* From now on, for the sake of simplicity, we omit the fully qualified class names and `import` statements. Eclipse automatically inserts these, and in case of uncertainity the `Ctrl + Space` (_auto-complete feature_) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the `Ctrl + Shift + O` (_organize imports_) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance).
+  <b>Remark</b> From now on, for the sake of simplicity, we omit the fully qualified class names and `import` statements. Eclipse automatically inserts these, and in case of uncertainity the `Ctrl + Space` (_auto-complete feature_) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the `Ctrl + Shift + O` (_organize imports_) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance).
   Using the hotkeys may really boost up the development speed. Press `Ctrl+Shift+L` to get a full list of usable hotkey combinations in the current context (e.g., in the Java editor), or see the full list of available ones through _Window -> Preferences -> General -> Keys_ settings page.
 
 We defined an action that is executed for all `Bug` instance from the beginning (`start = 1`) of the simulation in each time step (`interval = 1`). Now, as the model defines, the first thing a `Bug` should do is to find its location, and query its neighbourhood.
