@@ -34,6 +34,8 @@ In the current tutorial, we use Java to create the !StupidModel implementation w
 = Notes on the Implementation =
 The source code we use as example below in this document are formatted to be clear and as straightforward as possible. In the attached source code however, it is carefully written with several blocks of boilerplate code that is irrelevant from the view of the model (e.g., checking parameters of a function and making assertions about the state of the program). For clarity, these segments are omitted here, but may be found in the attached source code.
 
+Although domain-specific languages like ReLogo shown to have many advantages in ABM when creating usual models like the !StupidModel [3], this model itself is written purely in Java to illustrate the usage of the standard Repast Simphony Java API.
+
 == Additional Resources ==
 We have created extensive documentation for the final !StupidModel implementation, these may be found in the `docs` directory of the Repast Simphony project, or browsed online at the following links:
 
@@ -399,3 +401,5 @@ Show how to create multiple classes of agents that interact.
 = References =
  # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _'!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms'_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
  # Isaac, Alan G.: _'The ABM Template Models: A Reformulation with Reference Implementations'_ Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html
+ # Richárd O. Legéndi, Attila Szabó, Advantages of a Multi-Paradigm Programming Language in Agent-Based Model Definition, ICAI 2010 - 8th International Conference on Applied Informatics (Eger, Hungary, January 27 - 30, 2010)
+
