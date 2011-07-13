@@ -23,13 +23,19 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/Area.jpg
 
 = 1. Before Getting Started=
 
+
 Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
 
 Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
 
+RepastS models can be created with [http://repast.sourceforge.net/docs/RepastFlowGettingStarted.pdf Flowcharts], a Logo-like language called [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf ReLogo], or purely in [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Java and/or Groovy], and even C++ with [http://repast.sourceforge.net/docs/RepastHPCManual.pdf Repast HPC].
 
------
+In this model, ReLogo was used to create the model. The documentations and other demo models on the same platform can be found [http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here].
 
+It is suggested that you go through the following model also, as the guiding algorithm is quite similar and it is also related to swarm robotics.
+
+ # [GuidingBots]
+ 
 = 2. Introduction=
 
 
