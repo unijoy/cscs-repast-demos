@@ -51,5 +51,5 @@ https://cscs-repast-demos.googlecode.com/svn/grace/Fire/docs/latex_files/Images/
 
 = References =
 
-  * NetLogo's fire model: http://ccl.northwestern.edu/netlogo/models/Fire
+  * NetLogo fire model: http://ccl.northwestern.edu/netlogo/models/Fire
   * Fire!, Probability, and Chaos: http://www.shodor.org/interactivate/lessons/FireProbabilityChaos/
