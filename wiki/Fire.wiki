@@ -4,8 +4,10 @@
 = Summary =
 
  * Source Code   : https://cscs-repast-demos.googlecode.com/svn/grace/Fire/
- * Platform      : [RepastJava Repast Simphony Java]
- * Documentation :
+ * Platform      : [RepastSJava Repast Simphony Java]
+ * Documentation
+   * Wiki: http://code.google.com/p/cscs-repast-demos/wiki/Fire
+   * Readme: https://cscs-repast-demos.googlecode.com/svn/grace/Fire/docs/ReadMe.txt
 
 = Contents =
 <wiki:toc max_depth="2" />
