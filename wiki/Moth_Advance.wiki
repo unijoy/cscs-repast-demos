@@ -193,6 +193,8 @@ _to be added soon_
 
 =5. Extending the Model=
 
+==Plots, Plug-ins, DataSets and Outputters==
+
 The model can be extended by adding various other plots and linking to various plugins. The various tutorials on plugins will be available soon. The other plots that can be incorporated are - A histogram of values of number of turtles in various regions. The user can think about different such plots. 
   
 ==Moth Like Behavior==
