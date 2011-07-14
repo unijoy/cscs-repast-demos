@@ -64,19 +64,11 @@ The population of the bugs and the number of bug catching machines are both adju
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
 
-==Data Sets==
-
-_to be added soon_
-
-==Outputters==
+==Data Sets, Outputters and External Plugin==
 
 _to be added soon_
 
 ==Plots==
-
-_to be added soon_
-
-==External Plugin==
 
 _to be added soon_
 
