@@ -175,6 +175,29 @@ Rest of the code is either unedited or self - explanatory. Although [http://cscs
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Moth_Advance(Usr).JPG
 
+
+ * *Push Button (that rebounds)* 
+      
+  - Set Up : For setting up the motes in the area according to the selected options and settings. 
+
+ * *Toggle Button* 
+
+ - Go : For running the model unless the button is toggled again
+
+ * *Sliders*
+
+ - Number of Moths : Population
+ 
+ - Normal Speed : Distance moved per tick when in non-illuminated region
+ 
+ - Excited Speed : Distance moved per tick when in illuminated region
+ 
+ - Intensity : The region which is illuminated (size)
+
+ - Number of Lights : Number of Light sources
+ 
+ - Source : Size of the source
+
 ==Data Sets, Outputters and External Plugins==
 
 _to be added soon_
