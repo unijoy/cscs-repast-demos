@@ -28,6 +28,7 @@ Users with a workable knowledge of Java who want highly customized models also s
  # !SolarSystem (Available with the software)
  # !SugarScape (Available with the software)
  # StupidModel (Unverified)
+ # [ElFarol El Farol] (Unverified)
 
 = References =
 
