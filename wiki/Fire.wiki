@@ -30,11 +30,11 @@ After running the fire, set up _Scenario Tree -> Value Layer Details_ with black
 
 https://cscs-repast-demos.googlecode.com/svn/grace/Fire/docs/latex_files/Images/fire_param.png
 
-  * Grid Height:  Number of rows.
-  * Grid Width:  Number of columns.
-  * Initial Trees:  Number of trees to populate initially.
-  * Neighbor Size:  How far a fire can reach.
-  * Percentage to Burn:  Percentage of trees within neighborhood to burn.
+  * *Grid Height*:  Number of rows.
+  * *Grid Width*:  Number of columns.
+  * *Initial Trees*:  Number of trees to populate initially.
+  * *Neighbor Size*:  How far a fire can reach.
+  * *Percentage to Burn*:  Percentage of trees within neighborhood to burn.
   * Probability All Direction:  Apply same probability in all eight directions.  Set to 0 for individual directions (see following eight parameters). 
   * Probability East:  Probability applied towards east direction.
   * Probability North:  Probability applied towards north direction.
@@ -50,4 +50,4 @@ https://cscs-repast-demos.googlecode.com/svn/grace/Fire/docs/latex_files/Images/
 = References =
 
   * NetLogo's fire model: http://ccl.northwestern.edu/netlogo/models/Fire
-  * Fire!, Probability, and Chaos: http://www.shodor.org/interactivate/ lessons/FireProbabilityChaos/
+  * Fire!, Probability, and Chaos: http://www.shodor.org/interactivate/lessons/FireProbabilityChaos/
