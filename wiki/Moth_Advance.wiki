@@ -193,8 +193,18 @@ _to be added soon_
 
 =5. Extending the Model=
 
+The model can be extended by adding various other plots and linking to various plugins. The various tutorials on plugins will be available soon. The other plots that can be incorporated are - A histogram of values of number of turtles in various regions. The user can think about different such plots. 
+  
+==Moth Like Behavior==
 
-_to be added soon_
+The present model has a behavior in which the moth tries to move to a point which has light intensity. Although the turn angle is not taken into account. The user can try to add another parameter i.e. the turn angle. The moth will only move with that angle towards the light source.
+
+==Variable Intensity==
+
+Users can also try to have a intensity function dependent on the distance. The probability of moth leaving an illuminated region (given proper step size) is 0. User can modify this and assign fuzzy probability, depending on the distance.
+
+  
+
 
 ----
 
