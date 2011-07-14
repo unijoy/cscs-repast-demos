@@ -513,7 +513,7 @@ public final class Constants {
 }
 }}}
 
-Next we extend the `Bug` class with a member variable called `size` and a getter function for the field. We also create a new function called `grow()` and annotate it as an action. The only issue here is the `priority` attribute of the `ScheduledMethod` annotation: using this attribute the order of actions can be specified with regards to other actions scheduled for the same tick. The action with greater value is activated first, so we assign `0` to `step()` and `-1` to `grow()`.
+Next we extend the `Bug` class with a member variable called `size` and a getter function for the field. We also create a new function called `grow()` and annotate it as an action. The only issue here is the `priority` attribute of the `@ScheduledMethod` annotation: using this attribute the order of actions can be specified with regards to other actions scheduled for the same tick. The action with greater value is activated first, so we assign `0` to `step()` and `-1` to `grow()`.
 
 {{{
 public class Bug {
