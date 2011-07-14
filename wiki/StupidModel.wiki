@@ -628,6 +628,131 @@ Show how to create cell objects that represent habitat and spatial resources. Il
 
 === Implementation Notes ===
 
+In this part of the tutorial, we demonstrate how to use a grid value layer. A grid may have any number of `IGridValueLayer` instances associated, in this current setup we use a default implementation, `GridValueLayer` where each of the cells in the grid is accessed through coordinates and contains a numeric value. Each cell in the grid will contain a value (the _available food_ in this model) regardless of whether or not it has been set yet. 
+
+First things first, we declare a new ID again for the value layer, so we can use the `Context` class to look it up anywhere in the model (as we done it in the previous model). To do so, add the following definition to the `Constants` class.
+
+{{{
+public final class Constants {
+
+	// ...	
+
+	public static final String FOOD_VALUE_LAYER_ID = "foodValueLayer";
+	
+	// ...
+}
+}}}
+
+Creating a class for the `HabitatCell` agents would be easy for now. Cells know their `x` and `y` coordinates (`final` variables since they will not change during the simulation), and an instance variable for the `foodAvailability` at the current cell.
+
+To create the new agent action `growFood()`, we should create a small table to keep track of the order of actions (we are going to use a clearer approach in the next models, but it is vital for now to keep an overview of how the interactions of the model ordered):
+
+|| *Tick* || *Agent*     || *Action*   || *Priority* ||
+|| All    || Bug         || grow()     ||         -1 ||
+|| All    || Bug         || move()     ||          0 ||
+|| All    || HabitatCell || growFood() ||          1 ||
+
+
+The `HabitatCell` agents during their actions increase their food availability value with a random value between the interval specified, query the grid value layer that contains the food availability map and updates the corresponding cell data. The whole agent definition in one listing:
+
+{{{
+public class HabitatCell {
+	private static final double maximumFoodProductionRate = 0.01;
+
+	private final int x, y;
+	private double foodAvailability = 0.0;
+
+	public HabitatCell(final int x, final int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public double getFoodAvailability() {
+		return foodAvailability;
+	}
+
+	@ScheduledMethod(start = 1, interval = 1, priority = 1)
+	public void growFood() {
+		foodAvailability += RandomHelper.nextDoubleFromTo(0.0,
+				maximumFoodProductionRate);
+
+		final GridValueLayer foodValueLayer = (GridValueLayer) ContextUtils
+				.getContext(this).getValueLayer(Constants.FOOD_VALUE_LAYER_ID);
+
+		foodValueLayer.set(getFoodAvailability(), x, y);
+	}
+}
+}}}
+
+The last thing to do is to update the custom context builder implementation with two things:
+
+ # Create the grid value layer instance. It is similar to creating the `grid` and `space` objects, but there is no need to additional utility and factory classes. Simply call its constructor with a valid unique ID, a `GridPointTranslator` instance to handle the borders, and its `x` and `y` size. The second parameter is a logic variable indicating if the grid whether is _dense_ or _sparse_ (major performance boost may be achieved by using the proeper option). Since we have a `HabitatCell` instance on each cell, we annotate it as a _dense_ layer by using specifying `true` as its value.
+ # The other task is to create the `HabitatCell` instances, add them to the context and assign the initial values for the `foodValueLayer`.
+
+Append the following code listing to the end of the StupidModelContextBuilder build() method:
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	
+	// ...
+
+	final GridValueLayer foodValueLayer = new GridValueLayer(
+			Constants.FOOD_VALUE_LAYER_ID,
+			true,
+			new WrapAroundBorders(),
+			Constants.GRID_SIZE,
+			Constants.GRID_SIZE);
+
+	context.addValueLayer(foodValueLayer);
+
+	for (int i = 0; i < Constants.GRID_SIZE; ++i) {
+		for (int j = 0; j < Constants.GRID_SIZE; ++j) {
+			final HabitatCell cell = new HabitatCell(i, j);
+			context.add(cell);
+			foodValueLayer.set(cell.getFoodAvailability(), i, j);
+		}
+	}
+
+	return context;
+}
+}}}
+
+==== Visualizing the Resources ====
+
+We create a new custom style for the value layer, as we created one for the `Bug` agents as well. Create a new class in the `stupidmodel.observer` package called `FoodValueLayerStyleOGL`, and implement the `ValueLayerStyleOGL` interface which is the superclass of all value layer styles. This interface declares the following methods:
+
+ * During `init()`, the class gets a reference to the `ValueLayer` instance it manages (practically, this will be the `foodValueLayer` instance we create during the `build()` at the `StupidModelContextBuilder`.
+ * The `getCellSize()` function should return a `float` value that specifies the size of the painted cells on the GUI.
+ * The `getColor()` function should return a simple `Color` value for the specified coordinates.
+
+Our implementation save the assigned `ValueLayer` instance in a member variable, returns a default `15.0f` value for the cell sizes (Repast Simphony uses a grid with a width and height of 15 pixels by default, but that can be changed when creating or editing a display), and returns a heavily scaled color value between black and green based on the actual food level at the specified location.
+
+{{{
+public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
+
+	private ValueLayer layer = null;
+
+	@Override
+	public void init(final ValueLayer layer) {
+		this.layer = layer;
+	}
+
+	@Override
+	public float getCellSize() {
+		return 15.0f;
+	}
+
+	@Override
+	public Color getColor(final double... coordinates) {
+		final double food = layer.get(coordinates);
+		final int strength = (int) Math.min(200 * food, 255);
+		return new Color(0, strength, 0); // 0x000000 - black,
+						  // 0x00FF00 - green
+	}
+}
+}}}
+
 === Further Fun ===
  * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
  * Try using some other color values to display food availability for the grid.
