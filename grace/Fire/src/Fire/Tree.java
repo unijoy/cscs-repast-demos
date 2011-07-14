@@ -73,8 +73,8 @@ public class Tree {
 	public Tree(Grid<Tree> grid, ContinuousSpace<Tree> space, int neighborSize,
 			float probAll, double percBurn, HashMap<String, Float> directedProb,
 			String windStrength, String windDir) {
-		state = TreeState.FRESH;
-		oldState = TreeState.FRESH;
+		this.state = TreeState.FRESH;
+		this.oldState = TreeState.FRESH;
 		this.grid = grid;
 		this.space = space;
 		this.neighborSize = neighborSize;
@@ -92,7 +92,7 @@ public class Tree {
 	//
 	@ScheduledMethod(start=1, interval=1, priority=ScheduleParameters.FIRST_PRIORITY)
 	public void setOldState(){
-		oldState = state;
+		this.oldState = this.state;
 	}
 	
 	//
