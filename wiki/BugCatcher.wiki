@@ -83,8 +83,36 @@ Let us first start by talking about [http://code.google.com/p/cscs-repast-demos/
 
 }}}
 
-In the step() function defined in bug.groovy the bug faces a machine if there is one around. Once the bug is facing the machine it moves forward a distance, half of the value entered by the user. The bug checks weather the machine is in it's Moore's neighborhood. The task has been accompalished by the help of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#maxOneOf%28List,%20Closure%29 maxOneOf()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#turtlesOn%28repast.simphony.relogo.Turtle%29 machinesOn()] and [count()]. Another very common function used here to face the required direction is [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#face%28repast.simphony.relogo.Turtle%29 face()].
+In the step() function defined in bug.groovy the bug faces a machine if there is one around. Once the bug is facing the machine it moves forward a distance, half of the value entered by the user. The bug checks weather the machine is in it's Moore's neighborhood. The task has been accompalished by the help of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#maxOneOf%28List,%20Closure%29 maxOneOf()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#turtlesOn%28repast.simphony.relogo.Turtle%29 machinesOn()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#count%28List%29 count()]. Another very common function used here to face the required direction is [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#face%28repast.simphony.relogo.Turtle%29 face()].
 
+If the bug is caught in any of the machines, it is electrocuted. In the process of electrocution the bug dies with a "Zap" sound. The bug although takes some time to get electrocuted and die. This time can be adjusted by a user interface. This behavior is modeled using the following code segment.
+
+{{{
+
+//If bug gets caught
+		if(count(machinesHere())>0)
+		{
+			
+			timeleft--
+			
+			//If specified time has lapsed bug dies
+			if(timeleft==0)
+			{
+                                label = "Zap"			
+				die()
+			}	
+		}
+
+}}}
+
+The two new functions used here are [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Patch.html#turtlesHere%28%29 machinesHere()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Link.html#die%28%29 die()]. Both are used pretty commonly. You can check out the whole RepastS Relogo API [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/ReLogoPrimitives.html here]. Another statement which is worth a mention is the label statement. It is use to create fake "zap" sound or effect which is produced when the bug dies. timeleft is a variable that is declared above.
+
+{{{
+
+	//Time lapse between getting caught and death
+	def timeleft=tym
+
+}}} 
 
 
 ==User Panel==
