@@ -188,17 +188,17 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Area(Usr).JPG
 
 The section briefly describes the elements of the User Panel and the parameters they control. 
 
- * Push Buttons (that rebounds) 
+ * *Push Buttons (that rebounds)* 
       
   - Set Up : For setting up the motes in the area according to the selected options and settings. 
 
   - Go Once : For running the simulation for one clock tick.
 
- * Toggle Button 
+ * *Toggle Button* 
 
  - Go : For running the model unless the button is toggled again
 
- * Sliders
+ * *Sliders*
 
  - Number of Motes : self explainatory
  
@@ -206,11 +206,11 @@ The section briefly describes the elements of the User Panel and the parameters 
  
  - Initial Side Length/Radius : Parameters of the initial geometry  
 
- * Chooser
+ * *Chooser*
  
  - User can select the inital geometry from a drop down list.
 
- * Check Box 
+ * *Check Box* 
 
  - Automatically Fill Initial Geometry: Automatically fills the selected geometry with maximum number of number of motes.
 
