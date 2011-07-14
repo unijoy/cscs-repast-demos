@@ -35,17 +35,17 @@ https://cscs-repast-demos.googlecode.com/svn/grace/Fire/docs/latex_files/Images/
   * *Initial Trees*:  Number of trees to populate initially.
   * *Neighbor Size*:  How far a fire can reach.
   * *Percentage to Burn*:  Percentage of trees within neighborhood to burn.
-  * Probability All Direction:  Apply same probability in all eight directions.  Set to 0 for individual directions (see following eight parameters). 
-  * Probability East:  Probability applied towards east direction.
-  * Probability North:  Probability applied towards north direction.
-  * Probability North East:  Probability applied towards north-east direction.
-  * Probability North West:  Probability applied towards north-west direction.
-  * Probability South:  Probability applied towards south direction.
-  * Probability South East:  Probability applied towards south-east direction.
-  * Probability South West:  Probability applied towards south-west direction.
-  * Probability West:  Probability applied towards west direction.
-  * Wind Direction:  Wind can blow in one of the eight directions.
-  * Wind Strength:  Wind strength determines the burn probability of of a tree (strong=0.9, medium=0.5, weak=0.1, none=0.0). 
+  * *Probability All Direction*:  Apply same probability in all eight directions.  Set to 0 for individual directions (see following eight parameters). 
+  * *Probability East*:  Probability applied towards east direction.
+  * *Probability North*:  Probability applied towards north direction.
+  * *Probability North East*:  Probability applied towards north-east direction.
+  * *Probability North West*:  Probability applied towards north-west direction.
+  * *Probability South*:  Probability applied towards south direction.
+  * *Probability South East*:  Probability applied towards south-east direction.
+  * *Probability South West*:  Probability applied towards south-west direction.
+  * *Probability West*:  Probability applied towards west direction.
+  * *Wind Direction*:  Wind can blow in one of the eight directions.
+  * *Wind Strength*:  Wind strength determines the burn probability of of a tree (strong=0.9, medium=0.5, weak=0.1, none=0.0). 
 
 = References =
 
