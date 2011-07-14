@@ -203,8 +203,10 @@ The present model has a behavior in which the moth tries to move to a point whic
 
 Users can also try to have a intensity function dependent on the distance. The probability of moth leaving an illuminated region (given proper step size) is 0. User can modify this and assign fuzzy probability, depending on the distance.
 
-  
 
+==The "Ancient" Implementation==
+
+User can try implementing the initial hypothesis about moth locomotion. The details can be found [http://en.wikipedia.org/wiki/Moth here]. This can be useful for studying the "Ancient" moth locomotion.   
 
 ----
 
