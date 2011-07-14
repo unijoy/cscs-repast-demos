@@ -8,7 +8,6 @@
 package stupidmodel.agents;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.parameter.Parameter;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
@@ -84,7 +83,7 @@ public class HabitatCell {
 	public void setFoodAvailability(final double foodAvailability) {
 		if (foodAvailability < 0) {
 			throw new IllegalArgumentException(String.format(
-					"Parameter foodAvailability = % < 0.", foodAvailability));
+					"Parameter foodAvailability = %f < 0.", foodAvailability));
 		}
 
 		this.foodAvailability = foodAvailability;
@@ -99,7 +98,7 @@ public class HabitatCell {
 	 * Food production is scheduled before agent actions.
 	 * </p>
 	 */
-	@ScheduledMethod(start = 1, interval = 1, priority = -2)
+	@ScheduledMethod(start = 1, interval = 1, priority = 1)
 	public void growFood() {
 		foodAvailability += RandomHelper.nextDoubleFromTo(0.0,
 				maximumFoodProductionRate);
@@ -125,7 +124,9 @@ public class HabitatCell {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("HabitatCell @ location (%d, %d)", x, y);
+		return String.format(
+				"HabitatCell @ location (%d, %d), foodAvailability=%f", x, y,
+				foodAvailability);
 	}
 
 }
