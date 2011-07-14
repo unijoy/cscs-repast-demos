@@ -27,7 +27,8 @@ import stupidmodel.agents.HabitatCell;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 3
- * @version $Id$
+ * @version $Id: FoodValueLayerStyleOGL.java 183 2011-05-29 17:09:27Z
+ *          richard.legendi@gmail.com $
  */
 public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 
@@ -77,13 +78,16 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	public Color getColor(final double... coordinates) {
 		final double food = layer.get(coordinates);
 
-		assert (food >= 0) : String
-				.format("A cell's food availability property should be non-negative, but its current value is %d.",
-						food);
+		if (food < 0) {
+			throw new IllegalStateException(
+					String.format(
+							"A cell's food availability property should be non-negative, but its current value is %f.",
+							food));
+		}
 
-		final int strength = (int) Math.max(255 - food, 0);
-		return new Color(strength, 0xFF, strength); // 0xFFFFFF - white,
-													// 0x00FF00 - green
+		final int strength = (int) Math.min(200 * food, 255);
+		return new Color(0, strength, 0); // 0x000000 - black,
+											// 0x00FF00 - green
 	}
 
 }

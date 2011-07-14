@@ -35,17 +35,15 @@ import stupidmodel.common.Constants;
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
-	// FIXME How to infer generic types?
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 		// Set a specified context ID
-		// FIXME Bug here: if uncommented reinit fails for some reason
 		context.setId(Constants.CONTEXT_ID);
 
 		// Create a toridal space with random positioning with the specified
 		// dimensions
 		final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
-				.createContinuousSpaceFactory(null) // No hints (?)
+				.createContinuousSpaceFactory(null) // No hints
 				.createContinuousSpace(
 						Constants.SPACE_ID,
 						context,
