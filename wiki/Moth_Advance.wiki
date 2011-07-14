@@ -175,19 +175,11 @@ Rest of the code is either unedited or self - explanatory. Although [http://cscs
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Moth_Advance(Usr).JPG
 
-==Data Sets==
-
-_to be added soon_
-
-==Outputters==
+==Data Sets, Outputters and External Plugins==
 
 _to be added soon_
 
 ==Plots==
-
-_to be added soon_
-
-==External Plugin==
 
 _to be added soon_
 
