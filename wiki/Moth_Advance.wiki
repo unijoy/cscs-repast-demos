@@ -204,3 +204,5 @@ _to be added soon_
 [1] http://en.wikipedia.org/wiki/Moth  
 
 [2] [http://www.npr.org/templates/story/story.php?storyId=12903572 Why Moths are attracted to flames?]
+
+[3] http://ccl.northwestern.edu/netlogo/models/Moths
