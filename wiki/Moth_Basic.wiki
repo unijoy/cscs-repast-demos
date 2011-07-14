@@ -46,8 +46,7 @@ It is suggested that you go through the following models before this model, beca
 
 ==User Panel==
 
-_to be added soon_
-
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Basic(Usr).JPG
 ==Data Sets, Outputters and External Plugins==
 
 _to be added soon_
