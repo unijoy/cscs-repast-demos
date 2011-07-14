@@ -162,9 +162,13 @@ public class Bug {
 	 */
 	@Override
 	public String toString() {
+		// This may happen when testing
+		final String location = (ContextUtils.getContext(this) != null) ? getGrid()
+				.getLocation(this).toString() : "[?, ?]";
+
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("Bug @ location ", getGrid().getLocation(this));
+		return String.format("Bug @ location %s, size=%f", location, size);
 	}
 
 }

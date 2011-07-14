@@ -30,7 +30,6 @@ import repast.simphony.space.grid.SimpleGridAdder;
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
-	// FIXME How to infer generic types?
 	@Override
 	public Context<Object> build(final Context<Object> context) {
 
@@ -40,7 +39,7 @@ public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		// Create a toridal space with random positioning with the specified
 		// dimensions
 		final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
-				.createContinuousSpaceFactory(null) // No hints (?)
+				.createContinuousSpaceFactory(null) // No hints
 				.createContinuousSpace(
 						Constants.SPACE_ID,
 						context,
