@@ -644,6 +644,8 @@ public final class Constants {
 }
 }}}
 
+==== Creating HabitatCell Agents ====
+
 Creating a class for the `HabitatCell` agents would be easy for now. Cells know their `x` and `y` coordinates (`final` variables since they will not change during the simulation), and an instance variable for the `foodAvailability` at the current cell.
 
 To create the new agent action `growFood()`, we should create a small table to keep track of the order of actions (we are going to use a clearer approach in the next models, but it is vital for now to keep an overview of how the interactions of the model ordered). Keep in mind that higher priority actions scheduled for the same tick are always executed before the ones with lower priority.
@@ -681,8 +683,75 @@ public class HabitatCell {
 
 		foodValueLayer.set(getFoodAvailability(), x, y);
 	}
+
+	public void foodConsumed(final double eatenFood) {
+		foodAvailability -= eatenFood;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"HabitatCell @ location (%d, %d), foodAvailability=%f", x, y,
+				foodAvailability);
+	}
 }
 }}}
+
+We also extended the class by a utility method `foodConsumed()` that decreases the available food level of the cell by the specified `eatheFood` value, and a simple `toString()` method (that is used only for debugging).
+
+==== Updating Bug Actions Accordingly ====
+
+Next we have to modify the `Bug` agent actions as the model specifies.
+
+First, we need a function that returns the underlying cell for an agent:
+
+{{{
+private HabitatCell getUnderlyingCell() {
+	final GridPoint location = getGrid().getLocation(this);
+	final Iterable<Object> objects = getGrid().getObjectsAt(
+			location.getX(), location.getY());
+
+	for (final Object object : objects) {
+		if (object instanceof HabitatCell) {
+			return (HabitatCell) object; 
+		}
+	}
+
+	return null;
+}
+}}}
+
+This method queries the objects located at the current position of the `Bug` agent through the `grid.getObjectsAt()` function. Then it iterates through the objects at the specified location, and returns the first `HabitatCell` instance it encounters (since there is _exactly one_ `HabitatCell` for each location `null` is never returned).
+
+ 
+We also create a function to determine the possible food consumption level called `foodConsumption()`:
+
+{{{
+private final double maxConsumptionRate = 1.0;
+
+private double foodConsumption() {
+	final HabitatCell cell = getUnderlyingCell();
+	final double foodAvailable = cell.getFoodAvailability();
+
+	final double eatenFood = Math.min(maxConsumptionRate, foodAvailable);
+	cell.foodConsumed(eatenFood);
+
+	return eatenFood;
+}
+}}}
+
+This function determines the maximum level of food that can be consumed, decreases the food level of the cell under the current `Bug` agent, and returns the evaluated value. This is useful since we can modify our existing `grow()` method to be a simple one-liner:
+
+{{{
+@ScheduledMethod(start = 1, interval = 1, priority = -1)
+public void grow() {
+	size += foodConsumption();
+}
+}}}
+
+That is all!
+
+==== Updating the Context Builder ====
 
 The last thing to do is to extend the custom context builder implementation in two ways:
 
@@ -694,7 +763,6 @@ Append the following code listing to the end of the `build()` method of the clas
 {{{
 @Override
 public Context<Object> build(final Context<Object> context) {
-
 	// ...
 
 	final GridValueLayer foodValueLayer = new GridValueLayer(
