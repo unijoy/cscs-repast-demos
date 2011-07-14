@@ -187,8 +187,14 @@ _to be added soon_
 
 =4. Applications=
 
+==Moth Like Behavior==
 
-_to be added soon_
+The moth like behavior can be found in various places. The same behavior is observed in various philosophical hypothesis and social colonies. Various other processes can be simulated using the same basic model. One such example is creation of whirlpools. 
+
+==Swarm Robotics and Mobile WSN==
+
+This model can be used as a basic block for swarm surveillance robots. The robots hover in a given radius of a target. The robots initially move aimlessly and as soon as they find a target they hover aimlessly around the target.  
+
 ----
 
 =5. Extending the Model=
