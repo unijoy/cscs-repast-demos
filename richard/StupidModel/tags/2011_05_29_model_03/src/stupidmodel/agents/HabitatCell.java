@@ -97,4 +97,40 @@ public class HabitatCell {
 		foodValueLayer.set(getFoodAvailability(), x, y);
 	}
 
+	/**
+	 * A {@link Bug} agent can consume food of the cell on which it is located
+	 * at.
+	 * 
+	 * @param eatenFood
+	 *            food to consume by the caller agent from this cell; <i>must be
+	 *            non-negative and below the current
+	 *            <code>foodAvailability</code></i>
+	 */
+	public void foodConsumed(final double eatenFood) {
+		if (eatenFood < 0.0) {
+			throw new IllegalArgumentException(String.format(
+					"eatenFood = %f < 0.0", eatenFood));
+		}
+
+		if (eatenFood > foodAvailability) {
+			throw new IllegalArgumentException(String.format(
+					"eatenFood = %f > foodAvailability = %f", eatenFood,
+					foodAvailability));
+		}
+
+		foodAvailability -= eatenFood;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("HabitatCell @ location (%d, %d)", x, y);
+	}
+
 }
