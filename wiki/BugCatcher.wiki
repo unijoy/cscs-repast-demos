@@ -45,6 +45,10 @@ A bug zapper is a device that attracts and kills insects that are attracted by l
 
 A similar system is modeled here. Read the Description section to figure out the difference between the Moth_Advance model and BugCatcher Model. 
 
+The following video illustrates the use of bug zapper and that bugs can be seen dying due to electrocution. 
+
+<wiki:video url=<wiki:"video url="http://www.youtube.com/watch?v=Edv0v2mOL60"/>"/>
+
 -----
 
 =Description=
