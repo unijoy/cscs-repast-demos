@@ -757,7 +757,11 @@ After starting up the simulation again, the new value layer style may be chosen 
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/assigning_grid_value_layer.png
 
-  <b>Remark</b> Version Repast Simphony 2.0-beta has a known issue about specifying value layer styles. Please refer to [http://old.nabble.com/I-can't-see-%22Value-Layer-Details%22-when-I-create-a-Display-td31594781.html this thread] if you encounter any problems.
+  <b>Remark</b> Version Repast Simphony 2.0-beta has a known issue about specifying value layer styles. Please consult [http://old.nabble.com/I-can't-see-%22Value-Layer-Details%22-when-I-create-a-Display-td31594781.html this thread] if you encounter any problems.
+
+If everything goes well, the simulation should look like something like this:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model3.png
 
 === Further Fun ===
  * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
@@ -765,7 +769,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/assigning_grid_val
 
 === Complete Model ===
 
- * The [https://to.do complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_03 complete source code] of the first model is accessible from the proper SVN tag directly.
 
 
 == Cell and Bug Probes ==
