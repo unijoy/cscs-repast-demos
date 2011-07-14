@@ -214,19 +214,11 @@ The section briefly describes the elements of the User Panel and the parameters 
 
  - Automatically Fill Initial Geometry: Automatically fills the selected geometry with maximum number of number of motes.
 
-==Data Sets==
-
-_to be added soon_
-
-==Outputters==
+==Data Sets, Outputters and External Plugin==
 
 _to be added soon_
 
 ==Plots==
-
-_to be added soon_
-
-==External Plugin==
 
 _to be added soon_
 
