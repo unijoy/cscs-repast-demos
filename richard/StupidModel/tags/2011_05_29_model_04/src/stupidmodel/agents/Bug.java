@@ -50,6 +50,11 @@ public class Bug {
 	private double size = 1.0;
 
 	/**
+	 * Maximum Food consumption of the bug (set to <code>1.0</code> by default).
+	 */
+	private final double maxConsumptionRate = 1.0;
+
+	/**
 	 * Creates a new instance of <code>Bug</code> associated with the specified
 	 * {@link Grid}.
 	 */
@@ -142,7 +147,6 @@ public class Bug {
 			return;
 		}
 
-		// CHECKME Is it needed?
 		SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 
 		// Get a random free location within sight range
@@ -161,7 +165,85 @@ public class Bug {
 	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = -1)
 	public void grow() {
-		size += Constants.BUG_GROWTH_RATE;
+		size += foodConsumption();
+	}
+
+	/**
+	 * Bug growth is modified so growth equals food consumption.
+	 * 
+	 * <p>
+	 * Food consumption is equal to the minimum of <i>(a)</i> the bug's maximum
+	 * consumption rate (set to <code>1.0</code>) and <i>(b)</i> the bug's
+	 * cell's food availability.
+	 * </p>
+	 * 
+	 * <p>
+	 * In previous models, a bug grew by a fixed amount of size in each time
+	 * step.
+	 * </p>
+	 * 
+	 * @return the actual eaten food value between the specified bounds;
+	 *         <i>non-negative, lower or equal to
+	 *         <code>maxConsumptionRate</code> and <code>foodAvailable</code>
+	 *         </i>
+	 * @since Model 3
+	 */
+	private double foodConsumption() {
+		final HabitatCell cell = getUnderlyingCell();
+		final double foodAvailable = cell.getFoodAvailability();
+
+		final double eatenFood = Math.min(maxConsumptionRate, foodAvailable);
+		cell.foodConsumed(eatenFood);
+
+		assert (eatenFood >= 0) : String.format(
+				"Derived value of eatenFood = %f hould be >=0.", eatenFood);
+		assert (eatenFood <= maxConsumptionRate);
+		assert (eatenFood <= foodAvailable);
+
+		return eatenFood;
+	}
+
+	/**
+	 * Returns the cell on which this agents is currently located at.
+	 * 
+	 * <p>
+	 * Also, it contains minor assertions and ensures invariants for the model:
+	 * there should be exactly one cell for each agent, no more and no less. If
+	 * either constraint is broken, an <code>IllegalStateException</code> is
+	 * thrown.
+	 * </p>
+	 * 
+	 * @return the cell on which the agent is currently located at;
+	 *         <code>non-null</code>
+	 * @since Model 3
+	 */
+	private HabitatCell getUnderlyingCell() {
+		final GridPoint location = getGrid().getLocation(this);
+		final Iterable<Object> objects = getGrid().getObjectsAt(
+				location.getX(), location.getY());
+
+		HabitatCell ret = null;
+
+		for (final Object object : objects) {
+			if (object instanceof HabitatCell) {
+				final HabitatCell cell = (HabitatCell) object;
+				if (ret != null) {
+					throw new IllegalStateException(
+							String.format(
+									"Multiple cells defined for the same position;cell 1=%s, cell 2=%s",
+									ret, cell));
+				}
+
+				ret = cell;
+			}
+		}
+
+		if (null == ret) {
+			throw new IllegalStateException(String.format(
+					"Cannot find any cells for location %s", location));
+		}
+
+		return ret;
 	}
 
 	/*
