@@ -849,19 +849,63 @@ If everything goes well, the simulation should look like something like this:
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_03.png
 
 === Further Fun ===
- * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
+ * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations
+ * Try increasing the `maxConsumptionRate` value as well, and see how it modifies the simulation.
  * Try using some other color values to display food availability for the grid.
 
 === Complete Model ===
 
  * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_03 complete source code] of the first model is accessible from the proper SVN tag directly.
 
-
 == Cell and Bug Probes ==
 === Purpose ===
 Show how to make model objects probeable from the display.
 === Formulation ===
 Make the bugs, and the cells, so they can be probed via mouse clicks on the display.
+
+=== Implementation Notes ===
+Using the standard Repast Simphony Java API, it is pretty easy to make an agent class probeable from the display. In the following example, we will add the possibility to change the `size` of `Bug` agents from the Repast Runtime GUI.
+
+To be able to set the `size` property, create both a conventional getter and setter method for it, and annotate one of the methods by the `@Parameter` as the following code listing shows:
+
+{{{
+public class Bug {
+	private double size = 1.0;
+
+	@Parameter(displayName = "Bug Size", usageName = "size")
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(final double size) {
+		this.size = size;
+	}
+	
+	// ...
+}}}
+
+The used `@Parameter` annotation requires at least two parameters: the name which is displayed on the GUI (`displayName`), and the name of the member it reflects (`usageName`).
+
+==== Probing the agents ====
+Start up the Repast Simphony Runtime and press the initialize button. Then, find a `Bug` agent and double-click on it. In the bottom-left part of the window two new tabs should be showns:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/probing_general_screenshot.png
+
+The upper one shows the string representation of the bug clicked on, the text field allows to modify the size of the agent (since we used the `@Parameter` annotation on this field), and the location values of the bug is also shown on the shown tab (both for the `space` and for the `grid`).
+
+The lower one shows the same data, but for the cell under the bug on the same `grid` position. Note that there is no setter and member annotated with `@Parameter`, so there is no textfield to modify anything.
+
+Another interesting detail to notice is the little red line on both tabs: the Repast Simphony Runtime can track the changes of these values during time. Run the simulation, change the value sometime when the simulation is paused and see how the line changes and shows the trend how the value changed:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/timeseries_for_probed_agent_properties.png
+
+=== Further Fun ===
+ * Following the example above, can you create way to modify the location of a `Bug` agent on demand?
+ * There are several other ways how the `@Parameter` annotation may be used in the future versions of the model. Try to utilize it after you finished the tutorial.
+
+=== Complete Model ===
+
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_04 complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Parameters and Parameter Displays ==
 === Purpose ===
@@ -871,6 +915,12 @@ Make these variables into parameters that can be accessed through the settings w
  * Initial number of bugs (a model parameter)
  * The maximum daily food consumption (a bug parameter), and
  * The maximum food production (a cell parameter).
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Histogram Output ==
 === Purpose ===
