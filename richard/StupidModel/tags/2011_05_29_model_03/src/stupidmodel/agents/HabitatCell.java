@@ -20,7 +20,8 @@ import stupidmodel.common.Constants;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 3
- * @version $Id$
+ * @version $Id: HabitatCell.java 662 2011-07-14 14:56:49Z
+ *          richard.legendi@gmail.com $
  */
 public class HabitatCell {
 
@@ -130,7 +131,9 @@ public class HabitatCell {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("HabitatCell @ location (%d, %d)", x, y);
+		return String.format(
+				"HabitatCell @ location (%d, %d), foodAvailability=%f", x, y,
+				foodAvailability);
 	}
 
 }
