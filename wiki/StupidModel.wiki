@@ -604,6 +604,8 @@ And become absolutely red after a few simulation ticks:
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/styled_bug_agent_screenshot_end.png
 
+  <b>Remark</b> Please do not forget to use the _Save_ button in the toolbar, otherwise your settings will be discarded upon exit.
+
 === Complete Model ===
 
  * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN tag directly.
@@ -628,13 +630,12 @@ Show how to create cell objects that represent habitat and spatial resources. Il
 
 === Implementation Notes ===
 
-In this part of the tutorial, we demonstrate how to use a grid value layer. A grid may have any number of `IGridValueLayer` instances associated, in this current setup we use a default implementation, `GridValueLayer` where each of the cells in the grid is accessed through coordinates and contains a numeric value. Each cell in the grid will contain a value (the _available food_ in this model) regardless of whether or not it has been set yet. 
+In this part of the tutorial, we demonstrate how to use a grid value layer. A grid may have any number of `IGridValueLayer` instances associated, in this current setup we use a default implementation, `GridValueLayer` where each of the cells in the grid is accessed through coordinates. Each cell in the grid value layer will contain a simple numeric value (the _available food_ in this model).
 
 First things first, we declare a new ID again for the value layer, so we can use the `Context` class to look it up anywhere in the model (as we done it in the previous model). To do so, add the following definition to the `Constants` class.
 
 {{{
 public final class Constants {
-
 	// ...	
 
 	public static final String FOOD_VALUE_LAYER_ID = "foodValueLayer";
@@ -645,13 +646,12 @@ public final class Constants {
 
 Creating a class for the `HabitatCell` agents would be easy for now. Cells know their `x` and `y` coordinates (`final` variables since they will not change during the simulation), and an instance variable for the `foodAvailability` at the current cell.
 
-To create the new agent action `growFood()`, we should create a small table to keep track of the order of actions (we are going to use a clearer approach in the next models, but it is vital for now to keep an overview of how the interactions of the model ordered):
+To create the new agent action `growFood()`, we should create a small table to keep track of the order of actions (we are going to use a clearer approach in the next models, but it is vital for now to keep an overview of how the interactions of the model ordered). Keep in mind that higher priority actions scheduled for the same tick are always executed before the ones with lower priority.
 
-|| *Tick* || *Agent*     || *Action*   || *Priority* ||
-|| All    || Bug         || grow()     ||         -1 ||
-|| All    || Bug         || move()     ||          0 ||
-|| All    || HabitatCell || growFood() ||          1 ||
-
+|| *Tick* || *Agent*       || *Action*     || *Priority* ||  *Order*           ||
+|| All    || `HabitatCell` || `growFood()` ||          1 || First in each tick ||
+|| All    || `Bug`         || `move()`     ||          0 ||                    ||
+|| All    || `Bug`         || `grow()`     ||         -1 || Last in each tick  ||
 
 The `HabitatCell` agents during their actions increase their food availability value with a random value between the interval specified, query the grid value layer that contains the food availability map and updates the corresponding cell data. The whole agent definition in one listing:
 
@@ -684,12 +684,12 @@ public class HabitatCell {
 }
 }}}
 
-The last thing to do is to update the custom context builder implementation with two things:
+The last thing to do is to extend the custom context builder implementation in two ways:
 
- # Create the grid value layer instance. It is similar to creating the `grid` and `space` objects, but there is no need to additional utility and factory classes. Simply call its constructor with a valid unique ID, a `GridPointTranslator` instance to handle the borders, and its `x` and `y` size. The second parameter is a logic variable indicating if the grid whether is _dense_ or _sparse_ (major performance boost may be achieved by using the proeper option). Since we have a `HabitatCell` instance on each cell, we annotate it as a _dense_ layer by using specifying `true` as its value.
+ # Create the grid value layer instance. It is similar to creating the `grid` and `space` objects, but there is no need to additional utility and factory methods and/or classes. Simply call its constructor with a valid unique ID, a `GridPointTranslator` instance to handle the borders, and its `x` and `y` size. The second parameter is a logic variable indicating if the grid is either _dense_ or _sparse_ (major performance boost may be achieved by using the proeper option). Since we have a `HabitatCell` instance on each cell, we annotate it as a _dense_ layer by using specifying `true` as its value.
  # The other task is to create the `HabitatCell` instances, add them to the context and assign the initial values for the `foodValueLayer`.
 
-Append the following code listing to the end of the StupidModelContextBuilder build() method:
+Append the following code listing to the end of the `build()` method of the class `StupidModelContextBuilder`:
 
 {{{
 @Override
@@ -722,11 +722,11 @@ public Context<Object> build(final Context<Object> context) {
 
 We create a new custom style for the value layer, as we created one for the `Bug` agents as well. Create a new class in the `stupidmodel.observer` package called `FoodValueLayerStyleOGL`, and implement the `ValueLayerStyleOGL` interface which is the superclass of all value layer styles. This interface declares the following methods:
 
- * During `init()`, the class gets a reference to the `ValueLayer` instance it manages (practically, this will be the `foodValueLayer` instance we create during the `build()` at the `StupidModelContextBuilder`.
+ * During `init()`, the class gets a reference to the `ValueLayer` instance it manages (practically, this will be the `foodValueLayer` instance we create during the `build()` at the `StupidModelContextBuilder`).
  * The `getCellSize()` function should return a `float` value that specifies the size of the painted cells on the GUI.
  * The `getColor()` function should return a simple `Color` value for the specified coordinates.
 
-Our implementation save the assigned `ValueLayer` instance in a member variable, returns a default `15.0f` value for the cell sizes (Repast Simphony uses a grid with a width and height of 15 pixels by default, but that can be changed when creating or editing a display), and returns a heavily scaled color value between black and green based on the actual food level at the specified location.
+Our implementation keeps a reference for the specified `ValueLayer` instance in a member variable, returns a default `15.0f` value for the cell size (Repast Simphony uses a grid with a width and height of 15 pixels by default, but that can be changed when creating or editing a display), and returns a heavily scaled color value between black and green based on the actual food level at the specified location.
 
 {{{
 public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
@@ -752,6 +752,12 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	}
 }
 }}}
+
+After starting up the simulation again, the new value layer style may be chosen in the options of the grid display by double-clicking on it:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/assigning_grid_value_layer.png
+
+  <b>Remark</b> Version Repast Simphony 2.0-beta has a known issue about specifying value layer styles. Please refer to [http://old.nabble.com/I-can't-see-%22Value-Layer-Details%22-when-I-create-a-Display-td31594781.html this thread] if you encounter any problems.
 
 === Further Fun ===
  * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
