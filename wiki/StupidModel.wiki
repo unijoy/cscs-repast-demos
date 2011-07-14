@@ -761,7 +761,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/assigning_grid_val
 
 If everything goes well, the simulation should look like something like this:
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model3.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_03.png
 
 === Further Fun ===
  * Try increasing the `maximumFoodProductionRate` to a relatively high value (e.g. set it to `10.0`). Make some experimental runs, and check what you see and how it fits your expectations.
