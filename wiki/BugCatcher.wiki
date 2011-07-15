@@ -145,11 +145,32 @@ def setup(){
 
 If you find the concept of shapes abstract, check out the shapes folder in your project explorer task bar. You will find the details of the shapes that are already made for you. You can also add your custom made shapes. These shapes can be applied to your agents just by using their names. An example of the same is in the code segment above. "bug" is one of the shapes in the shape folder.
 
+Another line that is worth a mention is the "size=3" statement. This sets the size of the circles, i.e. the machines to be 3.
 
 
 ==User Panel==
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
+
+
+ * *Push Button (that rebounds)* 
+      
+  - Set Up : For setting up the motes in the area according to the selected options and settings. 
+
+ * *Toggle Button* 
+
+ - Go : For running the model unless the button is toggled again
+
+ * *Sliders*
+
+ - Number of Bugs : Population
+ 
+ - Bug Speed : Distance moved per tick 
+ 
+ - Number of Catchers : Number of machines catching bugs
+ 
+ - Time : The time taken by electrocuted bugs to die.
+
 
 ==Data Sets, Outputters and External Plugin==
 
