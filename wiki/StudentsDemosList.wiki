@@ -20,7 +20,7 @@ Record status after the group agrees on the assignment - planned,working,done
     * Done: tba
   * *[Mudit Mudit Raj Gupta]* (mentor: eric)
     * Planned: GuidingBots and Ants 
-    * Working: Adding advance features to the "Done" models and Documentation
+    * Working: Adding advance features to "Done" models and Documentation
     * Done: AreaCoverage, Moth_Basic, Moth_Advance and BugCatcher
   * *[Richard Richard Legendi]* (mentor: eric)
     * Planned: [ElFarol El Farol]
