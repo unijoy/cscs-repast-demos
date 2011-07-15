@@ -1069,7 +1069,7 @@ public class HabitatCell {
 The agent parameters may be modified by double-clicking on the agents on the graphical interface.
 
 === Further Fun ===
- * Can you find a way to pause the simulation in the _100th_ tick through the API offered by a class introduced in this part of the tutorial? This knowledge comes handy for the next part (maybe you can do it on your own without even taking a look on the next section!).
+ * Can you find a way to pause the simulation in the _100th_ tick through the API offered by a class introduced in this part of the tutorial? This knowledge comes handy for the [#Stopping_the_Model 7th section] (maybe you can do it on your own without even taking a look on the next section!).
  * We defined the maximum daily food consumption and the maximum food production as a bug and a cell parameter, respectively. It is very easy and straightforward to convert these parameters into model-level parameters, just like the `bugCount` parameter. Refactor and modify the code to make this two values model parameters as well.
 
 === Complete Model ===
