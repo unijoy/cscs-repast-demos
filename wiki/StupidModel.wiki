@@ -1150,7 +1150,7 @@ Show how to cause a model to stop itself upon a certain condition. Show how to "
  * Close the graphic windows (and do any other cleanup steps) when the program stops.
 
 === Implementation Notes ===
-This model version is a simple one, we just have to modify the `grow()` action method for the `Bug` agent class . One way to do this could be to simply call the usual `System.exit(0)` method, like in any Java applications. However, there is a nicer way that allows us to visually observe the end of the simulation by using the class `RunEnvironment` which we already introduced at the section about [Creating_Model_Parameters Creating Model Parameters].
+This model version is a simple one, we just have to modify the `grow()` action method for the `Bug` agent class . One way to do this could be to simply call the usual `System.exit(0)` method, like in any Java applications. However, there is a nicer way that allows us to visually observe the end of the simulation by using the class `RunEnvironment` which we already introduced at the section about [#Creating_Model_Parameters Creating Model Parameters].
 
 Simply add the following conditional statement to the agent action:
 
