@@ -19,8 +19,8 @@ import stupidmodel.agents.HabitatCell;
  * 
  * <p>
  * A cell's color on the display is shaded to reflect the food available on
- * them: it shades from white (when available food is zero) to green (when food
- * is <code>255</code> or greater).
+ * them: it shades from black (when available food is zero) to green (when food
+ * is <code>1</code> or greater).
  * </p>
  * 
  * @author rlegendi
@@ -33,7 +33,8 @@ import stupidmodel.agents.HabitatCell;
 public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 
 	/** The <code>ValueLayer</code> object to reflect its values. */
-	private ValueLayer layer = null;
+	protected ValueLayer layer = null; // Protected to access from the same
+										// package for testing
 
 	/**
 	 * {@inheritDoc}
@@ -42,10 +43,22 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 	 * We keep a reference for the specified <code>ValueLayer</code> instance.
 	 * </p>
 	 * 
+	 * @param layer
+	 *            {@inheritDoc}; <i>cannot be <code>null</code></i>
 	 * @see repast.simphony.visualizationOGL2D.ValueLayerStyleOGL#init(repast.simphony.valueLayer.ValueLayer)
 	 */
 	@Override
 	public void init(final ValueLayer layer) {
+		if (null == layer) {
+			throw new IllegalArgumentException(
+					"Parameter layer cannot be null.");
+		}
+
+		if (this.layer != null) {
+			throw new IllegalStateException(
+					String.format("Food value layer should not be reinitialized with a new ValueLayer instance."));
+		}
+
 		this.layer = layer;
 	}
 
@@ -85,8 +98,8 @@ public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
 							food));
 		}
 
-		final int strength = (int) Math.max(255 - food, 0);
-		return new Color(strength, 0xFF, strength); // 0xFFFFFF - white,
-													// 0x00FF00 - green
+		final int strength = (int) Math.min(200 * food, 255);
+		return new Color(0, strength, 0); // 0x000000 - black,
+											// 0x00FF00 - green
 	}
 }
