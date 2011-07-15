@@ -1084,7 +1084,48 @@ Add a histogram display showing the number of agents in each size class. (It wor
 
 === Implementation Notes ===
 
+The model is in a state where no additional programming is required to create visualizations, so there is no Java code for this part ;]
+
+In Repast Simphony, we can define different _data sets_ above the simulation which can be saved, displayed on a chart, and/or used to create other data sets in the same time. Think of it like an aggregated and sorted set of data.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_datasets_charts.png
+
+==== Data Collection ====
+
+We need a histogram, so first we have to _collect the data_ that will be shown in the chart:
+
+ # Right-click on _Data Sets_ in the _Scenario Tree_, and select _Add Data Set_ from the menu. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_first_data_set.png
+ # The _Data Set Editor_ shows up. On the first page, we can assign a name for the new data set. Type _Data Set of Bug Sizes_ as its name, and select _Bug_ as the _Agent Class_. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/creating_histogram_dataset.png
+ # The next wizard page allows us to create different _mappings_ for the dataset, i.e., declare what kind of data should it produce. Basically, there are simple mappings (e.g., a sequence of all agent variable values), aggregated mappings (e.g., sum, min, max, variance of values), and custom mappings that can be created through a separate wizard by implementing them e.g. in BeanShell. Please refer to the Repast Documentation about the details of this topic. For the current model, we need a simple sequence of values (i.e., the enumeration of `size` values of the agents). Press _Add_ and select _Add Simple Mapping_. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/select_histogram_simple_mapping.png
+ # A new line in the table above the buttons should appear. Click on the _Source_ component of the new line, and a drop-down list should appear. Select `getSize()` from the list. This automatically updates the _Column Name_ attribute as well. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_histogram_simple_mapping.png 
+ # Click on _Next_.
+ # If you would like, you can modify the refresh rate of the visualization on this wizard page (like when we created the grid visualization). Since the default settings are perfect for this demo model, click click _Finish_.
+
+If everything goes well, the new dataset should be displayed under the _Data Sets_ section of the _Scenario Tree_ and is ready to use!
+
+==== Creating a Chart ====
+
+ # Right-click on _Charts_ in the _Scenario Tree_, and select _Add Chart_ from the menu. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/adding_a_new_chart.png
+ # Select _Statically Sized Histogram_ from the list. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/select_statically_sized_histogram.png
+ # Type _Histogram of Bug Sizes_ for the name of the new chart. Also make sure _Data Set of Bug Sizes_ and _Size_ is automatically selected as _Data Set_ and _Value Column_, respectively. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/histogram_data_mappings.png
+ # Click _Next_.
+ # On the _Bin Information_ wizard page we can set the data bins the chart should display. Enter _10_ as _Number of bins_, _0_ as _Minimum Value_ and _10_ to _Maximum Value_, as the problem formulation specified the histogram. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/histogram_bin_information
+ # Click _Next_.
+ # The data mapping is complete, press _Finish_ to add the new chart.
+
+If everything goes well, the new chart should be displayed under the _Charts_ section of the _Scenario Tree_ and is ready to use!
+
+After initializing the model, the new histogram should be displayed behind the grid we created previously in a different tab. 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/location_of_the_new_histogram.png
+
+Start the simulation, and see how the new chart shows the size distribution of the agents!
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_06.png
+
 === Further Fun ===
+ * The current model allows `Bug` agents to grow greater than `10.0`, however the current chart settings does not show the outliers. Can you modify the chart to do so?
+ * Can you add a second chart, a simple time series that shows the _average_ agent size in each simulation step?
 
 === Complete Model ===
 
