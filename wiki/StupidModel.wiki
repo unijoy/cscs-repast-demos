@@ -1094,7 +1094,8 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_dataset
 
 We need a histogram, so first we have to _collect the data_ that will be shown in the chart:
 
- # Right-click on _Data Sets_ in the _Scenario Tree_, and select _Add Data Set_ from the menu. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_first_data_set.png
+ # Right-click on _Data Sets_ in the _Scenario Tree_, and select _Add Data Set_ from the menu.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_first_data_set.png
  # The _Data Set Editor_ shows up. On the first page, we can assign a name for the new data set. Type _Data Set of Bug Sizes_ as its name, and select _Bug_ as the _Agent Class_. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/creating_histogram_dataset.png
  # The next wizard page allows us to create different _mappings_ for the dataset, i.e., declare what kind of data should it produce. Basically, there are simple mappings (e.g., a sequence of all agent variable values), aggregated mappings (e.g., sum, min, max, variance of values), and custom mappings that can be created through a separate wizard by implementing them e.g. in BeanShell. Please refer to the Repast Documentation about the details of this topic. For the current model, we need a simple sequence of values (i.e., the enumeration of `size` values of the agents). Press _Add_ and select _Add Simple Mapping_. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/select_histogram_simple_mapping.png
  # A new line in the table above the buttons should appear. Click on the _Source_ component of the new line, and a drop-down list should appear. Select `getSize()` from the list. This automatically updates the _Column Name_ attribute as well. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_histogram_simple_mapping.png 
