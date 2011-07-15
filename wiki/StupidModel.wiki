@@ -480,7 +480,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/stupid_model_1_fin
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_26_model_01/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 === Further Fun ===
 
@@ -608,7 +608,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/styled_bug_agent_s
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_28_model_02 complete source code] of the model is accessible from the proper SVN tag directly.
 
 === Further Fun ===
  * Try to schedule the `grow()` and `move()` actions with the same priority, run the model and check in which order are the actions executed.
@@ -855,7 +855,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_0
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_03 complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_03 complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Cell and Bug Probes ==
 === Purpose ===
@@ -908,7 +908,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/timeseries_for_pro
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_04 complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_04 complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Parameters and Parameter Displays ==
 === Purpose ===
@@ -1069,12 +1069,12 @@ public class HabitatCell {
 The agent parameters may be modified by double-clicking on the agents on the graphical interface.
 
 === Further Fun ===
- * Can you find a way to pause the simulation in the 100th tick through the API offered by a class introduced in this section of the tutorial? This knowledge comes handy for the next tutorial section (maybe you can do it on your own without referring to the next section!).
+ * Can you find a way to pause the simulation in the _100th_ tick through the API offered by a class introduced in this part of the tutorial? This knowledge comes handy for the next part (maybe you can do it on your own without even taking a look on the next section!).
  * We defined the maximum daily food consumption and the maximum food production as a bug and a cell parameter, respectively. It is very easy and straightforward to convert these parameters into model-level parameters, just like the `bugCount` parameter. Refactor and modify the code to make this two values model parameters as well.
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_05_29_model_05 complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Histogram Output ==
 === Purpose ===
@@ -1088,7 +1088,7 @@ Add a histogram display showing the number of agents in each size class. (It wor
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Stopping the Model ==
 === Purpose ===
@@ -1104,7 +1104,7 @@ Show how to cause a model to stop itself upon a certain condition. Show how to "
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == File Output ==
 === Purpose ===
@@ -1118,7 +1118,7 @@ Each time step, write the minimum, mean, and maximum bug size on one line of an 
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Randomized Agent Actions ==
 === Purpose ===
@@ -1132,7 +1132,7 @@ The bugs' move action is altered so that the order in which bugs execute the act
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Sorted Agent Actions ==
 === Purpose ===
@@ -1147,7 +1147,7 @@ Show how to sort a list of agents, and cause an agent action to be executed in s
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Optimal Movement ==
 === Purpose ===
@@ -1162,7 +1162,7 @@ Show how agents can identify and rank neighbor cells. Illustrate how to iterate 
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Bug Mortality and Reproduction ==
 === Purpose ===
@@ -1180,7 +1180,7 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Population Abundance Graph ==
 === Purpose ===
@@ -1204,7 +1204,7 @@ Illustrate use of random number distributions. A common use of them is to induce
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_15_model_14/ complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_15_model_14/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 
 == Habitat Data from File Input ==
@@ -1225,7 +1225,7 @@ Show how to read spatial data in from a file.
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Predators ==
 === Purpose ===
@@ -1241,7 +1241,7 @@ Show how to create multiple classes of agents that interact.
 
 === Complete Model ===
 
- * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+ * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 = Conclusion =
 
