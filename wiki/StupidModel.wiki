@@ -819,7 +819,6 @@ Our implementation keeps a reference for the specified `ValueLayer` instance in 
 
 {{{
 public class FoodValueLayerStyleOGL implements ValueLayerStyleOGL {
-
 	private ValueLayer layer = null;
 
 	@Override
@@ -1135,7 +1134,8 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_0
 
 === Further Fun ===
  * The current model allows `Bug` agents to grow greater than `10.0`, however the current chart settings does not show the outliers. Can you modify the chart to do so?
- * Can you add a second chart, a simple time series that shows the _average_ agent size in each simulation step?
+ * Can you add a second chart, a simple XY Line or Scatterplot chart that shows the _average_ agent size in each simulation step?
+ * Can you extend this chart with the addition of the _minimum_ and _maximum_ `size` values as well?
 
 === Complete Model ===
 
@@ -1150,12 +1150,27 @@ Show how to cause a model to stop itself upon a certain condition. Show how to "
  * Close the graphic windows (and do any other cleanup steps) when the program stops.
 
 === Implementation Notes ===
+This model version is a simple one, we just have to modify the `grow()` action method for the `Bug` agent class . One way to do this could be to simply call the usual `System.exit(0)` method, like in any Java applications. However, there is a nicer way that allows us to visually observe the end of the simulation by using the class `RunEnvironment` which we already introduced at the section about [Creating_Model_Parameters Creating Model Parameters].
+
+Simply add the following conditional statement to the agent action:
+
+{{{
+@ScheduledMethod(start = 1, interval = 1, priority = -1)
+public void grow() {
+	size += foodConsumption();
+
+	if (size > 100.0) {
+		RunEnvironment.getInstance().endRun();
+	}
+}
+}}}
 
 === Further Fun ===
+ * The `RunEnvironment` class has several other useful utility functions. Try to modify the model to pause (this stops the model in a way that it may be resumed either programmatically or by pressing the run button) when either one of the bug size reaches `50.0` or the `HabitatCell` food availability reaches `25.0`.
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_09_model_07 complete source code] of the model is accessible from the proper SVN tag directly.
 
 == File Output ==
 === Purpose ===
