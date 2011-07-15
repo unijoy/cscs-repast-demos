@@ -921,20 +921,20 @@ Make these variables into parameters that can be accessed through the settings w
 
 === Implementation Notes ===
 
-So far we have used dedicated constants to specify the values enumerated in the formulation of this model. This way it is easier to modify them, however, it still requires to restart a simulation if any of them is modified to view its effect. By defining these values as _model specific parameters_, it becomes really easy to modify them on the GUI and evaluete their effect. Using model parameters is also the proper way to create parameter sweeps through batch runs.
+So far we have used dedicated constants to specify the values enumerated in the formulation of this model. This way it is easier to modify them, however, it still requires to restart a simulation if any of them is modified to view the effect of the new value on the simulation. By defining these values as _model specific parameters_, it becomes really easy to modify them on the GUI and evaluete their effect. Using model parameters is also the proper way to create parameter sweeps through batch runs.
 
-To convert these values into model parameters, start up the Repast Simphony Runtime. Use the tabs in on the left side of the GUI (where the Scenario Tree is) to select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
+To convert these values into model parameters, start up the Repast Simphony Runtime. Use the tabs in on the left side of the GUI (where the _Scenario Tree_ is) to select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/parameters_tab_location.png
 
-This will bring up the _Add Parameter_ dialog where the following properties may be set for a new parameter:
+This will bring up the _Add Parameter_ dialogue where the following properties may be set for a new parameter:
 
  * _Name:_ A unique identifying name for this parameter. Each model parameter should have a unique name.
- * _Display Name:_ The label that will be used in the parameters panel for this model parameter. This does not have to be unique, however, it is recommended to evade confusion.
+ * _Display Name:_ The label that will be used in the _Parameters_ panel for this model parameter. This does not have to be unique, however, it is recommended to avoid confusion.
  * _Type:_ This can be any of `int`, `long`, `double`, or `string`, but the fully qualified name of any other type may also be used.
  * _Default Value:_ The initial value of the parameter.
- * _Converter:_ _[Optional]_ The name of a class that extends `StringConverter`. A `StringConverter` can convert non-standard types to and from a `String`. This is not necessary unless you use a type other than `int`, `long`, `double` or `string`.
- * _Values:_ _[Optional]_ A space separated list of values of the chosen type. The parameter will be restricted to these values.
+ * _Converter:_ _(Optional)_ The name of a class that extends `StringConverter`. A `StringConverter` can convert non-standard types to and from a `String`. This is not necessary unless you use a type other than `int`, `long`, `double` or `String`.
+ * _Values:_ _(Optional)_ A space-separated list of values of the chosen type. The parameter will be restricted to these values.
 
 To add the required model parameters, follow these steps:
 
@@ -942,11 +942,10 @@ To add the required model parameters, follow these steps:
  # Type _Initial Number of Bugs_ for _Display Name_.
  # Type _int_ for the _Type_.
  # Type _100_ for the _Default Value_.
- # Click OK.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugCount.png
 
-Presss _OK_. From now on, when the GUI is launched or when the model is reseted, the new parameter is assigned the default value specified previously (`100`), and it can be changed before the model initialization on the _Parameters_ tab, below the _Default Random Seed_ value.
+Presss _OK_. From now on, when the GUI is launched or when the model is reseted, the new parameter is assigned the default value specified previously (`100`), and it can be changed before the model initialization on the _Parameters_ tab, right below the _Default Random Seed_ value.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugCount_added.png
 
@@ -954,12 +953,12 @@ However, it has currently no effect on the model. Let's modify the initializatio
 
   <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
 
-{{{
+   {{{
 <parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
 		defaultValue="100" 
 		isReadOnly="false" 
 		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
-}}}
+   }}}
 
   Advanced users may utilize this so they can edit this file directly (either by hand or programmatically) instead of using the point & click wizard on the GUI.
 
