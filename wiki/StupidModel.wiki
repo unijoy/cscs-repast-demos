@@ -448,24 +448,28 @@ Click on the button of the _Model_. Next time clicking on the _Run_ button activ
 
 This will start the Repast Simphony Runtime. Note that you may see some initial errors along the lines of `SpaceProjectionBuilder - Unable to build continuous space 'space' ...`. These can be ignored for now and in our next steps we are going to correct them. We need to do some runtime configuration before we run the model itself. We are going to setup the runtime to use our context builder to initialize the model and also create an initial display. We setup the runtime to use our context builder by specifying the data loader.
 
- # In the _Scenario Tree_, right click on the Data Loaders node and click _Set Data Loader_. If the tree is not visible use the tab controls on the left side of the runtime frame to select the _Scenario Tree_.
+ # In the _Scenario Tree_, right click on the _Data Loaders_ node and click _Set Data Loader_. If the tree is not visible use the tab controls on the left side of the runtime frame to select the _Scenario Tree_.
  # In the _Select Data Source Type_ window, click on _Custom ContextBuilder Implementation_. Click _Next_.
  # You should see the name of our context builder class in the combo box, `stupidmodel.StupidModelContextBuilder`, if not, use the combo box to find it. If the box is empty, go back and check your code. This typically means that there was a compilation error. Click _Next_.
  # Click Finish.
 
-You should now see `StupidModelContextBuilder` as the name of the Data Loader (see figure below).
+You should now see `StupidModelContextBuilder` as the name of the _Data Loader_ (see figure below).
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/specify_context_builder.png
 
 The next task is to create a simple display to see the agents moving.
 
  # Right-click on _Displays_ in the _Scenario Tree_ and click _Add Display_
- # In the _Display configuration_ dialog, type Grid Display for name. Leave 2D as the type. Select the _grid_ projection as the one to display. Click on _grid_ in the _Projection and Value Layers_ section and then click the green right arrow. The projections on the right are the ones will be displaying and those on the left are all the possible projections to display. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation.png
+ # In the _Display configuration_ dialog, type Grid Display for name. Leave 2D as the type. Select the _grid_ projection as the one to display. Click on _grid_ in the _Projection and Value Layers_ section and then click the green right arrow. The projections on the right are the ones will be displaying and those on the left are all the possible projections to display.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation.png
  # Click _Next_.
- # Select _Bug_ agents as the types to display. Do this by selecting it in the left and then clicking the green right arrow to move them to right. If we would have several agents displayed on the grid, the order how they would have been drawn on the display is from the bottom of this list to the up (e.g., the last element of the list on the right is drawn first and the first drawn last). https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agents.png
+ # Select _Bug_ agents as the types to display. Do this by selecting it in the left and then clicking the green right arrow to move them to right. If we would have several agents displayed on the grid, the order how they would have been drawn on the display is from the bottom of this list to the up (e.g., the last element of the list on the right is drawn first and the first drawn last).
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agents.png
  # Click _Next_.
- # In this panel, the appearance of `Bug` agents may be configured. This can be done programmatically by specifying a class that implements `StyleOGL2D` (we have not created such a class yet) or via a simple wizard. For the current model, we use the wizard to create a simple style for the agents. Click the button to the right of the style class combo box. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agent_style.png
- # A new dialogue, the _2D Shape Editor_ shows up where the default style of the agents may be customized, including the size, shape, color, icon, label and many more settings. Change the color to red by clicking the button with the blue square, and choosing a red color from the icon color dialog. Click _OK_ on the icon color box, then _OK_ on the _2D Shape Editor_ to modify settings. https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_modifying_default_agent_style.png
+ # In this panel, the appearance of `Bug` agents may be configured. This can be done programmatically by specifying a class that implements `StyleOGL2D` (we have not created such a class yet) or via a simple wizard. For the current model, we use the wizard to create a simple style for the agents. Click the button to the right of the style class combo box.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_assign_agent_style.png
+ # A new dialogue, the _2D Shape Editor_ shows up where the default style of the agents may be customized, including the size, shape, color, icon, label and many more settings. Change the color to red by clicking the button with the blue square, and choosing a red color from the icon color dialog. Click _OK_ on the icon color box, then _OK_ on the _2D Shape Editor_ to modify settings.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/basic_grid_display_creation_modifying_default_agent_style.png
  # Click _OK_.
  # If you would like, you can modify the outlook of the grid on this wizard page. Since the default settings are perfect for this demo model, click _Next_.
  # If you would like, you can modify the refresh rate of the visualization on this wizard page. Since the default settings are perfect for this demo model, click click _Finish_.
@@ -644,7 +648,7 @@ public final class Constants {
 }
 }}}
 
-==== Creating HabitatCell Agents ====
+==== Creating !HabitatCell Agents ====
 
 Creating a class for the `HabitatCell` agents would be easy for now. Cells know their `x` and `y` coordinates (`final` variables since they will not change during the simulation), and an instance variable for the `foodAvailability` at the current cell.
 
