@@ -171,7 +171,6 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
  
  - Time : The time taken by electrocuted bugs to die.
 
-
 ==Data Sets, Outputters and External Plugin==
 
 _to be added soon_
