@@ -102,11 +102,22 @@ ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
 repast.simphony.space.continuous.WrapAroundBorders(), width,height);
 		
 Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", 
-context, new GridBuilderParameters<Object>(new WrapAroundBorders(), new
+context, new GridBuilderParameters<Object>(new repast.simphony.space.grid.WrapAroundBorders(), new
  SimpleGridAdder<Object>(),true, width,height));
 }}}
 
-And lastly, we need to create the Boids and add them to the context. We do that with this code snippet, which goes right underneath the last snippet of code:
+This complicated-looking snippet of code creates two objects, called factories, which in turn create two more objects, our projections. The parameters that the create methods take amount to the following:
+  * name
+  * context: this is the object that contains all the objects that we are dealing with in this simulation
+  * method of adding objects to the space projections: defines whether the Boid object is added automatically to the projection and how it is added. 
+  * size of dimensional axes: defines how many dimensions the projections represent and how far those dimensions extend.
+  * for the grid object, a boolean parameter is used to define whether each grid cell can contain multiple objects
+
+Let's go over the commands we used for the method of adding objects to our two projections. For the continuous space, we have defined a Random Cartesian Adder, which means that whenever we add a Boid to the context with the command context.add(boid) as we do in the next step, the Boid automatically gets added to the continuous space at a random location. For the grid, the Boid will not be physically located on the grid until we manually put it somewhere.
+
+The other point of confusion here is that there is another object being created in the parameters for the method createGrid(), GridBuilderParameters. We can think of this as merely a carrier or wrapper for the parameters inside of it. For a better understanding of the commands being invoked, refer to the Repast Java API, specifically the pages GridBuilderParameters, ContinuousSpace and Grid.
+
+The last thing we need to add to the method is creation of the Boid objects and the addition of them to the context. We do that with this code snippet, which goes right underneath the last snippet of code:
 
 {{{
 for(int i = 0; i < numBoids; i++){
