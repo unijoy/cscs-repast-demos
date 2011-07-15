@@ -900,6 +900,8 @@ Another interesting detail to notice is the little red line on both tabs: the Re
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/timeseries_for_probed_agent_properties.png
 
+=== Implementation Notes ===
+
 === Further Fun ===
  * Following the example above, can you create a way to modify the location of a `Bug` agent on demand?
  * There are several other ways how the `@Parameter` annotation may be used in the future versions of the model. Try to utilize it after you finished the tutorial.
@@ -917,7 +919,97 @@ Make these variables into parameters that can be accessed through the settings w
  * The maximum daily food consumption (a bug parameter), and
  * The maximum food production (a cell parameter).
 
+=== Implementation Notes ===
+
+So far we have used dedicated constants to specify the values enumerated in the formulation of this model. This way it is easier to modify them, however, it still requires to restart a simulation if any of them is modified to view its effect. By defining these values as _model specific parameters_, it becomes really easy to modify them on the GUI and evaluete their effect. Using model parameters is also the proper way to create parameter sweeps through batch runs.
+
+To convert these values into model parameters, start up the Repast Simphony Runtime. Use the tabs in on the left side of the GUI (where the Scenario Tree is) to select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
+
+SCREENSHOT
+
+This will bring up the _Add Parameter_ dialog where the following properties may be set for a new parameter:
+
+ * _Name:_ A unique identifying name for this parameter. Each model parameter should have a unique name.
+ * _Display Name:_ The label that will be used in the parameters panel for this model parameter. This does not have to be unique, however, it is recommended to evade confusion.
+ * _Type:_ This can be any of `int`, `long`, `double`, or `string`, but the fully qualified name of any other type may also be used.
+ * _Default Value:_ The initial value of the parameter.
+ * _Converter:_ _[Optional]_ The name of a class that extends `StringConverter`. A `StringConverter` can convert non-standard types to and from a `String`. This is not necessary unless you use a type other than `int`, `long`, `double` or `string`.
+ * _Values:_ _[Optional]_ A space separated list of values of the chosen type. The parameter will be restricted to these values.
+
+To add the required model parameters, follow these steps:
+
+ # Type _bugCount_ for the _Name_.
+ # Type _Initial Number of Bugs_ for _Display Name_.
+ # Type _int_ for the _Type_.
+ # Type _100_ for the _Default Value_.
+ # Click OK.
+
+  <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
+
+{{{
+<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
+		defaultValue="100" 
+		isReadOnly="false" 
+		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
+}}}
+
+  Advanced users may utilize this so they can edit this file directly (either by hand or programmatically) instead of using the point & click wizard on the GUI.
+
+Save and exit the GUI for now. Next, we utilize our brand new parameter programmatically from the simulation.
+
+First, edit the `Constants` class, and remove `BUG_COUNT` (since we replace it with a parameter). The code will show some errors, but that is fine for now, we will fix it immediately. However, we used an ID for the parameter (`bugCount`), it is a good idea to declare a new `String` constant to avoid errors caused by typos in the name:
+
+{{{
+public final class Constants {
+	// ...
+
+	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
+}
+}}}
+
+Now, the interesting part about how to access the current parameter values set by the user? Well, each parameter has a different meaning, it may have sense for some of them to modify during the run (e.g., to allow direct experiments), but the `bugCount` parameter has an influence only during initialization. Open the `StupidModelContextBuilder` class and extend it with the following segment:
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	context.setId(Constants.CONTEXT_ID);
+
+	final Parameters parameters = RunEnvironment.getInstance()
+				.getParameters();
+
+	// ...
+}
+}}}
+
+The `RunEnvironment` class is a singleton class that provides access to the environment in which a particular model run executes. For example, the schedule is made available to running simulation code in this way. The current set of model parameters and their values may be accessed through this class as well, in a form of a `Parameters` class. The role of this class is to encapsulate model parameters for the simulation, and offers several handy utility functions for this task.
+
+The creation of `Bug` agent is currently done as follows:
+
+{{{
+for (int i = 0; i < Constants.BUG_COUNT; ++i) {
+	final Bug bug = new Bug();
+
+	// ...
+}
+}}}
+
+Instead of using the dedicated constant (which is already removed previously), we query the current parameter value of `bugCount`. This can be done by a `getParameter()` function call on the `parameters` instance we got a reference on previously, by specifying the parameter name we assigned to it. This returns an `Object`, but we can cast it to an `Integer` (since we defined the parameter as `int`, we will get its wrapper class, `Integer`). The current `int` value is then accessed by the `intValue()` function:
+
+{{{
+final int bugCount = ((Integer) parameters
+		.getValue(Constants.PARAMETER_ID_BUG_COUNT)).intValue();
+
+for (int i = 0; i < bugCount; ++i) {
+	final Bug bug = new Bug();
+	
+	// ...
+}
+}}}
+
+Other parameters (like rational numbers or string) are handled absolutely in the same way, identically.
+
 === Further Fun ===
+ * Can you find a way to pause the simulation in the 100th tick through the API offered by a class introduced in this section of the tutorial? This knowledge comes handy for the next tutorial section (maybe you can do it on your own without referring to the next section!).
 
 === Complete Model ===
 
@@ -929,6 +1021,14 @@ Illustrate how to add graphs to the display. Provide the ability to see the size
 === Formulation ===
 Add a histogram display showing the number of agents in each size class. (It works reasonably well to use 10 bins, set minimum to zero, and set maximum to 10.)
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+
 == Stopping the Model ==
 === Purpose ===
 Show how to cause a model to stop itself upon a certain condition. Show how to "clean up" when a model stops.
@@ -937,17 +1037,41 @@ Show how to cause a model to stop itself upon a certain condition. Show how to "
  * The model stops when the largest bug reaches a size of 100.
  * Close the graphic windows (and do any other cleanup steps) when the program stops.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+
 == File Output ==
 === Purpose ===
 Show how to write results to an output file. Illustrate how to iterate over a list.
 === Formulation ===
 Each time step, write the minimum, mean, and maximum bug size on one line of an output file.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+
 == Randomized Agent Actions ==
 === Purpose ===
 Show how to randomize the order in which agents execute an action.
 === Formulation ===
 The bugs' move action is altered so that the order in which bugs execute the action is shuffled each time step.
+
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Sorted Agent Actions ==
 === Purpose ===
@@ -956,12 +1080,28 @@ Show how to sort a list of agents, and cause an agent action to be executed in s
  * The list of bugs is sorted by descending size order at the start of each time step.
  * The bugs' move action is un-randomized so it is executed in descending size order.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+
 == Optimal Movement ==
 === Purpose ===
 Show how agents can identify and rank neighbor cells. Illustrate how to iterate over a list.
 === Formulation ===
  * In its move method, a bug identifies a list of all cells that are within a distance of 4 grids but do not have another bug in them. (The bug’s current cell is included on this list.)
  * The bug iterates over the list and identifies the cell with highest food availability. The bug then moves to that cell.
+
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Bug Mortality and Reproduction ==
 === Purpose ===
@@ -972,6 +1112,14 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
  * A new bug parameter `survivalProbability` is initialized to 0.95. Each time step, each bug draws a uniform random number, and if it is greater than `survivalProbability`, the bug dies and is dropped.
  * This mortality action is scheduled after the bug moves and grows.
  * The model stopping rule is changed: the model stops after 1000 time steps have been executed or when the number of bugs reaches zero.
+
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
 
 == Population Abundance Graph ==
 === Purpose ===
@@ -1010,6 +1158,14 @@ Show how to read spatial data in from a file.
  * The cells are now displayed and colored to indicate their current food availability. Cell colors scale from black when cell food availability is zero to green when food availability is 0.5 or higher.
  * A change to the bug move method is required to avoid a very strong artifact now that cell food production is no longer random. Near the start of a simulation, many cells will have exactly the same food availability, so a bug simply would move to the first cell on its list of neighbor cells. This is always the top-left cell among the neighbors, so bugs move constantly up and left if all the cells available to them have the same food availability. This artifact is removed by randomly shuffling the list of available cells before the bug loops through it to identify the best.
 
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
+
 == Predators ==
 === Purpose ===
 Show how to create multiple classes of agents that interact.
@@ -1017,6 +1173,14 @@ Show how to create multiple classes of agents that interact.
  * 200 predator objects are intialized and randomly distributed as the bugs are. A cell can contain a predator as well as a bug. Predators are created after bugs are.
  * Predators have one method: hunt. First, a predator looks through a shuffled list of its immediately neighboring cells (including its own cell). As soon as the predator finds a bug in one of these cells it "kills" the bug and moves into the cell. (However, if the cell already contains a predator, the hunting predator simply quits and remains at its current location.) If these cells contain no bugs, the predator moves randomly to one of them.
  * Predator hunting is scheduled after all the bug actions.
+
+=== Implementation Notes ===
+
+=== Further Fun ===
+
+=== Complete Model ===
+
+ * The [todo complete source code] of the first model is accessible from the proper SVN tag directly.
 
 = Conclusion =
 
