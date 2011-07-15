@@ -542,27 +542,27 @@ public class Bug {
 We also improve some other parts of the class. First, we modify the constructor to show how to acquire a reference of a projection from the context the agent is associated with through a utility function called `getGrid()`. This is why the different projection IDs are so important. The `toString()` method is updated as well and it is extended to reflect the `size` attribute too.
 
 {{{
-	public Bug() {
-		super();
-	}
+public Bug() {
+	super();
+}
 
-	public Grid<Object> getGrid() {
-		return (Grid<Object>) ContextUtils.getContext(this)
-				.getProjection(Constants.GRID_ID);
-	}
+public Grid<Object> getGrid() {
+	return (Grid<Object>) ContextUtils.getContext(this)
+			.getProjection(Constants.GRID_ID);
+}
 
-	// ...
+// ...
 
-	@Override
-	public String toString() {
-		// This may happen when testing
-		final String location = (ContextUtils.getContext(this) != null) ? getGrid()
-				.getLocation(this).toString() : "[?, ?]";
+@Override
+public String toString() {
+	// This may happen when testing
+	final String location = (ContextUtils.getContext(this) != null) ? getGrid()
+			.getLocation(this).toString() : "[?, ?]";
 
-		// Override default Java implementation just to have a nicer
-		// representation
-		return String.format("Bug @ location %s, size=%f", location, size);
-	}
+	// Override default Java implementation just to have a nicer
+	// representation
+	return String.format("Bug @ location %s, size=%f", location, size);
+}
 }}}
 
 Do not forget to update the constructor calls and remove the unnecessary `grid` parameter in the `build()` function of `StupidModelContextBuilder`.
@@ -925,7 +925,7 @@ So far we have used dedicated constants to specify the values enumerated in the 
 
 To convert these values into model parameters, start up the Repast Simphony Runtime. Use the tabs in on the left side of the GUI (where the Scenario Tree is) to select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
 
-SCREENSHOT
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/parameters_tab_location.png
 
 This will bring up the _Add Parameter_ dialog where the following properties may be set for a new parameter:
 
@@ -943,6 +943,8 @@ To add the required model parameters, follow these steps:
  # Type _int_ for the _Type_.
  # Type _100_ for the _Default Value_.
  # Click OK.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugCount.png
 
   <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
 
