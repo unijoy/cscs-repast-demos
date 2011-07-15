@@ -1019,7 +1019,7 @@ Other parameters (like rational numbers or string) are handled absolutely in the
 
 ==== Creating Agent Parameters ====
 
-This task is just identical to the method described in section [#Cell_and_Bug_Probes]. Just remove the `final` modifier, create simple a getter and setter for the required fields, and add a proper `@Parameter` annotation to either of them.
+This task is just identical to the method described in section [#Cell_and_Bug_Probes Cell and Bug Probes]. Just remove the `final` modifier, create simple a getter and setter for the required fields, and add a proper `@Parameter` annotation to either of them.
 
 The modification of the `Bug` class:
 
