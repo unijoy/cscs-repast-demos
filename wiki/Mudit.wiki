@@ -39,21 +39,25 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 For Details Check AreaCoverage
 
-==*Guiding Bots*==
+==*Moth Advance*==
 
-For Details Check GuidingBots
+For Details Check Moth_Advance
+
 
 ==*Bug Catcher*==
 
 For Details Check BugCatcher
 
+
 ==*Moth Basic*==
 
 For Details Check Moth_Basic
 
-==*Moth Advance*==
 
-For Details Check Moth_Advance
+==*Guiding Bots*==
+
+For Details Check GuidingBots
+
 
 =*Planned*=
 
