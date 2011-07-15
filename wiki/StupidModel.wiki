@@ -955,10 +955,10 @@ However, it has currently no effect on the model. Let's modify the initializatio
 
   <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
   {{{
-  	<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
-  		defaultValue="100" 
-  		isReadOnly="false" 
-  		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
+<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
+		defaultValue="100" 
+		isReadOnly="false" 
+		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
   }}}
   Advanced users may utilize this so they can edit this file directly (either by hand or programmatically) instead of using the point & click wizard on the GUI.
 
