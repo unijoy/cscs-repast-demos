@@ -36,7 +36,7 @@ In the current tutorial, we use Java to create the !StupidModel implementation w
 = Notes on the Implementation =
 The source code we use as example below in this document are formatted to be clear and as straightforward as possible. In the attached source code however, it is carefully written with several blocks of boilerplate code that is irrelevant from the view of the model (e.g., checking parameters of a function and making assertions about the state of the program). For clarity, these segments are omitted here, but may be found in the attached source code.
 
-Although domain-specific languages like ReLogo shown to have many advantages in ABM when creating usual models like the !StupidModel `[3]`, this model itself is written purely in Java to illustrate the usage of the standard Repast Simphony Java API.
+Although domain-specific languages like [RepastSReLogo ReLogo] shown to have many advantages in ABM when creating usual models like the !StupidModel `[3]`, this model itself is written purely in Java to illustrate the usage of the standard Repast Simphony Java API.
 
 == Additional Resources ==
 We have created extensive documentation for the final !StupidModel implementation, these may be found in the `docs` directory of the Repast Simphony project, or browsed online at the following links:
