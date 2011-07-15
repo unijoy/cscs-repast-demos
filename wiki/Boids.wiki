@@ -107,7 +107,7 @@ context, new GridBuilderParameters<Object>(new repast.simphony.space.grid.WrapAr
 }}}
 
 This complicated-looking snippet of code creates two objects, called factories, which in turn create two more objects, our projections. The parameters that the create methods take amount to the following:
-  * name
+  * name: an arbitrary ID that we assign to this projection to refer to it elsewhere
   * context: this is the object that contains all the objects that we are dealing with in this simulation
   * method of adding objects to the space projections: defines whether the Boid object is added automatically to the projection and how it is added. 
   * size of dimensional axes: defines how many dimensions the projections represent and how far those dimensions extend.
