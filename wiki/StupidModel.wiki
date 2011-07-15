@@ -923,6 +923,8 @@ Make these variables into parameters that can be accessed through the settings w
 
 So far we have used dedicated constants to specify the values enumerated in the formulation of this model. This way it is easier to modify them, however, it still requires to restart a simulation if any of them is modified to view the effect of the new value on the simulation. By defining these values as _model specific parameters_, it becomes really easy to modify them on the GUI and evaluete their effect. Using model parameters is also the proper way to create parameter sweeps through batch runs.
 
+==== Creating Model Parameters ====
+
 To convert these values into model parameters, start up the Repast Simphony Runtime. Use the tabs in on the left side of the GUI (where the _Scenario Tree_ is) to select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/parameters_tab_location.png
@@ -974,7 +976,7 @@ public final class Constants {
 }
 }}}
 
-Now, the interesting part about how to access the current parameter values set by the user? Well, each parameter has a different meaning, it may have sense for some of them to modify during the run (e.g., to allow direct experiments), but the `bugCount` parameter has an influence only during initialization. Open the `StupidModelContextBuilder` class and extend it with the following segment:
+Now, the interesting part about how to access the current parameter values set by the user. Well, each parameter has a different meaning, it may have sense for some of them to modify during the run (e.g., to allow direct supervised experiments), but the `bugCount` parameter has an influence only during initialization. Open the `StupidModelContextBuilder` class and extend it with the following segment:
 
 {{{
 @Override
@@ -1000,7 +1002,7 @@ for (int i = 0; i < Constants.BUG_COUNT; ++i) {
 }
 }}}
 
-Instead of using the dedicated constant (which is already removed previously), we query the current parameter value of `bugCount`. This can be done by a `getParameter()` function call on the `parameters` instance we got a reference on previously, by specifying the parameter name we assigned to it. This returns an `Object`, but we can cast it to an `Integer` (since we defined the parameter as `int`, we will get its wrapper class, `Integer`). The current `int` value is then accessed by the `intValue()` function:
+Instead of using the dedicated constant (which is already removed previously), we query the current parameter value of `bugCount`. This can be done by a `getParameter()` function call on the `parameters` instance we got a reference on previously, by specifying the parameter name we assigned to it. This returns an `Object` by default, but we can cast it to an `Integer` (since we defined the parameter as `int`, we will get its wrapper class, `Integer`). The current `int` value is then accessed by the `intValue()` function:
 
 {{{
 final int bugCount = ((Integer) parameters
@@ -1015,8 +1017,60 @@ for (int i = 0; i < bugCount; ++i) {
 
 Other parameters (like rational numbers or string) are handled absolutely in the same way, identically.
 
+==== Creating Agent Parameters ====
+
+This task is just identical to the method described in section [#Cell and Bug Probes]. Just remove the `final` modifier, create simple a getter and setter for the required fields, and add a proper `@Parameter` annotation to either of them.
+
+The modification of the `Bug` class:
+
+{{{
+public class Bug {
+	// ...
+	
+	private double maxConsumptionRate = 1.0;
+
+	@Parameter(displayName = "Bug maximum food consumption rate", usageName = "maxConsumptionRate")
+	public double getMaxConsumptionRate() {
+		return maxConsumptionRate;
+	}
+
+	public void setMaxConsumptionRate(final double maxConsumptionRate) {
+		this.maxConsumptionRate = maxConsumptionRate;
+	}
+
+	// ...
+}
+}}}
+
+
+The modification of the `HabitatCell` class:
+
+{{{
+public class HabitatCell {
+	// ...
+	
+	private double maximumFoodProductionRate = 0.01;
+
+	@Parameter(displayName = "Cell maximum food production rate", usageName = "maximumFoodProductionRate")
+	public double getMaximumFoodProductionRate() {
+		return maximumFoodProductionRate;
+	}
+
+	public void setMaximumFoodProductionRate(double maximumFoodProductionRate) {
+		this.maximumFoodProductionRate = maximumFoodProductionRate;
+	}
+
+	// ...
+}
+}}}
+
+  <b>Remark</b> Checking if the parameter values are valid is advisable in the setter methods, but for simplicity, they were omitted from the code listings. The full source code contains a version that checks if the parameters are non-negative.
+
+The agent parameters may be modified by double-clicking on the agents on the graphical interface.
+
 === Further Fun ===
  * Can you find a way to pause the simulation in the 100th tick through the API offered by a class introduced in this section of the tutorial? This knowledge comes handy for the next tutorial section (maybe you can do it on your own without referring to the next section!).
+ * We defined the maximum daily food consumption and the maximum food production as a bug and a cell parameter, respectively. It is very easy and straightforward to convert these parameters into model-level parameters, just like the `bugCount` parameter. Refactor and modify the code to make this two values model parameters as well.
 
 === Complete Model ===
 
