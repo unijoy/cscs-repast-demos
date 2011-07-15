@@ -954,14 +954,12 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugC
 However, it has currently no effect on the model. Let's modify the initialization to use the new parameter instead of the dedicated `BUG_COUNT` constant.
 
   <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
-
-   {{{
-<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
-		defaultValue="100" 
-		isReadOnly="false" 
-		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
-   }}}
-
+  {{{
+  	<parameter name="bugCount" displayName="Initial Number of Bugs" type="int" 
+  		defaultValue="100" 
+  		isReadOnly="false" 
+  		converter="repast.simphony.parameter.StringConverterFactory$IntConverter" />
+  }}}
   Advanced users may utilize this so they can edit this file directly (either by hand or programmatically) instead of using the point & click wizard on the GUI.
 
 Save and exit the GUI for now. Next, we utilize our brand new parameter programmatically from the simulation.
@@ -1117,7 +1115,7 @@ If everything goes well, the new dataset should be displayed under the _Data Set
    https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/histogram_data_mappings.png
  # Click _Next_.
  # On the _Bin Information_ wizard page we can set the data bins the chart should display. Enter _10_ as _Number of bins_, _0_ as _Minimum Value_ and _10_ to _Maximum Value_, as the problem formulation specified the histogram.
-   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/histogram_bin_information
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/histogram_bin_information.png
  # Click _Next_.
  # The data mapping is complete, press _Finish_ to add the new chart.
 
@@ -1137,7 +1135,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_0
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_08_model_06 complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Stopping the Model ==
 === Purpose ===
