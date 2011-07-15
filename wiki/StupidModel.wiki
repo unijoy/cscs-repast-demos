@@ -946,6 +946,12 @@ To add the required model parameters, follow these steps:
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugCount.png
 
+Presss _OK_. From now on, when the GUI is launched or when the model is reseted, the new parameter is assigned the default value specified previously (`100`), and it can be changed before the model initialization on the _Parameters_ tab, below the _Default Random Seed_ value.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_parameter_bugCount_added.png
+
+However, it has currently no effect on the model. Let's modify the initialization to use the new parameter instead of the dedicated `BUG_COUNT` constant.
+
   <b>Remark</b> If you save the current configuration on the GUI and check the `StupidModel.rs/parameters.xml` file, you can see the following entry added:
 
 {{{
