@@ -1226,6 +1226,7 @@ It is all done!
 Initialize the simulation, and let it run until it stops: it should stop as we defined a stopping condition previously when one of the agents reach the size of `100`. 
 
   <b>Remark</b> By default, Repast Simphony places the output files into the project root of the simulation. However, it requires an explicit _Refresh_ to see the new file in the workspace. Press _F5_ when the project is selected in the _Project Explorer_ of Repast Simphony, or simply right-click and select refresh from the popup-menu.
+  
   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/refresh_icon_location.png
 
 The new file should appear in the resources of the project:
