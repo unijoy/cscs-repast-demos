@@ -1176,15 +1176,74 @@ public void grow() {
 === Purpose ===
 Show how to write results to an output file. Illustrate how to iterate over a list.
 === Formulation ===
-Each time step, write the minimum, mean, and maximum bug size on one line of an output file.
+Each time step, write the _minimum_, _mean_, and _maximum bug size_ on one line of an output file.
 
 === Implementation Notes ===
+This task may be done several ways, e.g., by creating a `save()` action and using the standard Java API like a simple `PrintWriter`, iterating through the list of all agents and evaluating the min, max and mean elements by hand. 
+
+However, Repast Simphony offers a bit friendlier way for these tasks through _Outputters_. To utilize this feature, we have to tasks: create a new _Data Set_ to define the data to save (as we did for the [Histogram_Output Histogram Output] model).
+
+==== Define a New Data Set of File Output ====
+Create a new _Data Set_ called _Data Set of File Output_ over the `Bug` agent class. In the output file, we would like to see the following columns:
+
+ # The current _tick_ of the simulation
+ # The minimum size of `Bug` agents
+ # The maximum size of `Bug` agents
+ # The average size of `Bug` agents
+
+On the _Agent Mappings_ page, add a _Simple Mapping_ for the _current tick_. Creating the min/max/mean for the bug sizes requires a few more clicks :-) Click on _Add_ and add a new _Aggregate Mapping_. Select `getSize()` as `Method` and `Min` as its function. This way Repast Simphony iterates through all `Bug` agents currently assigned to the simulation context when the data set is evaluated, conctructs a collection from all of their `size` value and queries the minimal element.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/create_aggregate_mapping_for_min_bug_size.png
+
+Press _OK_, and name the new column by double-clicking on the _Column Name_ entry and type _Min_.
+
+Repeat these steps and add the _Max_ and _Mean_ aggregated values for the new mapping. When finished, the page should look like something similar:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/constructing_file_outputter_agent_mappings.png
+
+Press _OK_ then _Finish_ to create the new dataset.
+
+==== Define a New File Outputter ====
+
+Right-click on _Outputters_ in the _Scenario Tree_, and select _Add File Outputter_ from the menu.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_new_file_outputter.png
+
+Select _Dat Set of File Output_ as _Data Set Id_. Note that the _File Columns_ list is populated with the available elements. Add all of the needed columns in the list to the right to specify which ones to save into the file.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_file_outputter_columns.png
+
+Click on _Next_. On the new wizard page several outputter settings may be specified, e.g., to include headers in the output file, append to the file instead of deleting its contents if it exists, and so on. It is also possible to append different postfixes (like the timestamp) to the end of the file to prevent accidental data loss.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/specific_file_output_settings.png
+
+Click finish, and the new _File Outputter_ should appear under the _Outputter_ section of the _Scenario Tree_.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_file_outputter_location.ong
+
+It is all done!
+
+Initialize the simulation, and let it run until it stops: it should stop as we defined a stopping condition previously when one of the agents reach the size of `100`. 
+
+  <b>Remark</b> By default, Repast Simphony places the output files into the project root of the simulation. However, it requires an explicit _Refresh_ to see the new file in the workspace. Press _F5_ when the project is selected in the _Project Explorer_ of Repast Simphony, or simply right-click and select refresh from the popup-menu.
+  https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/refresh_icon_location.png
+
+The new file should appear in the resources of the project:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_model_output_file.png
+
+Open up the automatically created output file and verify its contents. See the header of the file for the order of columns, and check if it the last row of the file contains a _Max_ value above `100`.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_08.png
 
 === Further Fun ===
+ * Are you able to create a new file outputter for `HabitatCell`, and both display and save the sum of available food levels?
+ * Check if the created output files can be opened in Excel and recognized as a usual CSV data. If not, try to change the _delimeter_ to `;` for the outputter.
+ * Could you create a simple action in the `StupidModelContextBuilder` that iterates through all agents and save the data through the standard Java API (e.g., by a `PrintWriter` instance).
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_10_model_08/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Randomized Agent Actions ==
 === Purpose ===
