@@ -138,7 +138,7 @@ public class HabitatCell {
 	 * Food production is scheduled before agent actions.
 	 * </p>
 	 */
-	@ScheduledMethod(start = 1, interval = 1, priority = -2)
+	@ScheduledMethod(start = 1, interval = 1, priority = 1)
 	public void growFood() {
 		foodAvailability += RandomHelper.nextDoubleFromTo(0.0,
 				maximumFoodProductionRate);
@@ -188,7 +188,9 @@ public class HabitatCell {
 	public String toString() {
 		// Override default Java implementation just to have a nicer
 		// representation
-		return String.format("HabitatCell @ location (%d, %d)", x, y);
+		return String.format(
+				"HabitatCell @ location (%d, %d), foodAvailability=%f", x, y,
+				foodAvailability);
 	}
 
 }

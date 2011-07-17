@@ -93,6 +93,7 @@ public class Bug implements Comparable<Bug> {
 	 * @return the size of the bug
 	 * @since Model 2
 	 */
+	@Parameter(displayName = "Bug Size", usageName = "size")
 	public double getSize() {
 		return size;
 	}
@@ -181,7 +182,6 @@ public class Bug implements Comparable<Bug> {
 			return;
 		}
 
-		// CHECKME Is it needed?
 		SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 
 		// Get a random free location within sight range
