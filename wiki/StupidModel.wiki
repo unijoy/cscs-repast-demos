@@ -1257,7 +1257,7 @@ The bugs' _move_ action is altered so that the order in which bugs execute the a
 === Implementation Notes ===
  <b>Remark</b> Repast Simphony executes actions scheduled for the same time step with the same priority in a randomized order by default, so there is nothing to modify in the model to complete this model. However, we perform some minor refactor in order to improve the code quality, and make the implementation of the following two models a bit easier.
 
-In the [#Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for such a small model like the _StupidModel_ to keep track of the executed actions and priorities.
+In the [#Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for even such a small model like the !StupidModel to keep track of the executed actions and their priorities.
 
 In order to avoid such issues, it is generally a good practice to create a simple method that executes actions sequentially in the required order.
 
@@ -1282,7 +1282,9 @@ public void activateAgents() {
 }
 }}}
 
-There is a new function called `getBugList()`, which queries the current root context for all of the `Bug` instances. Of course, there are several ways to get a list of all agents (e.g., by creating a list during the context initialization and keep a reference for all of the created agents in it). However, our goal with this tutorial is to demonstrate the usage of the standard Repast Simphony Java API, and show general solutions for such tasks that can be used everywhere in the simulation code.
+This way we have a direct control over the simulation flow. Of course, it is not always solvable, but comes handy when extending the model.
+
+There is only one thing to notice, a new function called `getBugList()` which queries the current root context for all of the `Bug` instances. Of course, there are several ways to get a list of all agents (e.g., by creating a list during the context initialization and keep a reference for all of the created agents in it). However, our goal with this tutorial is to demonstrate the usage of the standard Repast Simphony Java API, and show general solutions for such tasks that can be used everywhere in the simulation code.
 
 So, in order to get the current list of agents, we first get a refenrece to the current master context (since we have only that context) from the `RunState` instance assigned to the simulation, and query all of the `Bug` agents by specifying their class instance to the `getObjects()` function. We simply create a list by iterating through the result and return it at the end of the function.
 
@@ -1300,8 +1302,6 @@ private ArrayList<Bug> getBugList() {
 	return bugList;
 }
 }}}
-
-This way we have a direct control over the simulation flow. Of course, it is not always solvable, but comes handy when extending the model.
 
 === Further Fun ===
  * In some of the cases it may be important to execute agent actions in a specific fix order. Since the actions are executed in a randomized order by default, the above described method may be used to create a fix order how agent actions should be executed. Can you make agents perform their action based on an arbitrary fix order in each turn (e.g., based on their default `hashCode()` value)?
