@@ -1252,12 +1252,12 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_0
 === Purpose ===
 Show how to randomize the order in which agents execute an action.
 === Formulation ===
-The bugs' move action is altered so that the order in which bugs execute the action is shuffled each time step.
+The bugs' _move_ action is altered so that the order in which bugs execute the action is shuffled each time step.
 
 === Implementation Notes ===
  <b>Remark</b> Repast Simphony executes actions scheduled for the same time step with the same priority in a randomized order by default, so there is nothing to modify in the model to complete this model. However, we perform some minor refactor in order to improve the code quality, and make the implementation of the following two models a bit easier.
 
-In the [Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for such a small model like the _StupidModel_ to keep track of the executed actions and priorities.
+In the [#Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for such a small model like the _StupidModel_ to keep track of the executed actions and priorities.
 
 In order to avoid such issues, it is generally a good practice to create a simple method that executes actions sequentially in the required order.
 
