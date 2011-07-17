@@ -1366,10 +1366,88 @@ That is all!
 === Purpose ===
 Show how agents can identify and rank neighbor cells. Illustrate how to iterate over a list.
 === Formulation ===
- * In its move method, a bug identifies a list of all cells that are within a distance of 4 grids but do not have another bug in them. (The bug’s current cell is included on this list.)
+ * In its move method, a bug identifies a list of all cells that are within a distance of _4_ grids but do not have another bug in them. (The bug's current cell is included on this list.)
  * The bug iterates over the list and identifies the cell with highest food availability. The bug then moves to that cell.
 
 === Implementation Notes ===
+
+In order to sort `HabitatCell` instances on different `GridCell` positions, we create a new `Comparator` instance (as it was suggested in the Further Fun section of the previous model) as follows:
+
+{{{
+public class HabitatCell {
+	public final static class HabitatCellFoodAvailabilityComparator implements
+			Comparator<GridCell<HabitatCell>> {
+
+		@Override
+		public int compare(final GridCell<HabitatCell> gc1,
+				final GridCell<HabitatCell> gc2) {
+			final HabitatCell cell = gc1.items().iterator().next();
+			final HabitatCell bell = gc2.items().iterator().next();
+			return -Double
+					.compare(cell.foodAvailability, bell.foodAvailability);
+		}
+	}
+}}}
+
+Since all of the grid locations contain exactly one `HabitatCell` element, we can access them easily by callint the first `next()` over its `iterator()` of its `items()`. The comparison is done by the default double comparison in Java based on the `foodAvailability` level. 
+
+To utilize our new `Comparator` and make agents do an optimal movement, modify the `step()` function of the `Bug` agents as follows:
+
+{{{
+public void step() {
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	// ...
+
+	// Before Model 11, random movement was used
+	// SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+
+	// Get a random free location within sight range
+	// final GridCell<Bug> chosenFreeCell =
+	// 	SMUtils.randomElementOf(freeCells);
+
+	final List<GridCell<HabitatCell>> habitatCells = getHabitatCellsForLocations(freeCells);
+
+	Collections.sort(habitatCells,
+			new HabitatCellFoodAvailabilityComparator());
+
+	// The first element has the most available food, it is the optimal
+	// target for displacement
+	final GridCell<HabitatCell> chosenFreeCell = habitatCells.get(0);
+
+	// We have our new GridPoint to move to, so relocate agent
+	final GridPoint newGridPoint = chosenFreeCell.getPoint();
+	grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+}
+}}}
+
+The difference is that the `chosenFreeCell` is determined by sorting the list of `HabitatCell` instances having no `Bug` agents by their food availability, and choosing the first one of them (they are ordered in descending order).
+
+The `getHabitatCellsForLocations()` method is a new one that creates a list of `HabitatCell` instances whose location is specified in the list of free cells (containing no `Bug` agents on them). To locate the `HabitatCell` instances, we use the `GridCellNgh` class we used in the beginning of the tutorial to query the surroundings of an agent (we query a neighbourhood of 0 but including the centrail point by specifying true for the argument of `getNeighborhood()`):
+
+{{{
+private List<GridCell<HabitatCell>> getHabitatCellsForLocations(
+		final List<GridCell<Bug>> freeCells) {
+	final ArrayList<GridCell<HabitatCell>> ret = new ArrayList<GridCell<HabitatCell>>();
+	final Grid<Object> grid = getGrid();
+
+	// Iterate over the specified location with no associated Bug agents
+	for (final GridCell<Bug> gridCell : freeCells) {
+		final GridPoint point = gridCell.getPoint();
+
+		// Query the HabitatCell of that location
+		final List<GridCell<HabitatCell>> cells = new GridCellNgh<HabitatCell>(
+				grid, point, HabitatCell.class, 0, 0).getNeighborhood(true);
+
+		ret.add(cells.get(0));
+	}
+
+	return ret;
+}
+}}}
+
+That is all!
 
 === Further Fun ===
 
