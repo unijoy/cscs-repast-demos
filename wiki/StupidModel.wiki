@@ -1456,7 +1456,7 @@ That is all!
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_12_model_11/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Bug Mortality and Reproduction ==
 === Purpose ===
