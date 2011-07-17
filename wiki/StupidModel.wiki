@@ -1313,18 +1313,54 @@ private ArrayList<Bug> getBugList() {
 
 == Sorted Agent Actions ==
 === Purpose ===
-Show how to sort a list of agents, and cause an agent action to be executed in size order.
+Show how to sort a list of agents, and cause an agent action to be executed in `size` order.
 === Formulation ===
- * The list of bugs is sorted by descending size order at the start of each time step.
- * The bugs' move action is un-randomized so it is executed in descending size order.
+ * The list of bugs is sorted by _descending size order_ at the start of each time step.
+ * The bugs' _move_ action is un-randomized so it is executed in descending size order.
 
 === Implementation Notes ===
+In the [#Randomized_Agent_Actions previous version of the model] we made a little modifications regarding to the agent actions. We can utilize this to implement sorted agent actions.
+
+First we need to define a default ordering over the `Bug` agents. In Java this is done by implementing either a custom `Comparable` or `Comparator` instance. For simplicity, we implement the Comparable interface with the `Bug` by comparing the `size` attribute of the agents in the standard way.
+
+{{{
+public class Bug implements Comparable<Bug> {
+	// ...
+
+	@Override
+	public int compareTo(final Bug other) {
+		return -Double.compare(size, other.size);
+	}
+}
+}}}
+
+If you are not familiar with these features of the Java language, please refer either to the Java Tutorial or the Java Documentation for further details.
+
+To activate agents in the new ordering, modify the `activateAgents()` in the `StupidModelContextBuilder` class with a simple call of `Collections.sort()` that sorts the specified agent list depending on the natural ordering of the elements we specified above:
+
+{{{
+@ScheduledMethod(start = 1, interval = 1, priority = 0)
+public void activateAgents() {
+	final ArrayList<Bug> bugList = getBugList();
+
+	// Model 9 requires random agent activation
+	// SimUtilities.shuffle(bugList, RandomHelper.getUniform());
+
+	// Model 10 requires sorted agent activation
+	Collections.sort(bugList);
+
+	// ...
+}
+}}}
+
+That is all!
 
 === Further Fun ===
+ * For simplicity, we implemented the `Comparable` interface with the agents. However, it is unadvised in some cases. Specifically, the contract of `compareTo()` declares that if it returns `0` for two items then the `equals()` function should return `true` as well. Clearly, this contract is broken currently (for the sake of simplicity, however, it was a simpler solution). The flawless solution for this case is to create a new implementation of a `Comparator`. The final implementation of the model follows this approach. Create such a new class. 
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_10_model_10/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Optimal Movement ==
 === Purpose ===
