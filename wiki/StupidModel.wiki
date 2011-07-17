@@ -1255,7 +1255,7 @@ Show how to randomize the order in which agents execute an action.
 The bugs' _move_ action is altered so that the order in which bugs execute the action is shuffled each time step.
 
 === Implementation Notes ===
- <b>Remark</b> Repast Simphony executes actions scheduled for the same time step with the same priority in a randomized order by default, so there is nothing to modify in the model to complete this model. However, we perform some minor refactor in order to improve the code quality, and make the implementation of the following two models a bit easier.
+ <b>Remark</b> Repast Simphony executes actions scheduled for the same time step with the same priority in a randomized order by default, so there is nothing to modify in the model to complete this model. However, we perform some minor refactor in order to improve the code quality, and make the implementation of the following models a bit easier.
 
 In the [#Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for even such a small model like the !StupidModel to keep track of the executed actions and their priorities.
 
@@ -1334,7 +1334,7 @@ public class Bug implements Comparable<Bug> {
 }
 }}}
 
-If you are not familiar with these features of the Java language, please refer either to the Java Tutorial or the Java Documentation for further details.
+If you are not familiar with these features of the Java language, please refer either to the [http://download.oracle.com/javase/tutorial/collections/interfaces/order.html Java Tutorial] or the Java Documentation of [http://download.oracle.com/javase/6/docs/api/java/lang/Comparable.html Comparable] and/or [http://download.oracle.com/javase/6/docs/api/java/util/Comparator.html Comparator] for further details.
 
 To activate agents in the new ordering, modify the `activateAgents()` in the `StupidModelContextBuilder` class with a simple call of `Collections.sort()` that sorts the specified agent list depending on the natural ordering of the elements we specified above:
 
