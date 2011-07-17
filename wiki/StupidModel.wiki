@@ -266,6 +266,8 @@ The model specifies to choose a random element from the list. It may be done thi
 SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 }}}
 
+The `SimUtilites` class offers a set of utility methods useful for the simulation (e.g., normalizing, scaling values or shuffling lists and swapping its elements). Take a look at the description and offered methods in the Repast Java API documentation.
+
 However, it is more convenient to choose a random element directly from the list of free cells as follows, so it is not a vital element of the activity:
 
 {{{
@@ -1253,12 +1255,61 @@ Show how to randomize the order in which agents execute an action.
 The bugs' move action is altered so that the order in which bugs execute the action is shuffled each time step.
 
 === Implementation Notes ===
+ <b>Remark</b> Repast Simphony executes actions scheduled for the same time step with the same priority in a randomized order by default, so there is nothing to modify in the model to complete this model. However, we perform some minor refactor in order to improve the code quality, and make the implementation of the following two models a bit easier.
+
+In the [Creating_HabitatCell_Agents previous versions of the model] we used several different schedules. It was really easy to create actions through the `@ScheduleMethod` annotation, however, these decentralized definitions make harder to keep in mind the order how the actions are executed, modify the order of execution is a hard and may be an error-prone task. For instance, we needed a table for such a small model like the _StupidModel_ to keep track of the executed actions and priorities.
+
+In order to avoid such issues, it is generally a good practice to create a simple method that executes actions sequentially in the required order.
+
+First of all, remove all `@ScheduleMethod` annotations from the `Bug` class (specifically before the `step()` and `grow()` methods), we replace them with a single scheduled method and execute these actions in the required order within a new function.
+
+Add the following new method declaration to the `StupidModelContextBuilder`:
+
+{{{
+@ScheduledMethod(start = 1, interval = 1, priority = 0)
+public void activateAgents() {
+	final ArrayList<Bug> bugList = getBugList();
+
+	SimUtilities.shuffle(bugList, RandomHelper.getUniform());
+
+	for (final Bug bug : bugList) {
+		bug.step();
+	}
+
+	for (final Bug bug : bugList) {
+		bug.grow();
+	}
+}
+}}}
+
+There is a new function called `getBugList()`, which queries the current root context for all of the `Bug` instances. Of course, there are several ways to get a list of all agents (e.g., by creating a list during the context initialization and keep a reference for all of the created agents in it). However, our goal with this tutorial is to demonstrate the usage of the standard Repast Simphony Java API, and show general solutions for such tasks that can be used everywhere in the simulation code.
+
+So, in order to get the current list of agents, we first get a refenrece to the current master context (since we have only that context) from the `RunState` instance assigned to the simulation, and query all of the `Bug` agents by specifying their class instance to the `getObjects()` function. We simply create a list by iterating through the result and return it at the end of the function.
+
+{{{
+private ArrayList<Bug> getBugList() {
+	@SuppressWarnings("unchecked")
+	final Iterable<Bug> bugs = RunState.getInstance().getMasterContext()
+			.getObjects(Bug.class);
+	final ArrayList<Bug> bugList = new ArrayList<Bug>();
+
+	for (final Bug bug : bugs) {
+		bugList.add(bug);
+	}
+
+	return bugList;
+}
+}}}
+
+This way we have a direct control over the simulation flow. Of course, it is not always solvable, but comes handy when extending the model.
 
 === Further Fun ===
+ * In some of the cases it may be important to execute agent actions in a specific fix order. Since the actions are executed in a randomized order by default, the above described method may be used to create a fix order how agent actions should be executed. Can you make agents perform their action based on an arbitrary fix order in each turn (e.g., based on their default `hashCode()` value)?
+ * Note that the `HabitatCell` actions are still handled in a different `@ScheduleMethod` definition. Can you modify the code and merge the activation of `HabitatCell` agents into the new `activateAgents()` definition?
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_10_model_09/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Sorted Agent Actions ==
 === Purpose ===
