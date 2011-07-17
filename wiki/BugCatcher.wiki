@@ -189,8 +189,7 @@ _to be added soon_
 
 =5. Extending the Model=
 
-
-_to be added soon_
+The model can be 
 
 ----
 
