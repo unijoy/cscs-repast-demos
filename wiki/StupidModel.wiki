@@ -1383,10 +1383,12 @@ public class HabitatCell {
 				final GridCell<HabitatCell> gc2) {
 			final HabitatCell cell = gc1.items().iterator().next();
 			final HabitatCell bell = gc2.items().iterator().next();
-			return -Double
-					.compare(cell.foodAvailability, bell.foodAvailability);
+			return -Double.compare(cell.foodAvailability, bell.foodAvailability);
 		}
 	}
+
+	// ...
+}
 }}}
 
 Since all of the grid locations contain exactly one `HabitatCell` element, we can access them easily by callint the first `next()` over its `iterator()` of its `items()`. The comparison is done by the default double comparison in Java based on the `foodAvailability` level. 
@@ -1424,7 +1426,7 @@ public void step() {
 
 The difference is that the `chosenFreeCell` is determined by sorting the list of `HabitatCell` instances having no `Bug` agents by their food availability, and choosing the first one of them (they are ordered in descending order).
 
-The `getHabitatCellsForLocations()` method is a new one that creates a list of `HabitatCell` instances whose location is specified in the list of free cells (containing no `Bug` agents on them). To locate the `HabitatCell` instances, we use the `GridCellNgh` class we used in the beginning of the tutorial to query the surroundings of an agent (we query a neighbourhood of 0 but including the centrail point by specifying true for the argument of `getNeighborhood()`):
+The `getHabitatCellsForLocations()` method is a new one that creates a list of `HabitatCell` instances whose location is specified in the list of free cells (containing no `Bug` agents on them). To locate the `HabitatCell` instances, we use the `GridCellNgh` class we used [#Specifying_an_Agent_Action in the beginning of the tutorial] to query the surroundings of an agent (we query a neighbourhood of `0` but including the centrail point by specifying `true` for the argument of `getNeighborhood()`):
 
 {{{
 private List<GridCell<HabitatCell>> getHabitatCellsForLocations(
@@ -1450,6 +1452,7 @@ private List<GridCell<HabitatCell>> getHabitatCellsForLocations(
 That is all!
 
 === Further Fun ===
+ * Instead of comparing the free `HabitatCell` instances by their available food level, try modifying the model in a way when `Bug` agents choose a preferable cell based on the maximum food production rate.
 
 === Complete Model ===
 
