@@ -35,9 +35,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: tba
     * Done: tba
   * *[Tim Tim Sweda]* (mentor: mike)
-    * Planned: Diffusion, Ethnocentrism
-    * Working: Small Worlds
-    * Done: Discrete Event Simulator, Gridlock
+    * Planned: Diffusion
+    * Working: Ethnocentrism
+    * Done: Discrete Event Simulator, Gridlock, Small World
 
 
 ----
@@ -90,5 +90,5 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # [Tim#Planned_Models Discrete Event Simulator]
     # [Tim#Planned_Models Traffic Grid]
     # [Tim#Planned_Models Small Worlds]
-    # [Tim#Planned_Models Diffusion]
     # [Tim#Planned_Models Ethnocentrism]
+    # [Tim#Planned_Models Diffusion]
