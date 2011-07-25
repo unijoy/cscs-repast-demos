@@ -71,11 +71,13 @@ public class TermiteContextBuilder implements ContextBuilder<Object> {
 		for (Object obj : context) {
 			GridPoint pt = grid.getLocation(obj);
 			grid.moveTo(obj, pt.getX(), pt.getY());
+			/* debug 
 			if (obj instanceof Termite) {
 				System.out.println("Termite: "+pt.getX()+" "+pt.getY());
 			} else {
 				System.out.println("Chip: "+pt.getX()+" "+pt.getY());
 			}
+			*/
 		}
 		
 		return context;
