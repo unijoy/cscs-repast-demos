@@ -20,11 +20,11 @@ The termites model simulates termites pick up and drop off wood chips.  There ar
 
 Since initially all termites and chips are scattered randomly, we will see clusters of chips as time goes on.  The initial model looks like the following figure:
 
-https://cscs-repast-demos.googlecode.com/svn/grace/Termites/docs/latex_files/Images/termites_before.png
+https://cscs-repast-demos.googlecode.com/svn/grace/Termites/docs/latex_files/Images/termite_before.png
 
 After some time, we would see some clusters starting to form, as shown below:
 
-https://cscs-repast-demos.googlecode.com/svn/grace/Termites/docs/latex_files/Images/termites_after.png
+https://cscs-repast-demos.googlecode.com/svn/grace/Termites/docs/latex_files/Images/termite_after.png
 
 Note that since every termite can carry one chip, if the number of chips is less than the number of termites, then it is possible that no clusters will occur.  Depending on the ratio of chips to termites, we would see the forming of clusters at various time.  The larger the ratio, the slower the formation of clusters, as it takes more time for termites to move around all the chips.
 
