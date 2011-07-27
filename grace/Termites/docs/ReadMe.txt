@@ -1,1 +1,6 @@
-Place your model's web-based (HTML) documentation files in this directory using "index.html" as the home page.
+Files:
+
+* latex_files/ : contains all the LaTeX related files to produce Termites.pdf
+* Termites.pdf : description of the model; a copy of the LaTex generated PDF from latex_files
+* index.html: links to Wiki at http://code.google.com/p/cscs-repast-demos/wiki/Termites
+
