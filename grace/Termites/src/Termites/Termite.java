@@ -23,92 +23,23 @@ import repast.simphony.util.ContextUtils;
  */
 public class Termite {
 
+	// turn on/off debug info
+	private boolean DEBUG = false; 
+	
 	public enum TermiteState {NO_CHIP, HAS_CHIP};
 	private TermiteState state;
-	private TermiteState oldState;
 	private ContinuousSpace <Object> space;
 	private Grid <Object> grid;
-	private boolean DEBUG = false;
 	
 	public Termite(ContinuousSpace<Object> space, 
 			Grid<Object> grid) {
 		this.space = space;
 		this.grid = grid;
 		this.state = TermiteState.NO_CHIP;
-		this.oldState = TermiteState.NO_CHIP;
 	}
 	
-	/**
-	 * Provides a list of adjacent empty sites in the cell's Moore neighborhood.  
-	 * The list of sites is shuffled.
-	 * 
-	 * @return the list of adjacent sites that are either empty or has a chip
-	 */
-	/*
-	private List<GridPoint> findEmptyAndChipSites(){
-		List<GridPoint> emptySites = new ArrayList<GridPoint>();
-		Context context = ContextUtils.getContext(this);
-		//Grid grid = (Grid) context.getProjection("Grid");
-		
-		GridPoint pt = this.grid.getLocation(this);
-		int xc = pt.getX();
-		int yc = pt.getY();
-		
-		GridDimensions dims = grid.getDimensions();
-		int height = dims.getHeight();
-		int width = dims.getWidth();
-		
-		// Find empty Moore neighbors
-		for (int x=xc-1; x<=xc+1; x++) {
-			for (int y=yc-1; y<=yc+1; y++) {
-				if (x==xc && y==yc)
-					continue;
-				if (x>=0 && x<width && y>=0 && y<height) {
-					if (!grid.getObjectsAt(x,y).iterator().hasNext() ||
-						(grid.getObjectAt(x,y) instanceof Chip))
-						emptySites.add(new GridPoint(x,y));
-				}
-			}
-		}
-		
-		Collections.shuffle(emptySites);
-		
-		return emptySites;
-	}
-	*/
-	/*
-	private List<GridPoint> findEmptySites(){
-		List<GridPoint> emptySites = new ArrayList<GridPoint>();
-		Context context = ContextUtils.getContext(this);
-		//Grid grid = (Grid) context.getProjection("Grid");
-		
-		GridPoint pt = this.grid.getLocation(this);
-		int xc = pt.getX();
-		int yc = pt.getY();
-		
-		GridDimensions dims = grid.getDimensions();
-		int height = dims.getHeight();
-		int width = dims.getWidth();
-		
-		// Find empty Moore neighbors
-		for (int x=xc-1; x<=xc+1; x++) {
-			for (int y=yc-1; y<=yc+1; y++) {
-				if (x==xc && y==yc)
-					continue;
-				if (x>=0 && x<width && y>=0 && y<height) {
-					if (!grid.getObjectsAt(x,y).iterator().hasNext())
-						emptySites.add(new GridPoint(x,y));
-				}
-			}
-		}
-		
-		Collections.shuffle(emptySites);
-		
-		return emptySites;
-	}
-	*/
 	
-	// look at north, south, east, and west empty spots only
+	// Find empty sites at north, south, east, and west only
 	private List<GridPoint> findEmptySites(int xc, int yc) {
 		GridDimensions dims = grid.getDimensions();
 		int height = dims.getHeight();
@@ -127,14 +58,11 @@ public class Termite {
 		return emptySites;
 	}
 	
+	// Find empty sites in all 8 directions
+	// An option to count chip as an empty site (True if we want to count chip
+	// as an empty site)
 	private List<GridPoint> findEmptySites2(boolean includeChip, int xc, int yc){
 		List<GridPoint> emptySites = new ArrayList<GridPoint>();
-		//Context context = ContextUtils.getContext(this);
-		//Grid grid = (Grid) context.getProjection("Grid");
-		
-		//GridPoint pt = this.grid.getLocation(this);
-		//int xc = pt.getX();
-		//int yc = pt.getY();
 		
 		GridDimensions dims = grid.getDimensions();
 		int height = dims.getHeight();
@@ -155,30 +83,22 @@ public class Termite {
 		}
 		
 		Collections.shuffle(emptySites);
-		
 		return emptySites;
 	}
 	
-	/**
-	 * Move the cell to a random empty adjacent site.
-	 */
-	/*
-	private void move(){
-		Context<Object> context = ContextUtils.getContext(this);
-		Grid grid = (Grid) context.getProjection("Grid");
-		List<GridPoint> emptySites = findEmptySites();
-		grid.moveTo(this, emptySites.get(0).getX(), emptySites.get(0).getY());
-	}
-	*/
-	
+	// Drop chip near the location of the object located at xobj and yobj
 	private void dropChip(int xobj, int yobj) {
-		List<GridPoint> emptySitesObj = findEmptySites(xobj, yobj); //findEmptySites2(false, xobj, yobj);
+		// find empty sites north/east/south/west
+		List<GridPoint> emptySitesObj = findEmptySites(xobj, yobj); 
+		// create a chip
 		Chip c = new Chip(this.space, this.grid);
-		//Object obj = this.grid.getObjectAt(xobj, yobj);
+		// add to context
 		Context<Object> context = ContextUtils.getContext(this);
 		context.add(c);
-		//System.out.println("Drop chip");
+
 		boolean moved = false;
+		
+		// drop chip at one of the empty sites
 		for (int i=0; i<emptySitesObj.size(); i++) {
 			int xdrop = emptySitesObj.get(i).getX();
 			int ydrop = emptySitesObj.get(i).getY();
@@ -189,12 +109,15 @@ public class Termite {
 				moved = true;
 			}
 		}
+		// if couldn't drop it anywhere, then remove new chip that was created
+		// (assume termite still carries it).
 		if (!moved) {
 			if (DEBUG)
 				System.out.println("Termite did not drop chip");
 			context.remove(c);
 		}
 	}
+	
 	
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
@@ -203,43 +126,52 @@ public class Termite {
 		int xc = thisPt.getX();
 		int yc = thisPt.getY();
 		
-		// pick a random empty location
+		// find empty locations
+		// first with chips as empty sites, second without chip as empty sites
 		List<GridPoint> emptyAndChipSites = findEmptySites2(true, xc, yc);
 		List<GridPoint> emptySites = findEmptySites2(false, xc, yc);
 
+		// since the empty sites were randomized, just pick the first one
+		// on the list as the site to move to
 		int xobj = emptyAndChipSites.get(0).getX();
 		int yobj = emptyAndChipSites.get(0).getY();		
 		Object obj = this.grid.getObjectAt(xobj, yobj);
-		//System.out.println("move termite to "+x+" "+y);
+
 		Context<Object> context = ContextUtils.getContext(obj);
 		
+		// if the "empty" site contains a chip, and
+		//     if this termite is already carring chip, then drop the chip near it
+		//     otherwise, pick up the chip by
+		//			1. set its state to HAS_CHIP, and
+		//          2. remove chip from context, and
+		//			3. move the termite to picked up chip
 		if (obj instanceof Chip) { // found chip
 			if (DEBUG)
 				System.out.println("Termite at "+xc+" "+yc+" found a chip at "+xobj+" "+yobj);
 			if (this.state==TermiteState.HAS_CHIP) {
+				// this termite already carries chip... drop it nearby
 				if (DEBUG)
 					System.out.println("Termite carries a chip and needs to drop it");
 				dropChip(xobj, yobj);
-			} else { // not carrying any chip; pick up chip and move there
+			} else { 
+				// this termite not carrying any chip
 				if (DEBUG)
 					System.out.println("Termite not carrying chip");
-				// remove chip from context and set termite state
+				// remove chip from context and set termite state to HAS_CHIP
 				if (context.remove(obj)==true) { // removed successfully
 					this.state = TermiteState.HAS_CHIP; // termite now has chip
 					// move termite to chip location
 					if (grid.moveTo(this, xobj, yobj)==true) {
 						if (DEBUG)
 							System.out.println("Termite picks up chip and move to "+xobj+" "+yobj);
-					}
-					else
+					} else
 						if (DEBUG)
 							System.out.println("Termite picks up chip but did not move to "+xobj+" "+yobj);
 				}
 			}
-		} else { // no chip found; just move there
+		} else { // no chip found; just move to empty site
 			if (DEBUG)
 				System.out.println("Termite at "+thisPt.getX()+" "+thisPt.getY()+" found no chip");
-			// simply move termite to new location, if possible
 			if (grid.moveTo(this, xobj, yobj)==true) { // move this termite
 				if (DEBUG)
 					System.out.println("Termite moved to "+xobj+" "+yobj);

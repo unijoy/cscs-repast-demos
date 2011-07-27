@@ -20,6 +20,7 @@ import repast.simphony.space.grid.RandomGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
 
 /**
+ * TermiteContextBuilder
  * @author grace
  *
  */
@@ -68,17 +69,18 @@ public class TermiteContextBuilder implements ContextBuilder<Object> {
 		}
 		
 		// move agents to grid that corresponds to their ContinuousSpace location
+		int count = 0;
 		for (Object obj : context) {
 			GridPoint pt = grid.getLocation(obj);
 			grid.moveTo(obj, pt.getX(), pt.getY());
-			/* debug 
 			if (obj instanceof Termite) {
 				System.out.println("Termite: "+pt.getX()+" "+pt.getY());
 			} else {
 				System.out.println("Chip: "+pt.getX()+" "+pt.getY());
 			}
-			*/
+			count++;
 		}
+		System.out.println("Total count is "+count);
 		
 		return context;
 	}
