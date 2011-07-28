@@ -64,11 +64,11 @@ Now create the forward method below step():
 
 {{{
 public void forward(){
-	NdPoint pt = space.getLocation(this);
-	double moveX = pt.getX() + Math.cos(heading)*distance;
-	double moveY = pt.getY() + Math.sin(heading)*distance;
-	space.moveTo(this, moveX, moveY);
-	grid.moveTo(this, (int)moveX, (int)moveY);
+   NdPoint pt = space.getLocation(this);
+   double moveX = pt.getX() + Math.cos(heading)*distance;
+   double moveY = pt.getY() + Math.sin(heading)*distance;
+   space.moveTo(this, moveX, moveY);
+   grid.moveTo(this, (int)moveX, (int)moveY);
 }
 }}}
 
@@ -96,12 +96,12 @@ public Context build(Context<Object> context) {
 Next, we need to create the two space projections, our grid and our continuous space. This will go where our placeholder comment is right now. Here is the code:
 
 {{{
-ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
-ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
+   ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder.createContinuousSpaceFactory(null);
+   ContinuousSpace<Object> space = spaceFactory.createContinuousSpace
 ("space",context,new RandomCartesianAdder<Object>(), new 
 repast.simphony.space.continuous.WrapAroundBorders(), width,height);
 		
-Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", 
+   Grid<Object> grid = GridFactoryFinder.createGridFactory(null).createGrid("Grid", 
 context, new GridBuilderParameters<Object>(new repast.simphony.space.grid.WrapAroundBorders(), new
  SimpleGridAdder<Object>(),true, width,height));
 }}}
@@ -170,6 +170,7 @@ public ArrayList<Boid> neighborhood(){
       boidSet.add((Boid) boid);
    }
    boidSet.remove(this);
+//NOTE to author: add in shuffle
    return boidSet;
 }
 }}}
@@ -177,35 +178,174 @@ public ArrayList<Boid> neighborhood(){
 Lines 2-3 declare an object that can iterate through all Boids in the Moore neighborhood of the calling Boid. In 5-7 we add these all to an ArrayList. However, since the Boids on the same cell as the calling Boid aren't included in the Moore neighborhood, we need to add those too, which is done in 8-11. Finally, we need to remove the calling Boid so it doesn't count itself.
 
 == alignmentDirection() method ==
-{{{
 
+{{{
+public double alignmentDirection(){
+   ArrayList<Boid> boidSet = neighborhood();
+   double averageHeading = heading;
+   for(Boid boid : boidSet){
+      averageHeading = averageTwoDirections(averageHeading,towards(boid));
+   }
+   return averageHeading;
+}
 }}}
 
-We will be changing this method later when we add random weights.
+You'll notice that we call on the method, averageTwoDirections(). Here is the code for that method.
+
+== averageTwoDirections() ==
+
+{{{
+public double averageTwoDirections(double angle1, double angle2){
+   assert(angle1 <= Math.PI*2);
+   assert(angle2 <= Math.PI*2);
+   angle1 = Math.toDegrees(angle1);
+   angle2 = Math.toDegrees(angle2);
+   if(Math.abs(angle1-angle2) < 180){
+      return Math.toRadians((angle1+angle2)/2);
+   }
+   else return oppositeDirection( (oppositeDirection(angle1) + oppositeDirection(angle2)) / 2 );
+}
+}}}
+
+The astute reader may have noticed that, as it currently stands, the alignmentDirection() method won't give a very accurate average; the average will be weighted towards the boids it averages last. However, in order to keep things as simple as possible, we'll omit this from our model for now and leave the solution up to the reader to figure out. Since we've added in the line to shuffle the neighborhood ArrayList, this won't bias the Boids to travel in a certain direction.
 
 = 4. Cohesion =
 
 In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. The direction that the Boid should turn in order to get closer to its neighboring Boids is returned by the method cohesionDirection().
 
-
 == cohesionDirection() method ==
-We will be changing this method later when we add random weights.
+{{{
+public double cohesionDirection(){
+   ArrayList<Boid> boidSet = neighborhood();	
+   if(boidSet.size() > 0){
+      double avgBoidDirection = heading;
+      double avgBoidDistance = DESIRED_DISTANCE;
+      for(Boid boid : boidSet){
+         avgBoidDirection = averageTwoDirections(boid.getHeading(),avgBoidDirection);
+         avgBoidDistance = avgBoidDistance + distance(boid)/ 2;
+      }
+      if(avgBoidDistance > DESIRED_DISTANCE){		  
+         moveTowards(avgBoidDirection,0.2*cohesionWeight);
+         return avgBoidDirection;
+      }else{
+         return heading;
+      }
+   }else{
+      return heading;
+   }
+}
+}}}
 
-In order to fly close to their flockmates, each Boid takes all its neighboring Boids (again, defined as all the Boids which are closer than the distance defined by neighborhood radius) and determines the average direction of them from itself. (So if there were two Boids in the neighborhood set of a particular Boid, and they were North and West or 0 and 270 degrees respectively, then the average direction of the Boids would be Northwest or 315 degrees.) If the neighboring Boids are, on average, too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids. 
+In order to fly close to their flockmates, each Boid takes all its neighboring Boids using the neighborhood() method and determines the average direction they are travelling in lines 6-9. Also in lines 6-9 it determines the average distance of all the Boids currently in its neighborhood. If the neighboring Boids are too far away from this particular Boid, then it shifts its course to face the average direction of its neighboring Boids in 12-14. 
+
+
+We rely on the methods distance() and moveTowards(), shown below.
+
+== moveTowards() ==
+
+{{{
+public void moveTowards(double direction, double dist){
+   NdPoint pt = space.getLocation(this);
+   double moveX = pt.getX() + Math.cos(heading)*dist;
+   double moveY = pt.getY() + Math.sin(heading)*dist;
+   space.moveTo(this, moveX, moveY);
+}
+}}}
+
+== distance() ==
+
+{{{
+public double distance(Boid boid) {
+   NdPoint myPoint = space.getLocation(this);
+   NdPoint otherPoint = space.getLocation(boid);
+   double differenceX = Math.abs(myPoint.getX() - otherPoint.getX());
+   double differenceY = Math.abs(myPoint.getY() - otherPoint.getY());
+   return Math.hypot(differenceX, differenceY);
+}
+}}}
 
 = 5. Separation =
+
 Real flocks have another key trait: the units comprising them are fairly evenly spaced, and no one unit is crowded out. 
 
 == separationDirection() method ==
-We will be changing this method later when we add random weights.
+{{{
+public double separationDirection(){
+   ArrayList<Boid> boidSet = neighborhood();
+   ArrayList<Boid> boidsTooClose = new ArrayList<Boid>();
+   for(Boid boid : boidSet){
+      if(distance(boid) < DESIRED_DISTANCE){
+         boidsTooClose.add(boid);
+      }
+   }
+   if(boidsTooClose.size() > 0){
+      double avgBoidDirection = heading;
+      double distanceToClosestBoid = Double.MAX_VALUE;
+      for(Boid boid : boidsTooClose){
+         avgBoidDirection = averageTwoDirections(boid.getHeading(),avgBoidDirection);
+         if(distance(boid) < distanceToClosestBoid){
+            distanceToClosestBoid = distance(boid);
+         }
+      }
+      if(distanceToClosestBoid < DESIRED_DISTANCE*0.5){
+         moveAwayFrom(avgBoidDirection, 0.2*separationWeight);
+      }
+      if(toMyLeft(avgBoidDirection)){
+         return (heading+turnSpeed)%Math.PI*2;
+      }else{
+         return (heading-turnSpeed)%Math.PI*2;
+      }
+   }
+   return heading;
+}
+}}}
 
-This can be accomplished very similarly to the Cohesion method above -- a set of the neighboring Boids is made. However, all Boids which are not too close (not within the desiredDistance) can be ignored. The other difference is that the Boid must turn away from, not towards, the other Boids -- but turning the complete opposite direction is too far. Thus, we can introduce a turnSpeed which determines how much the Boid is to turn away from the other Boids. 
+In this method, all neighboring Boids which are not too close can be ignored. In this method, we define 'too close' as being closer than the desired distance. In order for the Boids to not get tangled up, we allow a little lateral movement--if there is a Boid that is far too close (defined as being within half the desired distance) then we move directly away from it using moveAwayFrom(). 
+
+No matter what, if there are any too-close Boids, the current Boid needs to turn away from them by some amount, which we'll call turnSpeed. 
+
+Below is the method moveAwayFrom() and toMyLeft().
+
+== moveAwayFrom() ==
+
+{{{
+public void moveAwayFrom(double direction, double dist){
+   NdPoint pt = space.getLocation(this);
+   double moveX = pt.getX() - Math.cos(heading)*dist;
+   double moveY = pt.getY() - Math.sin(heading)*dist;
+   space.moveTo(this, moveX, moveY);
+}
+}}}
 
 == toMyLeft() method ==
+
+{{{
+public boolean toMyLeft(double angle){
+   double angleDegrees = Math.toDegrees(angle);
+   double headingDegrees = Math.toDegrees(heading);
+   if(Math.abs(angleDegrees - headingDegrees) < 180){
+      if(angleDegrees < headingDegrees){
+         return true;
+      }else return false;
+   }else{
+      if(angleDegrees < headingDegrees){
+         return false;
+      }else return true;
+   }
+}
+}}}
 
 = 6. Putting it all together =
 
 We now combine the three steering methods we established above into the single method, step().
+
+== step() ==
+
+Here's what the step method should look like now:
+
+{{{
+
+}}}
 
 == Adding random weights ==
 
