@@ -152,11 +152,35 @@ Your model should now run! Click on the blue power button, and then click on eit
 
 = 3. Alignment =
 
-The goal here is to average the heading of all Boids within a certain distance that we'll call it neighborhoodRadius. This average is the new heading of any given Boid at their next timestep.
+This method needs to average the heading of all Boids within a certain distance (referred to as its 'neighborhood'). This average is then returned by the alignmentDirection() method as a measurement of radians.
+
+But first, we need a method to actually create the neighborhood. 
 
 == neighborhood() method ==
+{{{
+public ArrayList<Boid> neighborhood(){
+   MooreQuery<Boid> query = new MooreQuery(grid,this);
+   Iterator<Boid> iter = query.query().iterator();
+   ArrayList<Boid> boidSet = new ArrayList<Boid>();
+   while(iter.hasNext()){
+      boidSet.add(iter.next());
+   }
+   Iterable<Object> list = grid.getObjectsAt(grid.getLocation(this).getX(),grid.getLocation(this).getY());
+   for(Object boid : list){
+      boidSet.add((Boid) boid);
+   }
+   boidSet.remove(this);
+   return boidSet;
+}
+}}}
+
+Lines 2-3 declare an object that can iterate through all Boids in the Moore neighborhood of the calling Boid. In 5-7 we add these all to an ArrayList. However, since the Boids on the same cell as the calling Boid aren't included in the Moore neighborhood, we need to add those too, which is done in 8-11. Finally, we need to remove the calling Boid so it doesn't count itself.
 
 == alignmentDirection() method ==
+{{{
+
+}}}
+
 We will be changing this method later when we add random weights.
 
 = 4. Cohesion =
