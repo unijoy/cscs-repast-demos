@@ -373,7 +373,26 @@ private final double separationWeight = RandomHelper.nextDoubleFromTo(0.0, 1.0);
 private final double cohesionWeight = 1.0 - separationWeight;
 }}}
 
+Now find the following line in cohesionDirection():
+
+{{{
+moveTowards(avgBoidDirection,0.2);
+}}}
+
+Change that to this:
+
+{{{
+moveTowards(avgBoidDirection,0.2*cohesionWeight);
+}}}
+
+Do the same for separationDirection. Now the Boids won't all behave exactly alike.
+
 = 7. Extending the model =
 
+You're now done with the basics of this model. If you want to continue to work on it, here are some suggestions:
+  * the separation and cohesion steering methods are weighted, but the alignment is not. Find a way to vary how influential that steering method is on a Boid.
+  * Create a new class, BoidOfPrey. Objects of this class will prey on Boids, and Boids will do their best to avoid them. You'll have to figure out how to weight the new steering method to avoid the predator well when the Boid can see it, but also ignore the predator when it's far enough away.
+
 === Sources ===
+
 Craig Reynold's webpage on Boids: http://www.red3d.com/cwr/boids/
