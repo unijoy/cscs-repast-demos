@@ -1,8 +1,6 @@
 #summary Boids Java implementation by Rowan Copley
 #sidebar TableOfContents
 
-_Wiki note: this will become two separate tutorials for the two implementations, with only code changed for each. For now this will be only the Java tutorial._
-
 = 0. Before Beginning = 
 Before we can do anything with Repast Simphony, we need to make sure that we have a proper installation of Repast Simphony 2.0. Instructions on downloading and installing Repast Simphony on various platforms can be found on the Repast website.
 
