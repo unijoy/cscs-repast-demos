@@ -168,7 +168,7 @@ public ArrayList<Boid> neighborhood(){
       boidSet.add((Boid) boid);
    }
    boidSet.remove(this);
-//NOTE to author: add in shuffle
+   SimUtilities.shuffle(boidSet,RandomHelper.getUniform());
    return boidSet;
 }
 }}}
@@ -366,7 +366,12 @@ The rather bulky line 4 is in effect averaging together five different direction
 
 == Adding random weights ==
 
-To make this model look more lifelike, we can add random weighting to the three steering methods. This is a very simple thing to do. 
+To make this model look more lifelike, we can add random weighting to the three steering methods. First, declare two doubles named cohesionWeight and separationWeight inside the Boid class. 
+
+{{{
+private final double separationWeight = RandomHelper.nextDoubleFromTo(0.0, 1.0);
+private final double cohesionWeight = 1.0 - separationWeight;
+}}}
 
 = 7. Extending the model =
 
