@@ -209,6 +209,11 @@ public double averageTwoDirections(double angle1, double angle2){
 
 The astute reader may have noticed that, as it currently stands, the alignmentDirection() method won't give a very accurate average; the average will be weighted towards the boids it averages last. However, in order to keep things as simple as possible, we'll omit this from our model for now and leave the solution up to the reader to figure out. Since we've added in the line to shuffle the neighborhood ArrayList, this won't bias the Boids to travel in a certain direction.
 
+If you want to see your model run using just the alignmentDirection() steering method, add this line of code to the end of step():
+{{{
+heading = alignmentDirection();
+}}}
+
 = 4. Cohesion =
 
 In order for a group of birds to be labeled a flock, or a group of fish to be labeled a school, they need to have a certain proximity to each other. The direction that the Boid should turn in order to get closer to its neighboring Boids is returned by the method cohesionDirection().
@@ -225,7 +230,7 @@ public double cohesionDirection(){
          avgBoidDistance = avgBoidDistance + distance(boid)/ 2;
       }
       if(avgBoidDistance > DESIRED_DISTANCE){		  
-         moveTowards(avgBoidDirection,0.2*cohesionWeight);
+         moveTowards(avgBoidDirection,0.2);
          return avgBoidDirection;
       }else{
          return heading;
@@ -264,6 +269,16 @@ public double distance(Boid boid) {
 }
 }}}
 
+As before, if you want to see your model run using just the cohesionDirection() steering method, add this line of code to the end of step():
+{{{
+heading = cohesionDirection();
+}}}
+
+If you want to see both methods in action together, try adding this instead:
+{{{
+heading = averageTwoDirections(cohesionDirection(),alignmentDirection());
+}}}
+
 = 5. Separation =
 
 Real flocks have another key trait: the units comprising them are fairly evenly spaced, and no one unit is crowded out. 
@@ -288,7 +303,7 @@ public double separationDirection(){
          }
       }
       if(distanceToClosestBoid < DESIRED_DISTANCE*0.5){
-         moveAwayFrom(avgBoidDirection, 0.2*separationWeight);
+         moveAwayFrom(avgBoidDirection, 0.2);
       }
       if(toMyLeft(avgBoidDirection)){
          return (heading+turnSpeed)%Math.PI*2;
@@ -337,20 +352,25 @@ public boolean toMyLeft(double angle){
 
 = 6. Putting it all together =
 
-We now combine the three steering methods we established above into the single method, step().
+Now let's combine the three steering methods we established above into the single method, step().
 
 == step() ==
 
-Here's what the step method should look like now:
-
 {{{
-
+public void step(){
+   assert(heading <= Math.PI*2);
+   forward();
+   heading = averageTwoDirections(averageTwoDirections(averageTwoDirections(cohesionDirection(),heading),averageTwoDirections(separationDirection(),heading)),alignmentDirection());
+}
 }}}
+
+The rather bulky line 4 is in effect averaging together five different directions. This implementation lets the result of alignmentDirection() have much greater bearing on the outcome than the other methods because it causes the Boids to move more smoothly. Try other implementations and see if they are more to your liking. 
 
 == Adding random weights ==
 
-To make this model look more lifelike, we can add random weighting to the three steering methods as well as the methods which allow the Boid to move sideways (moveTowards() and moveAwayFrom()).
+To make this model look more lifelike, we can add random weighting to the three steering methods. This is a very simple thing to do. 
 
 = 7. Extending the model =
 
-(0) http://www.red3d.com/cwr/boids/
+=== Sources ===
+Craig Reynold's webpage on Boids: http://www.red3d.com/cwr/boids/
