@@ -44,7 +44,7 @@ public class Boid {
 }
 }}}
 
-The method named Boid will be a constructor that we'll return to when we create the Context Builder for Boids. The step() method is a method that will be called at every tick, or time step, of the simulation. This is delineated by line xxx of the code above. 
+The method named Boid will be a constructor that we'll return to when we create the Context Builder for Boids. The step() method is a method that will be called at every tick, or time step, of the simulation.
 
 You'll notice that the @ScheduledMethod command is underlined in red. This is because we haven't made the necessary import for the command. There are two ways of doing this; either hover over the command until a popup window appears and click on "Import ScheduledMethod." The second way is to click on Source in the top menu and click on Organize Imports. As we add more code, you should automatically check for an import any time a command is underlined in red.
 
@@ -144,7 +144,13 @@ public Boid(ContinuousSpace<Object> space, Grid<Object> grid){
 
 Click on the arrow to the right of the green play button to see the popup menu of all the run options for your models. Find "Boids Model" and click it. In a minute, a Java window will appear.
 
-...
+Make sure the menu to the left is on the Scenario Tree tab. Find Display and right-click on it, and click Add Display. Name it something like 'Boids Display' and move 'space' from the left-hand box to the left-hand box. You can do this by clicking on 'space' and then clicking on the green arrow that is pointing to the right. 
+
+Make sure that the 'Type' drop-down menu is set to 2D. If the default is GIS, then there is something wrong with your BoidsContextBuilder. 
+
+Click next. This menu lets you tell the program which class(es) will be the agents in the simulation. Move Boid to the right-hand box and click next.
+
+This menu lets you define how the Boids look. If you click the far-right button (the one to the right of the Style Class text box) you can customize the look of your agent. Go ahead and click on it. The default is a blue circle, and that's good for now. Click okay, and then click next twice, and finally click finish. 
 
 Your model should now run! Click on the blue power button, and then click on either the blue next button or the blue play button to step the simulation forward by one step or many steps, respectively. 
 
