@@ -183,6 +183,9 @@ _to be added soon_
 
 =4. Applications=
 
+This model can be useful in studying social behavior. It is also useful in studying what could be most suitable position for placing a single catching device. The model can be extended to fix the position of machines and can be used to find the optimal time for catching bugs.
+
+The model can be used as reference and a multi-robot de mining simulation can be made on it. The bugs can be replaced by robots and they first find the mines and cluster around them and then drag the mines to a safe area. Go through the Area_coverage model for more swarm robotics application. 
 
 ----
 
