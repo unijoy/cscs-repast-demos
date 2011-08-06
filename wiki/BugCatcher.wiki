@@ -184,12 +184,26 @@ _to be added soon_
 =4. Applications=
 
 
-_to be added soon_
 ----
 
 =5. Extending the Model=
 
-The model can be 
+==Increasing the Range==
+
+An feature that can be incorporated in the model is a slider for increasing the catching distance of the bug catcher. In this model the machine only catches bugs in the Moore's neighborhood. 
+
+The user can modify the code and use it to catch bugs in even larger area. A similar implementation can be found in both Moth_Advance and Moth_Basic models.
+
+==Surrounding Forbidden Area==
+
+An interesting feature that can be added to this model is the surrounding forbidden area. In food joints whenever a zapper or a bug catcher is used it is placed where there are no food items. This is done so that the dead bugs or some particles does not fall in food items. 
+So the user can add an interesting feature i.e. instead of killing the bug after a specified time user can hatch the bug into dead particles and kill it. These particles will randomly fall in the adjoining area. Thus making is unfit for keeping food items. 
+
+Hint : Use the hatch() primitive and make a new turtle - dead particles.
+
+==Addition of Plots and Outputters==
+
+Application specific graphs, outputters and plug in can be incorporated in the given model. One such example could be an overlay of the graphs showing which machine has killed how many bugs. Rate of killing bugs will also make an interesting plot. Other plots can also be made and is left to the reader/user. 
 
 ----
 
