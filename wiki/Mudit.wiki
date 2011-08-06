@@ -58,9 +58,6 @@ For Details Check Moth_Basic
 
 For Details Check GuidingBots
 
-
-=*Planned*=
-
 ==*Ants*==
 
 *Description*
@@ -73,19 +70,3 @@ Such a behavior is observed in many social frameworks. It is very useful in task
     
 http://ccl.northwestern.edu/netlogo/models/Ants
 
-
-==*Preferential Linking*==
-
-*Description*
-
-At each step, a new node is added. A new node picks an existing node to connect to randomly, but with some bias. More specifically, a node's chance of being selected is directly proportional to the number of connections it already has, or its "degree." This is the mechanism which is called "preferential attachment."
-
-*Application*
-
-In some networks, a few "hubs" have lots of connections, while everybody else only has a few. This model shows one way such networks can arise.
-
-Such networks can be found in a surprisingly large range of real world situations, ranging from the connections between websites to the collaborations between actors.
-
-This model generates these networks by a process of "preferential attachment", in which new network members prefer to make a connection to the more popular existing members
-
-http://ccl.northwestern.edu/netlogo/models/PreferentialAttachment
