@@ -25,14 +25,11 @@ Hello, my name is Tim Sweda, and I am a 2nd-year PhD student at Northwestern Uni
     * http://ccl.northwestern.edu/netlogo/models/DiffusiononaDirectedNetwork
   # *Discrete Event Simulator*:  discrete-event simulation toolkit designed for Repast
   # *Ethnocentrism*:  model of ethnocentric behavior and its evolution
-    * http://ccl.northwestern.edu/netlogo/models/Ethnocentrism
-  # *Preferential Attachment*:  network generation by preferential attachment
-    * http://ccl.northwestern.edu/netlogo/models/PreferentialAttachment
+    * http://www-personal.umich.edu/~axe/research/Hammond%20and%20Axelrod%20JCR%2006.pdf
+  # *Game of Life*:  simple cellular automaton
+    * http://en.wikipedia.org/wiki/Conway_game_of_life
   # *Small Worlds*:  formation of networks resulting in "small world" phenomenon
-    * http://ccl.northwestern.edu/netlogo/models/SmallWorlds
-  # *Team Blackjack*:  exploration of team strategies for blackjack, inspired by [http://en.wikipedia.org/wiki/MIT_Blackjack_Team MIT Blackjack Team]
+    * http://en.wikipedia.org/wiki/Watts_and_Strogatz_model
   # *Traffic Grid*:  real-time traffic simulation
     * http://ccl.northwestern.edu/netlogo/models/TrafficGrid
-  # *Virus on a Network*:  spread of a virus through a network
-    * http://ccl.northwestern.edu/netlogo/models/VirusonaNetwork
 (more to be added)
