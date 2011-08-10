@@ -1821,10 +1821,13 @@ public void activateAgents() {
 Also note that we did not used the already queried list of bugs (`bugList`). We have to re-collect all of the bug agents (i.e., call the `getBugList()` function again), since after executing the `mortality` actions the list of agents may be show major differences between the two calls, and the previously accessed list become obsolete (e.g., several new agents may born or die).
 
 === Further Fun ===
+ * If you followed this section of the tutorial carefully, you may have noticed that we used a hard-coded constant for the `Bug` size in the `mortality()` function. Can you make it a model parameter? (_Note that the final model has a proper constant for this value._)
+ * Try to make experiments with different default values for the `survivalProbability`.
+ * Also, modifying the consntants `BUG_REPRODUCTION_RATE` and `BUG_REPRODUCTION_RANGE` may also result in interesting results. Try a few different combinations.
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_13_model_12/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Population Abundance Graph ==
 === Purpose ===
