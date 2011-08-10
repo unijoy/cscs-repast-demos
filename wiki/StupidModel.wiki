@@ -1470,9 +1470,206 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
 
 === Implementation Notes ===
 
+The first task is to create a new action, `mortality`. Generally its scheme is pretty simple:
+
+{{{
+public class Bug implements Comparable<Bug> {
+	// ...
+	
+	public void mortality() {
+		// If size is great enough, reproduce and disappear
+		if (size > 10.0) {
+			reproduce();
+			die();
+		}
+	}
+
+	private void reproduce() {
+		// TODO
+	}
+
+	private void die() {
+		// TODO
+	}
+}
+}}}
+
+We also created two placeholder functions to make things simpler. The `die()` function is very straightforward: to remove an agent from the simulation, we simply have to remove it from the context which may be done through the `remove()` function of the current `Context` instance (by assigning any object to it, currently we use the actual agent through the `this` pseudo variable). Removing an object from the context automatically removes it from any projections associated with that context. So, in our case, the random human is removed from the `space` and `grid` projections as well.
+
+{{{
+private void die() {
+	ContextUtils.getContext(this).remove(this);
+}
+}}}
+
+
+The `reproduce()` function is a bit longer one. First wee need the references of the current context, grid and the current location of the agent:
+
+{{{
+private void reproduce() {
+	// Get the current context, grid and location
+	@SuppressWarnings("unchecked")
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+	
+	// ...
+}
+}}}
+
+Next we need to declare two constants, one for the _reproduction rate_ (the number of new `Bug` instances an agent may spawn) and one for the _range of the reproduction_ (the distance how far agents may spawn descendants). Edit the `Constants` class and add the following definition to the class:
+
+{{{
+public final class Constants {
+        // ...
+        
+        public static final int BUG_REPRODUCTION_RATE = 5;
+	public static final int BUG_REPRODUCTION_RANGE = 3;
+}
+}}}
+
+Next, back to the `reproduce()` function, we need a simple iteration to create the specified number of new `Bug` agents.
+
+{{{
+private void reproduce() {
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	// Spawn the specified number of descendants
+	for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+		// ...
+	}
+}
+}}}
+
+In each iteration, we create a new bug, and set its size to `0.0`, as the model formulation specifies.
+
+{{{
+private void reproduce() {
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+		// Create new bug with specified default size
+		final Bug child = new Bug();
+		child.setSize(0.0);
+
+		// ...
+	}
+}
+}}}
+
+To query the neighbourhood and find the free cells containing no bugs is done exactly the same way as we did in the implementation of the `step()` function:
+
+{{{
+private void reproduce() {
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+		final Bug child = new Bug();
+		child.setSize(0.0);
+
+		// Get the reproduction range of the current bug
+		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
+				grid, location, Bug.class,
+				Constants.BUG_REPRODUCTION_RANGE,
+				Constants.BUG_REPRODUCTION_RANGE).getNeighborhood(false);
+
+		// We have a utility function that returns the filtered list of
+		// empty GridCells objects
+		final List<GridCell<Bug>> freeCells = SMUtils
+				.getFreeGridCells(bugNeighborhood);
+		// ...
+	}
+}
+}}}
+
+After that we have the available free cells the `Bug` agent has around it. If it is empty, there is no place for any other `Bug` agent, so we interrupt the execution of the reproduce() function by a simple `return` statement, allowing the agent to continue with the execution of the `mortality` action. Otherwise we choose a random territory from the available free cells:
+
+{{{
+private void reproduce() {
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+		final Bug child = new Bug();
+		child.setSize(0.0);
+
+		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
+				grid, location, Bug.class,
+				Constants.BUG_REPRODUCTION_RANGE,
+				Constants.BUG_REPRODUCTION_RANGE).getNeighborhood(false);
+
+		final List<GridCell<Bug>> freeCells = SMUtils
+				.getFreeGridCells(bugNeighborhood);
+
+		// Model specifies if there is no empty location in vision range,
+		// no new child should be spawned
+		if (freeCells.isEmpty()) {
+			break;
+		}
+
+		// Choose one of the possible cells randomly
+		final GridCell<Bug> chosenFreeCell = SMUtils
+				.randomElementOf(freeCells);
+
+		// ...
+	}
+}
+}}}
+
+If we found a possible candidate where the new agent may be placed on, we add the new `Bug` agent to the context and move it to the proper location on the `grid`. The whole method in one:
+
+{{{
+private void reproduce() {
+	@SuppressWarnings("unchecked")
+	final Context<Object> context = (Context<Object>) ContextUtils
+			.getContext(this);
+	final Grid<Object> grid = getGrid();
+	final GridPoint location = grid.getLocation(this);
+
+	for (int i = 0; i < Constants.BUG_REPRODUCTION_RATE; ++i) {
+		final Bug child = new Bug();
+		child.setSize(0.0);
+
+		final List<GridCell<Bug>> bugNeighborhood = new GridCellNgh<Bug>(
+				grid, location, Bug.class,
+				Constants.BUG_REPRODUCTION_RANGE,
+				Constants.BUG_REPRODUCTION_RANGE).getNeighborhood(false);
+
+		final List<GridCell<Bug>> freeCells = SMUtils
+				.getFreeGridCells(bugNeighborhood);
+
+		if (freeCells.isEmpty()) {
+			break;
+		}
+
+		final GridCell<Bug> chosenFreeCell = SMUtils
+				.randomElementOf(freeCells);
+
+		// Add the new bug to the context and to the grid
+		context.add(child);
+
+		// We have our new GridPoint to move to, so locate agent
+		final GridPoint newGridPoint = chosenFreeCell.getPoint();
+		grid.moveTo(child, newGridPoint.getX(), newGridPoint.getY());
+	}
+}
+}}}
+
 ==== Adding Survival Probability to Bug Agents ====
 
-First, we need a simple `prob` function in the `SMUtils` class that returns `true` or `false` with the specified probability. As a parameter, it is specified the the actual `threshold` level to use, and returns `true` if a random number chosen from the `[0,1)` interval is smaller than the parameter; `false` otherwise. Extend the utility functions of the `SMUtils` class with the following sipmle one:
+First, we need a simple `prob` function in the `SMUtils` class that returns `true` or `false` with the specified probability. It is specified the the actual `threshold` level to use, and returns `true` if a random number chosen from the `[0,1)` interval is smaller than the given number, and `false` otherwise. Extend the utility functions of the `SMUtils` class with the following sipmle one:
 
 {{{
 public final strictfp class SMUtils {
@@ -1524,6 +1721,8 @@ public void mortality() {
 }
 }}}
 
+Also note the `return` statement after the code block of checking if the `size` of the `Bug` agent is great enough. It is used because if an agent is reproduced then it is also killed explicitly afterwards, so there is no need to check the survival probability to check if it should die again (it would have no effect).
+
 ==== Scheduling the Mortality Action ====
 As the formulation of the model specifies, the new `mortality` action is scheduled after the `move` and `grows` actions. Here we may be proud of our work in generalizing the agent actions and collecting them to one place. Bless to our foresight, this way it is very easy to overview, modify or update the agent actions.
 
@@ -1551,7 +1750,21 @@ public void activateAgents() {
 }}}
 
 ==== Changing the Stopping Rule ====
-The last thing to implement to finish this version of the model is to change the stopping condition. The tick counter is a magic number, so it is advised to create a constant for it. Edit `Constants.java` and add the following definition to the class:
+The last thing to implement to finish this version of the model is to change the stopping condition. First, the previous stopping condition should be disabled by commenting out it in the `grow()` function of the `Bug` class:
+
+{{{
+public void grow() {
+	size += foodConsumption();
+
+	// The model stopping rule is changed in Model 12
+	// if (size > 100.0) {
+	// 	System.out.println("Agent reached maximal size: " + this);
+	// 	RunEnvironment.getInstance().endRun();
+	// }
+}
+}}}
+
+The tick counter is a magic number, so it is advised to create a constant for it. Edit `Constants.java` and add the following definition to the class:
 
 {{{
 public final class Constants {
