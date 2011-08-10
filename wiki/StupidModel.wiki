@@ -1875,7 +1875,7 @@ Start the simulation. We add the new graph as we did it previously through the p
  # On the next wizard screen, add the `Tick` and `bugCount()`. We need a nice title for the chart, so we are going to use the _scripting feature_ of the dataset creator wizard. Click on _Add_ --> _Add Using Wizard_.
    https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_using_wizard.png
    # A new dialog opens where we can select a proper mapping type. We create a simple constant string title, so select _Bean Shell Scripted Mapping (Non-Aggregate)_ from the list.
-   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bean_shell_scripted_mapping.png
+     https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bean_shell_scripted_mapping.png
    # Click _Next_.
    # On the next wizard screen, we can type in any valid _BeanShell_ expression. Type in the following expression:
      {{{
