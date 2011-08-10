@@ -1470,6 +1470,31 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
 
 === Implementation Notes ===
 
+==== Scheduling the Mortality Action ====
+As the formulation of the model specifies, the new `mortality` action is scheduled after the `move` and `grows` actions. Here we may bless and be proud of our work in generalizing the agent actions and collecting them to one place. Bless to our foresight. This way it is very easy to overview, modify or update the agent actions.
+
+Our only task is to extend the list of actions with the new one as the following code listing shows:
+
+{{{
+@ScheduledMethod(start = 1, interval = 1, priority = 0)
+public void activateAgents() {
+	final ArrayList<Bug> bugList = getBugList();
+	Collections.sort(bugList);
+
+	for (final Bug bug : bugList) {
+		bug.step();
+	}
+
+	for (final Bug bug : bugList) {
+		bug.grow();
+	}
+
+	// Model 12: Added mortality, scheduled after the bug move and grow
+	for (final Bug bug : bugList) {
+		bug.mortality();
+	}
+}}}
+
 ==== Changing the Stopping Rule ====
 The last thing to implement to finish this version of the model is to change the stopping condition. The tick counter is a magic number, so it is advised to create a constant for it. Edit `Constants.java` and add the following definition to the class:
 
@@ -1498,30 +1523,29 @@ public Context<Object> build(final Context<Object> context) {
 We also have to stop the model when all of the `Bug` agents die. A practical way to check this is right after the `mortality` action. So, the full `activateAgents()` function should look like the following code listing:
 
 {{{
-	@ScheduledMethod(start = 1, interval = 1, priority = 0)
-	public void activateAgents() {
-		final ArrayList<Bug> bugList = getBugList();
+@ScheduledMethod(start = 1, interval = 1, priority = 0)
+public void activateAgents() {
+	final ArrayList<Bug> bugList = getBugList();
+	Collections.sort(bugList);
 
-		Collections.sort(bugList);
-
-		for (final Bug bug : bugList) {
-			bug.step();
-		}
-
-		for (final Bug bug : bugList) {
-			bug.grow();
-		}
-
-		// Model 12: Added mortality, scheduled after the bug move and grow
-		for (final Bug bug : bugList) {
-			bug.mortality();
-		}
-
-		// Model 12: Model should also stop when the number of bugs reaches zero.
-		if (0 == getBugList().size()) {
-			RunEnvironment.getInstance().endRun();
-		}
+	for (final Bug bug : bugList) {
+		bug.step();
 	}
+
+	for (final Bug bug : bugList) {
+		bug.grow();
+	}
+
+	// Model 12: Added mortality, scheduled after the bug move and grow
+	for (final Bug bug : bugList) {
+		bug.mortality();
+	}
+
+	// Model 12: Model should also stop when the number of bugs reaches zero.
+	if (0 == getBugList().size()) {
+		RunEnvironment.getInstance().endRun();
+	}
+}
 }}}
 
 Also note that we did not used the already queried list of bugs (`bugList`). We have to re-collect all of the bug agents (i.e., call the `getBugList()` function again), since after executing the `mortality` actions the list of agents may be show major differences between the two calls, and the previously accessed list become obsolete (e.g., several new agents may born or die).
