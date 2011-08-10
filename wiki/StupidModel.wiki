@@ -1462,13 +1462,72 @@ That is all!
 === Purpose ===
 Show how to "kill" and drop objects from a model, and how to create new objects during a run.
 === Formulation ===
- * When a bug's size reaches 10, it reproduces by splitting into 5 new bugs. Each new bug has an initial size of 0.0, and the old bug disappears.
- * New bugs are placed at the first empty location randomly selected within +/- 3 cells of their parent's last location. If no location is identified within 5 random draws, then the new bug dies.
- * A new bug parameter `survivalProbability` is initialized to 0.95. Each time step, each bug draws a uniform random number, and if it is greater than `survivalProbability`, the bug dies and is dropped.
+ * When a bug's size reaches `10`, it reproduces by splitting into `5` new bugs. Each new bug has an initial size of `0.0`, and the old bug disappears.
+ * New bugs are placed at the first empty location randomly selected within `+/- 3` cells of their parent's last location. If no location is identified within `5` random draws, then the new bug dies.
+ * A new bug parameter `survivalProbability` is initialized to `0.95`. Each time step, each bug draws a uniform random number, and if it is greater than `survivalProbability`, the bug dies and is dropped.
  * This mortality action is scheduled after the bug moves and grows.
- * The model stopping rule is changed: the model stops after 1000 time steps have been executed or when the number of bugs reaches zero.
+ * The model stopping rule is changed: the model stops after `1000` time steps have been executed or when the number of bugs reaches zero.
 
 === Implementation Notes ===
+
+==== Changing the Stopping Rule ====
+The last thing to implement to finish this version of the model is to change the stopping condition. The tick counter is a magic number, so it is advised to create a constant for it. Edit `Constants.java` and add the following definition to the class:
+
+{{{
+public final class Constants {
+	// ...
+	
+	public static final double DEFAULT_END_AT = 1000.0;
+}
+}}}
+
+To stop the simulation (abruptly, or in a specified time step) we can use the utility functions featured by the class `RunEnvironment`, as we used previously in [#Stopping_the_Model Model 7].
+
+The best place to declare when the model should stop is the initialization, i.e., add the following code segment to the end of the `build()` method in class `StupidModelContextBuilder`:
+
+{{{
+
+	@Override
+	public Context<Object> build(final Context<Object> context) {
+		// ...
+
+		RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
+		return context;
+	}
+}}}
+
+We also have to stop the model when all of the `Bug` agents die. A practical way to check this is right after the `mortality` action. So, the full `activateAgents()` function should look like the following code listing:
+
+{{{
+	@ScheduledMethod(start = 1, interval = 1, priority = 0)
+	public void activateAgents() {
+		final ArrayList<Bug> bugList = getBugList();
+
+		Collections.sort(bugList);
+
+		for (final Bug bug : bugList) {
+			bug.step();
+		}
+
+		for (final Bug bug : bugList) {
+			bug.grow();
+		}
+
+		// Model 12: Added mortality, scheduled after the bug move and grow
+		for (final Bug bug : bugList) {
+			bug.mortality();
+		}
+
+		// Model 12: Model should also stop when the number of bugs reaches zero.
+		if (0 == getBugList().size()) {
+			System.out.println("All agents dead, terminating simulation.");
+			RunEnvironment.getInstance().endRun();
+		}
+	}
+}}}
+
+Also note that we did not used the already queried list of bugs (`bugList`). We have to re-collect all of the bug agents (i.e., call the `getBugList()` function again), since during `mortality` the list of agents may be heavily modified between the two calls (e.g., several new agents may born or die).
+
 
 === Further Fun ===
 
