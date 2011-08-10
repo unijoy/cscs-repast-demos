@@ -1481,19 +1481,18 @@ public final class Constants {
 }
 }}}
 
-To stop the simulation (abruptly, or in a specified time step) we can use the utility functions featured by the class `RunEnvironment`, as we used previously in [#Stopping_the_Model Model 7].
+To stop the simulation (abruptly or in a specified time step) we can use the utility functions featured by the class `RunEnvironment`, as we used previously in [#Stopping_the_Model Model 7].
 
-The best place to declare when the model should stop is the initialization, i.e., add the following code segment to the end of the `build()` method in class `StupidModelContextBuilder`:
+The best place to declare when the model should stop is at the initialization, i.e., add the following code segment to the end of the `build()` method in class `StupidModelContextBuilder`:
 
 {{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	// ...
 
-	@Override
-	public Context<Object> build(final Context<Object> context) {
-		// ...
-
-		RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
-		return context;
-	}
+	RunEnvironment.getInstance().endAt(Constants.DEFAULT_END_AT);
+	return context;
+}
 }}}
 
 We also have to stop the model when all of the `Bug` agents die. A practical way to check this is right after the `mortality` action. So, the full `activateAgents()` function should look like the following code listing:
@@ -1520,14 +1519,12 @@ We also have to stop the model when all of the `Bug` agents die. A practical way
 
 		// Model 12: Model should also stop when the number of bugs reaches zero.
 		if (0 == getBugList().size()) {
-			System.out.println("All agents dead, terminating simulation.");
 			RunEnvironment.getInstance().endRun();
 		}
 	}
 }}}
 
-Also note that we did not used the already queried list of bugs (`bugList`). We have to re-collect all of the bug agents (i.e., call the `getBugList()` function again), since during `mortality` the list of agents may be heavily modified between the two calls (e.g., several new agents may born or die).
-
+Also note that we did not used the already queried list of bugs (`bugList`). We have to re-collect all of the bug agents (i.e., call the `getBugList()` function again), since after executing the `mortality` actions the list of agents may be show major differences between the two calls, and the previously accessed list become obsolete (e.g., several new agents may born or die).
 
 === Further Fun ===
 
