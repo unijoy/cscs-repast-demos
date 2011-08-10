@@ -39,10 +39,6 @@ import stupidmodel.common.Constants;
  * @version $Id: StupidModelContextBuilder.java 150 2011-05-26 19:06:40Z
  *          richard.legendi@gmail.com $
  */
-/**
- * @author rlegendi
- * 
- */
 public class StupidModelContextBuilder extends DefaultContext<Object> implements
 		ContextBuilder<Object> {
 
