@@ -1892,7 +1892,7 @@ The new data set should be displayed under the available _Data Sets_ in the _Sce
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/data_set_of_population_abundance_created.png
 
-  <b>Remark</b> If you are interested in the details of scripting, please refer to the Repast Simphony Documentation where it is covered in depth and for further information about the topic.
+  <b>Remark</b> If you are interested in the details of scripting, please refer to the Repast Simphony Documentation (where it is covered in depth) for further information about the topic.
 
 ==== Population Abundance Graph ====
 At last, we are ready to create the _Population Abundance Graph_. Create a new chart by right-clicking on _Charts_ in the _Scenario Tree_, and select _Add Chart_.
@@ -1908,9 +1908,9 @@ At last, we are ready to create the _Population Abundance Graph_. Create a new c
  # Click _Next_.
  # On the next screen, the visual properties of the chart may be set (e.g., ranges of the x and y-axes, auto-fitting or the history length). The default values are perfect for the current tutorial, click _Next_.
    https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/default_line_chart_settings.png
- # The data mapping is complete, click _Finish_ to add the new chart to the simulation.
+ # The data mapping for the new chart is complete, click _Finish_ to add the it to the simulation.
 
-The new chart should be displayed under the available _Charts_ in the _Scenario Tree_:
+The _Population Abundance_ chart should be displayed under the available _Charts_ in the _Scenario Tree_:
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_population_abundance_chart.png
 
@@ -1924,8 +1924,7 @@ That is all!
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
-
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_13_model_12/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Random Normal Initial Size ==
 === Purpose ===
