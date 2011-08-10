@@ -1877,11 +1877,10 @@ Start the simulation. We add the new graph as we did it previously through the p
    # A new dialog opens where we can select a proper mapping type. We create a simple constant string title, so select _Bean Shell Scripted Mapping (Non-Aggregate)_ from the list.
      https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bean_shell_scripted_mapping.png
    # Click _Next_.
-   # On the next wizard screen, we can type in any valid _BeanShell_ expression. Type in the following expression:
+   # On the next wizard screen, we can type in any valid _BeanShell_ expression. Type in the following expression which returns a simple string that we can use as a title for our chart:
      {{{
 beanshell: value = "Number of Bug agents";
      }}}
-    This expression returns a simple string that we can use as a title for our chart.
     https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/chart_title_bean_shell_script.png
    # Click _Next_, and then _Finish_.
  # We get back to the _Data Set Editor_ wizard. Rename the new scripted mapping from _Mapping0_ to _Title_ by double-clicking on its name. After adding all of the necessary data to the data set, it should look like as the following screenshot shows:
