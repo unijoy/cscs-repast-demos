@@ -1494,7 +1494,9 @@ public class Bug implements Comparable<Bug> {
 }
 }}}
 
-We also created two placeholder functions to make things simpler. The `die()` function is very straightforward: to remove an agent from the simulation, we simply have to remove it from the context which may be done through the `remove()` function of the current `Context` instance (by assigning any object to it, currently we use the actual agent through the `this` pseudo variable). Removing an object from the context automatically removes it from any projections associated with that context. So, in our case, the random human is removed from the `space` and `grid` projections as well.
+We check if the size of the agent is great enough, and if it is, we call a reproduce() function to create and place the new `Bug` agents, and call a `die()` function to remove the agent from the simulation.
+
+We also created two placeholder functions to make things simpler. The `die()` function is very straightforward: to remove an agent from the simulation, we simply have to remove it from the context which may be done through the `remove()` function of the current `Context` instance (by specifying any object to it, currently we use the actual agent through the `this` pseudo variable). Removing an object from the context automatically removes it from any projections associated with that context. So, in our case, the current `Bug` is removed from the `space` and `grid` projections as well (if it was assigned to the `space` during initialization).
 
 {{{
 private void die() {
@@ -1503,7 +1505,7 @@ private void die() {
 }}}
 
 
-The `reproduce()` function is a bit longer one. First wee need the references of the current context, grid and the current location of the agent:
+The `reproduce()` function is a bit longer one. First wee need the references of the `context`, `grid` and the current `location` of the agent:
 
 {{{
 private void reproduce() {
@@ -1518,7 +1520,7 @@ private void reproduce() {
 }
 }}}
 
-Next we need to declare two constants, one for the _reproduction rate_ (the number of new `Bug` instances an agent may spawn) and one for the _range of the reproduction_ (the distance how far agents may spawn descendants). Edit the `Constants` class and add the following definition to the class:
+Next we need to declare two constants, one for the _reproduction rate_ (the number of new `Bug` instances an agent may spawn) and one for the _range of the reproduction_ (the distance how far agents may spawn descendants). Edit the `Constants` class and add the following definition to it:
 
 {{{
 public final class Constants {
@@ -1592,7 +1594,7 @@ private void reproduce() {
 }
 }}}
 
-After that we have the available free cells the `Bug` agent has around it. If it is empty, there is no place for any other `Bug` agent, so we interrupt the execution of the reproduce() function by a simple `return` statement, allowing the agent to continue with the execution of the `mortality` action. Otherwise we choose a random territory from the available free cells:
+After that we have the available free cells the `Bug` agent has around it. If it is empty, there is no place for any other `Bug` agent, so we interrupt the execution of reproduce() by a simple `return` statement, allowing the agent to continue with the execution of the `mortality` action. Otherwise we choose a random territory from the available free cells:
 
 {{{
 private void reproduce() {
@@ -1628,7 +1630,7 @@ private void reproduce() {
 }
 }}}
 
-If we found a possible candidate where the new agent may be placed on, we add the new `Bug` agent to the context and move it to the proper location on the `grid`. The whole method in one:
+If we found a possible candidate where the new agent may be placed on, we add the new `Bug` agent to the `context` and move it to the proper location on the `grid`. The whole method in one:
 
 {{{
 private void reproduce() {
