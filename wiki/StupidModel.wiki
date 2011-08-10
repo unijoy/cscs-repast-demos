@@ -22,7 +22,7 @@ When we are finished, the running model should look like the following figure:
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation.png
 
 == Why the !StupidModel? ==
-I am sure the !StupidModel considered a relevant learning /comparison tool for agent-based modelling. Several reference implementations may be found on [http://condor.depaul.edu/slytinen/abm/ Steven L. Lytinen's site]. Additional resources may be found at the [http://www.swarm.org/wiki/Software_templates SwarmWiki].
+I am sure the !StupidModel considered a relevant learning/comparison tool for agent-based modelling. Several reference implementations may be found on [http://condor.depaul.edu/slytinen/abm/ Steven L. Lytinen's site]. Additional resources may be found at the [http://www.swarm.org/wiki/Software_templates SwarmWiki].
 
 == Prerequisites ==
 Before we start, make sure a proper installation of Repast Simphony (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
@@ -1835,6 +1835,75 @@ Show how to add a simple time series graph to a model. This graph is important f
 === Formulation ===
 No change is made to the model formulation. A graph is added to display the number of bugs alive at each time step.
 
+=== Implementation Notes ===
+
+This model requires only a minimal coding. A simple method is needed to get the total number of current `Bug` population which is used to create the _Population Abundance Graph_. Add the following new function to the class `StupidModelContextBuilder`:
+
+{{{
+public int bugCount() {
+	final RunState runState = RunState.getInstance();
+
+	// If simulation is not yet started or initialized correctly
+	if (null == runState) {
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	final Context<Object> masterContext = runState.getMasterContext();
+
+	// If simulation is not initialized correctly and there is no root
+	// context
+	if (null == masterContext) {
+		return 0;
+	}
+
+	return masterContext.getObjects(Bug.class).size();
+}
+}}}
+
+We check that the simulation is started, or it is assigned a root context properly, and return `0` if not. Otherwise, we simply return the number of `Bug` agents in the context. This is required because the function may be called during the initialization, where either of the required references may not be available.
+
+That was all the implementation part. Next, we need to define a new _Data Set_ and of course, a new the _Population Abundance Graph_.
+
+==== Data Set of Population Abundance ====
+Start the simulation. We add the new graph as we did it previously through the point & click interface of Repast Simphony.
+
+ # Right-click on _Data Sets_ in the _Scenario Tree_, and add a new data set named _Data Set of Population Abundance_.
+ # Choose `StupidModelContextBuilder` as _Agent Class_. This may sound strangely first, but think of it we have to specify on which object should Repast Simphony call a function used to create the required data set. Since we declared the `bugCount()` function in that class, we have to specify it.
+ # Click _Next_.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/data_set_of_population_abundance.png
+ # On the next wizard screen, add the `Tick` and `bugCount()`. We need a nice title for the chart, so we are going to use the _scripting feature_ of the dataset creator wizard. Click on _Add_ --> _Add Using Wizard_.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/add_using_wizard.png
+ ## A new dialog opens where we can select a proper mapping type. We create a simple constant string title, so select _Bean Shell Scripted Mapping (Non-Aggregate)_ from the list.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bean_shell_scripted_mapping.png
+ ## Click _Next_.
+ ## On the next wizard screen, we can type in any valid _BeanShell_ expression. Type in the following expression:
+   {{{
+beanshell: value = "Number of Bug agents";
+   }}}
+   This expression returns a simple string that we can use as a title for our chart.
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/chart_title_bean_shell_script.png
+ ## Click _Next_, and then _Finish_.
+ # We get back to the _Data Set Editor_ wizard. Rename the new scripted mapping from _Mapping0_ to _Title_ by double-clicking on its name. After adding all of the necessary data to the data set, it should look like as the following screenshot shows:
+   https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/title_mapping_created.png
+ # Click _Next_.
+ # Since we do not want to change the update frequency of the data set, press _Finish_ on the last wizard page.
+
+The new data set should be displayed under the available _Data Sets_ in the _Scenario Tree_:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/data_set_of_population_abundance_created.png
+
+Please refer to the Repast Simphony Documentation for further details about how to use scripting.
+
+=== Further Fun ===
+ * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values!
+ * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively)?
+
+=== Complete Model ===
+
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_15_model_14/ complete source code] of the model is accessible from the proper SVN tag directly.
+
+
 == Random Normal Initial Size ==
 === Purpose ===
 Illustrate use of random number distributions. A common use of them is to induce variability among initial individuals.
@@ -1852,7 +1921,6 @@ Illustrate use of random number distributions. A common use of them is to induce
 === Complete Model ===
 
  * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_15_model_14/ complete source code] of the model is accessible from the proper SVN tag directly.
-
 
 == Habitat Data from File Input ==
 === Purpose ===
