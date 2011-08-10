@@ -1221,7 +1221,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/specific_file_outp
 
 Click finish, and the new _File Outputter_ should appear under the _Outputter_ section of the _Scenario Tree_.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_file_outputter_location.ong
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/new_file_outputter_location.png
 
 It is all done!
 
