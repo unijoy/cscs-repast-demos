@@ -1471,7 +1471,7 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
 === Implementation Notes ===
 
 ==== Scheduling the Mortality Action ====
-As the formulation of the model specifies, the new `mortality` action is scheduled after the `move` and `grows` actions. Here we may bless and be proud of our work in generalizing the agent actions and collecting them to one place. Bless to our foresight. This way it is very easy to overview, modify or update the agent actions.
+As the formulation of the model specifies, the new `mortality` action is scheduled after the `move` and `grows` actions. Here we may be proud of our work in generalizing the agent actions and collecting them to one place. Bless to our foresight, this way it is very easy to overview, modify or update the agent actions.
 
 Our only task is to extend the list of actions with the new one as the following code listing shows:
 
@@ -1493,6 +1493,7 @@ public void activateAgents() {
 	for (final Bug bug : bugList) {
 		bug.mortality();
 	}
+}
 }}}
 
 ==== Changing the Stopping Rule ====
