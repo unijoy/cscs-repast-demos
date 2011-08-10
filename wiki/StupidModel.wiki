@@ -1470,6 +1470,60 @@ Show how to "kill" and drop objects from a model, and how to create new objects 
 
 === Implementation Notes ===
 
+==== Adding Survival Probability to Bug Agents ====
+
+First, we need a simple `prob` function in the `SMUtils` class that returns `true` or `false` with the specified probability. As a parameter, it is specified the the actual `threshold` level to use, and returns `true` if a random number chosen from the `[0,1)` interval is smaller than the parameter; `false` otherwise. Extend the utility functions of the `SMUtils` class with the following sipmle one:
+
+{{{
+public final strictfp class SMUtils {
+	// ...
+
+	public static boolean prob(final double threshold) {
+		return (threshold < RandomHelper.nextDouble());
+	}
+}
+}}}
+
+Then we have to add the new agent parameter to the `Bug` class as we added agent parameters before in [#Cell_and_Bug_Probes Model 4]:
+
+{{{
+public class Bug implements Comparable<Bug> {
+	// ...	
+
+	private double survivalProbability = 0.95;
+	
+	// ...
+	
+	@Parameter(displayName = "Bug survival probability", usageName = "survivalProbability")
+	public double getSurvivalProbability() {
+		return survivalProbability;
+	}
+
+	public void setSurvivalProbability(final double survivalProbability) {
+		this.survivalProbability = survivalProbability;
+	}
+	
+	// ...
+}
+}}}
+
+One more thing to do is to add a simple check for the `mortality` action of the `Bug` agents that checks the specified 95% probability for the agents to survive by utilizing the new `prob()` function we created:
+
+{{{
+public void mortality() {
+	if (size > 10.0) {
+		reproduce();
+		die();
+		return;
+	}
+
+	// Check the uniform random survival probability, and drop agent if necessary
+	if (SMUtils.prob(survivalProbability)) {
+		die();
+	}
+}
+}}}
+
 ==== Scheduling the Mortality Action ====
 As the formulation of the model specifies, the new `mortality` action is scheduled after the `move` and `grows` actions. Here we may be proud of our work in generalizing the agent actions and collecting them to one place. Bless to our foresight, this way it is very easy to overview, modify or update the agent actions.
 
