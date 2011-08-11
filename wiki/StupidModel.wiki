@@ -1936,6 +1936,110 @@ Illustrate use of random number distributions. A common use of them is to induce
 
 === Implementation Notes ===
 
+As we did in [#Parameters_and_Parameter_Displays Model 5: Parameters and Parameter Displays], we have to assign specific IDs to the new parameters. Declare the following two new constant values in class `Constants`:
+
+{{{
+public final class Constants {
+	// ...
+	
+	public static final String PARAMETER_INITIAL_BUG_SIZE_MEAN = "initialBugSizeMean";
+	public static final String PARAMETER_INITIAL_BUG_SIZE_SD = "initialBugSizeSD";
+}}}
+
+Next, start up the simulation, and declare the new parameters. Select _Parameters_ panel, and click on the _Add Parameter_ button at the bottom of it.
+
+To create the parameter for the initial bug size mean:
+
+ # Type _initialBugSizeMean_ for the _Name_. 
+ # Type _Initial Bug Size Mean_ for _Display Name_. 
+ # Type _double_ for the _Type_. 
+ # Type _0.1_ for the _Default Value_.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/adding_parameter_initialBugSizeMean.png
+
+To create the parameter for the initial bug size standard deviation:
+
+ # Type _initialBugSizeSD_ for the _Name_. 
+ # Type _Initial Bug Size SD_ for _Display Name_. 
+ # Type _double_ for the _Type_. 
+ # Type _0.03_ for the _Default Value_.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/adding_parameter_initialBugSizeSD.png
+
+The _Parameters_ panel should look like this after adding the new parameters:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bug_size_distribution_parameters_added.png
+
+==== Setting Bug Initial Sizes ====
+
+We need only a simple utility function. As its parameter, it gets a properly initialized `cern.jet.random.Normal` distribution (based on the values of the previously defined model parameters during the initialization phase). We simply generate a new double from the distribution, and set the size of the bug to this value. We also have to check if it is a  negative value as the model formulation specifies, and use zero instead in such a case (this is done by the `Math.max()` method offered by the Java API).
+
+Also, to make sure the size of all other agents is zero, we also modify the value of the `size` member to `0.0`;
+
+{{{
+public class Bug {
+	private double size = 0.0;
+
+	// ...
+
+	public void setInitialSize(final Normal normal) {
+		// Generate a new random initial size value, and if it is negative, use
+		// 0.0 instead
+		final double initialSize = Math.max(normal.nextDouble(), 0.0);
+		setSize(initialSize);
+	}
+}
+}}}
+
+==== Initializing Bug Agent Size from Normal Distribution ====
+
+Since the model initialization has to be modified, open up class `StupidModelContextBuilder` and add the following code to the `build()` function, somewhere after the `Parameters` instance is ready to use. We placed it after the query of the `bugCount` parameter to group the parameter queries into one place:
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	context.setId(Constants.CONTEXT_ID);
+	final Parameters parameters = RunEnvironment.getInstance()
+			.getParameters();
+
+	// ...
+
+	final int bugCount = ...;
+
+	// Model 14 defines a new random normal distribution to use for the
+	// initially created agent sizes
+	final double initialBugSizeMean = ((Double) parameters
+			.getValue(Constants.PARAMETER_INITIAL_BUG_SIZE_MEAN))
+			.doubleValue();
+
+	final double initialBugSizeSD = ((Double) parameters
+			.getValue(Constants.PARAMETER_INITIAL_BUG_SIZE_SD))
+			.doubleValue();
+
+	final Normal normal = RandomHelper.createNormal(initialBugSizeMean,
+			initialBugSizeSD);
+	
+	// ...
+}
+}}}
+
+What we do here is that we query the currently used parameter values for both `initialBugSizeMean` and `initialBugSizeSD`, and create a new `Normal` distribution through the utility method `createNormal()` of class `RandomHelper` which requires nothing the the used mean and standard deviation.
+
+Now we have the `Normal` distribution required to initialize a `Bug` with its utility method `setInitialSize()`. A few rows later when creating the agents, add the initialization method call:
+
+{{{
+for (int i = 0; i < bugCount; ++i) {
+		final Bug bug = new Bug();
+		bug.setInitialSize(normal); // Set the initial size of the Bug
+
+		context.add(bug);
+		final NdPoint pt = space.getLocation(bug);
+		grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
+}
+}}}
+
+That is all! We have implemented the default distribution in order to induce variability among initial `Bug` population.
+
 === Further Fun ===
  * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values!
  * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively)?
