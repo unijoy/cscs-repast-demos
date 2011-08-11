@@ -117,7 +117,7 @@ public class Bug {
 	 * Bugs have an instance variable for their size, which is initialized to
 	 * 1.0.
 	 * 
-	 * @since Model 2, 14
+	 * @since Model 2, Model 14
 	 */
 	private double size = 0.0;
 
