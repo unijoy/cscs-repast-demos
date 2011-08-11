@@ -1982,7 +1982,11 @@ Show how to create multiple classes of agents that interact.
 
 = Conclusion =
 
-It was a pleasure to create the demo models and write this tutorial, I hope You enjoyed it as well to complete it. Anyway, the tutorial is not perfect and always can be improved. I would be more than happy to hear about your feedback on the tutorial, so I may be able to improve sections that were not so clear as I thought to be. You can contact me either [Richard personally] or through the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest mailing list], where others may help you with common issues.
+Congratulations, you have created a complex model from basic building blocks offered by the standard Repast Simphony Java API. You should have no problems from now on to start an own project and use the features of Simphony you become familiar with.
+
+It was a pleasure to create the demo models and write this tutorial, I hope You enjoyed it while completing it. Anyway, the tutorial is not perfect and always can be improved. I would be more than happy to hear your feedback about the tutorial, so I may be able to improve sections that were not so clear as I thought to be. You can contact me either [Richard personally] or through the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest mailing list], where others may help you with common issues.
+
+All the best, and thank you for going through this tutorial!
 
 --- Richard O. Legendi
 
