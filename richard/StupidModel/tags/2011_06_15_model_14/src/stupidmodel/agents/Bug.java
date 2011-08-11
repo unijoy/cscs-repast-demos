@@ -169,6 +169,7 @@ public class Bug {
 	 * @return the size of the bug
 	 * @since Model 2
 	 */
+	@Parameter(displayName = "Bug Size", usageName = "size")
 	public double getSize() {
 		return size;
 	}

@@ -20,11 +20,6 @@ import stupidmodel.agents.Bug;
  * white (when size is zero) to red (when size is 10 or greater).
  * </p>
  * 
- * <p>
- * <i>The original bound scheme was a bit modified: since white agents cannot be
- * seen on empty cells, so we use light red if size is zero.</i>
- * </p>
- * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @version $Id: BugStyleOGL2D.java 183 2011-05-29 17:09:27Z
@@ -44,7 +39,7 @@ public class BugStyleOGL2D extends DefaultStyleOGL2D {
 	 *            the agent whose color should be determined; <i>may be null</i>
 	 * @return the color for the specified {@link Bug} agent created as
 	 *         <code>new Color(0xFF, strength, strength)</code> (where
-	 *         <code>strength = 200 - 20 * size of the bug</code>); <i>or
+	 *         <code>strength = 255 - size of the bug</code>); <i>or
 	 *         <code>Color.BLUE</code> if the parameter was <code>null</code>
 	 *         </i>
 	 * @see repast.simphony.visualizationOGL2D.DefaultStyleOGL2D#getColor(java.lang.Object)
