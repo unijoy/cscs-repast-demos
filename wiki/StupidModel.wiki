@@ -1924,7 +1924,7 @@ That is all!
 
 === Complete Model ===
 
- * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_13_model_12/ complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_13_model_13/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Random Normal Initial Size ==
 === Purpose ===
@@ -1981,6 +1981,10 @@ Show how to create multiple classes of agents that interact.
  * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
 = Conclusion =
+
+It was a pleasure to create the demo models and write this tutorial, I hope You enjoyed it as well to complete it. Anyway, the tutorial is not perfect and always can be improved. I would be more than happy to hear about your feedback on the tutorial, so I may be able to improve sections that were not so clear as I thought to be. You can contact me either [Richard personally] or through the [https://lists.sourceforge.net/lists/listinfo/repast-interest repast-interest mailing list], where others may help you with common issues.
+
+--- Richard O. Legendi
 
 = References =
  # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _"!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms"_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
