@@ -451,7 +451,7 @@ Click on the button of the _Model_. Next time clicking on the _Run_ button activ
 This will start the Repast Simphony Runtime. Note that you may see some initial errors along the lines of `SpaceProjectionBuilder - Unable to build continuous space 'space' ...`. These can be ignored for now and in our next steps we are going to correct them. We need to do some runtime configuration before we run the model itself. We are going to setup the runtime to use our context builder to initialize the model and also create an initial display. We setup the runtime to use our context builder by specifying the data loader.
 
  # In the _Scenario Tree_, right click on the _Data Loaders_ node and click _Set Data Loader_. If the tree is not visible use the tab controls on the left side of the runtime frame to select the _Scenario Tree_.
- # In the _Select Data Source Type_ window, click on _Custom ContextBuilder Implementation_. Click _Next_.
+ # In the _Select Data Source Type_ window, click on _Custom !ContextBuilder Implementation_. Click _Next_.
  # You should see the name of our context builder class in the combo box, `stupidmodel.StupidModelContextBuilder`, if not, use the combo box to find it. If the box is empty, go back and check your code. This typically means that there was a compilation error. Click _Next_.
  # Click Finish.
 
