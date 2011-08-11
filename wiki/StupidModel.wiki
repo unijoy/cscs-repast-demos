@@ -1972,13 +1972,13 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/bug_size_distribut
 
 ==== Setting Bug Initial Sizes ====
 
-We need only a simple utility function. As its parameter, it gets a properly initialized `cern.jet.random.Normal` distribution (based on the values of the previously defined model parameters during the initialization phase). We simply generate a new double from the distribution, and set the size of the bug to this value. We also have to check if it is a  negative value as the model formulation specifies, and use zero instead in such a case (this is done by the `Math.max()` method offered by the Java API).
+We need only a simple utility function. As its parameter, it gets a properly initialized `cern.jet.random.Normal` distribution (based on the values of the previously defined model parameters during the initialization phase). We simply generate a new double from the distribution, and set the size of the bug to this value. We also have to check if it is negative as the model formulation specifies, and use zero instead in such cases (this is done by the standard Java way by using the `Math.max()` method from the API).
 
-Also, to make sure the size of all other agents is zero, we also modify the value of the `size` member to `0.0`;
+Also, to make sure the size of all other agents is zero, we modify the value of the `size` member to `0.0`;
 
 {{{
 public class Bug {
-	private double size = 0.0;
+	private double size = 0.0; // Changed to zero 
 
 	// ...
 
@@ -2023,25 +2023,25 @@ public Context<Object> build(final Context<Object> context) {
 }
 }}}
 
-What we do here is that we query the currently used parameter values for both `initialBugSizeMean` and `initialBugSizeSD`, and create a new `Normal` distribution through the utility method `createNormal()` of class `RandomHelper` which requires nothing the the used mean and standard deviation.
+What we do here is that we query the currently used parameter values for both `initialBugSizeMean` and `initialBugSizeSD` in [#Creating_Model_Parameters the way we used before], and create a new `Normal` distribution through the utility method `createNormal()` of class `RandomHelper` which requires nothing but the used mean and standard deviation.
 
 Now we have the `Normal` distribution required to initialize a `Bug` with its utility method `setInitialSize()`. A few rows later when creating the agents, add the initialization method call:
 
 {{{
 for (int i = 0; i < bugCount; ++i) {
-		final Bug bug = new Bug();
-		bug.setInitialSize(normal); // Set the initial size of the Bug
+	final Bug bug = new Bug();
+	bug.setInitialSize(normal); // Set the initial size of the Bug
 
-		context.add(bug);
-		final NdPoint pt = space.getLocation(bug);
-		grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
+	context.add(bug);
+	final NdPoint pt = space.getLocation(bug);
+	grid.moveTo(bug, (int) pt.getX(), (int) pt.getY());
 }
 }}}
 
-That is all! We have implemented the default distribution in order to induce variability among initial `Bug` population.
+That is all! We have induced variability among the initial `Bug` population that may be manipulated through model parameters.
 
 === Further Fun ===
- * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values!
+ * The basic parameter settings of the _mean_ and _standard deviation_ do not really have a visible influence on the histogram of size distribution. Modify the parameters and check the histogram if you see what you expect from the modified parameter values (e.g., set `initialBugSizeMean` to `5` and `initialBugSizeSD` to `2`)!
  * Size of the reproduced bug agents after initialization is still homogeneous. Can you include new parameters for the spawned bug agent size to be drawn from a different normal distribution (e.g., `reproducedBugSizeMean` and `reproducedBugSizeSD` with values `1.5` and `0.7`, respectively)?
 
 === Complete Model ===
