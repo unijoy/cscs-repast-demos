@@ -117,9 +117,9 @@ public class Bug {
 	 * Bugs have an instance variable for their size, which is initialized to
 	 * 1.0.
 	 * 
-	 * @since Model 2
+	 * @since Model 2, Model 14
 	 */
-	private double size = 1.0;
+	private double size = 0.0;
 
 	/**
 	 * Maximum food consumption of the bug (set to <code>1.0</code> by default).
@@ -169,6 +169,7 @@ public class Bug {
 	 * @return the size of the bug
 	 * @since Model 2
 	 */
+	@Parameter(displayName = "Bug Size", usageName = "size")
 	public double getSize() {
 		return size;
 	}
