@@ -1136,8 +1136,6 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_0
 
 === Further Fun ===
  * The current model allows `Bug` agents to grow greater than `10.0`, however the current chart settings does not show the outliers. Can you modify the chart to do so?
- * Can you add a second chart, a simple XY Line or Scatterplot chart that shows the _average_ agent size in each simulation step?
- * Can you extend this chart with the addition of the _minimum_ and _maximum_ `size` values as well?
 
 === Complete Model ===
 
@@ -1921,6 +1919,8 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_1
 That is all!
 
 === Further Fun ===
+ * Can you add a second chart, a simple XY Line or Scatterplot chart that shows the _average_ agent size in each simulation step?
+ * Can you extend this chart with the addition of the _minimum_ and _maximum_ `size` values as well?
 
 === Complete Model ===
 
