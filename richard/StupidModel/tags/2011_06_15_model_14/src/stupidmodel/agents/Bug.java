@@ -119,7 +119,7 @@ public class Bug {
 	 * 
 	 * @since Model 2
 	 */
-	private double size = 1.0;
+	private double size = 0.0;
 
 	/**
 	 * Maximum food consumption of the bug (set to <code>1.0</code> by default).
