@@ -1,5 +1,4 @@
 #summary Localization of Mobile Wireless Sensor Nodes
-#labels MobileWirelessSensorNetworks,SwarmRobotics,LocalizationStrategy
 #sidebar TableOfContents
 
 = Summary = 
