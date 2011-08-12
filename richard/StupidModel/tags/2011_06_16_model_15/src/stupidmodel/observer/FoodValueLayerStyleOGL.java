@@ -20,7 +20,7 @@ import stupidmodel.common.Constants;
  * 
  * <p>
  * A cell's color on the display is shaded to reflect the food available on
- * them: it shades from white (when available food is zero) to green (when food
+ * them: it shades from black (when available food is zero) to green (when food
  * is <code>1</code> or greater).
  * </p>
  * 

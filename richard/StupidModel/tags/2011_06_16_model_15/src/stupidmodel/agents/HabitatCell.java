@@ -115,7 +115,7 @@ public class HabitatCell {
 	 * Default food production rate is initialized to <code>0.01</code>.
 	 * 
 	 * <p>
-	 * It is set by the constructor, but not declared as final, since the use
+	 * It is set by the constructor, but not declared as final, since the user
 	 * may want to manipulate it at the graphical interface (<i>probing</i>, as
 	 * defined in <i>Model 4</i>).
 	 * </p>
