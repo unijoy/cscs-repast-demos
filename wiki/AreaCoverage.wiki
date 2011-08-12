@@ -1,5 +1,4 @@
 #summary Area Coverage Model (Cover 360)
-#labels SwarmRobotics,AreaCoverage,MobileWirelessSensorNetwork
 #sidebar TableOfContents
 
 
