@@ -37,11 +37,11 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 ==*Ants*==
 
-For Details Check Ants
+For Details Check Ant
 
 ==*Follow The Leader*==
 
-For Details Check followTheLeader
+For Details Check followTheLeader 
 
 ==*Moth Advance*==
 
@@ -63,5 +63,3 @@ For Details Check Moth_Basic
 ==*Guiding Bots*==
 
 For Details Check GuidingBots
-
-
