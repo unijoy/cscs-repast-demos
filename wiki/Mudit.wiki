@@ -35,19 +35,25 @@ I will be making “Demo” models on the software as a part of my GSoC 2011 pro
 
 =*Models*=
 
-==*Area Coverage*==
+==*Ants*==
 
-For Details Check AreaCoverage
+For Details Check Ants
+
+==*Follow The Leader*==
+
+For Details Check followTheLeader
 
 ==*Moth Advance*==
 
 For Details Check Moth_Advance
 
+==*Area Coverage*==
+
+For Details Check AreaCoverage
 
 ==*Bug Catcher*==
 
 For Details Check BugCatcher
-
 
 ==*Moth Basic*==
 
@@ -58,15 +64,4 @@ For Details Check Moth_Basic
 
 For Details Check GuidingBots
 
-==*Ants*==
-
-*Description*
-
-Each Ant is guided by a set of simple rules. They keep on wandering in the environment in search of food or a chemical released by a food carrying Ant. If they bump into food they start taking it back to their colony (In the process releasing a chemical). If other ant come across the same chemical it follows the same. Thus the food is transfered to the ant colony.
-
-*Application*
-
-Such a behavior is observed in many social frameworks. It is very useful in task completion in swarm of robots. The same principle is used in data routing. 
-    
-http://ccl.northwestern.edu/netlogo/models/Ants
 
