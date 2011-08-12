@@ -2315,6 +2315,7 @@ That is all! The cells of the simulation now works based on real data. Start up 
 https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_15.png
 
 === Further Fun ===
+ * Most of the code created in this section is based on standard Java API. The section that may be improved is the `readDataFile()` function, try to make it a bit roboust by adding custom error handling (e.g., check if every line in the specified file is well formed, contains only the expected numerical data, etc.).
 
 === Complete Model ===
 
