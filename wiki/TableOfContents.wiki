@@ -10,10 +10,12 @@
    * [Ben]
    * [Rowan]
  * Models
+   * [Ant]
    * [AreaCoverage]
    * [Boids]
    * [BugCatcher]
    * [ElFarol El Farol]
+   * [followTheLeader]
    * [GuidingBots]
    * [Moth_Basic]
    * [Moth_Advance]
