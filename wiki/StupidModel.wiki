@@ -2061,12 +2061,264 @@ Show how to read spatial data in from a file.
  * A change to the bug move method is required to avoid a very strong artifact now that cell food production is no longer random. Near the start of a simulation, many cells will have exactly the same food availability, so a bug simply would move to the first cell on its list of neighbor cells. This is always the top-left cell among the neighbors, so bugs move constantly up and left if all the cells available to them have the same food availability. This artifact is removed by randomly shuffling the list of available cells before the bug loops through it to identify the best.
 
 === Implementation Notes ===
+First, download the required [https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/data/Stupid_Cell.Data Stupid_Cell.Data] file and copy it into the `StupidModel` project directory (it is the same file you can find in the original model specification).
+
+This section describes a rather Java-based method for file reading, since Java has a roboust and general API that may be used from Repast Simphony as well.
+
+==== Creating a Representation for the Parsed Cell Data ====
+It is always a good idea to create a wrapper class when reading data from file instead of handling the raw data directly. Hence we create a new class `CellData` and put it into the `stupidmodel.common` package with the following content:
+
+{{{
+public class CellData {
+	private final int x, y;
+	private final double foodProductionRate;
+
+	public static final CellDataXComparator CELL_DATA_X_COMPARATOR = new CellDataXComparator();
+	public static final CellDataYComparator CELL_DATA_Y_COMPARATOR = new CellDataYComparator();
+
+	private static final class CellDataXComparator implements
+			Comparator<CellData>, Serializable {
+		private static final long serialVersionUID = 4149351630089726905L;
+
+		@Override
+		public int compare(final CellData o1, final CellData o2) {
+			return o1.getX() - o2.getX();
+		}
+	}
+
+	private static final class CellDataYComparator implements
+			Comparator<CellData>, Serializable {
+		private static final long serialVersionUID = -5955739679291874417L;
+
+		@Override
+		public int compare(final CellData o1, final CellData o2) {
+			return o1.getY() - o2.getY();
+		}
+	}
+
+	public CellData(final int x, final int y, final double foodProductionRate) {
+		this.x = x;
+		this.y = y;
+		this.foodProductionRate = foodProductionRate;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public double getFoodProductionRate() {
+		return foodProductionRate;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("CellData [x=%d, y=%d, foodProductionRate=%f",
+				x, y, foodProductionRate);
+	}
+
+}
+}}}
+
+The class definition is a simple wrapper class, containing members for both the `x`, `y` coordinates and for the `foodProductionRate`. Conventional getter methods and a simple `toString()` is implemented just for debugging reasons.
+
+The only tricky part here is two simple `Comparator<CellData>` definitions that can compare `CellData` instances based on their `x` and `y` coordinates. They are not necessary but they help easily identify the bounds of the world that has to be created.
+
+==== Updating Constants ====
+
+As usual, we have a few constant values again. Open up class `Constants` and perform the following modifications:
+
+{{{
+public final class Constants {
+	// public static final int GRID_SIZE = 100;
+	
+	public static final String STUPID_CELL_DATA_FILE = "Stupid_Cell.data";
+	public static final int CELL_DATA_FILE_HEADER_LINES = 3;
+}
+}}}
+
+Since we have to determine the size of the grid based on the maximum coordinate values in the specified file the `GRID_SIZE` constant become unnecessasry, hence it can be commented out.
+
+The two new constants we declare is for the data file: `STUPID_CELL_DATA_FILE` defines the name of the file, and `CELL_DATA_FILE_HEADER_LINES` contains the number of header lines in the file as described in the model formulation.
+
+==== Reading the File Data ====
+
+To parse the data from the file we create a new utility function in the `SMUtils` class file. It gets the name of the data file as a parameter, reads the contents of the file, and populates and returns a list of properly initialized `CellData` objects. The method uses the standard Java API by creating a BufferedReader object to read lines from the file, and the split() function to split data between whitespace characters.
+
+{{{
+public static List<CellData> readDataFile(final String cellDataFileName) {
+	final ArrayList<CellData> ret = new ArrayList<CellData>();
+	BufferedReader br = null;
+
+	try {
+		br = new BufferedReader(new FileReader(cellDataFileName));
+
+		// Skip header
+		for (int i = 0; i < Constants.CELL_DATA_FILE_HEADER_LINES; ++i) {
+			br.readLine();
+		}
+
+		// Read lines, parse data and add a new CellData for each one
+		String line = null;
+		while ((line = br.readLine()) != null) {
+			// Split the line around whitespaces
+			final String[] data = line.split("\\s+");
+
+			int idx = 0;
+			final int x = Integer.parseInt(data[idx++]);
+			final int y = Integer.parseInt(data[idx++]);
+			final double foodProductionRate = Double
+					.parseDouble(data[idx++]);
+
+			ret.add(new CellData(x, y, foodProductionRate));
+		}
+
+	} catch (final FileNotFoundException e) {
+		e.printStackTrace();
+	} catch (final IOException e) {
+		e.printStackTrace();
+	} finally {
+		if (br != null) {
+			try {
+				br.close();
+			} catch (final IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	return Collections.unmodifiableList(ret);
+}
+}}}
+
+  <b>Remark</b> The above described function is a bit simplified version of the where a few error checking is omitted (when reading data from a file a lot of things may broke, e.g., wrong number of data in a line, missing data in a file, malformed data, etc.). The above described function should work fine in most of the situations, however, we supplied a bit sophisticated version in the implementation to help identify what went wrong during the parsing of the data file.
+
+==== Updating HabitatCell Implementation ====
+There is a few update that has to be done for the current `HabitatCell` implementation. First, you can remove `maximumFoodProductionRate` member variable, since the production rate is now read from the specified file, and not random any more.
+
+However, we need to store specified `foodProductionRate`.
+
+{{{
+protected double foodProductionRate = 0.01;
+}}}
+
+It is set by the constructor, but not declared as `final`, since we may want to manipulate it at the graphical interface. For this reason, add both a new getter and setter function to the class, and add the `@Parameter` annotation as shown below:
+
+{{{
+@Parameter(displayName = "Cell maximum food production rate", usageName = "foodProductionRate")
+public double getFoodProductionRate() {
+	return foodProductionRate;
+}
+
+public void setFoodProductionRate(final double foodProductionRate) {
+	this.foodProductionRate = foodProductionRate;
+}
+}}}
+
+Then, the constructor is updated from requiring an `x` and `y` coordinate to accept a properly initialized `CellData` instance:
+
+{{{
+public HabitatCell(final CellData cellData) {
+	this.x = cellData.getX();
+	this.y = cellData.getY();
+	this.foodProductionRate = cellData.getFoodProductionRate();
+}
+}}}
+
+
+Also, the `grow` action should be updated properly to use `foodProductionRate` instead of the random value created by `RandomHelper.nextDoubleFromTo(0.0, maximumFoodProductionRate)`:
+
+{{{
+public void growFood() {
+	foodAvailability += foodProductionRate;
+	
+	// ...
+}
+}}}
+
+
+==== Updating Bug Actions ====
+
+{{{
+public void step() {
+	if (freeCells.isEmpty()) {
+		return;
+	}
+
+	// Model 15: A change to the bug move method is required to avoid a very
+	// strong artifact now that cell food production is no longer random.
+	// Near the start of a simulation, many cells will have exactly the same
+	// food availability, so a bug simply would move to the first cell on
+	// its list of neighbor cells. This is always the top-left cell among
+	// the neighbors, so bugs move constantly up and left if all the cells
+	// available to them have the same food availability. This artifact is
+	// removed by randomly shuffling the list of available cells before the
+	// bug loops through it to identify the best.
+	SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
+
+	final List<GridCell<HabitatCell>> habitatCells = getHabitatCellsForLocations(freeCells);
+
+	Collections.sort(habitatCells,
+			new HabitatCellFoodAvailabilityComparator());
+
+	// ...
+}
+}}}
+
+==== Updating the Initialization ====
+The last thing to add is to update the initialization of `HabitatCell` instances. Most importantly, we have to parse the `CellData` and get the properly initialized list of cell information. Next, we create a `gridSizeX` and `gridSizeY` variables (since we removed the `GRID_SIZE` constant previously). Here we use the previously defined comparators to find the maximum coordinates in one line.
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	context.setId(Constants.CONTEXT_ID);
+
+	// Model 15 extension: read the cell data from a specified file
+	final List<CellData> cellData = SMUtils
+			.readDataFile(Constants.STUPID_CELL_DATA_FILE);
+
+	// The first model specified a two-dimensional grid 100 * 100, but from
+	// Model 15 it has to be evaluated from the file input
+
+	// The +1s are added because the grid is indexed from 0, so we have to
+	// increase the actual size by 1
+
+	final int gridSizeX = Collections.max(cellData,
+			CellData.CELL_DATA_X_COMPARATOR).getX() + 1;
+
+	final int gridSizeY = Collections.max(cellData,
+			CellData.CELL_DATA_Y_COMPARATOR).getY() + 1;
+
+	// ...
+}
+}}}
+
+Of course, we have to replace all references to `GRID_SIZE` with either `gridSizeX` or `gridSizeX`.
+
+Creating the `HabitatCell` instances should also be modified to use the created `cellData` instances. We iterate throgh the cellData list instead of a double `GRID_SIZE*GRID_SIZE` iteration.
+
+{{{
+for (final CellData act : cellData) {
+	final HabitatCell cell = new HabitatCell(act);
+	context.add(cell); 
+	grid.moveTo(cell, act.getX(), act.getY());
+	foodValueLayer.set(cell.getFoodAvailability(), act.getX(),
+			act.getY());
+}
+}}}
+
+That is all! The cells of the simulation now works based on real data. Start up the simulation, and see how the cells grow different rate of food!
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation_model_15.png
 
 === Further Fun ===
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_16_model_15/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 == Predators ==
 === Purpose ===
