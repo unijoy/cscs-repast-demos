@@ -67,7 +67,7 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # [BugCatcher]
     # [Moth_Advance]
     # [GuidingBots]
-    # [Ants]
+    # [Ant]
     # [followTheLeader]
 
   * *[Richard Richard Legendi]*
