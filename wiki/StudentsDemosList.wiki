@@ -67,8 +67,8 @@ Scratch area to list preferences, from which we will figure out the actual assig
     # [BugCatcher]
     # [Moth_Advance]
     # [GuidingBots]
-    # [Mudit#Ants Ants]
-    # [Mudit#Preferential Preferential Linking]
+    # [Ants]
+    # [followTheLeader]
 
   * *[Richard Richard Legendi]*
     # [Richard#Implementation_of_the_StupidModel StupidModel1-16] (_Java_)
