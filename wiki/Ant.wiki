@@ -1,4 +1,4 @@
-#summary A hybrid of Moth_Basic and Bug Catcher
+#summary Model of a Biological Ant Colony
 #sidebar TableOfContents
 
 =*Summary*=
