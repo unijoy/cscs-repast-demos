@@ -55,3 +55,15 @@ There where many papers like this since then. An article which provides a compre
 
 
 The model seeks inspiration form the real world ants. Although it is not a replica and is optimized at places. Please view the description section for complete details. 
+
+==Ant (A bit of Biology)==
+
+Ants are social insects of the family Formicidae and, along with the related wasps and bees, belong to the order Hymenoptera. Ants evolved from wasp-like ancestors in the mid-Cretaceous period between 110 and 130 million years ago and diversified after the rise of flowering plants.[7] More than 12,500 out of an estimated total of 22,000 species have been classified.[8][9].
+
+Ants communicate with each other using pheromones. [10] Like other insects, ants perceive smells with their long, thin and mobile antennae. The paired antennae provide information about the direction and intensity of scents. 
+
+Ants use pheromones for more than just making trails. A crushed ant emits an alarm pheromone that sends nearby ants into an attack frenzy and attracts more ants from further away. Several ant species even use "propaganda pheromones" to confuse enemy ants and make them fight among themselves.[11]  
+
+==Ant and it's search for food==
+
+Since most ants live on the ground, they use the soil surface to leave pheromone trails that can be followed by other ants. In species that forage in groups, a forager that finds food marks a trail on the way back to the colony; this trail is followed by other ants, these ants then reinforce the trail when they head back with food to the colony. When the food source is exhausted, no new trails are marked by returning ants and the scent slowly dissipates. This behaviour helps ants deal with changes in their environment. For instance, when an established path to a food source is blocked by an obstacle, the foragers leave the path to explore new routes.[12]
