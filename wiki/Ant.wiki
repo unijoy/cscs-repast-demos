@@ -72,7 +72,7 @@ Since most ants live on the ground, they use the soil surface to leave pheromone
 
 The overall ant colony behavior is a cumulative behavior of all the ants. These ants follow a set of simple rules and depending of these rules they move in search of food. 
 
-Ant only move a given distance away from their nest. This is because they have to come back to their nest. The ant return to their nest depending on the nest smell, they do so when the nest scent starts dying. If the ants find food, they carry it back to their nest leaving an active chemical trail which evaporates with time. The chemical is also diffused in the Moore's neighborhood, although the "level" is less.
+Ant only move a given distance away from their nest. This is because they have to come back to their nest. The ant return to their nest depending on the nest smell, they do so when the nest scent starts dying. If the ants find food, they carry it back to their nest leaving a chemical trail which evaporates with time. The chemical is also diffused in the Moore's neighborhood, although the "level" is less.
 If an ant sniffs Active Chemical it moves in the direction where the chemical is for a large number of time. This behavior is a deviation from the actual ants. They normally follow the chemical depending on level, but these computational ants move towards food not nest. The ants reach the food pile, following the chemical and finally the come back to the nest reinforcing the chemical trail.
 
 ==Algorithm and Implementation==
@@ -185,8 +185,41 @@ The following block of code guides the movement of the Ant, if it is not near ch
 
 The following code segment and description explains what happens if the ant finds a chemical nearby. Please refer to [this http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html here] for the functions in italics.
 
+{{{
+//Checks if the present patch has chemical 
+	def checkChem()
+	{
+		if((patchHere().level>0)&&(!gotCube))
+		{
+			nearChem=1
+			uphill("level")
+		}		
+		else
+			nearChem=0
+	}
+}}}
 
+_patchHere()_ and _uphill()_ functions are built in functions can be checked in the documentation [6]. The variable "level" is a @Diffusible variable of the UserPatch.groovy class. Rest of the code segment is self explanatory.
 
+If gotCube is set, i.e. ant has a cube then it calls *drop()*, check step() function. Two UserPatch.groovy functions are called through this function (set_main() and set_diffused(). The patch where the ant was will have the maximum chemical value and the chemical will as well diffuse in other cells also i.e. in the Moore's neighborhood. _ask()_ is a predefined function, check [6] for details.
+ 
+{{{
+//Drops chemical 
+	def drop()
+	{
+		ask(patchHere())
+		{
+			//Drops a chemical which will evaporate after long time
+			set_main()
+		}
+		ask(neighbors())
+		{
+			//The chemical diffuses in the neighborhood
+			set_diffused()
+		}
+	} 
+
+}}}
 
 ------
 
