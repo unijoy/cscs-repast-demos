@@ -77,12 +77,10 @@ If an ant sniffs Active Chemical it moves in the direction where the chemical is
 
 ==Algorithm and Implementation==
 
-The model has three turtle types
- # Ant
- # ActiveChem (pheromones)
- # Cube (food)
-
+The model has one turtle type i.e. Ant
+ 
 There are three types of patches
+ # Cube
  # Nest
  # Diffused Chemical
  # Dropped Chemical
@@ -134,7 +132,7 @@ At each tick a step() function is called most of the code is commented and self 
 
 		//if ants finds food
 		if(gotCube)
-			//drops ActiveChem 
+			//drops Chemical 
 			drop()
 		
 		//movement of the ant, if ant is not near chemiCal 
@@ -185,7 +183,12 @@ The following block of code guides the movement of the Ant, if it is not near ch
 
 }}}
 
--------
+The following code segment and description explains what happens if the ant finds a chemical nearby. Please refer to [this http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html here] for the functions in italics.
+
+
+
+
+------
 
 =References=
 
