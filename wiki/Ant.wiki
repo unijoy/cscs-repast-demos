@@ -87,6 +87,70 @@ There are three types of patches
  # Diffused Chemical
  # Dropped Chemical
 
+Let's talk about each of these separately : 
+
+===Ant===
+
+An ant can have four basic states :
+ # gotCube 
+The variable is set or reset depending on weather or not the ant is carrying food.
+
+ # nearChem 
+The variable is set or reset depending on weather or not the ant is near a chemical or not.
+
+ # inNest 
+The variable is set or reset depending on weather or not the ant is in it's nest or not.
+
+ # away (Going Away or Coming Back)
+The variable is set or reset depending on weather or not the ant is going away or coming back to the nest, depending on nest scent
+
+{{{
+        def inNest=1   // (In nest or not) 
+	def away=1     // (Going Away or Coming back)
+	def gotCube=0  // (Carrying Food)
+	def nearChem=0 // (Near Chemical) 
+
+}}}
+
+At each tick a step() function is called most of the code is commented and self explainable. The functions used are elaborated in details further 
+
+{{{
+
+//Called at each clock tick, decides the motion of the ant depending of state	
+	def step()
+	{	
+		
+		//Checks if the ant is near a cube and sets gotCube
+		foundCube()
+		
+		//Checks if the ant is in it's nest and sets inNest
+		foundNest()
+
+		//Checks if the ant is near a chemical and sets nearChem
+		checkChem()
+
+		//Sets the direction of travel of the Ant by setting away
+		setDir()
+
+		//if ants finds food
+		if(gotCube)
+			//drops ActiveChem 
+			drop()
+		
+		//movement of the ant, if ant is not near chemiCal 
+		if(!nearChem)
+		{
+			//if ant should move away from the nest
+			if(away)
+				goAway()
+			else
+				comeBack()
+		}
+	}
+
+}}} 
+
+
 
 
 -------
