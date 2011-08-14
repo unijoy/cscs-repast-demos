@@ -74,7 +74,7 @@ Since most ants live on the ground, they use the soil surface to leave pheromone
 
  # "Ant Colony Optimization - Artificial Ants as a Computation Intelligence Technique"* - Marco Dorigo, Mauro Birattari and Thomas Stutzle, IEEE COMPUTATIONAL INTELLIGENCE MAGAZINE, NOV 2006, 1556-603X/06/, IEEE 2006 
 
- # "A Multi-Agent Model to simulate Intelligent Wireless Sensor Networks" - Diana Carolina Resprepo, Alcides de J. Montoya and Demetrio Arturo Ovalle. 384978-1-4244-7173-7, IEEE 2010
+ # *"A Multi-Agent Model to simulate Intelligent Wireless Sensor Networks"* - Diana Carolina Resprepo, Alcides de J. Montoya and Demetrio Arturo Ovalle. 384978-1-4244-7173-7, IEEE 2010
 
  # http://ccl.northwestern.edu/netlogo/models/Ants
 
