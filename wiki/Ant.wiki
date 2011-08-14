@@ -77,6 +77,16 @@ If an ant sniffs Active Chemical it moves in the direction where the chemical is
 
 ==Algorithm and Implementation==
 
+The model has three turtle types
+ # Ant
+ # ActiveChem (pheromones)
+ # Cube (food)
+
+There are three types of patches
+ # Nest
+ # Diffused Chemical
+ # Dropped Chemical
+
 
 
 -------
