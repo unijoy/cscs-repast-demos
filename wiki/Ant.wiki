@@ -68,6 +68,19 @@ Since most ants live on the ground, they use the soil surface to leave pheromone
 
 -------
 
+=Description=
+
+The overall ant colony behavior is a cumulative behavior of all the ants. These ants follow a set of simple rules and depending of these rules they move in search of food. 
+
+Ant only move a given distance away from their nest. This is because they have to come back to their nest. The ant return to their nest depending on the nest smell, they do so when the nest scent starts dying. If the ants find food, they carry it back to their nest leaving an active chemical trail which evaporates with time. The chemical is also diffused in the Moore's neighborhood, although the "level" is less.
+If an ant sniffs Active Chemical it moves in the direction where the chemical is for a large number of time. This behavior is a deviation from the actual ants. They normally follow the chemical depending on level, but these computational ants move towards food not nest. The ants reach the food pile, following the chemical and finally the come back to the nest reinforcing the chemical trail.
+
+==Algorithm and Implementation==
+
+
+
+-------
+
 =References=
 
  # "Ant System: Optimization by a Colony of Cooperating Agents"*, Marco Dorigo, Vittorio Maniezzo and Alberto Colorni, IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS-PART B CYBERNETICS, VOL 26, NO 1, FEBRUARY 1996, 1083-4419, IEEE 1996
