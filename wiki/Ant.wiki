@@ -47,11 +47,11 @@ The following video aptly describes the ant behavior of the real world ants.
 
 The first paper which used ant behavior was published in the year 1996 was :
 
-"Ant System: Optimization by a Colony of Cooperating Agents", Marco Dorigo, Vittorio Maniezzo and Alberto Colorni, IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS-PART B CYBERNETICS, VOL 26, NO 1, FEBRUARY 1996, 1083-4419, IEEE 1996
+ - *"Ant System: Optimization by a Colony of Cooperating Agents"*, Marco Dorigo, Vittorio Maniezzo and Alberto Colorni, IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS-PART B CYBERNETICS, VOL 26, NO 1, FEBRUARY 1996, 1083-4419, IEEE 1996
 
 There where many papers like this since then. An article which provides a comprehensive detail of the algorithm is :
 
-"Ant Colony Optimization - Artificial Ants as a Computation Intelligence Technique" - Marco Dorigo, Mauro Birattari and Thomas Stutzle, IEEE COMPUTATIONAL INTELLIGENCE MAGAZINE, NOV 2006, 1556-603X/06/, IEEE 2006 
+ - *"Ant Colony Optimization - Artificial Ants as a Computation Intelligence Technique"* - Marco Dorigo, Mauro Birattari and Thomas Stutzle, IEEE COMPUTATIONAL INTELLIGENCE MAGAZINE, NOV 2006, 1556-603X/06/, IEEE 2006 
 
 
 The model seeks inspiration form the real world ants. Although it is not a replica and is optimized at places. Please view the description section for complete details. 
