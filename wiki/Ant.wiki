@@ -1,4 +1,4 @@
-#summary Model of a Biological Ant Colony
+#summary Model of Biological Ants searching for Food
 #sidebar TableOfContents
 
 =*Summary*=
