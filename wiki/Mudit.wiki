@@ -26,22 +26,20 @@
 =*Introduction*=
 
  
-I am a 6th semester student on Birla Institute of Technology and Science – Pilani studying at Goa Campus, I am simultaneously working for my Master’s degree in Chemistry and Bachelor’s degree in Electronics and Instrumentation Engineering. 
+Hi, I am Mudit, I am a 7th semester student on Birla Institute of Technology and Science – Pilani studying at Goa Campus, I am simultaneously working for my Master’s degree in Chemistry and Bachelor’s degree in Electronics and Instrumentation Engineering. 
 
-I am interested in swarm robotics and embedded systems. A related field that interests me is Claytronics. It is about self-assembly of many modular robots to create synthetic reality. My recent work is centered on a new Wireless Sensor Network Platform and Mobile WSN. 
-
-I will be making “Demo” models on the software as a part of my GSoC 2011 project. I am looking forward to learn the basics of design and simulation of complex systems and agent based complex systems as they are an integral part of mobile WSN and Swarm Robotics. 
+I am interested in swarm robotics, embedded systems and mobile Wireless Sensor Networks. I will be making “Demo” models on Repast S as a part of my GSoC 2011 project. I am looking forward to learn the basics of design and simulation of Agent Based Complex Systems as they are an integral part of mobile WSN and Swarm Robotics. 
 
 
 =*Models*=
 
 ==*Ants*==
 
-For Details Check Ant
+For Details Check [Ant]
 
 ==*Follow The Leader*==
 
-For Details Check followTheLeader 
+For Details Check [followTheLeader] 
 
 ==*Moth Advance*==
 
