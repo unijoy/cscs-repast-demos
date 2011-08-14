@@ -37,3 +37,9 @@ It is suggested that you go through the following models also, as the guiding al
 
 
 -----
+
+=2. Introduction =
+
+This is a bio-inspired model. The model is a simulation of Ant and their behavior. The model demonstrates how ants move away from their nests in search for food and then come back to the nest with food. In their way back they leave a chemical behind which can be sensed by other ants and they can also reach the food pile. In their way reinforcing the chemical left behind. This behavior is useful to researchers from different field. Specially in Swarm Robotics and Computation Intelligence. The Ant Colony Optimization is used. A more clearer study of the Ant behavior can be done through [followTheLeader] model. In that model a single ant is studied and how the follower adjusts it's path. 
+
+The  
