@@ -92,16 +92,16 @@ Let's talk about each of these separately :
 ===Ant===
 
 An ant can have four basic states :
- # gotCube 
+ * gotCube 
 The variable is set or reset depending on weather or not the ant is carrying food.
 
- # nearChem 
+ * nearChem 
 The variable is set or reset depending on weather or not the ant is near a chemical or not.
 
- # inNest 
+ * inNest 
 The variable is set or reset depending on weather or not the ant is in it's nest or not.
 
- # away (Going Away or Coming Back)
+ * away (Going Away or Coming Back)
 The variable is set or reset depending on weather or not the ant is going away or coming back to the nest, depending on nest scent
 
 {{{
@@ -150,8 +150,40 @@ At each tick a step() function is called most of the code is commented and self 
 
 }}} 
 
+The two functions *goAway()* and *comeBack()* are called depeding on the value of away. If their is no ActiveChem nearby, the ant movement is guiding by these functions. The ants move in an area where there is more nest scent. This is illustrated by the given figure.
 
+Since the nest scent is nothing but, distance from the nest. So, the ants can move at any between 0-90 in both direction. This is done using the *move()* function. So they are first oriented towards the nest or away and they move() is called.
 
+The following block of code guides the movement of the Ant, if it is not near chemical.
+
+{{{
+
+//Makes the Ant move away from the nest
+	def goAway()
+	{
+		facexy(0,0)
+		left(180)
+		move()
+	}
+
+	//Makes the Ant move towards the nest
+	def comeBack()
+	{
+		facexy(0,0)
+		move()
+	}
+
+	//Randomly sets the angle, while moving on increasing/decreasing scent smell
+	def move()
+	{
+		if(random(2))
+			left(random(90))
+		else
+			left(-1*random(90))
+		forward(1)
+	}
+
+}}}
 
 -------
 
