@@ -15,7 +15,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Ant(main).JPG
 
 =*Contents*=
 
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="3" />
 
 ------
 
@@ -47,11 +47,11 @@ The following video aptly describes the ant behavior of the real world ants.
 
 The first paper which used ant behavior was published in the year 1996 was :
 
- [1] *"Ant System: Optimization by a Colony of Cooperating Agents"*, Marco Dorigo, Vittorio Maniezzo and Alberto Colorni, IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS-PART B CYBERNETICS, VOL 26, NO 1, FEBRUARY 1996, 1083-4419, IEEE 1996
+ 1. *"Ant System: Optimization by a Colony of Cooperating Agents"*, Marco Dorigo, Vittorio Maniezzo and Alberto Colorni, IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS-PART B CYBERNETICS, VOL 26, NO 1, FEBRUARY 1996, 1083-4419, IEEE 1996
 
 There where many papers like this since then. An article which provides a comprehensive detail of the algorithm is :
 
- [2] *"Ant Colony Optimization - Artificial Ants as a Computation Intelligence Technique"* - Marco Dorigo, Mauro Birattari and Thomas Stutzle, IEEE COMPUTATIONAL INTELLIGENCE MAGAZINE, NOV 2006, 1556-603X/06/, IEEE 2006 
+ 2. *"Ant Colony Optimization - Artificial Ants as a Computation Intelligence Technique"* - Marco Dorigo, Mauro Birattari and Thomas Stutzle, IEEE COMPUTATIONAL INTELLIGENCE MAGAZINE, NOV 2006, 1556-603X/06/, IEEE 2006 
 
 
 The model seeks inspiration form the real world ants. Although it is not a replica and is optimized at places. Please view the description section for complete details. 
@@ -221,6 +221,34 @@ If gotCube is set, i.e. ant has a cube then it calls *drop()*, check step() func
 
 }}}
 
+foundNest(), foundCube() and setDir() are self-explanatory and can be viewed [here http://code.google.com/p/cscs-repast-demos/source/browse/mudit/Ant/src/ant/relogo/Ant.groovy]
+
+===Patches(UserPatches)===
+
+The following is the variable description of the class. 
+
+{{{
+
+@Diffusible
+		def level = 0     //Depics the Chemical Level
+		def cubes=0       //Number of Cubes
+		def nest=0        //The patch is a part of the nest
+
+		def dropped = 0   //Set if an ant carrying cube passed over it
+		def diffused = 0  //Set if an ant carrying food passed through it's neighbor
+		def val=10        //Time of evaporation
+		def lim=val       //Limit till which chemical can be sniffed
+
+}}}
+
+The variables which are declared as @Diffusible in the patch can be accessed in other classes. Rest variables are used only in the given class.
+
+
+
+===Observer(UserObserver)
+
+
+
 ------
 
 =References=
@@ -236,3 +264,5 @@ If gotCube is set, i.e. ant has a cube then it calls *drop()*, check step() func
  # http://en.wikipedia.org/wiki/Ant#Communication
 
  # http://en.wikipedia.org/wiki/Ant_colony_optimization   
+
+ # http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html 
