@@ -122,7 +122,7 @@ _Fig. 8_
 
 Now let us have a look at various elements on your screen (Windows 7 screenshots). The figure mentions various blocks which are either self - explanatory or will be dealt later in the guide(refer to Fig. 9). Since it is an introductory guide, some parts are left unmarked, to be explored by the user
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.jpg
 
 _Fig. 9_
 
