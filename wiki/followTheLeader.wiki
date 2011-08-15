@@ -17,26 +17,33 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/FTL(main).JPG
 
 <wiki:toc max_depth="2" />
 
-=What is this for?=
+=What is this tutorial for?=
 
-This How-To/What-Is guide basically will help you learn how to model using [Where to learn more about RepastS? RepastS] with Relogo[2] Platform. 
-This guide does not assume any pre-requisites apart from the mentioned [3] ones, although it is advisable to go through
-each question in the order in which they are given. Please don't skip questions if you are a new user. Each question builds
-on to the other. Although, this guide tells you how to make a model from scratch, but you can also try other documents[4] 
-Hope you'll find this guide fun and easy to learn. Cheers 
-______
-[1]To know more about RepastS, check Where to learn more about Repast S? 
-[2]Know more about Relogo modeling platform, check Where to see more models and documentation? 
-[3]Check, What are the Prerequisites?
-[4]Check, What other such documents are available? 
+==How to use this tutorial?==
 
-=What is Multi-Agent Modelling?=
+This How-To/What-Is guide basically will help you learn how to model using RepastS with Relogo Platform. This guide does not assume any pre-requisites apart from the mentioned ones, although it is advisable to go through each question in the order in which they are given. Please don't skip questions if you are a new user. Each question builds
+on to the other. Although, this guide tells you how to make a model from scratch, but you can also try other documents (_a list can be found in What other such documents are available?_). 
+
+Some part of the code is not dealt with in this tutorial. That code is mostly feature extension and does not affect the overall behavior of the system. 
+   
+Hope you'll find this guide fun and easy to learn. Cheers !!! 
+
+==Where is this model and who wrote this?==
+
+The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeade here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant to the system behavior. Let us see what other documents and models are available.   
+
+==What other such documents are available?==
+
+You can check out the Relogo Getting Started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf here]. It is an excellent piece of text for starting with relogo. You can also check other Relogo models and their Model Description and documentation 
+[http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here]. But let us first understand a bit about multi-agent modeling.
+
+==What is Multi-Agent Modelling?==
 
 Agent-based modelling and simulation (ABMS) is a relatively new approach to modelling complex systems composed of
 interacting, autonomous agents. Agents have behaviours, often described by simple rules, and interactions with other
 agents, which in turn influence their behaviours. By modelling agents individually, the full effects of the diversity that
-exists among agents in their attributes and behaviours can be observed as it gives rise to the behaviour of the system as a
-whole. [Ref1]
+exists among agents in their attributes and behaviours can be observed as it gives rise to the behavior of the system as a
+whole. [1]
 
 We are infact doing the same for this model. We are modeling artificial ants. These ants have relatively simple behaviour,
 described by simple rules (which will be talked about in the nest question). This behavior is influenced by other ants and 
@@ -49,22 +56,28 @@ The model is a simple multi agent model which demonstrates how the ant lines bec
 The model basically has an ant "nest"  and the "food"(refer to Fig. 1) . The ants are moving from 
 the nest to the food source. Ants are guided by a set of simple rules, which are as follows :
 
- * An Ant can be either a "Leader"(first Ant coming out of the nest) or a "Follower" (rest all Ants)
- * Leader Ant
-	* It moves towards the food scent (refer to Fig. 2)
-	*  It turns at random angles (less than specified) and moves forward (refer to Fig. 2)
- 	*  It stops if it finds food. (refer to Fig. 2)
-* Follower Ants
-	* They start moving after a specified time delay (refer to Fig. 
+An Ant can be either a "Leader"(first Ant coming out of the nest) or a "Follower" (rest all Ants)
 
-	* They follow the ant infront of them by facing it and moving forward. (refer to Fig. 3) 
+*Leader Ant*
+	# It moves towards the food scent (refer to Fig. 2)
+	# It turns at random angles (less than specified) and moves forward (refer to Fig. 2)
+ 	#  It stops if it finds food. (refer to Fig. 2)
+*Follower Ants*
+	# They start moving after a specified time delay (refer to Fig. 
+	# They follow the ant infront of them by facing it and moving forward. (refer to Fig. 3) 
 	 
 Initially, ants take a longer route from nest to food. (refer to Fig. 4, denoted by red). The following ants take smaller routes (refer to Fig. 5, denoted by blue) and finally the last ant takes 
-the smallest route (refer to Fig 6, denoted by green). Keep on reading to find the prerequisites in the next section to make this model. You also check out the analysis in What are the observations? (Although I would suggest making the model first and then reading the question, again go sequentially.) 
+the smallest route (refer to Fig 6, denoted by green). Keep on reading to find the prerequisites in the next section to make this model. You also check out the analysis in _What are the observations?_ (Although I would suggest making the model first and then reading the question, again go sequentially.) 
 
 =What are the Prerequisites?= 
 
-Before we can do anything with ReLogo, we need to make sure that we have a proper installation of Repast Simphony (version 2.0 Beta, released on 12/3/2010 or later). Instructions on downloading and installing Repast Simphony on various platforms can be found here[1]. After installing go to the default/recommended setting for relogo. After installing the software open it 
+Before we can do anything with ReLogo, we need to make sure that we have a proper installation of Repast Simphony (version 2.0 Beta, released on 12/3/2010 or later). Instructions on downloading and installing Repast Simphony on various platforms can be found here[1]. After installing go to the default/recommended setting for relogo. After installing the software open it.
+
+If you are opening RepastS for the first time, it asks for a default workspace. The workspace is a directory used to store the models which you create, along with several settings. Do the following: 
+ # Select a desired workspace, using the Browse. 
+ # Check on _Use this as default and do not ask again_   
+ # Click on OK
+
 and switch to <Relogo> prospective using the following step:
 
 - Open RepastS
@@ -104,11 +117,9 @@ _________________________________________________________________________
 =What are the generated relogo primitives?=
 =What are the default/recommended settings for Relogo?=
 
-=Who made this guide?=
 
-=What other such documents are available?=
 
-=What other References were used?=
+=References=
 
 [1] "Tutorial on agent-based modelling and simulation", CM Macal and MJ North, Journal of Simulation (2010) 4, 151162, 2010 Operations Research 
       Society 
