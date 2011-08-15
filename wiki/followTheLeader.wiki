@@ -19,7 +19,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/FTL(main).JPG
 
 =What is this for?=
 
-This How-To/What-Is guide basically will help you learn how to model using RepastS[1] with Relogo[2] Platform. 
+This How-To/What-Is guide basically will help you learn how to model using [Where to learn more about RepastS? RepastS] with Relogo[2] Platform. 
 This guide does not assume any pre-requisites apart from the mentioned [3] ones, although it is advisable to go through
 each question in the order in which they are given. Please don't skip questions if you are a new user. Each question builds
 on to the other. Although, this guide tells you how to make a model from scratch, but you can also try other documents[4] 
@@ -94,7 +94,7 @@ _________________________________________________________________________
 =How to add Parameters of Simulation?=
 
 =Where to see more models and documentation?=
-=Where to learn more about Repast S?=
+=Where to learn more about RepastS?=
 
 =How to distribute your models?=
 =How to add patch variables?=
