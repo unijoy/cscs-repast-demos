@@ -2517,7 +2517,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation.png
 
 === Complete Model ===
 
- * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
+ * The [https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/tags/2011_06_18_model_16/ complete source code] of the model is accessible from the proper SVN tag directly.
 
 = Conclusion and Final Words =
 
