@@ -30,12 +30,9 @@ Hope you'll find this guide fun and easy to learn. Cheers !!!
 
 ==Where is this model and who wrote this?==
 
-The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeade here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant to the system behavior. Let us see what other documents and models are available.   
+The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeade here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant to the system behavior. 
+Let us first understand a bit about multi-agent modeling.
 
-==What other such documents are available?==
-
-You can check out the Relogo Getting Started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf here]. It is an excellent piece of text for starting with relogo. You can also check other Relogo models and their Model Description and documentation 
-[http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here]. But let us first understand a bit about multi-agent modeling.
 
 =What to know and do before getting started?=
 
@@ -123,40 +120,55 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%208.jpg
 
 _Fig. 8_
 
-Now let us have a look at various elements on your screen now (Windows 7 screenshots). The figure mentions the name of various blocks and
-the explaination is either self - explanatory or will be dealt later in the guide. (refer to Fig. 9)
+Now let us have a look at various elements on your screen (Windows 7 screenshots). The figure mentions the name of various blocks which are either self - explanatory or will be dealt later in the guide. (refer to Fig. 9)
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.JPG
 
 _Fig. 9_
 
+=How to make the model?=
 
-=How to add Turtles?=
-=How to add Patches?=
-=How to add Observers?=
-=How to add links?=
+==How to make the a new project?==
+==How to add Turtle behavior?==
+==How to add Patch behavior?==
+==How to add link behavior?==
+==How to add Observers?==
 =How to add User Panel?=
-=How to run the model?=
-=How to add Data Sets?=
-=How to add Outputters?=
-=How to add Charts?=
-=How to add external plugins?=
-=What are the observations?=
-=How to change Run Options?=
-=How to add Parameters of Simulation?=
 
-=Where to see more models and documentation?=
-=Where to learn more about RepastS?=
+=How to run the model and what all I can do during run time?=
 
-=How to distribute your models?=
-=How to add patch variables?=
-=How to add Undirected and Directed Links?=
-=How to add new turtle shapes?=
-=What are the available Graphical Elements?=
-=What are the generated relogo primitives?=
-=What are the default/recommended settings for Relogo?=
+==How to run the model?==
+==How to use the User Panel?==
+==How to add Data Sets?==
+==How to add Outputters?==
+==How to add Charts?==
+==How to add external plugins?==
+
+=What are the Outcomes and how can I have further control?=
+
+==What are the observations?==
+==How to change Run Options?==
+==How to add Parameters of Simulation?==
 
 
+=Where to look for after this?=
+
+==What other such documents are available?==
+
+You can check out the Relogo Getting Started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf here]. It is an excellent piece of text for starting with relogo. You can also check other Relogo models and their Model Description and documentation 
+[http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here]. 
+ 
+==Where to learn more about RepastS?==
+
+=What else is there? (Appendix)=
+
+==How to distribute your models?==
+==How to add patch variables?==
+==How to add Undirected and Directed Links?==
+==How to add new turtle shapes?==
+==What are the available Graphical Elements?==
+==What are the generated relogo primitives?==
+==What are the default/recommended settings for Relogo?==
 
 =References=
 
