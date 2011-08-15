@@ -58,7 +58,7 @@ The model is a simple multi agent model which demonstrates how the ant lines bec
 The model basically has an ant "nest"  and the "food"(refer to Fig. 1) . The ants are moving from 
 the nest to the food source. 
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig. 1.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%201.JPG
 
 _Fig. 1_
 
@@ -75,22 +75,22 @@ An Ant can be either a "Leader"(first Ant coming out of the nest) or a "Follower
 	# They follow the ant infront of them by facing it and moving forward. 
         #  It stops if it finds food.
 	 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig. 2.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%202.JPG
 
 _Fig. 2_
 
 Initially, ants take a longer route from nest to food. (refer to Fig. 3, denoted by red line). The following ants take smaller routes (refer to Fig. 4, denoted by blue lines) and finally the last ant takes 
 the smallest route (refer to Fig 5, denoted by green line). 
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig. 3.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%203.JPG
 
 _Fig. 3_
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig. 4.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%204.JPG
 
 _Fig. 4_
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig. 5.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%205.JPG
 
 _Fig. 5_
 
