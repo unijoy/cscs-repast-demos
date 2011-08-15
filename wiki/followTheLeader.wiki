@@ -120,11 +120,21 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%208.jpg
 
 _Fig. 8_
 
-Now let us have a look at various elements on your screen (Windows 7 screenshots). The figure mentions the name of various blocks which are either self - explanatory or will be dealt later in the guide. (refer to Fig. 9)
+Now let us have a look at various elements on your screen (Windows 7 screenshots). The figure mentions various blocks which are either self - explanatory or will be dealt later in the guide(refer to Fig. 9). Since it is an introductory guide, some parts are left unmarked, to be explored by the user
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.JPG
 
 _Fig. 9_
+
+The Elements are as follows:
+
+ # New, Save, Save All, Print (Left->Right)
+ # Bug, Run (Left->Right)
+ # New Relogo Project, Turtle, Link Patch Observer (Left->Right)
+ # Prospective
+ # Project Explorer
+ # Working Space
+ # Console  
 
 =How to make the model?=
 
@@ -133,7 +143,7 @@ _Fig. 9_
 ==How to add Patch behavior?==
 ==How to add link behavior?==
 ==How to add Observers?==
-=How to add User Panel?=
+==How to add User Panel?==
 
 =How to run the model and what all I can do during run time?=
 
