@@ -109,11 +109,11 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%206.JPG
 
 _Fig. 6_
 
-and switch to <Relogo> prospective using the following step:
+and switch to Relogo prospective using the following step:
 
  # Go to the extreme top right corner and select relogo prospective (refer to Fig. 7)
  # If it  is not available, click  on the double arrow to get a drop down menu (refer to Fig. 8)
- # Select Relogo prospective by clicking it (refer to Fig. 7)
+ # Select Relogo prospective by clicking it (refer to Fig. 8)
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%207.JPG
 
