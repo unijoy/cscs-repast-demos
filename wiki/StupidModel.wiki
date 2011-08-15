@@ -2331,13 +2331,195 @@ Show how to create multiple classes of agents that interact.
 
 === Implementation Notes ===
 
+We approached the final version of the _StupidModel _series. Well done! Keep up and the model is finished at the end of this section!
+
+First, we need a few constant definitions again. Open up class `Constants` and add this two new definitions to the end of the class:
+
+{{{
+public final class Constants {
+	// ...
+	
+	public static final int PREDATOR_COUNT = 200;
+	public static final int PREDATOR_SIGHT_RANGE = 1;
+}
+}}}
+
+==== Updating the Utility Functions ====
+
+Note that we have a `getGrid()` member method in class `Bug` created previously. Now, since we have more than one agent type moving on the grid (i.e., the `Predator` class), it seems a good idea to generalize that method and move it to the `SMUtils` class as a utility function (since this function comes handy for both classes). Open up `SMUtils` and add the following definition to the end of the class:
+
+{{{
+public final strictfp class SMUtils {
+	// ...
+	
+	public static Grid<Object> getGrid(final Object o) {
+		@SuppressWarnings("unchecked")
+		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(o)
+				.getProjection(Constants.GRID_ID);
+		return grid;
+	}
+}
+}}}
+
+This way if we extend our model with additional agents moving on the same grid, we can utilize this function there too. It accepts any objects (since our grid is defined to contain `Object` types), queries the context that object is assigned to, and returns the according grid projection.
+
+Now, the `getGrid()` function in the `Bug` class may be removed, and replaced by a simple `getGrid(this)` to perform the refactoring and update the code to use the new function.
+
+==== Creating the Predator Class ====
+We need a representation in our program for the `Predator` agents as well, just like `Bug` and `HabitatCell`. Create the new `Predator` class in the `agents` package, and copy the following content:
+
+{{{
+public class Predator {
+
+	public Predator() {
+		super();
+	}
+
+	@ScheduledMethod(start = 1, interval = 1, priority = -1)
+	public void hunt() {
+		// Get the reference for the used grid
+		final Grid<Object> grid = SMUtils.getGrid(this);
+
+		// Get the grid location of this agent
+		final GridPoint location = grid.getLocation(this);
+
+		// First, a predator looks through a shuffled list of its immediately
+		// neighboring cells (including its own cell)
+
+		final List<GridCell<HabitatCell>> cellNeighborhood = new GridCellNgh<HabitatCell>(
+				grid, location, HabitatCell.class,
+				Constants.PREDATOR_SIGHT_RANGE, Constants.PREDATOR_SIGHT_RANGE)
+				.getNeighborhood(true);
+
+		SimUtilities.shuffle(cellNeighborhood, RandomHelper.getUniform());
+
+		// As soon as the predator finds a bug in one of these cells it "kills"
+		// the bug and moves into the cell
+
+		for (final GridCell<HabitatCell> cell : cellNeighborhood) {
+			if (hasAgent(grid, cell, Bug.class)) {
+				// (However, if the cell already contains a predator, the
+				// hunting predator simply quits and remains at its current
+				// location)
+				if (hasAgent(grid, cell, Predator.class)) {
+					return;
+				}
+
+				killBugAt(grid, cell);
+				moveTo(grid, cell);
+				return;
+			}
+		}
+
+		// If these cells contain no bugs, the predator moves randomly to one of
+		// them
+		final GridCell<HabitatCell> randomCell = SMUtils
+				.randomElementOf(cellNeighborhood);
+		moveTo(grid, randomCell);
+	}
+
+	private <T> boolean hasAgent(final Grid<Object> grid,
+			final GridCell<HabitatCell> cell, final Class<T> clazz) {
+		final List<GridCell<T>> neighborhood = new GridCellNgh<T>(grid,
+				cell.getPoint(), clazz, 0, 0).getNeighborhood(true);
+
+		final int ctr = neighborhood.get(0).size();
+		return (ctr > 0);
+	}
+
+	private void killBugAt(final Grid<Object> grid,
+			final GridCell<HabitatCell> cell) {
+		final List<GridCell<Bug>> bugsAt = new GridCellNgh<Bug>(grid,
+				cell.getPoint(), Bug.class, 0, 0).getNeighborhood(true);
+		bugsAt.get(0).items().iterator().next().die();
+	}
+
+	private void moveTo(final Grid<Object> grid,
+			final GridCell<HabitatCell> cell) {
+		// We have our new GridPoint to move to, so relocate agent
+		final GridPoint newGridPoint = cell.getPoint();
+		grid.moveTo(this, newGridPoint.getX(), newGridPoint.getY());
+	}
+
+	@Override
+	public String toString() {
+		final String location = (ContextUtils.getContext(this) != null) ? SMUtils
+				.getGrid(this).getLocation(this).toString()
+				: "[?, ?]";
+
+		// Override default Java implementation just to have a nicer
+		// representation
+		return String.format("Predator @ location %s", location);
+	}
+}
+}}}
+
+The class has a nullary constructor, because it does not need any information for proper initialization. Predators have a `move` action to move randomly and search for bugs in their surroundings. If they find the first, the found `Bug` agent is killed and they move to the location of the killed `Bug`. Also note that it is declared with the standard `@ScheduledMethod` annotation, with the help of the `priority` member: the action is scheduled after all the `Bug` actions.
+
+The `hasAgent()` function is a simple utility function for `Predator` agents to determine if a given cell has an agent from a specified type located at or not. It is used to check if a cell contains a `Bug` agent to hunt down or contains a `Predator` and cannot move to that position (in the method `hunt()`).
+
+There is also a small utility function that performs the query of a `Bug` agent on a specified `GridCell` object, and calls its `die()` method.
+
+The `moveTo()` function does nothing more just moves the `Predator` to the location of the specified `GridCell` object.
+
+The new agent class also has a simple `toString()` method just for debugging.
+
+==== Updating Model Initialization ====
+
+In order to instantiate the `Predator` agents, we also have to update the model initialization, i.e., the `build()` function of class `StupidModelContextBuilder`. Right after creating the `Bug` agents, add the following code segment to create the new agents:
+
+{{{
+@Override
+public Context<Object> build(final Context<Object> context) {
+	// ...
+	
+	// Creating Bug agents here
+	
+	for (int i = 0; i < Constants.PREDATOR_COUNT; ++i) {
+		final Predator predator = new Predator();
+		
+		context.add(predator);
+		final NdPoint pt = space.getLocation(predator);
+		grid.moveTo(predator, (int) pt.getX(), (int) pt.getY());
+	}
+	
+	// ...
+}
+}}}
+
+==== Updating the Simulation GUI ====
+We need to edit the current visualization settings of the model. Start up the simulation, and double-click on _Grid with Food Display_ in the _Scenario Tree_. The _Options Editor_ should show up, which contains the settings of the current element you chose (practically the options you set during its creation).
+
+Click on the _Agent Selection_ tab on the left, and use the arrows to add the `Predator` agents to the grid display too.
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/adding_predators_to_grid_display.png
+
+Also, on the _Agent Style_ tab on the left, select _Predator_ from the _Agents_ list and click on the _Edit style_ button on the right. On the appearing wizard, use the following settings:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/predators_agent_style.png
+
+Click on _OK_, and the model is finished!
+
+That is all! We have created multiple classes of agents that interact in the same environment. Good job!
+
+Start the simulation run, and if everything goes well, the simulation should look like something like this:
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/StupidModel/simulation.png
+
 === Further Fun ===
+
+ * The `hunt` action is declared with the standard `@ScheduledMethod` annotation. To be consistent, and make the dynamics of the model clearer, put the action definition into the `activateAgents()` function of the class `StupidModelContextBuilder`. This way all of the actions may be found in one place, and the model is easier to understand, update and maintain.
+ * The number of `Predator` agents in the simulation is defined by a simple constant value. Make it a model parameter similiarly to the `bugCount` parameter:
+   # Use _predatorCount_ for the _Name_.
+   # Use _Initial Number of Predators_ for _Display Name_.
+   # Use _int_ for the _Type_.
+   # Use _200_ for the _Default Value_. 
 
 === Complete Model ===
 
  * The [todo complete source code] of the model is accessible from the proper SVN tag directly.
 
-= Conclusion =
+= Conclusion and Final Words =
 
 Congratulations, you have created a complex model from basic building blocks offered by the standard Repast Simphony Java API. You should have no problems from now on to start an own project and use the features of Simphony you become familiar with.
 
