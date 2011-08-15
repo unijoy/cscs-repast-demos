@@ -100,26 +100,38 @@ Keep on reading to find the prerequisites in the next section to make this model
 
 Before we can do anything with ReLogo, we need to make sure that we have a proper installation of Repast Simphony (version 2.0 Beta, released on 12/3/2010 or later). Instructions on downloading and installing Repast Simphony on various platforms can be found [http://repast.sourceforge.net/download.html here]. After installing go to the default/recommended setting for relogo. After installing the software open it.
 
-If you are opening RepastS for the first time, it asks for a default workspace. The workspace is a directory used to store the models which you create, along with several settings. Do the following: 
+If you are opening RepastS for the first time, it asks for a default workspace (refer to Fig. 6). The workspace is a directory used to store the models which you create, along with several settings. Do the following: 
  # Select a desired workspace, using the Browse. 
  # Check on _Use this as default and do not ask again_   
  # Click on OK
 
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%206.JPG
+
+_Fig. 6_
+
 and switch to <Relogo> prospective using the following step:
 
-- Open RepastS
-- Go to the extreme top right corner and select relogo prospective (refer to Fig. 7)
-- If it  is not available, click  on the double arrow to get a drop down menu (refer to Fig. 8)
-- Select Relogo prospective by clicking it (refer to Fig. 8)
+ # Go to the extreme top right corner and select relogo prospective (refer to Fig. 7)
+ # If it  is not available, click  on the double arrow to get a drop down menu (refer to Fig. 8)
+ # Select Relogo prospective by clicking it (refer to Fig. 7)
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%207.JPG
+
+_Fig. 7_
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%208.JPG
+
+_Fig. 8_
 
 Now let us have a look at various elements on your screen now (Windows 7 screenshots). The figure mentions the name of various blocks and
 the explaination is either self - explanatory or will be dealt later in the guide. (refer to Fig. 9)
 
-_________________________________________________________________________
-[1] website
+https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.JPG
+
+_Fig. 9_
+
 
 =How to add Turtles?=
-
 =How to add Patches?=
 =How to add Observers?=
 =How to add links?=
