@@ -11,9 +11,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: [Mark#Virus Computer Virus Spread]
     * Done: tba
   * *[Rowan Rowan Copley]* (mentor: nick)
-    * Planned: tba
-    * Working: N-Bodies
-    * Done: [Boids Boids(groovy) alpha version]
+    * Planned: VacuumWorld
+    * Working: Boids(java), SugarMarket
+    * Done: Boids(relogo), N-Bodies
   * *Kwame Green* (mentor: mike)
     * Planned: tba
     * Working: tba
