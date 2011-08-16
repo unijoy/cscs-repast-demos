@@ -170,10 +170,44 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2016.jpg
 
 _Fig. 16_
 
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2017.jpg
+
+_Fig. 17_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2018.jpg
+
+_Fig. 18_
+
 ==How to add Patch behavior?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2019.jpg
+
+_Fig. 19_
+
 ==How to add link behavior?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2020.jpg
+
+_Fig. 20_
+
+
 ==How to add Observers?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2021.jpg
+
+_Fig. 21_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2022.jpg
+
+_Fig. 22_
+
+
 ==How to add User Panel?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2023.JPG
+
+_Fig. 23_
+
 
 =How to run the model and what all I can do during run time?=
 
