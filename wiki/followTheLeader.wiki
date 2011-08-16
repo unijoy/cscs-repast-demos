@@ -490,7 +490,45 @@ Now let's see how to set properties of a patch to a "Food Patch"
 
 This function is used to set a patch a "Food Patch". We will call this function from "UserObserver.groovy" _(More on that later)_ 
 
-But let us look at the function first. 
+The functions used here are getPxcor() and getPyCor(). It gives the x and y coordinate of the patch. If it is same as the food location, i.e. (8,0) then the following code is executed. 
+
+*Note :* Scroll to the patch section in the quick reference which you opened in the other tab to know more patch related functions. You can also try the [Ant] model in which the patches are used extensively. 
+
+You can also compare the coordinates to a range of values to make bigger nests and food piles. You can also go through the [areaCoverage] model to arrange the patches in different shapes.    
+
+Similarly, we can add a makeNest() function. This will convert the patch into a Nest patch. So, the overall UserPatch.groovy should look like this :
+
+{{{
+
+class UserPatch extends BasePatch
+{
+	@Diffusible
+	def food=0
+	def nest=0
+	
+	//Sets a patch as a Food patch
+	def setFood()
+	{
+		if(getPxcor()==8&&getPycor()==0)
+		{
+			food=1
+			setPcolor(green())
+		}
+	}
+	
+	//Sets a patch as a Nest Patch
+	def setNest()
+	{
+		if(getPxcor()==-8&&getPycor()==0)
+		{
+			nest=1
+			setPcolor(yellow())
+		}
+	}
+}
+}}} 
+
+So, we have created agents and environment, now lets look at how to create simple links.
 
 ==How to add link behavior?==
 
@@ -500,6 +538,8 @@ _Fig. 20_
 
 
 ==How to add Observers?==
+
+
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2021.jpg
 
