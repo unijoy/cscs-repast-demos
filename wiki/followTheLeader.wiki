@@ -138,7 +138,38 @@ The Elements are as follows:
 =How to make the model?=
 
 ==How to make the a new project?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2010.JPG
+
+_Fig. 10_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2011.JPG
+
+_Fig. 11_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2012.jpg
+
+_Fig. 12_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2013.JPG
+
+_Fig. 13_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2014.JPG
+
+_Fig. 14_
+
+
 ==How to add Turtle behavior?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2015.jpg
+
+_Fig. 15_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2016.jpg
+
+_Fig. 16_
+
 ==How to add Patch behavior?==
 ==How to add link behavior?==
 ==How to add Observers?==
