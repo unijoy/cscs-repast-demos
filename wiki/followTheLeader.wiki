@@ -127,17 +127,26 @@ _Fig. 9_
 
 The Elements are as follows:
 
- # New, Save, Save All, Print (Left->Right)
- # Bug, Run (Left->Right)
- # New Relogo Project, Turtle, Link Patch Observer (Left->Right)
+ # New, Save, Save All, Print (Left to Right)
+ # Bug, Run (Left to Right)
+ # New Relogo Project, Turtle, Link Patch Observer (Left to Right)
  # Prospective
  # Project Explorer
  # Working Space
  # Console  
 
+Note : The elements can be customized according to user requirements.
+Let us look at various steps in making this model.
+
 =How to make the model?=
 
 ==How to make the a new project?==
+
+The first thing you need to do while making a model is make a new project. This can be done by various means : 
+
+ # _File >> New >> Relogo Project_ (refer to Fig. 10)
+ # _New Project Button >> Relogo Project_ (refer to Fig. 11)
+ # Click on the _New Relogo Project_ icon (refer to Fig.11) 
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2010.JPG
 
@@ -147,18 +156,29 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2011.JPG
 
 _Fig. 11_
 
+After any of the mentioned options a New Project _wizard_ appears on the screen. Do the following (refer to Fig. 12):
+
+ # Enter the name of the project "followTheLeader" in the Project Name Field.
+ # Click on _Next_
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2012.jpg
 
 _Fig. 12_
+
+After clicking the _Next_ button the wizard should look like Fig. 13. Click on the _Finish_ button  
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2013.JPG
 
 _Fig. 13_
 
+
+After _Finish_ the wizard will create a tree structure of the new project, and once it is done you can view your project in the project explorer. Click on the small arrow to view the sub directories. In the source folder you will find default classes. The structure should look like Fig. 14
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2014.JPG
 
 _Fig. 14_
 
+Right click on "UserTurtle.groovy" and select _delete_. We would not be using this class. Some models might require this class and others _(It is left to the user to explore)_. 
 
 ==How to add Turtle behavior?==
 
