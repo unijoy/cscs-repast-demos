@@ -180,8 +180,18 @@ _Fig. 14_
 
 Right click on "UserTurtle.groovy" and select _delete_. We would not be using this class. Some models might require this class and others _(It is left to the user to explore)_. 
 
+Let us see what is a turtle and how can we add one in our project.
+
 ==How to add Turtle behavior?==
 
+"Turtles" or "Agents" are the basic building blocks of a multi-agent model. We also need "Ant" type turtles. We will first define the behavior of these ants using simple rules which were explained above and in further sections we will see how to create them and change their behaviors.
+
+Let us first see how to add a turtle class to your project. 
+Select _project explorer >> followTheLEader >> src >> followtheleader.relogo then you can follow any of the two methods:
+
+ # _Right Click on followtheleader.relogo >> New Turtle_ (refer to Fig. 15)
+ # Click on the _New Turtle_ button. (refer to Fig. 15)
+ 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2015.jpg
 
 _Fig. 15_
