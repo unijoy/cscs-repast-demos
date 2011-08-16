@@ -236,7 +236,10 @@ Now let us see how these variables will be guiding an ant's behavior
 
 Note: Both _leader-follower_ and _enable-disable_ could have been clubbed into two variables, but they are taken separately for explanation sake.   
 
+First we look at the step() function that is present in all the _Ants_ and is called at periodic interval of time.
+
 {{{
+
 def step()
 	{
 		if(!disable)//if not in nest 
@@ -254,6 +257,12 @@ def step()
 	}
 
 }}}
+
+If an ant is not in nest and if it the leader then moveLeader() is called, else if it is a follower ant moveFollower() is called. We will look into these function after a while. If an Ant is moving from nest to food (i.e it is an "enable" follower or leader.) it should update few parameters. Let us look at these functions one-by-one.
+
+{{{
+
+}}} 
 
 ==How to add Patch behavior?==
 
