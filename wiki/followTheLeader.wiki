@@ -24,7 +24,9 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/FTL(main).JPG
 This How-To/What-Is guide basically will help you learn how to model using RepastS with Relogo Platform. This guide does not assume any pre-requisites apart from the mentioned ones, although it is advisable to go through each question in the order in which they are given. Please don't skip questions if you are a new user. Each question builds
 on to the other. Although, this guide tells you how to make a model from scratch, but you can also try other documents (_a list can be found in What other such documents are available?_). 
 
-Some part of the code is not dealt with in this tutorial. That code is mostly feature extension and does not affect the overall behavior of the system. 
+Some part of the code is not dealt with in this tutorial. That code is mostly feature extension and does not affect the overall behavior of the system.
+
+Most of the figures in tutorial are numbered and the text before it explains the numbering. This numbering could be different methods, screen elements, or steps etc. 
    
 Hope you'll find this guide fun and easy to learn. Cheers !!! 
 
@@ -33,13 +35,12 @@ Hope you'll find this guide fun and easy to learn. Cheers !!!
 The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeade here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant to the system behavior. 
 Let us first understand a bit about multi-agent modeling.
 
-
 =What to know and do before getting started?=
 
 ==What is Multi-Agent Modelling?==
 
 Agent-based modelling and simulation (ABMS) is a relatively new approach to modelling complex systems composed of
-interacting, autonomous agents. Agents have behaviours, often described by simple rules, and interactions with other
+interacting, autonomous ?agents?. Agents have behaviours, often described by simple rules, and interactions with other
 agents, which in turn influence their behaviours. By modelling agents individually, the full effects of the diversity that
 exists among agents in their attributes and behaviours can be observed as it gives rise to the behavior of the system as a
 whole. [1]
@@ -219,6 +220,41 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2018.jpg
 
 _Fig. 18_
 
+Now we will start writing the code for describing the behavior of an Ant. Let us first look at few variables that are used in "Ant.groovy" and why. 
+
+{{{
+	def leader=0    //Is Set if the Ant is a Leader
+	def follower=0  //Is Set if the Ant is a Follower
+	def moved = 0   //Counts the number of steps moved
+	def enable = 0  //Is Set if the Ant is ready to go from nest to food
+	def disable=0   //Is Set if the Ant reaches the food pile 
+}}}
+
+So, an Ant at all times will be aware of the number of steps it took, using the "moved" variable and weather it is a "leader" or a "follower". Using "enable" and "disable" the Ant can figure out weather it is in the nest or in a food pile.
+
+Now let us see how these variables will be guiding an ant's behavior
+
+Note: Both _leader-follower_ and _enable-disable_ could have been clubbed into two variables, but they are taken separately for explanation sake.   
+
+{{{
+def step()
+	{
+		if(!disable)//if not in nest 
+		{
+			if(leader)//if ant is a leader ant
+				moveLeader()
+				
+			
+			else//if follower ant
+				moveFollower()
+
+		if(enable||leader)//If moving from nest to food update various parameters
+			update()				
+		}
+	}
+
+}}}
+
 ==How to add Patch behavior?==
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2019.jpg
@@ -287,5 +323,5 @@ You can check out the Relogo Getting Started guide [http://repast.sourceforge.ne
 
 =References=
 
-[1] "Tutorial on agent-based modelling and simulation", CM Macal and MJ North, Journal of Simulation (2010) 4, 151162, 2010 Operations Research 
+[1] "Tutorial on agent-based modelling and simulation", CM Macal and MJ North, Journal of Simulation (2010) 4, 151?162, 2010 Operations Research 
       Society 
