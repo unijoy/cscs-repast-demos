@@ -28,7 +28,7 @@ class UserObserver extends BaseObserver{
 			setxy(0,0)
 			setColor(red())
 		}
-		setDefaultShape(Cube, "square")
+		/*setDefaultShape(Cube, "square")
 		createCubes(50)
 		{
 			setxy(-10+random(4),10+random(4))
@@ -43,26 +43,33 @@ class UserObserver extends BaseObserver{
 		{
 			setxy(-8+random(4),-4+random(4))
 			setColor(turquoise())
-		}
+		}*/
 		
-		setDefaultShape(ActiveChem, "square")
+		for(i=0;i<numCubes;i++)
+		{
+			patch(-14+random(4),10+random(4)).makePile()
+			patch(8+random(4),0+random(4)).makePile()
+			patch(-14+random(4),-6+random(4)).makePile()
+		}
+
+		//setDefaultShape(ActiveChem, "square")
 				
 	}
 
 	def go()
 	{
-		ask(activeChems())
+	/*	ask(activeChems())
 		{
 			step()
 		}
-		ask(ants())
+	*/  ask(ants())
 		{
 			step()
 		}
-		ask(cubes())
+	/*	ask(cubes())
 		{
 			step()
-		}
+		}*/
 		ask(patches())
 		{
 			evaporate()

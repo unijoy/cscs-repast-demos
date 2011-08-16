@@ -13,15 +13,24 @@ import repast.simphony.relogo.ast.Diffusible;
 		
 		@Diffusible
 		def level = 0
+		def cubes = 0
 		
 		def dropped = 0
 		def diffused = 0
-		def val=10
+		def val=3
 		def lim=val
 		
 		def makeNest()
 		{
 			setPcolor(magenta())
+		}
+		
+		//Converts a patch to a Food Pile patch
+		def makePile()
+		{
+			setPcolor(orange())
+			cubes++
+			level=1000
 		}
 		
 		def evaporate()
@@ -42,7 +51,7 @@ import repast.simphony.relogo.ast.Diffusible;
 			{
 				pcolor = scaleColor(green(),level,0,120)
 				level=level+3
-				if(level>(lim*3))
+				if(level>(lim*6))
 				{
 					setPcolor(black())
 					level=0
@@ -50,12 +59,14 @@ import repast.simphony.relogo.ast.Diffusible;
 					lim=val
 				}
 			}
+			if(cubes>0)
+				setPcolor(orange())
 		}
 		
 		def set_main()
 		{
 			if(dropped)
-				lim=lim+val
+				level=0
 			else
 				dropped=1
 		}
@@ -63,9 +74,15 @@ import repast.simphony.relogo.ast.Diffusible;
 		def set_diffused()
 		{
 			if(diffused)
-				lim=lim+val
+				level=0
 			else
 				diffused=1
+		}
+		//resets a food pile patch
+		def chkFood()
+		{
+			if(cube==0)
+			setPcolor(black())
 		}
 		def resetAll()
 		{
@@ -74,6 +91,7 @@ import repast.simphony.relogo.ast.Diffusible;
 			 diffused = 0
 			 val=20
 			 lim=val
+			 cubes=0
 		}
 		
 }
