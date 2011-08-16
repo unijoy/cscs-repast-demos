@@ -262,7 +262,28 @@ If an ant is not in nest and if it the leader then moveLeader() is called, else 
 
 {{{
 
+def moveLeader()
+{
+
+        //Face the center of the food pile
+	facexy(8,0)
+
+	//randomly face any direction
+	if(random(2))
+		left(random(dev))
+	else
+		left(-1*random(dev))
+}
+
 }}} 
+
+If a "Leader" ant has to move, it will face the center of the food pile, using the function _facexy(8,0)_. facexy(x,y) will make the turtle face towards a point given by (x,y) coordinates. For other such functions and details, view [http://repast.sourceforge.net/docs/api/relogo/index.html this], infact it is advisable that is you are reading the tutorial online open the above mentioned link and [http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html this]
+
+Similarly, _random(2)_ is used to generate random number 0 or 1. _random(n)_ generates random numbers in the interval (0,n]. Similarly, _random(dev) will generate random numbers less than "dev". We will get back on to how the variable "dev" is set. 
+
+So, an ant can randomly move to it's right(there is a (-)ve sign) or left. The function _left()_ used in the code is used turn the turtle at a given angle to it's left. So, the turtle will turn at random angles also.     
+
+*Note:* Refer to the _area map_ given below for the initial positioning:   
 
 ==How to add Patch behavior?==
 
