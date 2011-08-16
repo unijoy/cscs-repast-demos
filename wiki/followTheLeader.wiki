@@ -65,12 +65,11 @@ An Ant can be either a "Leader"(first Ant coming out of the nest) or a "Follower
 
 *Leader Ant*
 	# It moves towards the food scent 
-	# It turns at random angles (less than specified) and moves forward 
- 	#  It stops if it finds food. 
+	# It turns at random angles and moves forward and stops on finding food. 
+
 *Follower Ants*
 	# They start moving after a specified time delay (refer to Fig. 
-	# They follow the ant infront of them by facing it and moving forward. 
-        #  It stops if it finds food.
+	# They follow the ant infront of them by facing it and moving forward and stops on finding food.
 	 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%202.JPG
 
