@@ -189,20 +189,31 @@ Let us see what is a turtle and how can we add one in our project.
 Let us first see how to add a turtle class to your project. 
 Select _project explorer >> followTheLEader >> src >> followtheleader.relogo then you can follow any of the two methods:
 
- # _Right Click on followtheleader.relogo >> New Turtle_ (refer to Fig. 15)
+ # _Right Click on followtheleader.relogo >> New >> Turtle_ (refer to Fig. 15)
  # Click on the _New Turtle_ button. (refer to Fig. 15)
  
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2015.jpg
 
 _Fig. 15_
 
+After the above command a new turtle dialog box appears on the screen. 
+Follow the given steps (refer to Fig. 16):
+
+ # Click on the _Name_ field and enter name. "Ant" for our project.
+ # Click on _Generate Comments_ to automatically generate comments. (It might be useful)
+ # Click on _Finish_
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2016.jpg
 
 _Fig. 16_
 
+After doing this, check your project's Directory structure, it will have a new class in the _followTheLeader >> src >> followtheleader.relogo_ with the name "Ant.groovy" (refer to Fig. 17) 
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2017.jpg
 
 _Fig. 17_
+
+Double click on Ant.groovy and you will be able to see the file. It should look like Fig. 18
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2018.jpg
 
