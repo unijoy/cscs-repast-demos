@@ -355,16 +355,6 @@ Now we have defined the behavior of an ant, check out the [**] marked section in
 
 The overall "Ant.groovy" code should look like this : 
 {{{
-package followtheleader.relogo
-
-import static repast.simphony.relogo.Utility.*;
-import static repast.simphony.relogo.UtilityG.*;
-import repast.simphony.relogo.BasePatch;
-import repast.simphony.relogo.BaseTurtle;
-import repast.simphony.relogo.Plural;
-import repast.simphony.relogo.Stop;
-import repast.simphony.relogo.Utility;
-import repast.simphony.relogo.UtilityG;
 
 class Ant extends BaseTurtle 
 {
@@ -539,28 +529,151 @@ _Fig. 20_
 
 ==How to add Observers?==
 
-
+Now, we have defined the behavior of ants and links and properties of patches. Next we will modify the "UserObserver.groovy" (refer to fig. 21) file and create ants, links and patches. We will also call some functions of these classes, either iteratively or once.  
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2021.jpg
 
 _Fig. 21_
 
+You can also make a new observer. Follow the similar steps as that of making a new turtle but select the _new observer_ button instead. (Search in Fig.15) 
+
+Lest us first begin by making a _setup()_ function
+
+{{{
+	def setup(){
+			clearAll()
+			ask(patches())
+			{
+				setFood()
+				setNest()
+			}
+					
+}}} 
+
+First we will Clear everything by using _claerAll()_. The next thing we have to do is setup "Nest" and "Food". For doing this we query all the patches by using _ask(patches())_ function. We then call _setFood()_ and _setNest()_ function for all the patches(). The _setFood()_ and _setNest()_ functions are defined in _How to add patch behavior?_.
+
+Next we will create both leader and follower ants.
+
+{{{
+setDefaultShape(Ant,"turtle")
+			createAnts(1)
+			{
+				setxy(-8,0)
+				setColor(red())
+			}
+			ask(ants()){
+				setLeader()
+			}
+			createAnts((numAnts-1))
+			{
+				setxy(-8,0)
+				setColor(red())
+			}
+			ask(ants()){
+				setFollower()
+			}
+
+}}}
+
+For creating ants we first fixed a default shape. You can do so by using a function _setDefaultShape(Turtle Type, "shape")_
+Turtle Type is same as your class name and "shape" is an image file saved in the _followTheLeader >> shapes_ directory. We have used one of the shapes available, i.e. "turtle" (refers to turtle.svg). (refer to Fig. 22 for details)
+ 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2022.jpg
 
 _Fig. 22_
 
+Once you have set the default shape, you can create turtles. _createAnts(number)_ is used. This function creates the specified "number" of ants. "numAnts" is again an adjustable variable and we will deal with it later. _setxy(x,y)_ is used to create the ant at a specified (x,y) location. _setColor(num)_ function is used to set the color of the ant equivalent to the color represented by "num"._red()_ returns the number corresponding to red color.
+
+So, we are basically making one ant at (-8,0), i.e. in nest, of red color and calling the _setLeader()_ function of this ant using the _ask()_. Then we are creating "numAnts"-1 number of ants and calling the _setFollower()_ function. So basically we have created leader and follower ants.
+
+Next we make a _go()_ function to call the _step()_ function of all the ants. The complete code for UserObserver.groovy would look like this :
+
+{{{
+class UserObserver extends BaseObserver{
+
+	
+	def setup(){
+			clearAll()
+			
+			ask(patches())
+			{
+				setFood()
+				setNest()
+			}
+			
+			setDefaultShape(Ant,"turtle")
+			createAnts(1)
+			{
+				setxy(-8,0)
+				setColor(red())
+			}
+			ask(ants()){
+				setLeader()
+			}
+			createAnts((numAnts-1))
+			{
+				setxy(-8,0)
+				setColor(red())
+			}
+			ask(ants()){
+				setFollower()
+			}
+		}
+			
+		def go()
+		{
+			ask(ants())
+			{
+				step()
+			}
+		}
+	}	
+
+}}}
+ 
+Now we have done everything i.e. defined the behavior of ants, set up the environment using Userpatch, defined links and finally created links, turtles and environment and the overall guiding functions in the UserObserver. Our model is almost ready to run. 
+
+Did we forget anything? Well, yes we did. Remember those variables which we left - "numAnts", "dev" etc. Well the next section talks about the same.    
 
 ==How to add User Panel?==
+
+Let us now look at how we can change the various parameters of our model for different runs, without modifying the code. For this we have to modify the UserGlobalPanelFactory.groovy. This you can find in _followTheLeader >> src >> followtheleader >> UserGlobalFactory.groovy_ (refer to Fig. 23)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2023.JPG
 
 _Fig. 23_
 
+Let us first look at the code 
+
+{{{
+
+
+public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFactory{
+	public void addGlobalsAndPanelComponents(){
+	
+		addButtonWL("setup", "Setup")
+		addButtonWL("go","Go Once")
+		addToggleButtonWL("go", "Go")
+		addSliderWL("numAnts", "Population", 50,1,400,100)
+		addSliderWL("lapse", "Time Delay", 1,1,5,2)
+		addSliderWL("dev", "Deviation", 1,1,140,90)
+		
+		}
+}
+}}}
+We made two functions _setup()_ and _go()_ in our _UserObserver.groovy_ class. We can call these functions on button clicks. So we added two buttons with label using _addButtonWL("function", "Label")_. When pressed they will call the function with the same name as the first parameter once.
+
+Next we added a toggle button. Once this button is pressed, it will call the "go" function iteratively till it's toggled again. 
+This is followed by sliders with labels. The three sliders with label to set the three variables which we have already used, i.e. "numAnts", "lapse", "dev".
+
+Now out followTheLeader model complete and ready to run. Lets see how to run this model.
 
 =How to run the model and what all I can do during run time?=
 
 ==How to run the model?==
+
 ==How to use the User Panel?==
+
 ==How to add Data Sets?==
 ==How to add Outputters?==
 ==How to add Charts?==
@@ -569,7 +682,9 @@ _Fig. 23_
 =What are the Outcomes and how can I have further control?=
 
 ==What are the observations?==
+
 ==How to change Run Options?==
+
 ==How to add Parameters of Simulation?==
 
 
