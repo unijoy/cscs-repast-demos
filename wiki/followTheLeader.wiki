@@ -353,17 +353,144 @@ The code is quite self explanatory, but the importance of this segment is, when 
 
 Now we have defined the behavior of an ant, check out the [**] marked section in the above question for the overall behavior. This is quite similar to the one we described in Whar are we modeling?
 
+The overall "Ant.groovy" code should look like this : 
+{{{
+package followtheleader.relogo
+
+import static repast.simphony.relogo.Utility.*;
+import static repast.simphony.relogo.UtilityG.*;
+import repast.simphony.relogo.BasePatch;
+import repast.simphony.relogo.BaseTurtle;
+import repast.simphony.relogo.Plural;
+import repast.simphony.relogo.Stop;
+import repast.simphony.relogo.Utility;
+import repast.simphony.relogo.UtilityG;
+
+class Ant extends BaseTurtle 
+{
+	def leader=0    //Is Set if the Ant is a Leader
+	def follower=0  //Is Set if the Ant is a Follower
+	def moved = 0   //Counts the number of steps moved
+	def enable = 0  //Is Set if the Ant is ready to go from nest to food
+	def disable=0   //Is Set if the Ant reaches the food pile
+	
+	def step()
+	{
+		if(!disable)//if not in nest 
+		{
+			if(leader)//if ant is a leader ant
+				moveLeader()
+				
+			
+			else//if follower ant
+				moveFollower()
+
+		if(enable||leader)//If moving from nest to food update various parameters
+			update()				
+		}
+	}
+}
+
+def moveLeader()
+{
+	facexy(8,0)//Face the center of the food pile
+
+	//randomly face any direction
+	if(random(2))
+		left(random(dev))
+	else
+		left(-1*random(dev))
+}
+
+def moveFollower()
+{
+	//If the turtle in front has taken a given number of steps
+	if(turtle(getWho()-1).moved>lapse)
+	{
+		enable=1
+		st()	
+		face(turtle(getWho()-1))
+	}
+}
+
+def update()
+{
+	moved++
+	forward(0.5)
+	
+	//If it finds food
+	if(patchHere().food)
+	{
+		ht()
+		disable=1
+	}
+}
+	
+	
+def setLeader()
+{
+	leader=1
+}
+
+def setFollower()
+{
+	if(!leader)
+	{
+		ht()
+		follower=1
+	}
+}
+
+}
+
+}}}
+
 *Note:* The terms "turtle" and "ant" are used interchangeably through out the guide. Both refer to "agents", turtle is a general term related to modeling using Relogo, whereas, ant is specific to this model.
 
 Comment:You can have more than one type of turtles in your models. [GuidingBots] and Zombies are two such models. You can add a new turtle type following the steps mentioned above. You can then add a behavior and you can even make turtles interact and change each others' behavior. Go through the [GuidingBots] documentation of Relogo getting started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf Zombies] for details.
+
+Let us now look at what are patches?
      
 ==How to add Patch behavior?==
 
+In the above section we saw how we can give behavior to turtles. But we know that the behavior of the turtles is not only dependent on other turtles but also on the environment. Turtles move in the environment and thus change or modify their behavior. So, how do we do that? There comes patches. Although, you will explore many other uses of Patches as you continue to play with multi agent modeling. For, now lets define patch properties for different parts of a simple environment. 
 
+We can add patches in a similar way we added turtles. But we will be using the default UserPAtch.groovy that was created when we created our project. You can find it in the project explorer (Fig. 19). Double click on it to open and work with it. 
 
+ 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2019.jpg
 
 _Fig. 19_
+
+Although we can add the a new patch (refr to Fig. 15 & 16 ant try finding a new patch button). The steps after that are similar, till you get a your patch in the Project Explorer.
+ 
+To start with lets look at the variable description first.
+
+{{{
+        @Diffusible
+	def food=0 //Is set if it is a food patch
+	def nest=0 // Is set if it is a nest patch
+}}}
+
+The two variables are not only visible in UserPatch.groovy, but can also be modified by other classes. This is so because they are declared as @Diffusible. This annotation is used to
+
+Now let's see how to set properties of a patch to a "Food Patch"
+
+{{{
+//Sets a patch as a Food patch
+	def setFood()
+	{
+		if(getPxcor()==8&&getPycor()==0)
+		{
+			food=1
+			setPcolor(green())
+		}
+	}
+}}}
+
+This function is used to set a patch a "Food Patch". We will call this function from "UserObserver.groovy" _(More on that later)_ 
+
+But let us look at the function first. 
 
 ==How to add link behavior?==
 
