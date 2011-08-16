@@ -220,7 +220,7 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2018.jpg
 
 _Fig. 18_
 
-Now we will start writing the code for describing the behavior of an Ant. Let us first look at few variables that are used in "Ant.groovy" and why. 
+Now we will start writing the code for describing the behavior of an Ant. The behavior and variables described and used in this are with all the ants. Let us first look at few variables that are used in "Ant.groovy" and why. 
 
 {{{
 	def leader=0    //Is Set if the Ant is a Leader
@@ -279,13 +279,87 @@ def moveLeader()
 
 If a "Leader" ant has to move, it will face the center of the food pile, using the function _facexy(8,0)_. facexy(x,y) will make the turtle face towards a point given by (x,y) coordinates. For other such functions and details, view [http://repast.sourceforge.net/docs/api/relogo/index.html this], infact it is advisable that is you are reading the tutorial online open the above mentioned link and [http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html this]
 
-Similarly, _random(2)_ is used to generate random number 0 or 1. _random(n)_ generates random numbers in the interval (0,n]. Similarly, _random(dev) will generate random numbers less than "dev". We will get back on to how the variable "dev" is set. 
+Similarly, _random(2)_ is used to generate random number 0 or 1. _random(n)_ generates random numbers in the interval (0,n]. Similarly, _random(dev)_ will generate random numbers less than "dev". We will get back on to how the variable "dev" is set later. 
 
-So, an ant can randomly move to it's right(there is a (-)ve sign) or left. The function _left()_ used in the code is used turn the turtle at a given angle to it's left. So, the turtle will turn at random angles also.     
+**So, an ant can randomly move to it's right(there is a (-)ve sign) or left. The function _left()_ used in the code is used turn the turtle at a given angle to it's left. The turtle will turn at random angles also.     
 
 *Note:* Refer to the _area map_ given below for the initial positioning:   
 
+Similarly let us look at the moveFollower()
+
+{{{
+
+def moveFollower()
+{
+	//If the turtle in front has taken a given number of steps
+	if(turtle(getWho()-1).moved>lapse)
+	{
+		enable=1
+		st()	
+		face(turtle(getWho()-1))
+	}
+}
+}}}
+
+This part of code might look a bit tricky, but lets analyze it from the starting. 
+
+First of all the getWho() function used will give the ID of the ant which is calling it. Each ant when created will have an ID given to it by default. So, getWho()-1 will be the ant with ID 1 less than the present. So, if the (getWho()-1).moved > lapse, i.e. if the "moved" variable of the ant just before the present one has a higher value than "lapse" then the following block will be executed."Lapse" is again a variable about which we will talk about in the coming sections. It is basically a time delay between two ants.
+
+If it is so, the ant is enabled. _st()_ is also a pre-defined function, it just makes the turtle visible. _turtle(n)_ is another function that is used, it returns the turtle corresponding to ID number  = n. So, _face(turtle(getWho()-1))_ is quite self explanatory. 
+
+**So, basically if a turtle is a follower turtle, it will face the turtle which is in front of it, provided the turtle in front have been moving for greater than "lapse" period of time. 
+
+Once the ants are facing where they have to, let us look at the _update()_ function. This will be called for all those ants who are enabled and also for the leader, i.e. all those ants which are moving from the "nest" to the "food".
+
+{{{
+def update()
+{
+	moved++
+	forward(0.5)
+	
+	//If it finds food
+	if(patchHere().food)
+	{
+		ht()
+		disable=1
+	}
+}
+}}} 
+
+**"moved" gets updated. _forward(n)_ function is used to move the ant forward, in the direction in which it was facing for a specified number of steps. 
+
+**If the ant finds food in it's new position, it will be disabled. The _patchHere()_ function used here will give the patch on which the ant is on. "food" is a variable in the UserPatch class _(More on this later)_. But what exactly are patches. Well, lets first look at a small piece of code before answering this question.
+
+{{{
+
+//sets leader to 1
+def setLeader()
+{
+	leader=1
+}
+
+//sets follower to 1
+def setFollower()
+{
+	if(!leader)
+	{
+		ht()
+		follower=1
+	}
+}
+}}}
+
+The code is quite self explanatory, but the importance of this segment is, when are these functions called? Well, they are called from the "UserObserver.groovy" at the time of creation of ants. We will get back to that later.
+
+Now we have defined the behavior of an ant, check out the [**] marked section in the above question for the overall behavior. This is quite similar to the one we described in Whar are we modeling?
+
+*Note:* The terms "turtle" and "ant" are used interchangeably through out the guide. Both refer to "agents", turtle is a general term related to modeling using Relogo, whereas, ant is specific to this model.
+
+Comment:You can have more than one type of turtles in your models. [GuidingBots] and Zombies are two such models. You can add a new turtle type following the steps mentioned above. You can then add a behavior and you can even make turtles interact and change each others' behavior. Go through the [GuidingBots] documentation of Relogo getting started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf Zombies] for details.
+     
 ==How to add Patch behavior?==
+
+
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2019.jpg
 
