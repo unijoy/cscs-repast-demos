@@ -732,19 +732,19 @@ The parameters "Time Delay" and "Deviation" were kept constant and four differen
 || 3   ||    200   ||   (iii) ||
 || 4   ||    400   ||   (iv)  || 
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population50.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Population50.JPG
 
 _Population Fig. (i)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population100.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Population100.JPG
 
 _Population Fig. (ii)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population200.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Population200.JPG
 
 _Population Fig. (iii)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population400.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Population200.JPG
 
 _Population Fig. (iv)_
 
@@ -759,19 +759,19 @@ in the deviation is "Low" then you need less population of ants. The influence o
 || 3   ||    3     ||   (iii) ||
 || 4   ||    4     ||   (iv)  ||
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay1.JPG
+http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay1.JPG
 
 _Delay Fig. (i)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay2.JPG
+http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay2.JPG
 
 _Delay Fig. (ii)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay3.JPG
+http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay3.JPG
 
 _Delay Fig. (iii)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay4.JPG
+http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay4.JPG
 
 _Delay Fig. (iv)_
 
