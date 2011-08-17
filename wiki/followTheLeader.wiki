@@ -672,7 +672,43 @@ Now out followTheLeader model complete and ready to run. Lets see how to run thi
 
 ==How to run the model?==
 
+You can run your model by clicking at the drop down arrow (green box) along with the run button (red box) and selecting your model name, i.e. "followTheLeader". (refer to Fig. 24)
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2024.JPG
+
+_Fig. 24_
+
+Once you selected your model, you will get a new window like the one shown in Fig. 25._(It might take few seconds for your model to load)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2024.JPG
+
+_Fig. 24_
+
+In this you will find the following elements :
+ 
+ # Save
+ # Initialize, play, forward and reset (from Left to right)
+ # External Plug-ins
+ # Tick Counter
+ # User Panel
+ # Model
+ # Scenario Tree/Run Options/ Simulation Parameters
+
+*Note:* Click on _Initialize >> setup _ to setup the model
+
+Most of the parts are self explanatory and rest will be dealt in future.
+
 ==How to use the User Panel?==
+
+So, one of the elements mentioned above was a User Panel. We already wrote the code for the User Panel in _UserGlobalFactory.groovy_. The user panel will look like this : 
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2025.JPG
+
+_Fig. 25_
+
+You can change various parameters of the model using these controls. The changes take place in real time.
 
 ==How to add Data Sets?==
 ==How to add Outputters?==
@@ -683,10 +719,73 @@ Now out followTheLeader model complete and ready to run. Lets see how to run thi
 
 ==What are the observations?==
 
+
+The model which we made had some interesting outputs, two of them were studied and rest are left to the user. 
+
+*Relationship between the length of the path and population*
+
+The parameters "Time Delay" and "Deviation" were kept constant and four different runs were conducted for varying population. 
+
+|| Run ||Population|| Fig. No ||
+|| 1   ||    50    ||   (i)   ||
+|| 2   ||    100   ||   (ii)  ||
+|| 3   ||    200   ||   (iii) ||
+|| 4   ||    400   ||   (iv)  || 
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population50.JPG
+
+_Population Fig. (i)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population100.JPG
+
+_Population Fig. (ii)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population200.JPG
+
+_Population Fig. (iii)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20population400.JPG
+
+_Population Fig. (iv)_
+
+*Note:* Red Line is the path foe the first ant, Blue lines are the path traced by every 15th follower ant and Green Line is the path of the last ant. 
+
+Although, all the runs were random, but a  general trend is observed. As the population increases the final path becomes smoother and shorter. Although in this case the deviation was kept constant but if the deviation is "High" you will need a large population to obtain a smooth final path. Similarly, if 
+in the deviation is "Low" then you need less population of ants. The influence of time delay is checked using the following test runs.
+
+|| Run ||Time Delay|| Fig. No ||
+|| 1   ||    1     ||   (i)   ||
+|| 2   ||    2     ||   (ii)  ||
+|| 3   ||    3     ||   (iii) ||
+|| 4   ||    4     ||   (iv)  ||
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay1.JPG
+
+_Delay Fig. (i)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay2.JPG
+
+_Delay Fig. (ii)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay3.JPG
+
+_Delay Fig. (iii)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%20Delay4.JPG
+
+_Delay Fig. (iv)_
+
+So, from the above runs it is quite clear that if the time delay is increased the path becomes smoother and shorter in a small population. It can be put the other way round, on increasing the delay the path becomes smoother and shorter.
+
+*Note :* "Population" nad "Deviation" were kept constant for the test runs.
+
+The user can try and do test runs to check the relationship of "Deviation" with other parameters.
+
 ==How to change Run Options?==
 
 ==How to add Parameters of Simulation?==
 
+==How to extend the model?==
 
 =Where to look for after this?=
 
