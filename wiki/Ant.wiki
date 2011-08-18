@@ -53,7 +53,7 @@ Model Outputter is also added. The added model outputter is comma separated valu
 
 Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Food" (in each pile) on y-axis and "Time" on x-axis is plotted. It is an overlay of the graph for each food pile.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Ants/Ant%28pllot%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/Ants/Ants%28pllot%29.png
 
 For the plot it can be concluded that the ants exploit the food source which is closest to the nest first. _Check with many test runs_
 
