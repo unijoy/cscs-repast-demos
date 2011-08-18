@@ -9,7 +9,7 @@
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Index%28running%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Index.jpg
 
 ------
 
