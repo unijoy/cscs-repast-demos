@@ -1,104 +1,71 @@
-#summary Localization of Mobile Wireless Sensor Nodes
+#summary Guiding Bots Model.
 #sidebar TableOfContents
 
-= Summary = 
-
-
- * Model        : GuidingBots
-
- * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
-
- * Platform     : [RepastSReLogo RepastS ReLogo]
-
- * Mentor       : Dr. Eric Tatara
-
- * Author       : [Mudit Mudit Raj Gupta]
-
-
-=Contents=
+= Contents = 
 
 <wiki:toc max_depth="2" />
 
-=0. Before Getting Started=
+---------
 
-Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
+= Summary = 
 
-Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+ * Model        : Guiding Bots
+ * Platform     : [RepastSReLogo RepastS ReLogo]
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
+ * Documentation: http://code.google.com/p/cscs-repast-demos/wiki/GuidingBotsDescription  
+ * Mentor       : Dr. Eric Tatara
+ * Author       : [Mudit Mudit Raj Gupta]
 
-RepastS models can be created with [http://repast.sourceforge.net/docs/RepastFlowGettingStarted.pdf Flowcharts], a Logo-like language called [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf ReLogo], or purely in [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Java and/or Groovy], and even C++ with [http://repast.sourceforge.net/docs/RepastHPCManual.pdf Repast HPC].
+---------
 
-ReLogo was used to create the model. The documentations and other demo models on the same platform can be found [http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here].
+=1. Description=
 
-It is suggested that you go through the following models also, as the guiding algorithm is quite similar, although the implementation is entirely different.
+Guiding Motes are more sophisticated agents in the environment and are supposed to guide other daughter mote. They can transfer data to a daughter mote. A daughter mote can hatch into a guiding mote and can further guide other daughter motes, although these motes will have an error due to lack of sophisticated instruments. So, they will again convert back to daughter motes. If such motes guide other daughter motes, the error is also propogated  All daughter motes have to reach at the center of the world, where they die. They do not have good positioning instruments, so they rely on guiding motes.
 
- # [AreaCoverage]
+Such a scenario is likely to happen in Mobile Wireless Sensor Networks. Only few nodes will be equipped with GPS positioning systems, other nodes rely on them or motor feedback sysems, which are normally in accurate.
 
-=1. Introduction =
+https://cscs-repast-demos.googlecode.com/svn/wiki/GuidingBots/GuidingBots%28main%29.JPG
 
+---------
 
-This model is designed keeping in mind a very important problem in the Mobile Wireless Sensor Network Domain - Localization. This model is inspired by the work:
- 
+=2. User Control=
 
-- * [http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5610184 " A RSSI based localization algorithm for multiple mobile robots" by Qingxin Zhang, Qinglong Di, Guangyan Xu, Xiaoyan Qiu; Computer, Mechatronics, Control and Electronic Engineering (CMCE), 2010 International Conference on 24-26 Aug. 2010; 190 - 193, IEEE 2010]
+The user can control the population of both daughter motes and guiding motes.Further, user can control the step size and error tolerance also. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
 
-The model basic implementation of the localization strategy based on RSSI (Received Signal Strength Indicator) and a simple algorithm _(Please check the description section)_
-  
-The model is set up with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area and transferring information further. The daughter can pass the information only to a specified number of agents because of the error introduced due to each information transfers. 
-
-A similar method is used in the project demonstrated in the video. The difference is that the Guiding Robot (Poles) are stationary and Daughter Robot (Car) is moving.
-
-<wiki:video url="http://www.youtube.com/watch?v=xMDsKiTxD8g"/>
-
-=2. Description= 
+https://cscs-repast-demos.googlecode.com/svn/wiki/GuidingBots/GuidingBots%28panel%29.JPG
 
 
-_to be added soon_
+---------
+
+=3. Output=
+
+Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Alive daughter Motes". One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/GuidingBots/Model%20Output.txt here]
+
+*Note:* 
+
+ # This Output can be fed into various external plug-ins available with RepastS like MATLAB and spreadsheet.
+
+---------
+
+=4. Analysis=
+
+Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Alive Daughter Motes" on y-axis and "Time" on x-axis is plotted. 
+
+https://cscs-repast-demos.googlecode.com/svn/wiki/GuidingBots/GuidingBots%28plot%29.png
+
+For the plot it can be concluded that the death rate of the daughter motes follows an exponential function. _Check with many test runs_
+
+---------
+
+=5. Extending =
 
 
-==User Panel==
+---------
 
-The section briefly describes the elements of the User Panel and the parameters they control. 
-
-_to be added soon_
- 
-
-==Data Sets==
+=6. Applications=
 
 
-_to be added soon_
 
+--------
 
-==Outputters==
-
-
-_to be added soon_
-
-
-==Plots==
-
-
-_to be added soon_
-
-
-==External Plugin==
-
-
-_to be added soon_
-
-
-=3. Applications=
-
-
-It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transfered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
-
- 
-=4. Extending the Model=
-
-_to be added soon_
-
-=5. References=
-
-
-* http://en.wikipedia.org/wiki/Swarm_robotics
-
-* http://www.swarmrobotic.com/
+*Note :* For detailed explanation of the model, how various features are added and guiding algorithm and code refer to [http://code.google.com/p/cscs-repast-demos/wiki/GuidingBotsDescription this] 
