@@ -1,0 +1,104 @@
+#summary Localization of Mobile Wireless Sensor Nodes
+#sidebar TableOfContents
+
+= Summary = 
+
+
+ * Model        : GuidingBots
+
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/GuidingBots/
+
+ * Platform     : [RepastSReLogo RepastS ReLogo]
+
+ * Mentor       : Dr. Eric Tatara
+
+ * Author       : [Mudit Mudit Raj Gupta]
+
+
+=Contents=
+
+<wiki:toc max_depth="2" />
+
+=0. Before Getting Started=
+
+Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
+
+Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+
+RepastS models can be created with [http://repast.sourceforge.net/docs/RepastFlowGettingStarted.pdf Flowcharts], a Logo-like language called [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf ReLogo], or purely in [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Java and/or Groovy], and even C++ with [http://repast.sourceforge.net/docs/RepastHPCManual.pdf Repast HPC].
+
+ReLogo was used to create the model. The documentations and other demo models on the same platform can be found [http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here].
+
+It is suggested that you go through the following models also, as the guiding algorithm is quite similar, although the implementation is entirely different.
+
+ # [AreaCoverage]
+
+=1. Introduction =
+
+
+This model is designed keeping in mind a very important problem in the Mobile Wireless Sensor Network Domain - Localization. This model is inspired by the work:
+ 
+
+- * [http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=5610184 " A RSSI based localization algorithm for multiple mobile robots" by Qingxin Zhang, Qinglong Di, Guangyan Xu, Xiaoyan Qiu; Computer, Mechatronics, Control and Electronic Engineering (CMCE), 2010 International Conference on 24-26 Aug. 2010; 190 - 193, IEEE 2010]
+
+The model basic implementation of the localization strategy based on RSSI (Received Signal Strength Indicator) and a simple algorithm _(Please check the description section)_
+  
+The model is set up with some daughter agents in an unknown area. The guiding agents will move around the area and transfer information to the daughter agents and once the daughter agents receive the information they move to cover the given area and transferring information further. The daughter can pass the information only to a specified number of agents because of the error introduced due to each information transfers. 
+
+A similar method is used in the project demonstrated in the video. The difference is that the Guiding Robot (Poles) are stationary and Daughter Robot (Car) is moving.
+
+<wiki:video url="http://www.youtube.com/watch?v=xMDsKiTxD8g"/>
+
+=2. Description= 
+
+
+_to be added soon_
+
+
+==User Panel==
+
+The section briefly describes the elements of the User Panel and the parameters they control. 
+
+_to be added soon_
+ 
+
+==Data Sets==
+
+
+_to be added soon_
+
+
+==Outputters==
+
+
+_to be added soon_
+
+
+==Plots==
+
+
+_to be added soon_
+
+
+==External Plugin==
+
+
+_to be added soon_
+
+
+=3. Applications=
+
+
+It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknow area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transfered to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area.
+
+ 
+=4. Extending the Model=
+
+_to be added soon_
+
+=5. References=
+
+
+* http://en.wikipedia.org/wiki/Swarm_robotics
+
+* http://www.swarmrobotic.com/
