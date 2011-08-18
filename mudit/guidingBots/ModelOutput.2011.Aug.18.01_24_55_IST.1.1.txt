@@ -1,0 +1,2 @@
+"timestamp","killedDaughter"
+1.0,130
