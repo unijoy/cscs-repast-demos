@@ -39,7 +39,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/AreaCovrage%28pan
 
 =3. Output=
 
-Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Number of Motes" (Outside 14 units radius). One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/AreaCoverage/Model%20Output.txt here] :
+Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Number of Motes" (Outside 14 units radius). One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/AreaCoverage/Model%20Output.txt here]
 
 *Note:* 
 
