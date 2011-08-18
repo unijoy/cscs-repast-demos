@@ -19,7 +19,7 @@
 
 ---------
 
-=2. Use Control=
+=2. User Control=
 
 ---------
 
@@ -35,4 +35,3 @@
 =5. Extending and Application==
 
 --------
-
