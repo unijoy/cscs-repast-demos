@@ -32,7 +32,7 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 				addSliderWL("bugSpeed", "Bug Speed", 1,1,5,3)
 				
 				//Number of Machines Slider
-				addSliderWL("numCatcher", "Number of Catchers", 1,1,4,8)
+				addSliderWL("numCatcher", "Number of Catchers", 1,1,8,4)
 				
 				//Slider for changing the time between 
 				addSliderWL("tym", "Time", 1,1,25,10)
