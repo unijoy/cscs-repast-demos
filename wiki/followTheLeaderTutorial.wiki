@@ -9,7 +9,7 @@
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/FTL(main).JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Index%28running%29.png
 
 ------
 
