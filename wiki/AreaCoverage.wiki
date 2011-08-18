@@ -55,6 +55,8 @@ Various analysis could be carried out with the model, but for demonstration purp
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/AreaCoverage%28plot%29.png
 
+For the plot it can be concluded that the number of motes outside a given radius grow exponentially. _Check with many test runs_
+
 ---------
 
 =5. Extending =
