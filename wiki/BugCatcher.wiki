@@ -1,219 +1,69 @@
-#summary The Bug Catcher Model
+#summary BugCatcher Model.
 #sidebar TableOfContents
 
-=*Summary*=
-
-  * Model        : BugCatcher
-  * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/BugCatcher/
-  * Platform     : [RepastSReLogo RepastS ReLogo]
-  * Mentor       : Dr. Eric Tatara
-  * Author       : [Mudit Mudit Raj Gupta]
-
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Index).JPG
-
-------
-
-=*Content*=
+= Contents = 
 
 <wiki:toc max_depth="2" />
 
-------
+---------
 
-=1. Before Getting Started=
+= Summary = 
 
-Before trying to use the model, make sure that Repast Simphony is installed properly (version 2.0 Beta, released on 12/3/2010 or later) is available to use.
+ * Model        : BugCatcher
+ * Platform     : [RepastSReLogo RepastS ReLogo]
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/BugCatcher/
+ * Documentation: http://code.google.com/p/cscs-repast-demos/wiki/BugCatcherDescription  
+ * Mentor       : Dr. Eric Tatara
+ * Author       : [Mudit Mudit Raj Gupta]
 
-Instructions on downloading and installing Repast Simphony on various platforms can be found on the [http://repast.sourceforge.net/download.html Repast download website].
+---------
 
-RepastS models can be created with [http://repast.sourceforge.net/docs/RepastFlowGettingStarted.pdf Flowcharts], a Logo-like language called [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf ReLogo], or purely in [http://repast.sourceforge.net/docs/RepastJavaGettingStarted.pdf Java and/or Groovy], and even C++ with [http://repast.sourceforge.net/docs/RepastHPCManual.pdf Repast HPC].
+=1. Description=
 
-ReLogo was used to create the model. The documentations and other demo models on the same platform can be found [http://code.google.com/p/cscs-repast-demos/wiki/RepastSReLogo here].
-
-It is suggested that you go through the following models also, as the guiding algorithm is quite similar, although the implementation is entirely different.
-
- # [Moth_Basic]
- # [Moth_Advance]
-
-
------
-
-= 2. Introduction=
-
-A fly-killing device is used for pest control. A fly-killing device typically attracts flying insects, for example houseflies, wasps, moths and mosquitoes. The insects are killed or released. We have modeled such a device which kills the bugs after a user specified time. It is based on Bug Zapper. 
-
-A bug zapper is a device that attracts and kills insects that are attracted by light. A light source attracts insects to an electrical grid, where they are electrocuted by touching two wires with a high voltage between them. The name stems from the characteristic zap sound produced when an insect is electrocuted.
-
-A similar system is modeled here. Read the Description section to figure out the difference between the Moth_Advance model and BugCatcher Model. 
-
-The following video illustrates the use of bug zapper and that bugs can be seen dying due to electrocution. 
-
-<wiki:video url=<wiki:"video url="http://www.youtube.com/watch?v=Edv0v2mOL60"/>"/>
-
------
-
-=Description=
-
-==Why is it different?==
-
-The Bug Catcher model looks quite similar to the Moth_Advance model. In Moth_Advance model the intensity of the light source and the size of the light source are both adjustable, while when BugCatcher was modeled, it was assumed that the machine can catch bugs only in it's Moore's Neighborhood and this is fixed for all bug catching machines. The BugCatcher model can be made from the Moth_Advance model, but the way in which the two models are approached are different.
-
-==Algorithm and implementation==
-
-In the BugCatcher model, bugs move around randomly in an area and the bug catching machines are at various positions. The bugs get attracted towards (the center) the bug catching machines and get caught in them. They are electrocuted after and they die after some time. 
-
-The population of the bugs and the number of bug catching machines are both adjustable by the user through the User Panel. The time between electrocution and death can also be changed by the user through the User Panel. The bug speed can also be controlled by the same.  
-
-The basic model has two turtles. 
-
- # Bug
- # Machines 
-
-*Note:* The complete source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/BugCatcher/ here]. This page does not explains the whole code. The available code is commented to be understood by the reader. This page explains certain code segments (from the source code) and explain the basic concept and design. 
-
-Let us first start by talking about [http://code.google.com/p/cscs-repast-demos/source/browse/mudit/BugCatcher/src/bugcatcher/relogo/Bug.groovy moth.groovy]. This defines the characteristics of a bug. Taking the first block in the code. 
-
-{{{
-
-        def step()
-	{
-		//bug gets attracted towards the machine 
-		def dir = maxOneOf(neighbors()){
-					
-		count(machinesOn(it))}
-		face(dir)
-		
-		//Bug Speed can be adjusted by the user						
-		fd(bugSpeed*0.5)
-
-}}}
-
-In the step() function defined in bug.groovy the bug faces a machine if there is one around. Once the bug is facing the machine it moves forward a distance, half of the value entered by the user. The bug checks weather the machine is in it's Moore's neighborhood. The task has been accompalished by the help of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#maxOneOf%28List,%20Closure%29 maxOneOf()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#turtlesOn%28repast.simphony.relogo.Turtle%29 machinesOn()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Utility.html#count%28List%29 count()]. Another very common function used here to face the required direction is [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#face%28repast.simphony.relogo.Turtle%29 face()].
-
-If the bug is caught in any of the machines, it is electrocuted. In the process of electrocution the bug dies with a "Zap" sound. The bug although takes some time to get electrocuted and die. This time can be adjusted by a user interface. This behavior is modeled using the following code segment.
-
-{{{
-
-//If bug gets caught
-		if(count(machinesHere())>0)
-		{
-			
-			timeleft--
-			
-			//If specified time has lapsed bug dies
-			if(timeleft==0)
-			{
-                                label = "Zap"			
-				die()
-			}	
-		}
-
-}}}
-
-The two new functions used here are [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Patch.html#turtlesHere%28%29 machinesHere()] and [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Link.html#die%28%29 die()]. Both are used pretty commonly. You can check out the whole RepastS Relogo API [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/ReLogoPrimitives.html here]. Another statement which is worth a mention is the label statement. It is use to create fake "zap" sound or effect which is produced when the bug dies. timeleft is a variable that is declared above.
-
-{{{
-
-	//Time lapse between getting caught and death
-	def timeleft=tym
-
-}}} 
-
-Next we move on to a section which has some important code segment. This can be checked out at [http://code.google.com/p/cscs-repast-demos/source/browse/mudit/BugCatcher/src/bugcatcher/relogo/UserObserver.groovy USerObserver.groovy]
-
-In this we have two basic functions *setup()* and *go()*. In the setup() function [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#clearAll%28%29 clearAll()]. To clear the space. A user-entered number of bugs of "bug" shape are created at random X and Y coordinates.
-
-{{{
-
-def setup(){
-		
-		clearAll()
-		
-		setDefaultShape(Bug,"bug")
-		createBugs(numBugs){
-			setxy(randomXcor(),randomYcor())
-		}
-		setDefaultShape(Machine,"circle")
-		createMachines(numCatcher){
-			setxy(randomXcor(),randomYcor())
-			size=3
-		}
-		}
-
-}}}
-
- The details of [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#setDefaultShape%28Class,%20String%29 setDefaultShape()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Observer.html#createTurtles%28int%29 createMoths()], [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/repast/simphony/relogo/Turtle.html#setxy%28Number,%20Number%29 setxy()] and other functions can be found [file:///C:/RepastSimphony-2.0-beta/docs/ReLogoDocs/ReLogoPrimitives.html here]
-
-If you find the concept of shapes abstract, check out the shapes folder in your project explorer task bar. You will find the details of the shapes that are already made for you. You can also add your custom made shapes. These shapes can be applied to your agents just by using their names. An example of the same is in the code segment above. "bug" is one of the shapes in the shape folder.
-
-Another line that is worth a mention is the "size=3" statement. This sets the size of the circles, i.e. the machines to be 3.
-
-
-==User Panel==
-
-https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Bug(Usr).JPG
-
-
- * *Push Button (that rebounds)* 
-      
-  - Set Up : For setting up the motes in the area according to the selected options and settings. 
-
- * *Toggle Button* 
-
- - Go : For running the model unless the button is toggled again
-
- * *Sliders*
-
- - Number of Bugs : Population
+Each Bug moves moves randomly in a given area. If a bug encounters a Bug Catching Machine in it's Moore neighborhood it gets caught in the machine. The bug dies after a specified time in the bug catching machine.
  
- - Bug Speed : Distance moved per tick 
- 
- - Number of Catchers : Number of machines catching bugs
- 
- - Time : The time taken by electrocuted bugs to die.
+https://cscs-repast-demos.googlecode.com/svn/wiki/BugCatcher/BugCatcher%28main%29.JPG
 
-==Data Sets, Outputters and External Plugin==
+---------
 
-_to be added soon_
+=2. User Control=
 
-==Plots==
+The user can control the population of the bugs and the machines.User can also control the time lapse between getting caught and death of a bug and bug speed. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
 
-_to be added soon_
+https://cscs-repast-demos.googlecode.com/svn/wiki/BugCatcher/BugCatcher%28panel%29.JPG
 
-----
 
-=4. Applications=
+---------
 
-This model can be useful in studying social behavior. It is also useful in studying what could be most suitable position for placing a single catching device. The model can be extended to fix the position of machines and can be used to find the optimal time for catching bugs.
+=3. Output=
 
-The model can be used as reference and a multi-robot de mining simulation can be made on it. The bugs can be replaced by robots and they first find the mines and cluster around them and then drag the mines to a safe area. Go through the Area_coverage model for more swarm robotics application. 
+Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Bugs Alive". One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/BugCatcher/Model%20Output.txt here]
 
-----
+*Note:* 
 
-=5. Extending the Model=
+ # This Output can be fed into various external plug-ins available with RepastS like MATLAB and spreadsheet.
 
-==Increasing the Range==
+---------
 
-An feature that can be incorporated in the model is a slider for increasing the catching distance of the bug catcher. In this model the machine only catches bugs in the Moore's neighborhood. 
+=4. Analysis=
 
-The user can modify the code and use it to catch bugs in even larger area. A similar implementation can be found in both Moth_Advance and Moth_Basic models.
+Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Bugs Alive" on y-axis and "Time" on x-axis is plotted. 
 
-==Surrounding Forbidden Area==
+https://cscs-repast-demos.googlecode.com/svn/wiki/BugCatcher/BugCatcher%28plot%29.png
 
-An interesting feature that can be added to this model is the surrounding forbidden area. In food joints whenever a zapper or a bug catcher is used it is placed where there are no food items. This is done so that the dead bugs or some particles does not fall in food items. 
-So the user can add an interesting feature i.e. instead of killing the bug after a specified time user can hatch the bug into dead particles and kill it. These particles will randomly fall in the adjoining area. Thus making is unfit for keeping food items. 
+For the plot it can be concluded that the bug death is an exponential function. _Check with many test runs_
 
-Hint : Use the hatch() primitive and make a new turtle - dead particles.
+---------
 
-==Addition of Plots and Outputters==
+=5. Extending =
 
-Application specific graphs, outputters and plug in can be incorporated in the given model. One such example could be an overlay of the graphs showing which machine has killed how many bugs. Rate of killing bugs will also make an interesting plot. Other plots can also be made and is left to the reader/user. 
 
-----
+---------
 
-=6. References=
+=6. Applications=
 
- 1. http://en.wikipedia.org/wiki/Bug_zapper
 
- 2. http://home.howstuffworks.com/bug-zapper.htm
 
- 3. http://en.wikipedia.org/wiki/Fly-killing_device
+--------
+
+*Note :* For detailed explanation of the model, how various features are added and guiding algorithm and code refer to [http://code.google.com/p/cscs-repast-demos/wiki/BugCatcherDescription this] 
