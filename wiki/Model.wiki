@@ -1,0 +1,38 @@
+#summary One-sentence summary of the model.
+
+= Summary = 
+
+ * Model        : Model
+ * Platform     : [RepastSReLogo RepastS ReLogo]
+ * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/Model/
+ * Documentation: http://code.google.com/p/cscs-repast-demos/wiki/ModelDescription  
+ * Mentor       : Dr. Eric Tatara
+ * Author       : [Mudit Mudit Raj Gupta]
+
+---------
+
+<wiki:toc max_depth="2" />
+
+---------
+
+=1. Description=
+
+---------
+
+=2. Use Control=
+
+---------
+
+=3. Output=
+
+---------
+
+
+=4. Analysis=
+
+---------
+
+=5. Extending and Application==
+
+--------
+
