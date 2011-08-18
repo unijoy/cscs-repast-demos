@@ -19,9 +19,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: tba
     * Done: tba
   * *[Mudit Mudit Raj Gupta]* (mentor: eric)
-    * Planned: GuidingBots
-    * Working: Improving documentation and features of the "Done" Models
-    * Done: followTheLeader, Ant, AreaCoverage, Moth_Basic, Moth_Advance and BugCatcher
+    * Planned: Center of Mass  and Artificial Neural Networks (Binary Neurons) (If time permits) 
+    * Working: Improving Documentation
+    * Done: [GuidingBots][Ant][FollowTheLeader], [AreaCoverage], [BugCatcher], [Moth_Basic] and [Moth_Advance] 
   * *[Richard Richard Legendi]* (mentor: eric)
     * Planned: [ElFarol El Farol]
     * Working: StupidModel documentation
