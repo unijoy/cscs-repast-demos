@@ -12,6 +12,8 @@
 
 ---------
 
+= Contents = 
+
 <wiki:toc max_depth="2" />
 
 ---------
@@ -22,7 +24,7 @@ Each mote tries to move in an area where there are less number of motes. This re
  
 Model can be used to study the density of motes at different region, the effect of initial geometry on the spread and rate at which the expansion is taking place.
 
-https://code.google.com/p/cscs-repast-demos/source/svn/wiki/AreaCoverage/AreaCoverage%28main%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/AreaCoverage%28main%29.png
 
 ---------
 
@@ -30,7 +32,7 @@ https://code.google.com/p/cscs-repast-demos/source/svn/wiki/AreaCoverage/AreaCov
 
 User can select the initial geometry (from Line, Circle, Square and Hexagon) in which the motes are deployed. The parameters of the geometry can also be changed by the user. The user can also control the population of the motes and the step size. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
 
-https://code.google.com/p/cscs-repast-demos/source/svn/wiki/AreaCoverage/AreaCoverage%28panel%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/AreaCoverage%28panel%29.png
 
 ---------
 
@@ -50,7 +52,7 @@ Model Outputter is also added. The added model outputter is comma separated valu
 
 Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Number of Motes" (outside 14 units radius from the center) on y-axis and "Time" on x-axis is plotted.
 
-https://code.google.com/p/cscs-repast-demos/source/svn/wiki/AreaCoverage/AreaCoverage%28plot%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/AreaCoverage/AreaCoverage%28plot%29.png
 
 ---------
 
