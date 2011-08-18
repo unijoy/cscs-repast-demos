@@ -65,7 +65,7 @@ Model Outputter is also added. The added model outputter is comma separated valu
 
 Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Route Length" (for the recent "food" reaching ant) on y-axis and "Time" on x-axis is plotted.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/followTheLeader/followTheLeader%28plot%29.PNG
+https://cscs-repast-demos.googlecode.com/svn/wiki/followTheLeader/followTheLeader%28plot%29.png
 
 For the plot it can be concluded that the first ant takes the longest route and the route length decreases with subsequent ants. _Check with many test runs_
 
