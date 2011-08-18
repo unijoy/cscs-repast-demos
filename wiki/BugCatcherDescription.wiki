@@ -1,4 +1,4 @@
-#summary The Bug Catcher Model
+#summary Detailed description and explanation of Bug Catcher Model
 #sidebar TableOfContents
 
 =*Summary*=
