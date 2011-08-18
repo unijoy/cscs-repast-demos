@@ -1,6 +1,12 @@
 #summary Area Coverage Model.
 #sidebar TableOfContents
 
+= Contents = 
+
+<wiki:toc max_depth="2" />
+
+---------
+
 = Summary = 
 
  * Model        : Area Coverage
@@ -9,12 +15,6 @@
  * Documentation: http://code.google.com/p/cscs-repast-demos/wiki/areaCoverageDescription  
  * Mentor       : Dr. Eric Tatara
  * Author       : [Mudit Mudit Raj Gupta]
-
----------
-
-= Contents = 
-
-<wiki:toc max_depth="2" />
 
 ---------
 
