@@ -711,9 +711,117 @@ _Fig. 25_
 You can change various parameters of the model using these controls. The changes take place in real time.
 
 ==How to add Data Sets?==
-==How to add Outputters?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2030.JPG
+
+_Fig. 30_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2031.JPG
+
+_Fig. 31_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2032.JPG
+
+_Fig. 32_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2033.JPG
+
+_Fig. 33_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2034.JPG
+
+_Fig. 34_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2035.JPG
+
+_Fig. 35_
+
 ==How to add Charts?==
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2036.JPG
+
+_Fig. 36_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.JPG
+
+_Fig. 37_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2038.jpg
+
+_Fig. 38_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2039.jpg
+
+_Fig. 39_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2040.JPG
+
+_Fig. 40_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2041.JPG
+
+_Fig. 41_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2044.JPG
+
+_Fig. 44_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2045.jpg
+
+_Fig. 45_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2046.jpg
+
+_Fig. 46_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2047.JPG
+
+_Fig. 47_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2048.JPG
+
+_Fig. 48_
+
+==How to add Outputters?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2049.JPG
+
+_Fig. 49_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2050.JPG
+
+_Fig. 50_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2051.JPG
+
+_Fig. 51_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2052.JPG
+
+_Fig. 52_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2053.JPG
+
+_Fig. 53_
+
 ==How to add external plugins?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2054.JPG
+
+_Fig. 54_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2055.JPG
+
+_Fig. 55_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2056.JPG
+
+_Fig. 56_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2057.JPG
+
+_Fig. 57_
 
 =What are the Outcomes and how can I have further control?=
 
