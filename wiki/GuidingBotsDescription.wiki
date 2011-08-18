@@ -1,4 +1,4 @@
-#summary Localization of Mobile Wireless Sensor Nodes
+#summary Detailed description and explanation of Guiding Bots Model
 #sidebar TableOfContents
 
 = Summary = 
