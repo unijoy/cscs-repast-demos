@@ -15,7 +15,7 @@
    * [Boids]
    * [BugCatcher]
    * [ElFarol El Farol]
-   * [followTheLeader]
+   * [FollowTheLeader]
    * [GuidingBots]
    * [Moth_Basic]
    * [Moth_Advance]
