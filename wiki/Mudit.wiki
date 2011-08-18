@@ -35,15 +35,15 @@ I am interested in swarm robotics, embedded systems and mobile Wireless Sensor N
 
 ==*Follow The Leader*==
 
-For Details Check [followTheLeader] (Demo Model) 
+For Details Check [FollowTheLeader] (Demo Model) 
+
+==*Guiding Bots*==
+
+For Details Check GuidingBots
 
 ==*Ants*==
 
 For Details Check [Ant]
-
-==*Moth Advance*==
-
-For Details Check Moth_Advance
 
 ==*Area Coverage*==
 
@@ -53,11 +53,15 @@ For Details Check AreaCoverage
 
 For Details Check BugCatcher
 
+==*Moth Advance*==
+
+For Details Check Moth_Advance
+
 ==*Moth Basic*==
 
 For Details Check Moth_Basic
 
 
-==*Guiding Bots*==
+=*Tutorial*=
 
-For Details Check GuidingBots
+Although all models have detail documentation, but I am also working on a from-the-scratch tutorial of Follow The Leader Model and can be found [https://code.google.com/p/cscs-repast-demos/wiki/followTheLeaderTutorial here]
