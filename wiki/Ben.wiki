@@ -1,4 +1,4 @@
-#Ben's demo project ideas.
+#summary Ben's demo project ideas.
 
 = Introduction =
 
