@@ -2,7 +2,9 @@
 #sidebar TableOfContents
 
 =Summary=
- * Source Code  : https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/trunk/
+ * Source Code  : 
+   * Download the model archive: http://cscs-repast-demos.googlecode.com/files/StupidModelAll.zip
+   * Get the latest version from the repository: https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/
  * Platform     : [RepastSJava Repast Simphony Java]
  * Mentor       : Dr. Eric Tatara
  * Author       : [Richard Richard Oliver Legendi]
@@ -2533,4 +2535,3 @@ All the best, and thank you for going through this tutorial!
  # Steven F. Railsback, Steven L. Lytinen and Stephen K. Jackson: _"!StupidModel and Extensions: A template and teaching tool for agent-based modeling platforms"_, (December 20, 2005) http://condor.depaul.edu/~slytinen/abm/StupidModelFormulation.pdf
  # Isaac, Alan G.: _"The ABM Template Models: A Reformulation with Reference Implementations"_, Journal of Artificial Societies and Social Simulation 14 (2) 5, (2011) http://jasss.soc.surrey.ac.uk/14/2/5.html
  # Richard O. Legendi, Attila Szabo: _[http://distributedabm.elte.hu/letoltesek/publikaciok/2010_01_ICAI_Advantages_of_Fables_paper.pdf "Advantages of a Multi-Paradigm Programming Language in Agent-Based Model Definition"]_, ICAI 2010 - 8th International Conference on Applied Informatics (Eger, Hungary, January 27 - 30, 2010)
-
