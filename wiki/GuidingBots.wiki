@@ -59,11 +59,11 @@ For the plot it can be concluded that the death rate of the daughter motes follo
 
 =4. Applications=
 
-==Swarm Robotics and Mobile Wireless Sensor Networks==
+==4.1 Swarm Robotics and Mobile Wireless Sensor Networks==
 
 It is a simulation of a strategy that is used in Localization of Swarm of Robots or Mobile Wireless Sensor Networks. Large number of daughter robots with low-cost instruments to record local positions are left in an unknown area and few robots with high precision Global positioning Instruments are left there (guiding robots). Depending of the value of received signal strength indication (RSSI) the global position is transferred to the daughter robots (when guiding robots come near them) and they are also aware of the same and can navigate in the area. 
    
-==Other Application==
+==4.2 Other Application==
 
 Such colonial behavior is observed in various social models. 
 
@@ -71,11 +71,11 @@ Such colonial behavior is observed in various social models.
 
 =5. Extending the Model=
 
-==Adding RSSI value==
+==5.1 Adding RSSI value==
 
 The model can be extended by adding a RSSI value slider. This will control from how much distance a guiding mote can guide a daughter mote.  
 
-==Adding different Daughter Behavior==
+==5.2 Adding different Daughter Behavior==
 
 The guiding motes can guide the daughter motes to do some other task, like search for a shelter. The selection of the behavior is left purely to the imagination of the user.
 
