@@ -74,6 +74,14 @@ They can handle and approximate the solutions of the differential equation syste
 ==== El Farol ====
 Another simple model famous because it is one of the first models related to minority games (10). One version of the model uses genetic algorithm (11), this could be a good opportunity to use any Java-based GA library (like JGAP), or use any of the mathematical tools since they usually have built-in support for such optimization problems (Matlab, Maple, Octave).
 
+= Created Models =
+
+== El Farol ==
+For the details, please refer to the [ElFarol El Farol] page (Demo Model).
+
+== Stupid Model ==
+For the details, please refer to the [StupidModel] page (Tutorial).
+
 = References =
 
  # [http://condor.depaul.edu/slytinen/abm/StupidModelFormulation.pdf]
