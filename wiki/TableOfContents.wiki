@@ -20,6 +20,7 @@
    * [Moth_Basic]
    * [Moth_Advance]
    * [NBodies]
+ * Tutorials
    * [StupidModel]
  * Platforms
    * [RepastSReLogo ReLogo]
