@@ -51,18 +51,31 @@ Various analysis could be carried out with the model, but for demonstration purp
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/BugCatcher/BugCatcher%28plot%29.png
 
-For the plot it can be concluded that the bug death is an exponential function. _Check with many test runs_
+For the plot it can be concluded that the bug death is an exponential function. Other plots can also be added, one such example could be an overlay of the graphs showing which machine has killed how many bugs. _Check with many test runs_
 
 ---------
 
 =5. Extending =
 
+==5. 1 Increasing the Range==
+
+A slider for increasing the catching distance of the bug catcher can be incorporated. In this model the machine only catches bugs in the Moore's neighborhood. 
+
+==5. 2 Surrounding Forbidden Area==
+
+An interesting feature that can be added to this model is the surrounding forbidden area. In food joints whenever a zapper or a bug catcher is used it is placed where there are no food items. This is done so that the dead bugs or some particles does not fall in food items. The user can add an interesting feature of breaking the bug into small dead particles instead of killing it.
 
 ---------
 
 =6. Applications=
 
+==6.1 Mobile WSN and Swarm Robotics==
 
+The model can be used as reference and a multi-robot de mining simulation can be made on it. The bugs can be replaced by robots and they first find the mines and cluster around them and then drag the mines to a safe area. Go through the [AreaCoverage] model for more swarm robotics application.
+
+==6.2 Social Simulation==
+
+This model can be useful in studying social behavior. It is also useful in studying what could be most suitable position for placing a sink (machine). The model can be extended to fix the position of machines and can be used to find the optimal time for catching bugs.
 
 --------
 
