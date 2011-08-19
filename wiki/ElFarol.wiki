@@ -7,6 +7,8 @@
  * Mentor       : Dr. Eric Tatara
  * Author       : [Richard Richard Oliver Legendi]
 
+<g:plusone size="medium"></g:plusone>
+
 =Contents=
 <wiki:toc max_depth="2" />
 
