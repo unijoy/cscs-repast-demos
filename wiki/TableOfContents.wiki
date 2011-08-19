@@ -21,7 +21,8 @@
    * [Moth_Advance]
    * [NBodies]
  * Tutorials
-   * [StupidModel]
+   * [StupidModel Stupid Model]
+   * [followTheLeaderTutorial Follow the Leader]
  * Platforms
    * [RepastSReLogo ReLogo]
    * [RepastSJava Java]
