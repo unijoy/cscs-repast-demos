@@ -310,9 +310,8 @@ public class Bug {
 	 */
 	private List<GridCell<HabitatCell>> getHabitatCellsForLocations(
 			final List<GridCell<Bug>> freeCells) {
-		assert (freeCells.equals(SMUtils.getFreeGridCells(freeCells))) : String
-				.format("Parametet freeCells=%s should contain only empty cells.",
-						freeCells);
+		// Parameter freeCells should contain only empty cells
+		assert (freeCells.equals(SMUtils.getFreeGridCells(freeCells)));
 
 		final ArrayList<GridCell<HabitatCell>> ret = new ArrayList<GridCell<HabitatCell>>();
 		final Grid<Object> grid = SMUtils.getGrid(this);
@@ -325,8 +324,8 @@ public class Bug {
 			final List<GridCell<HabitatCell>> cells = new GridCellNgh<HabitatCell>(
 					grid, point, HabitatCell.class, 0, 0).getNeighborhood(true);
 
-			assert (1 == cells.size()) : "One cell should exist on a grid cell, but found: "
-					+ cells;
+			// One cell should exist on a grid cell
+			assert (1 == cells.size());
 			ret.add(cells.get(0));
 		}
 
@@ -372,15 +371,15 @@ public class Bug {
 	 *         </i>
 	 * @since Model 3
 	 */
-	private double foodConsumption() {
+	protected double foodConsumption() {
 		final HabitatCell cell = getUnderlyingCell();
 		final double foodAvailable = cell.getFoodAvailability();
 
 		final double eatenFood = Math.min(maxConsumptionRate, foodAvailable);
 		cell.foodConsumed(eatenFood);
 
-		assert (eatenFood >= 0) : String.format(
-				"Derived value of eatenFood = %f hould be >=0.", eatenFood);
+		// Derived value of eatenFood should be >=0.
+		assert (eatenFood >= 0);
 		assert (eatenFood <= maxConsumptionRate);
 		assert (eatenFood <= foodAvailable);
 
@@ -401,7 +400,7 @@ public class Bug {
 	 *         <code>non-null</code>
 	 * @since Model 3
 	 */
-	private HabitatCell getUnderlyingCell() {
+	protected HabitatCell getUnderlyingCell() {
 		final Grid<Object> grid = SMUtils.getGrid(this);
 		final GridPoint location = grid.getLocation(this);
 		final Iterable<Object> objects = grid.getObjectsAt(location.getX(),
@@ -455,7 +454,7 @@ public class Bug {
 	public void mortality() {
 
 		// If size is great enough, reproduce and disappear
-		if (size > 10.0) {
+		if (size >= Constants.MAX_BUG_SIZE) {
 			reproduce();
 			die();
 			return;
@@ -473,9 +472,9 @@ public class Bug {
 	 * 
 	 * @since Model 12
 	 */
-	private void reproduce() {
+	protected void reproduce() {
 		// Make sure the agent is big enough to reproduce
-		assert (size > 10.0);
+		assert (size >= Constants.MAX_BUG_SIZE);
 
 		// Get the current context, grid and location
 		@SuppressWarnings("unchecked")

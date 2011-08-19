@@ -39,7 +39,8 @@ import stupidmodel.common.SMUtils;
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
  * @since Model 16
- * @version $Id$
+ * @version $Id: Predator.java 428 2011-06-18 14:19:31Z
+ *          richard.legendi@gmail.com $
  */
 public class Predator {
 
@@ -72,8 +73,8 @@ public class Predator {
 
 		final List<GridCell<HabitatCell>> cellNeighborhood = new GridCellNgh<HabitatCell>(
 				grid, location, HabitatCell.class,
-				Constants.PREDATOR_SIGHT_RANGE, Constants.PREDATOR_SIGHT_RANGE)
-				.getNeighborhood(true);
+				Constants.PREDATOR_VISION_RANGE,
+				Constants.PREDATOR_VISION_RANGE).getNeighborhood(true);
 
 		SimUtilities.shuffle(cellNeighborhood, RandomHelper.getUniform());
 
@@ -82,13 +83,6 @@ public class Predator {
 
 		for (final GridCell<HabitatCell> cell : cellNeighborhood) {
 			if (hasAgent(grid, cell, Bug.class)) {
-				// (However, if the cell already contains a predator, the
-				// hunting predator simply quits and remains at its current
-				// location)
-				if (hasAgent(grid, cell, Predator.class)) {
-					return;
-				}
-
 				killBugAt(grid, cell);
 				moveTo(grid, cell);
 				return;
@@ -99,6 +93,14 @@ public class Predator {
 		// them
 		final GridCell<HabitatCell> randomCell = SMUtils
 				.randomElementOf(cellNeighborhood);
+
+		// However, if the cell already contains a predator, the
+		// hunting predator simply quits and remains at its current
+		// location
+		if (hasAgent(grid, randomCell, Predator.class)) {
+			return;
+		}
+
 		moveTo(grid, randomCell);
 	}
 

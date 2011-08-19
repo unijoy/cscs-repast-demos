@@ -53,8 +53,8 @@ public final class Constants {
 	 * is set to <code>100</code> by default on the graphical interface.
 	 * 
 	 * @since Model 5
-	 * @see <code>parameters.xml</code> in the <code>StupidModel.rs</code>
-	 *      directory for details
+	 * @see "<code>parameters.xml</code> in the <code>StupidModel.rs</code>
+	 *      directory for details"
 	 */
 	public static final String PARAMETER_ID_BUG_COUNT = "bugCount";
 
@@ -152,7 +152,12 @@ public final class Constants {
 	 * 
 	 * @since Model 16
 	 */
-	public static final int PREDATOR_SIGHT_RANGE = 1;
+	public static final int PREDATOR_VISION_RANGE = 1;
+
+	/**
+	 * Maximum size of a bug when it should reproduce itself.
+	 */
+	public static final double MAX_BUG_SIZE = 10.0;
 
 	// ========================================================================
 

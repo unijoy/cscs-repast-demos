@@ -33,10 +33,19 @@ import stupidmodel.common.Constants;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: TestHabitatCell.java 428 2011-06-18 14:19:31Z
+ *          richard.legendi@gmail.com $
  * @see HabitatCell
  */
 public class TestHabitatCell {
+
+	/**
+	 * Test if constructor get an invalid parameter (<code>null</code>).
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testInvalidCreation() {
+		new HabitatCell(null); // Should fail
+	}
 
 	/**
 	 * {@link HabitatCell} objects cannot be created with negative
@@ -102,8 +111,7 @@ public class TestHabitatCell {
 	}
 
 	/**
-	 * Test invalid parameter for
-	 * {@link HabitatCell#setMaximumFoodProductionRate(double)}.
+	 * Test invalid parameter for {@link HabitatCell#foodProductionRate}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetDefaultFoodProductionRateFailure() {
@@ -116,8 +124,7 @@ public class TestHabitatCell {
 	}
 
 	/**
-	 * Test if {@link HabitatCell#setMaximumFoodProductionRate(double)} works
-	 * properly.
+	 * Test if {@link HabitatCell#foodProductionRate} works properly.
 	 */
 	@Test
 	public void testSetDefaultFoodProductionRateWorks() {
@@ -176,6 +183,40 @@ public class TestHabitatCell {
 
 		cell.setFoodAvailability(value);
 		Assert.assertEquals(value, cell.getFoodAvailability(), Constants.DELTA);
+	}
+
+	/**
+	 * Test if setting the food production rate of a cell to an invalid value.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testFoodProductionRateFailure() {
+		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
+
+		final double wrongValue = RandomHelper.nextDoubleFromTo(
+				-Double.MAX_VALUE, -Double.MIN_VALUE);
+
+		cell.setFoodProductionRate(wrongValue);
+	}
+
+	/**
+	 * Test if setting the food production rate works as expected.
+	 */
+	@Test
+	public void testSetFoodProductionRate() {
+		final int x = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+		final int y = RandomHelper.nextIntFromTo(0, Integer.MAX_VALUE);
+
+		final HabitatCell cell = new HabitatCell(new CellData(x, y, 1.0));
+
+		final double value = RandomHelper.nextDoubleFromTo(0.0,
+				Double.MAX_VALUE);
+
+		cell.setFoodProductionRate(value);
+		Assert.assertEquals(value, cell.getFoodProductionRate(),
+				Constants.DELTA);
 	}
 
 	/**
