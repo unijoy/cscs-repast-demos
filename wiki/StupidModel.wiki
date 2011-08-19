@@ -3,7 +3,7 @@
 
 =Summary=
  * Source Code  : 
-   * Download the model archive: http://cscs-repast-demos.googlecode.com/files/StupidModelAll.zip
+   * Download the [http://code.google.com/p/cscs-repast-demos/downloads/detail?name=StupidModelAll.zip StupidModelAll.zip archive]
    * Get the latest version from the repository: https://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/
  * Platform     : [RepastSJava Repast Simphony Java]
  * Mentor       : Dr. Eric Tatara
