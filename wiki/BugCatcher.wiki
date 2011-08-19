@@ -21,6 +21,7 @@
 =1. Description=
 
 Each Bug moves moves randomly in a given area. If a bug encounters a Bug Catching Machine in it's Moore neighborhood it gets caught in the machine. The bug dies after a specified time in the bug catching machine.
+
  
 https://cscs-repast-demos.googlecode.com/svn/wiki/BugCatcher/BugCatcher%28main%29.JPG
 
