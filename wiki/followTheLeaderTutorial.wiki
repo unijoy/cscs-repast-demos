@@ -141,7 +141,7 @@ Let us look at various steps in making this model.
 
 =How to make the model?=
 
-==How to make the a new project?==
+==How to make a new project?==
 
 The first thing you need to do while making a model is make a new project. This can be done by various means : 
 
@@ -445,14 +445,13 @@ Let us now look at what are patches?
 
 In the above section we saw how we can give behavior to turtles. But we know that the behavior of the turtles is not only dependent on other turtles but also on the environment. Turtles move in the environment and thus change or modify their behavior. So, how do we do that? There comes patches. Although, you will explore many other uses of Patches as you continue to play with multi agent modeling. For, now lets define patch properties for different parts of a simple environment. 
 
-We can add patches in a similar way we added turtles. But we will be using the default UserPAtch.groovy that was created when we created our project. You can find it in the project explorer (Fig. 19). Double click on it to open and work with it. 
+We can add patches in a similar way we added turtles. But we will be using the default _UserPatch.groovy_ that was created when we created our project. You can find it in the project explorer (Fig. 19). Double click on it to open and work with it. 
 
- 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2019.jpg
 
 _Fig. 19_
 
-Although we can add the a new patch (refr to Fig. 15 & 16 ant try finding a new patch button). The steps after that are similar, till you get a your patch in the Project Explorer.
+Although we can add the a new patch (refer to Fig. 15 & 16 ant try finding a new patch button). The steps after that are similar, till you get a your patch in the Project Explorer.
  
 To start with lets look at the variable description first.
 
@@ -522,9 +521,13 @@ So, we have created agents and environment, now lets look at how to create simpl
 
 ==How to add link behavior?==
 
+Although we have not added any Links in this model, but adding a link is useful in networking models and models imitating social behavior. You can do so by modifying _UserLink.groovy_ (Fig. 20) or adding a new link.  
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2020.jpg
 
 _Fig. 20_
+
+For adding a new link, follow the same steps as those for adding a new turtle, but select _new link_ in place of _new turtle_. A model which has an extensive us of links is the [GuidingBots] model.
 
 
 ==How to add Observers?==
@@ -661,6 +664,7 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		}
 }
 }}}
+
 We made two functions _setup()_ and _go()_ in our _UserObserver.groovy_ class. We can call these functions on button clicks. So we added two buttons with label using _addButtonWL("function", "Label")_. When pressed they will call the function with the same name as the first parameter once.
 
 Next we added a toggle button. Once this button is pressed, it will call the "go" function iteratively till it's toggled again. 
@@ -695,8 +699,10 @@ In this you will find the following elements :
  # Model
  # Scenario Tree/Run Options/ Simulation Parameters
 
-*Note:* Click on _Initialize >> setup _ to setup the model
-
+*Note:* 
+ # Click on _Initialize >> setup _ to setup the model
+ # Do not press the setup button before initializing the model or your tick counter will keep on running.
+ 
 Most of the parts are self explanatory and rest will be dealt in future.
 
 ==How to use the User Panel?==
@@ -711,6 +717,10 @@ _Fig. 25_
 You can change various parameters of the model using these controls. The changes take place in real time.
 
 ==How to add Data Sets?==
+
+So, we have made Follow The Leader model. Now once the model is running you might want to know how to monitor various parameters or may be visualize the changes on a graph. Well, for doing so, we need to create data sets. Data Sets are nothing but the value of various variables, sampled at a given instance of time.
+
+For adding a data set to your model follow the following steps: 
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2030.JPG
 
@@ -827,7 +837,6 @@ _Fig. 57_
 
 ==What are the observations?==
 
-
 The model which we made had some interesting outputs, two of them were studied and rest are left to the user. 
 
 *Relationship between the length of the path and population*
@@ -885,7 +894,7 @@ _Delay Fig. (iv)_
 
 So, from the above runs it is quite clear that if the time delay is increased the path becomes smoother and shorter in a small population. It can be put the other way round, on increasing the delay the path becomes smoother and shorter.
 
-*Note :* "Population" nad "Deviation" were kept constant for the test runs.
+*Note :* "Population" and "Deviation" were kept constant for the test runs.
 
 The user can try and do test runs to check the relationship of "Deviation" with other parameters.
 
