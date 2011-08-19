@@ -27,6 +27,8 @@ I would like to create simple models and tutorials about how to link Repast with
  * IRC: legendi, roante
  * Web: http://people.inf.elte.hu/legendi/
 
+-----
+
 = Planned Models =
 You can find the descriptions of the models I plan to create during the summer.
 
@@ -73,6 +75,8 @@ They can handle and approximate the solutions of the differential equation syste
 
 ==== El Farol ====
 Another simple model famous because it is one of the first models related to minority games (10). One version of the model uses genetic algorithm (11), this could be a good opportunity to use any Java-based GA library (like JGAP), or use any of the mathematical tools since they usually have built-in support for such optimization problems (Matlab, Maple, Octave).
+
+-----
 
 = Created Models =
 
