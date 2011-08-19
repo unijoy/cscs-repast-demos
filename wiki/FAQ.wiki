@@ -46,6 +46,21 @@ Common SVN problems.
  * *Question:* I would like to make an HTML file accessible with direct link from the Google Code SVN (e.g., generated Javadoc). Is it possible to do it?
  * *Answer:* Sure, just make sure you set the `svn:mime-type=text/html` SVN property. To make it automatically, [http://stuffthathappens.com/blog/2007/11/09/howto-publish-javadoc-on-google-code/ set a default auto enabled property for new HTML files] (see the details [http://islandlinux.org/howto/enable-auto-properties-auto-props-subversion-subclipse-eclipse here for Subclipse]), or [http://stackoverflow.com/questions/1764521/recursive-svn-propset create a small script] that sets the required properties for existing files from the command line. See an example [http://cscs-repast-demos.googlecode.com/svn/richard/StupidModel/trunk/docs/cobertura/index.html here].
 
+== Export GoogleCode Wiki to other formats ==
+There are several tools for available, but some of them is [http://chrisroos.co.uk/blog/2008-07-30-converting-google-code-wiki-content-to-html not mature enough], some of them is good but there are minor differences (e.g., pictures with with [http://fossil.wanderinghorse.net/demos/wikiwym/GoCoWi-previewer.html wikiwym]).
+
+We created a simple page that does some URL magic and asks the GoogleCode server to render specific things only as described in the officiall [http://code.google.com/p/support/wiki/WikiFAQ#Can_I_download_wiki_content_as_HTML? Wiki FAQ]:
+
+  https://cscs-repast-demos.googlecode.com/svn/common/tools/SimplifyWikiPage/SimplifyWikiPage.html
+
+Just enter the name of the Wiki page you would like to see without the other components (e.g., the navbar) and press _Show_. We added some checkboxes for the components we were able to figure out how to render or not, you can play with them easily.
+
+They mentioned [http://code.google.com/p/google-code-wiki-to-html/ another project] which downloads the full Wiki as it is.
+
+So that was the best solution we were able to come up with for this issue. It has still some minor problems (e.g., it does not resize images as the Wiki and somehow it doesn't includes syntax highlighting), but it is good enough to put next to the sources to read it offline.
+
+We have also encountered some tools that can [http://moinmo.in/FormatterMarket?highlight=%28moin2rst%29 convert MoinMoin Wiki text] (the GoogleCode Wiki Syntax is a derivative of that) to other formats automatically (e.g., to LaTeX, which may be useful in the future), but we weren't able to use them so far successfully.
+
 ----
 
 = Wiki FAQ =
