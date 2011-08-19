@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Simplify GoogleCode Wiki Document</title>
+<style type="text/css">
+label {
+display:block;
+}
+</style>
+<script type="text/javascript">
+function goTo()
+{
+	var url = 'http://code.google.com/p/cscs-repast-demos/wiki/' + document.forms[0].wikipage.value;
+	var show = '';
+
+	for (var i=0; i < document.forms[0].show.length; ++i) {
+		if (document.forms[0].show[i].checked) {
+			if (show.length != 0) show += ",";
+			show += document.forms[0].show[i].value;
+		}
+	}
+
+	window.location = url+'?show='+show;
+	return false;
+}
+</script>
+</head>
+<body>
+<form action="" method="get" onsubmit="return goTo();">
+	GoogleCode Wiki page name:
+	<input type="text" name="wikipage" id="wikipage" value="StupidModel" /><br/>
+
+	<input type="checkbox" name="show" value="content"  checked="checked"/>Content
+	<input type="checkbox" name="show" value="nav"      />Navigation bar
+	<input type="checkbox" name="show" value="comments" />Comments
+	<input type="checkbox" name="show" value="sidebar"  />Sidebar<br/>
+
+	<input type="submit" value="Show" />
+</form>
+</body>
+</html>
+
