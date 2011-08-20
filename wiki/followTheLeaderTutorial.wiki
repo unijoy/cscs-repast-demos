@@ -1,4 +1,4 @@
- How to make a RepastS model using Relogo from Scratch? (Mudit - Demo)
+#summary How to make a RepastS model using Relogo from Scratch? (Mudit - Demo)
 #sidebar TableOfContents
 
 =*Summary*=
