@@ -4,8 +4,7 @@
 =*Summary*=
 
   * Model        : followTheLeader
-  * Source Code  : 
-https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeader/
+  * Source Code  : https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeader/
   * Platform     : [RepastSReLogo RepastS ReLogo]
   * Mentor       : Dr. Eric Tatara
   * Author       : [Mudit Mudit Raj Gupta]
@@ -1207,21 +1206,34 @@ Click on the file to see the values of the last run. Now lets see an interesting
 
 ==How to add external plug-ins?==
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2054.JPG
+There are many external plug-ins available with RepastS. They are useful as you can analyse your data in any of these software. Different software are better for different purposes. Adding a pugin means running the program in parallel to your model. Let us see how to add a spreadsheet plug-in in your model. 
 
-_Fig. 54_
+Go to the plug-ins section which has icons for different plug-ins. Select _Spreadsheet_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2055.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2058.JPG
 
-_Fig. 55_
+_Fig. 58_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2056.JPG
+A _Spreadsheet's licence_ will be displayed since it is an external tool and has a different license. (refer to Fig. 59)
 
-_Fig. 56_
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2059.JPG
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2057.JPG
+_Fig. 59_
 
-_Fig. 57_
+Click _Next_. Now set the path to the .exe file. (refer to Fig. 60)
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2060.JPG
+
+_Fig. 60_
+
+Click _Next_. Now select the outputter(s) that you want to add to the spreadsheet. Select _Difference Out_ in our case.
+(refer to Fig. 61)
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2061.JPG
+
+_Fig. 61_
+
+Click _Finish_. You have successfully added a spreadsheet plug-in to your model.
 
 =What are the Outcomes and how can I have further control?=
 
