@@ -1151,12 +1151,59 @@ _Fig. 52_
  # A new window pops up. Select the color and click _OK_
  # Click _OK_
 
-==How to add outputters?==
-
+You have successfully changed the color of the background. (refer to fig 53)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2053.JPG
 
 _Fig. 53_
+
+You can change other properties like color of the axes and font. This is left to the user to explore. Now let us see how to add outputters.
+ 
+==How to add outputters?==
+
+Outputters are nothing but a .txt file that stores your data set in comma separated values (or what you specify) format. Adding these outputers can help you analyze your data after run and find out different possibilities.
+
+Go to the Scenario Tree and right click on _Outputters_ (you might have to scroll down a bit) and select _Add File Outputter_ (refer to Fig. 53)
+ 
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2053.JPG
+
+_Fig. 53_
+
+This will open a _File Outputter Wizard_ (refer to Fig. 54).
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2054.JPG
+
+_Fig. 54_
+
+ # Give a name to your Outputter. Let us call it "Difference Out"
+ # Set the Data Set. _Difference_
+ # Select Delimiter. We are using the default, i.e. comma (,)
+ # Select the values which you want in the output
+ # Click on this button to add the selected value. Repeat (4) and (5) for all the values.
+
+After the above steps the window should look like this (refer to Fir. 55):
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2055.JPG
+
+_Fig. 55_
+
+Click on _Next_. In the new window you can change the name of the Output File. We are using the default "ModelOutput.txt". (refer to Fig. 56)
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2056.JPG
+
+_Fig. 56_
+
+Click _Finish_
+
+You have successfully added an outputter to your model. You can check that it is created in _Scenario Tree >> Outputters  >> DifferenceOut
+
+If you do a test run. (refer to Fig. 49) and then check your followTheLeader folder in the Project Explorer (refresh it by right clicking on followTheLeader and selecting refresh or just ctrl + F5) you will see a text file with the same name you gave. (refer to Fig. 57)
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2057.JPG
+
+_Fig. 57_
+
+Click on the file to see the values of the last run. Now lets see an interesting feature of RepastS, adding external plug-ins.
 
 ==How to add external plug-ins?==
 
