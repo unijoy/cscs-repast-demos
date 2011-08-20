@@ -53,9 +53,9 @@ For Details Check [AntDescription]
 
 ==*Area Coverage*==
 
-For a Summary Check [Areacoverage]
+For a Summary Check [AreaCoverage]
 
-For Details Check [AreaCoverageDescription]
+For Details Check [areaCoverageDescription]
 
 ==*Bug Catcher*==
 
