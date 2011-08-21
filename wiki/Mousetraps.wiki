@@ -1,4 +1,5 @@
 #summary (ReLogo) Metaphorical model of nuclear fission
+#sidebar TableOfContents
 
 = Summary =
 
