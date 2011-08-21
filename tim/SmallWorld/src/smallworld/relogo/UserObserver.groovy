@@ -10,7 +10,7 @@ import repast.simphony.relogo.UtilityG;
 /**
  * Adaptation of small-world network model found in
  * 
- * Watts, D. J. & Strogatz, S. H. (1998). Collective dynamics of ‘small-world’ networks. Nature 393, 440–442.
+ * Watts, D. J., & Strogatz, S. H. (1998). Collective dynamics of ‘small-world’ networks. Nature 393, 440–442.
  * 
  * @author Tim Sweda
  *
@@ -35,47 +35,50 @@ class UserObserver extends BaseObserver{
 		}
 		else if (numNodes <= 2*initialNodeDegree) {
 			// May not be able to rewire nodes properly
-			userMessage("ERROR:  numNodes does not exceed 2*initialNodeDegree")
+			userMessage("ERROR:  # Nodes does not exceed 2*(Initial Node Degree).")
 		}
 		else if (initialNodeDegree <= ln(numNodes)) {
 			// May have too many isolated nodes after rewiring
-			userMessage("ERROR:  initialNodeDegree does not exceed ln(numNodes)")
+			userMessage("ERROR:  Initial Node Degree does not exceed ln(# Nodes).")
 		}
 	}
 	
 	// Rewire one node
 	def rewireOne() {
-		if (nextNode < numNodes) {
+		if (nextNode < numNodes)
 			ask (nodes().with({who == nextNode})) {
 				rewire()
 			}
-		}
-		else {
+		else
 			userMessage("No more nodes to rewire")
-		}
 	}
 	
 	// Rewire all nodes
 	def rewireAll() {
-		if (nextNode < numNodes) {
+		if (nextNode < numNodes)
 			ask (sort(nodes())) {
 				rewire()
 			}
-		}
-		else {
+		else
 			userMessage("No more nodes to rewire")
-		}
 	}
 	
-	// Calculate and report average path length and clustering coefficient
+	// Calculate and report average path length and clustering coefficient (with ratios relative to
+	//   original graph in parentheses)
 	def reportStats() {
+		def n = numNodes
+		def k = initialNodeDegree
+		def nkterm = ceiling((n-1)/k)
 		calculatePathLengths()
 		ask (nodes()) {
 			calculateClusterCoeff()
 		}
-		def pl = mean({avgDistance}.of(nodes()))
-		def cc = mean({nodeClusterCoeff}.of(nodes()))
-		userMessage("Average Path Length:  "+pl+"\nClustering Coefficient:  "+cc)
+		def globalAD = mean({avgDistance}.of(nodes()))
+		def globalCC = mean({nodeClusterCoeff}.of(nodes()))
+		def initialAD = (k*nkterm*(nkterm+1)/2-nkterm*mod(1-n, k))/(n-1)
+		def initialCC = 3*k*(k/2-1)/(2*k*(k-1))
+		userMessage("Average Path Length:  "+globalAD+" ("+globalAD/initialAD+")\n"+
+			"Clustering Coefficient:  "+globalCC+" ("+globalCC/initialCC+")")
 	}
 	
 	// Calculate path lengths between each node pair
@@ -90,9 +93,8 @@ class UserObserver extends BaseObserver{
 			def i = self()
 			ask (sortedNodes) {
 				def initialDist = numNodes
-				if (who == {who}.of(i)) {
+				if (who == {who}.of(i))
 					initialDist = 0
-				}
 				else if (linkNeighborQ(i)) {
 					initialDist = 1
 				}
@@ -108,17 +110,18 @@ class UserObserver extends BaseObserver{
 				ask (sortedNodes) {
 					def j = self()
 					def dist = item({who}.of(k)-minWho, {distance}.of(i))+item(who-minWho, {distance}.of(k))
-					if (dist < item(who-minWho, {distance}.of(i))) {
+					if (dist < item(who-minWho, {distance}.of(i)))
 						ask (i) {
 							distance = replaceItem({who}.of(j)-minWho, distance, dist)
 						}
-					}
 				}
 			}
 		}
 		// Calculate average path length for each node
+		// NOTE:  mean(distance) is the average path length from the node to any node (including itself),
+		//   so multiplying by numNodes/(numNodes-1) gives the average path length to any other node
 		ask (nodes()) {
-			avgDistance = mean(distance)
+			avgDistance = mean(distance)*numNodes/(numNodes-1)
 		}
 	}
 

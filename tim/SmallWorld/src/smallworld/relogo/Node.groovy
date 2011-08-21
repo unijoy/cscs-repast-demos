@@ -20,10 +20,10 @@ class Node extends BaseTurtle {
 	def nodeClusterCoeff, distance, avgDistance
 	
 	def initialize() {
-		size = 1/3+(150-numNodes)/225
+		size = 1/3+(200-numNodes)/300
+		color = white()
 		def r = 0.45*min([worldHeight(), worldWidth()])
 		setxy(r*cos(360/numNodes*who), r*sin(360/numNodes*who))
-		clusterCoeff = 0
 		distance = []
 	}
 	
@@ -50,13 +50,12 @@ class Node extends BaseTurtle {
 				}
 			}
 			// Else, color link (to indicate that it has been considered) but do not rewire it
-			else {
+			else
 				ask (newMe) {
 					createLinkWith(neighbor) {
 						color = rewiredColor
 					}
 				}
-			}
 		}
 		nextNode++
 		// Remove old node since it has been replaced with rewired node
@@ -68,16 +67,18 @@ class Node extends BaseTurtle {
 		def neighbors = linkNeighbors()
 		// If this node has 0 or 1 neighbors, its clustering coefficient is undefined 
 		// (but usually set equal to 0 in practice)
-		if (count(neighbors) < 2) {
+		if (count(neighbors) < 2)
 			nodeClusterCoeff = 0
-		}
 		// Else, compute clustering coefficient as number of links among neighbors of this 
 		// node divided by number of potential links among neighbors of this node
 		else {
 			def m = 0
 			def n = count(neighbors)*(count(neighbors)-1)
 			ask (neighbors) {
-				m += count(neighbors.with({linkNeighborQ(myself())}))/2
+				ask (linkNeighbors()) {
+					if (neighbors.contains(it))
+						m++
+				}
 			}
 			nodeClusterCoeff = m/n
 		}

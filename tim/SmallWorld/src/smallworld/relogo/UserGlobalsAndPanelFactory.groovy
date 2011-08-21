@@ -34,18 +34,18 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		        addChooser("chooserVariable2", [1, 66, "seven"], 0)
 		 */
 		
-		addGlobal("nextNode")
-		addGlobal("rewiredColor")
-		addGlobal("clusterCoeff")
-		addGlobal("avgPathLength")
+		addGlobal("nextNode") // Next node to be rewired
+		addGlobal("rewiredColor") // Color of links that are rewired
+		addGlobal("avgPathLength") // Average path length between two randomly selected nodes
 		
-		addButton("setup")
-		addButton("rewireOne")
-		addButton("rewireAll")
-		addSlider("numNodes", 3, 1, 150, 24)
-		addSlider("initialNodeDegree", 2, 2, 74, 4)
-		addSlider("rewireProb", 0, 0.01, 1, 0.5)
-		addButton("reportStats")
+		// Create user interface
+		addButtonWL("setup", "Setup")
+		addButtonWL("rewireOne", "Rewire One Node")
+		addButtonWL("rewireAll", "Rewire All Nodes")
+		addSliderWL("numNodes", "# Nodes", 10, 1, 200, 35) // Number of nodes
+		addSliderWL("initialNodeDegree", "Initial Node Degree", 4, 2, 20, 4) // Number of links to each node in initial network
+		addSliderWL("rewireProb", "Rewiring Probability", 0, 0.0001, 1, 0.1) // Probability that a link is rewired
+		addButtonWL("reportStats", "Statistics") // Report average path length and clustering coefficient
 
 	}
 }
