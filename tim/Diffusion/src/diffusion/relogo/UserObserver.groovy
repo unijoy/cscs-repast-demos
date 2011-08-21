@@ -25,46 +25,46 @@ class UserObserver extends BaseObserver{
 		}
 		// Set color of patches with positive concentrations
 		if (inkColor == "gray") {
-			inkValue = gray()
+			inkValue = gray() // = 5.0
 		}
 		else if (inkColor == "red") {
-			inkValue = red()
+			inkValue = red() // = 15.0
 		}
 		else if (inkColor == "orange") {
-			inkValue = orange()
+			inkValue = orange() // = 25.0
 		}
 		else if (inkColor == "brown") {
-			inkValue = brown()
+			inkValue = brown() // = 35.0
 		}
 		else if (inkColor == "yellow") {
-			inkValue = yellow()
+			inkValue = yellow() // = 45.0
 		}
 		else if (inkColor == "green") {
-			inkValue = green()
+			inkValue = green() // = 55.0
 		}
 		else if (inkColor == "lime") {
-			inkValue = lime()
+			inkValue = lime() // = 65.0
 		}
 		else if (inkColor == "turquoise") {
-			inkValue = turquoise()
+			inkValue = turquoise() // = 75.0
 		}
 		else if (inkColor == "cyan") {
-			inkValue = cyan()
+			inkValue = cyan() // = 85.0
 		}
 		else if (inkColor == "sky") {
-			inkValue = sky()
+			inkValue = sky() // = 95.0
 		}
 		else if (inkColor == "blue") {
-			inkValue = blue()
+			inkValue = blue() // = 105.0
 		}
 		else if (inkColor == "violet") {
-			inkValue = violet()
+			inkValue = violet() // = 115.0
 		}
 		else if (inkColor == "magenta") {
-			inkValue = magenta()
+			inkValue = magenta() // = 125.0
 		}
 		else {
-			inkValue = pink()
+			inkValue = pink() // = 135.0
 		}
 		// Determine patches in initial pattern to be colored
 		def coloredPatches
@@ -103,16 +103,14 @@ class UserObserver extends BaseObserver{
 			pcolor = inkValue+4.9-8.9*concentration
 		}
 		// Stop simulation once diffusion is complete (within epsilon = 0.001)
-		if (maxConcentration()-minConcentration() < 0.001) {
-			observerStop()
-		}
+		if (maxConcentration()-minConcentration() < 0.001)
+			stop()
 	}
 	
 	// Darken display by increasing patch concentrations by 10%
 	def darken() {
-		if (maxConcentration() < 0.9) {
+		if (maxConcentration() < 0.9)
 			diffusibleMultiply("concentration", 1.1)
-		}
 	}
 	
 	// Return highest concentration value among all patches

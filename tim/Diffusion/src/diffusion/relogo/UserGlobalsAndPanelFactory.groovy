@@ -37,14 +37,14 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		addGlobal("inkValue") // Color of patches with positive concentration (double)
 		
 		// Create user interface
-		addChooser("inkColor", ["gray", "red", "orange", "brown", "yellow", "green", "lime", "turquoise",
+		addChooserWL("inkColor", "Color", ["gray", "red", "orange", "brown", "yellow", "green", "lime", "turquoise",
 			"cyan", "sky", "blue", "violet", "magenta", "pink"], 0) // Color of patches with positive concentration (string)
-		addChooser("pattern", ["random100", "random300", "random500", "oppEdges", "adjEdges", "spot",
+		addChooserWL("pattern", "Pattern", ["random100", "random300", "random500", "oppEdges", "adjEdges", "spot",
 			"grid"], 0) // Initial pattern of patches to be colored
-		addButton("setup")
-		addToggleButton("go")
-		addButton("darken")
-		addSlider("diffusionRate", 0.01, 0.01, 1, 0.05) // Rate of diffusion
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
+		addButtonWL("darken", "Darken")
+		addSliderWL("diffusionRate", "Diffusion Rate", 0.01, 0.01, 1, 0.05) // Rate of diffusion
 		addMonitor("maxConcentration", 1)
 		addMonitor("minConcentration", 1)
 
