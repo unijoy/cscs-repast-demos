@@ -43,11 +43,11 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		addGlobal("score") // Player's score
 		
 		// Create user interface
-		addButton("setup")
-		addToggleButton("go")
-		addButton("turnLeft") // Turn snake left
-		addButton("turnRight") // Turn snake right
-		addSlider("difficulty", 1, 1, 10, 4) // Difficulty level (higher level = faster gameplay)
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
+		addButtonWL("turnLeft", "Turn Left") // Turn snake left
+		addButtonWL("turnRight", "Turn Right") // Turn snake right
+		addSliderWL("difficulty", "Difficulty Level", 1, 1, 10, 4) // Difficulty level (higher level = faster gameplay)
 		addMonitor("myScore", 1) // Display player's score
 
 	}
