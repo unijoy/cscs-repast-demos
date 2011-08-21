@@ -2,6 +2,12 @@ package gridlock.relogo
 
 import repast.simphony.relogo.factories.AbstractReLogoGlobalsAndPanelFactory
 
+/**
+ * 
+ * @author Tim Sweda
+ *
+ */
+
 public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFactory{
 	public void addGlobalsAndPanelComponents(){
 	
@@ -33,22 +39,21 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		addGlobal("intersections")
 		
 		// Create user interface
-		addButton("setup")
-		addToggleButton("go")
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
 		
 		// Must press setup button to see changes
-		addSlider("numNSRoads",1.0,1.0,9.0,5) // Number of roads in north-south direction
-		addSlider("numEWRoads",1.0,1.0,9.0,5) // Number of roads in east-west direction
-		addSlider("numCars",1.0,1.0,400.0,200) // Number of cars
-		addChooserWL("signalConfig","Signal Configuration",["AllSync","NSAltEWSync","NSAltEWAlt","AllRandom"],0) // Configuration of traffic lights
+		addSliderWL("numNSRoads", "# N/S Roads", 1, 1, 9, 5) // Number of roads in north-south direction
+		addSliderWL("numEWRoads", "# E/W Roads", 1, 1, 9, 5) // Number of roads in east-west direction
+		addSliderWL("numCars", "# Cars", 1, 1, 400, 150) // Number of cars
+		addChooserWL("signalConfig", "Signal Configuration", ["AllSync", "NSAltEWSync", "NSAltEWAlt", "AllRandom"], 0)
+		  // Configuration of traffic lights
 		
 		// May change during simulation
-		addSlider("speedLimit",0.0,0.1,1.0,1) // Maximum speed of cars
-		addSlider("accel",0.0,0.01,0.5,0.1) // Rate at which cars accelerate or decelerate
+		addSliderWL("speedLimit", "Speed Limit", 0, 0.1, 1.0, 1) // Maximum speed of cars
+		addSliderWL("accel", "Acceleration", 0, 0.01, 0.5, 0.1) // Rate at which cars accelerate or decelerate
 		addSwitch("powerQ", true) // 
-		addSlider("ticksPerCycle",1.0,1.0,100.0,20) // Number of ticks between light changes
-		
-		addMonitor("currentPhase",5.0) // Monitor current phase
+		addSliderWL("ticksPerCycle", "Ticks Per Cycle", 1, 1, 100, 20) // Number of ticks between light changes
 		
 	}
 }

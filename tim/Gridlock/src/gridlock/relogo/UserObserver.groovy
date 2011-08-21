@@ -25,23 +25,41 @@ class UserObserver extends BaseObserver{
 	def setup() {
 	    clearAll()
 	    phase = 0
-	    deltaX = worldWidth()/numNSRoads
+	    // Create road network
+		deltaX = worldWidth()/numNSRoads
 	    deltaY = worldHeight()/numEWRoads
 		setupPatches()
 	    setDefaultShape(Car, "car")
-		if (numCars > count(roads)) {
-	        userMessage(word("ERROR:  Number of cars exceeds number of road patches.\n", "The setup has stopped."))
-	        return stop()
+		// If user has specified more cars than there are road patches, print error message
+		if (numCars > count(roads))
+	        userMessage("ERROR:  Number of cars exceeds number of road patches.")
+		// Else, place cars on roads
+	    else {
+			createCars(numCars) {
+				moveTo(oneOf(roads.with({!anyQ(carsOn(it))})))
+				if (floor(mod(pxcor+maxPxcor+deltaX/2+1, deltaX)) == 0)
+					heading = 0
+				else
+					heading = 90
+			}
 	    }
-	    createCars(numCars) {
-			moveTo(oneOf(roads.with({!anyQ(carsOn(self()))})))
-			if (floor(mod(pxcor+maxPxcor+deltaX/2+1, deltaX)) == 0)
-				heading = 0
-			else
-				heading = 90
-		}
 	}
 
+	def go() {
+	    // Set signals if phase is back to 0
+		if (phase == 0)
+			ask (intersections) {
+				greenNSQ = !greenNSQ
+				setSignal()
+			}
+		// Move cars
+		ask (cars()) {
+	        step()
+	    }
+	    phase = mod(phase+1, ticksPerCycle)
+	}
+
+	// Create roads, intersections, and traffic signals
 	def setupPatches() {
 	    ask (patches()) {
 	        greenNSQ = false
@@ -54,6 +72,7 @@ class UserObserver extends BaseObserver{
 		ask (roads) {
 			pcolor = white()
 	    }
+		// Set signals at intersections based on signalConfig
 		ask (intersections) {
 	        row = floor((pycor+maxPycor+1)/deltaY+0.5)
 	        col = floor((pxcor+maxPxcor+1)/deltaX+0.5)
@@ -73,23 +92,6 @@ class UserObserver extends BaseObserver{
 			}
 	        setSignal()
 	    }
-	}
-
-	def go() {
-	    if (phase == 0)
-			ask (intersections) {
-				greenNSQ = !greenNSQ
-				setSignal()
-			}
-		ask (cars()) {
-	        step()
-	    }
-	    phase = mod(phase+1, ticksPerCycle)
-	    tick()
-	}
-
-	def currentPhase() {
-	    return phase
 	}
 
 }
