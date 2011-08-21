@@ -115,26 +115,22 @@ class UserTurtle extends BaseTurtle{
 	}
 	
 	// Modify how this turtle will appear on the display
-	//     Altruist = circle on white
-	//     Ethnocentrist = circle on black
-	//     Xenocentrist = square on white
-	//     Egoist = square on black
+	//     Altruist:  circle on gray background
+	//     Ethnocentrist:  circle on black background
+	//     Xenocentrist:  square on gray background
+	//     Egoist:  square on black background
 	def displayTraits() {
 		size = 0.7
-		// If this turtle cooperates with other turtles of the same color, display this turtle as a circle
+		// If this turtle cooperates with other turtles of the same color, make this turtle's shape a circle
 		if (inGroupCoopQ) {
 			shape = "circle"
 		}
-		// Else, display this turtle as a square
+		// Else, make this turtle's shape a square
 		else {
 			shape = "square"
 		}
-		// If this turtle cooperates with other turtles of a different color, shade this turtle's patch white
-		if (outGroupCoopQ) {
-			setPcolor(white())
-		}
-		// Else, shade this turtle's patch black
-		else {
+		// If this turtle does not cooperate with turtles of a different color, shade this turtle's patch black
+		if (!outGroupCoopQ) {
 			setPcolor(black())
 		}
 	}

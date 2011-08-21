@@ -10,7 +10,7 @@ import repast.simphony.relogo.UtilityG;
 /**
  * Adaptation of ethnocentrism model found in
  * 
- * Hammond, R. A. & Axelrod, R. (2006). The Evolution of Ethnocentrism. The Journal of Conflict Resolution 50(6), 926-936.
+ * Hammond, R. A., & Axelrod, R. (2006). The Evolution of Ethnocentrism. Journal of Conflict Resolution 50(6), 926-936.
  * 
  * @author Tim Sweda
  *
@@ -18,18 +18,23 @@ import repast.simphony.relogo.UtilityG;
 
 class UserObserver extends BaseObserver{
 
+	def setupQ = false
+	def tickCounter
+	
 	def setup() {
 		clearAll()
+		setupQ = true
+		tickCounter = 0
 		// Define set of possible turtle colors
-		tagColors = [red(), yellow(), green(), blue()]
+		tagColors = [red(), yellow(), blue(), magenta()]
 		ask (patches()) {
-			setPcolor(gray())
+			setPcolor(gray()+2)
 		}
 		def zeros = []
 		while (length(zeros) < 100) {
 			zeros = lput(0, zeros)
 		}
-		// Initialize stats
+		// Initialize statistics
 		altruists = zeros
 		ethnocentrists = zeros
 		xenocentrists = zeros
@@ -42,6 +47,7 @@ class UserObserver extends BaseObserver{
 	}
 	
 	def go() {
+		tickCounter++
 		coopT = 0
 		interactT = 0
 		def openPatches = patches().with({!anyQ(turtlesHere())})
@@ -65,7 +71,7 @@ class UserObserver extends BaseObserver{
 		// Turtles die
 		ask (turtles()) {
 			if (randomFloat(1) < deathRate) {
-				setPcolor(gray())
+				setPcolor(gray()+2)
 				// Update stats
 				if (inGroupCoopQ) {
 					if (outGroupCoopQ) {
@@ -86,20 +92,24 @@ class UserObserver extends BaseObserver{
 				die()
 			}
 		}
-		// Update stats
+		// Update statistics
 		def totalPop = max([1, count(turtles())])
 		altruists = butFirst(lput(altT/totalPop, altruists))
 		ethnocentrists = butFirst(lput(ethT/totalPop, ethnocentrists))
 		xenocentrists = butFirst(lput(xenT/totalPop, xenocentrists))
 		egoists = butFirst(lput(egoT/totalPop, egoists))
 		cooperation = butFirst(lput(coopT/max([1, interactT]), cooperation))
-		tick()
 	}
 	
 	// Calculate and report prevalence of each behavior type and percent of interactions that are cooperative, using average of last 100 ticks (if available)
 	def reportStats() {
-		// If simulation has run for at least 100 ticks, report averages of last 100 ticks
-		if (first(altruists)+first(ethnocentrists)+first(xenocentrists)+first(egoists) > 0) {
+		// If Setup button has not been pressed, there is nothing to report
+		if (!setupQ) {
+			setup()
+			userMessage("No statistics to report (simulation has not yet begun).")
+		}
+		// Else if simulation has run for at least 100 ticks, report averages of last 100 ticks
+		else if (tickCounter > 100) {
 			def alt = 100*mean(altruists)+"%\n"
 			def eth = 100*mean(ethnocentrists)+"%\n"
 			def xen = 100*mean(xenocentrists)+"%\n"
@@ -108,7 +118,7 @@ class UserObserver extends BaseObserver{
 			userMessage("Altruists:  "+alt+"Ethnocentrists:  "+eth+"Xenocentrists:  "+xen+"Egoists:  "+ego+"Cooperation:  "+coop)
 		}
 		// Else if simulation has run for at least 1 tick, report average for the entire simulation so far
-		else if (count(turtles()) > 0) {
+		else if (tickCounter > 0) {
 			def i = 0
 			while (item(i, altruists)+item(i, ethnocentrists)+item(i, xenocentrists)+item(i, egoists) == 0) {
 				i++
@@ -120,9 +130,9 @@ class UserObserver extends BaseObserver{
 			def coop = 100*mean(sublist(cooperation, i, 100))+"%"
 			userMessage("Altruists:  "+alt+"Ethnocentrists:  "+eth+"Xenocentrists:  "+xen+"Egoists:  "+ego+"Cooperation:  "+coop)
 		}
-		// Otherwise, there are no stats to report
+		// Otherwise, there are no statistics to report
 		else {
-			userMessage("No stats to report (simulation has not yet begun).")
+			userMessage("No statistics to report (simulation has not yet begun).")
 		}
 	}
 

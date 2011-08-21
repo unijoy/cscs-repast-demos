@@ -52,18 +52,17 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		addGlobal("interactT")
 		
 		// Create user interface
-		addButton("setup")
-		addToggleButton("go")
-		addButtonWL("go", "goOnce") // Execute 'go' method just once
-		addButton("reportStats") // Report prevalence of each behavior type and percent of interactions that are cooperative
-		addSlider("cost", 0, 0.01, 1, 0.01) // Cost of giving help
-		addSlider("benefit", 0, 0.01, 1, 0.03) // Benefit of receiving help
-		addSlider("basePTR", 0, 0.01, 1, 0.12) // Turtle's potential to reproduce (PTR) at the beginning of a tick
-		addSlider("mutationRate", 0, 0.005, 1, 0.005) // Probability that an offspring's trait differs from that of the parent
-		addSlider("deathRate", 0, 0.01, 1, 0.10) // Probability that a turtle dies at the end of a tick
-		addSlider("immigrationRate", 1, 1, 20, 1) // Number of new turtles that arrive at the beginning of a tick
-		addSlider("inGroupCoopProb", 0, 0.01, 1, 0.5) // Probability that a new turtle will help other turtles of a similar color
-		addSlider("outGroupCoopProb", 0, 0.01, 1, 0.5) // Probability that a new turtle will help other turtles of a different color
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
+		addButtonWL("reportStats", "Statistics") // Report prevalence of each behavior type and percent of interactions that are cooperative
+		addSliderWL("cost", "Cost", 0, 0.01, 1, 0.01) // Cost of giving help
+		addSliderWL("benefit", "Benefit", 0, 0.01, 1, 0.03) // Benefit of receiving help
+		addSliderWL("basePTR", "Base PTR", 0, 0.01, 1, 0.12) // Turtle's potential to reproduce (PTR) at the beginning of a tick
+		addSliderWL("mutationRate", "Mutation Rate", 0, 0.005, 1, 0.005) // Probability that an offspring's trait differs from that of the parent
+		addSliderWL("deathRate", "Death Rate", 0, 0.01, 1, 0.10) // Probability that a turtle dies at the end of a tick
+		addSliderWL("immigrationRate", "Immigration Rate", 1, 1, 20, 1) // Number of new turtles that arrive at the beginning of a tick
+		addSliderWL("inGroupCoopProb", "In-group Cooperation Probability", 0, 0.01, 1, 0.5) // Probability that a new turtle will help other turtles of a similar color
+		addSliderWL("outGroupCoopProb", "Out-group Cooperation Probability", 0, 0.01, 1, 0.5) // Probability that a new turtle will help other turtles of a different color
 
 	}
 }
