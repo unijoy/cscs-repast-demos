@@ -37,8 +37,8 @@ class UserObserver extends BaseObserver{
 			liveNeighbors = sum({life}.of(neighbors()))
 		}
 		// Determine whether patches live or die according to the following rules:
-		//   1.  A dead patch with exactly three living neighbors becomes alive.
-		//   2.  A living patch with two or three living neighbors remains alive; otherwise, it dies.
+		//   1.  A living patch with two or three living neighbors remains alive; otherwise, it dies.
+		//   2.  A dead patch with exactly three living neighbors becomes alive.
 		ask (patches()) {
 			if (liveNeighbors == 3) {
 				makeLiving()
@@ -49,9 +49,9 @@ class UserObserver extends BaseObserver{
 		}
 		// Calculate current density of living patches
 		density = sum({life}.of(patches()))/count(patches())
-		tick()
 	}
 	
+	// Return density of living patches
 	def currentDensity() {
 		return density
 	}

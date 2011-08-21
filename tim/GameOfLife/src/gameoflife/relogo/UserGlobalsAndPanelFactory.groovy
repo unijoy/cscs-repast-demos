@@ -39,9 +39,10 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		addGlobal("initialDensity") // Density of living patches in initial pattern
 		addGlobal("density") // Current density of living patches
 		
-		addButton("setup")
-		addToggleButton("go")
-		addSlider("initialDensity", 0, 0.01, 1, 0.25)
+		// Create user interface
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
+		addSliderWL("initialDensity", "Initial Density", 0, 0.01, 1, 0.25)
 		addMonitor("currentDensity", 1)
 
 	}
