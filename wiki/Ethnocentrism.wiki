@@ -7,7 +7,7 @@
  * Platform      : [RepastSReLogo Repast Simphony ReLogo]
  * Documentation
    * Wiki: http://code.google.com/p/cscs-repast-demos/wiki/Ethnocentrism
-   * Readme: https://cscs-repast-demos.googlecode.com/svn/tim/Ethnocentrism/docs/ethnocentrism.pdf
+   * PDF: https://cscs-repast-demos.googlecode.com/svn/tim/Ethnocentrism/docs/ethnocentrism.pdf
  * Author: [Tim Tim Sweda]
 
 https://cscs-repast-demos.googlecode.com/svn/tim/Ethnocentrism/docs/ethnocentrism.png
