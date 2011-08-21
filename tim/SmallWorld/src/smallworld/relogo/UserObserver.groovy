@@ -38,7 +38,7 @@ class UserObserver extends BaseObserver{
 			userMessage("ERROR:  # Nodes does not exceed 2*(Initial Node Degree).")
 		}
 		else if (initialNodeDegree <= ln(numNodes)) {
-			// May have too many isolated nodes after rewiring
+			// Graph more likely to not be connected after rewiring
 			userMessage("ERROR:  Initial Node Degree does not exceed ln(# Nodes).")
 		}
 	}
@@ -73,11 +73,11 @@ class UserObserver extends BaseObserver{
 		ask (nodes()) {
 			calculateClusterCoeff()
 		}
-		def globalAD = mean({avgDistance}.of(nodes()))
+		def globalPL = mean({avgPathLength}.of(nodes()))
 		def globalCC = mean({nodeClusterCoeff}.of(nodes()))
-		def initialAD = (k*nkterm*(nkterm+1)/2-nkterm*mod(1-n, k))/(n-1)
+		def initialPL = (k*nkterm*(nkterm+1)/2-nkterm*mod(1-n, k))/(n-1)
 		def initialCC = 3*k*(k/2-1)/(2*k*(k-1))
-		userMessage("Average Path Length:  "+globalAD+" ("+globalAD/initialAD+")\n"+
+		userMessage("Average Path Length:  "+globalPL+" ("+globalPL/initialPL+")\n"+
 			"Clustering Coefficient:  "+globalCC+" ("+globalCC/initialCC+")")
 	}
 	
@@ -86,20 +86,20 @@ class UserObserver extends BaseObserver{
 		def sortedNodes = sort(nodes())
 		def minWho = min({who}.of(nodes()))
 		ask (nodes()) {
-			distance = []
+			pathLengths = []
 		}
 		// Implement Floyd-Warshall algorithm for finding all-pairs shortest paths
 		ask (sortedNodes) {
 			def i = self()
 			ask (sortedNodes) {
-				def initialDist = numNodes
+				def pl = numNodes
 				if (who == {who}.of(i))
-					initialDist = 0
+					pl = 0
 				else if (linkNeighborQ(i)) {
-					initialDist = 1
+					pl = 1
 				}
 				ask (i) {
-					distance = lput(initialDist, distance)
+					pathLengths = lput(pl, pathLengths)
 				}
 			}
 		}
@@ -109,19 +109,19 @@ class UserObserver extends BaseObserver{
 				def i = self()
 				ask (sortedNodes) {
 					def j = self()
-					def dist = item({who}.of(k)-minWho, {distance}.of(i))+item(who-minWho, {distance}.of(k))
-					if (dist < item(who-minWho, {distance}.of(i)))
+					def dist = item({who}.of(k)-minWho, {pathLengths}.of(i))+item(who-minWho, {pathLengths}.of(k))
+					if (dist < item(who-minWho, {pathLengths}.of(i)))
 						ask (i) {
-							distance = replaceItem({who}.of(j)-minWho, distance, dist)
+							pathLengths = replaceItem({who}.of(j)-minWho, pathLengths, dist)
 						}
 				}
 			}
 		}
 		// Calculate average path length for each node
-		// NOTE:  mean(distance) is the average path length from the node to any node (including itself),
+		// NOTE:  mean(pathLengths) is the average path length from the node to any node (including itself),
 		//   so multiplying by numNodes/(numNodes-1) gives the average path length to any other node
 		ask (nodes()) {
-			avgDistance = mean(distance)*numNodes/(numNodes-1)
+			avgPathLength = mean(pathLengths)*numNodes/(numNodes-1)
 		}
 	}
 

@@ -39,8 +39,8 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		// Create user interface
 		addChooserWL("inkColor", "Color", ["gray", "red", "orange", "brown", "yellow", "green", "lime", "turquoise",
 			"cyan", "sky", "blue", "violet", "magenta", "pink"], 0) // Color of patches with positive concentration (string)
-		addChooserWL("pattern", "Pattern", ["random100", "random300", "random500", "oppEdges", "adjEdges", "spot",
-			"grid"], 0) // Initial pattern of patches to be colored
+		addChooserWL("pattern", "Pattern", ["Random100", "Random300", "Random500", "OppositeEdges", "AdjacentEdges",
+			"Spot", "Grid"], 0) // Initial pattern of patches to be colored
 		addButtonWL("setup", "Setup")
 		addToggleButtonWL("go", "Go")
 		addButtonWL("darken", "Darken")

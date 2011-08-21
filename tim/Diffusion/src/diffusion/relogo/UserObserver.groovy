@@ -68,22 +68,22 @@ class UserObserver extends BaseObserver{
 		}
 		// Determine patches in initial pattern to be colored
 		def coloredPatches
-		if (pattern == "random100") {
+		if (pattern == "Random100") {
 			coloredPatches = nOf(100, patches())
 		}
-		else if (pattern == "random300") {
+		else if (pattern == "Random300") {
 			coloredPatches = nOf(300, patches())
 		}
-		else if (pattern == "random500") {
+		else if (pattern == "Random500") {
 			coloredPatches = nOf(500, patches())
 		}
-		else if (pattern == "oppEdges") {
+		else if (pattern == "OppositeEdges") {
 			coloredPatches = patches().with({abs(pxcor) > 12})
 		}
-		else if (pattern == "adjEdges") {
+		else if (pattern == "AdjacentEdges") {
 			coloredPatches = patches().with({pxcor < -12 || pycor > 12})
 		}
-		else if (pattern == "spot") {
+		else if (pattern == "Spot") {
 			coloredPatches = patches().with({abs(pxcor) < 4 && abs(pycor) < 4})
 		}
 		else {

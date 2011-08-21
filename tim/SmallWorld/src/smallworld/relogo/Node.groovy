@@ -17,14 +17,14 @@ import repast.simphony.relogo.UtilityG;
 
 class Node extends BaseTurtle {
 	
-	def nodeClusterCoeff, distance, avgDistance
+	def nodeClusterCoeff, pathLengths, avgPathLength
 	
 	def initialize() {
 		size = 1/3+(200-numNodes)/300
 		color = white()
 		def r = 0.45*min([worldHeight(), worldWidth()])
 		setxy(r*cos(360/numNodes*who), r*sin(360/numNodes*who))
-		distance = []
+		pathLengths = []
 	}
 	
 	// Rewire this node
