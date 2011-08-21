@@ -8,7 +8,8 @@ import repast.simphony.relogo.Utility;
 import repast.simphony.relogo.UtilityG;
 
 /**
- * Implementation of Mousetrap model from Repast 3.
+ * Classic experiment for demonstrating how nuclear fission occurs.  Similar to Mousetrap model written
+ * using RepastS Java.
  * 
  * @author Tim Sweda
  *
@@ -38,17 +39,20 @@ class UserObserver extends BaseObserver{
 			if (pcolor != red()) {
 				pcolor = red()
 				snappedTraps++
-				hatch(ballsOnTrap) {
+				hatch(ballsPerTrap) {
 					initialize()
 					bounce()
 				}
+				// This ball bounces again
+				bounce()
 			}
-			die()
+			// Else, this ball stops bouncing
+			else
+				die()
 		}
 		// If no new traps have been snapped, then the simulation is over
-		if (snapCount == snappedTraps) {
+		if (snapCount == snappedTraps)
 			stop()
-		}
 	}
 	
 	// Return percentage of traps that have been snapped

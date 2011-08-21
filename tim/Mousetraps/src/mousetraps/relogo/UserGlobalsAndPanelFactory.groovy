@@ -35,10 +35,10 @@ public class UserGlobalsAndPanelFactory extends AbstractReLogoGlobalsAndPanelFac
 		 */
 		
 		// Create user interface
-		addButton("setup")
-		addToggleButton("go")
-		addSlider("ballsOnTrap", 1, 1, 5, 2) // Number of balls on each trap waiting to be released
-		addSlider("maxDistance", 0.5, 0.5, 10, 5) // Maximum distance that a ball may travel in one bounce
+		addButtonWL("setup", "Setup")
+		addToggleButtonWL("go", "Go")
+		addSliderWL("ballsPerTrap", "# Balls Per Trap", 1, 1, 10, 1) // Number of balls on each trap waiting to be released
+		addSliderWL("maxDistance", "Max. Distance", 0.5, 0.5, 10, 5) // Maximum distance that a ball may travel in one bounce
 		addMonitor("pctSnapped", 1) // Percentage of traps that have been snapped
 
 	}

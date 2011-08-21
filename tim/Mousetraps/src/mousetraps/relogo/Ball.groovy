@@ -27,13 +27,11 @@ class Ball extends BaseTurtle {
 		right(randomFloat(360))
 		def dist = randomFloat(maxDistance)
 		// If destination is within the grid boundaries, move this Ball to the destination
-		if (abs(xcor+dist*cos(heading)) < worldWidth()/2 && abs(ycor+dist*sin(heading)) < worldHeight()/2) {
+		if (abs(xcor+dist*cos(heading)) < worldWidth()/2 && abs(ycor+dist*sin(heading)) < worldHeight()/2)
 			forward(dist)
-		}
 		// Else, remove this ball from the simulation (since it is "out of bounds")
-		else {
+		else
 			die()
-		}
 	}
 
 }
