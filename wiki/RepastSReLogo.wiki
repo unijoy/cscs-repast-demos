@@ -22,10 +22,17 @@ The complete !ReLogo API can be found [http://repast.sourceforge.net/docs/api/re
  # AreaCoverage (Unverified)
  # [Boids] (Unverified)
  # BugCatcher (Unverified)
+ # [Diffusion] (Unverified)
+ # [Ethnocentrism] (Unverified)
  # [followTheLeader] (Unverified)
+ # [GameOfLife] (Unverified)
+ # [Gridlock] (Unverified)
  # GuidingBots (Unverified)
  # Moth_Basic (Unverified)
  # Moth_Advance (Unverified)
+ # [Mousetraps] (Unverified)
+ # [SmallWorld] (Unverified)
+ # [Snake] (Unverified)
  
 = References =
 
