@@ -11,9 +11,6 @@ public class Constants {
 	
 	public static final boolean DEBUG = false;
 	
-	/**
-	 * Hidden constructor to ensure no instances are created.
-	 */
 	private Constants() {
 		;
 	}

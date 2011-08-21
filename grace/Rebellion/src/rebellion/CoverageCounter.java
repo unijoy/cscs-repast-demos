@@ -3,7 +3,6 @@ package rebellion;
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class CoverageCounter {
@@ -26,7 +25,7 @@ public class CoverageCounter {
 	
 	public void updateCount(){
 		Context context = ContextUtils.getContext(this);
-		Grid grid = (Grid)context.getProjection(Constants.CONTEXT_ID);
+		//Grid grid = (Grid)context.getProjection(Constants.CONTEXT_ID);
 		
 		Object[] objs = context.toArray();
 		
@@ -44,7 +43,8 @@ public class CoverageCounter {
 			}
 		}
 		System.out.println("people "+pCount+" active "+pActiveCount+
-				" jailed "+pJailedCount+" quiet "+pQuietCount);
+				" jailed "+pJailedCount+" quiet "+pQuietCount+
+				" total "+(pActiveCount+pJailedCount+pQuietCount));
 		
 	}
 	

@@ -34,7 +34,7 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 		int maxJailTerm = (Integer)p.getValue("maxJailTerm");
 		
 		final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
-				.createContinuousSpaceFactory(null) // No hints
+				.createContinuousSpaceFactory(null)
 				.createContinuousSpace(
 						Constants.SPACE_ID,
 						context,
@@ -48,10 +48,10 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 						Constants.GRID_ID,
 						context,
 						new GridBuilderParameters<Object>(
-								new repast.simphony.space.grid.WrapAroundBorders(),
-								new RandomGridAdder<Object>(),
-								false,
-								gridWidth, gridHeight));
+							new repast.simphony.space.grid.WrapAroundBorders(),
+							new RandomGridAdder<Object>(),
+							false,
+							gridWidth, gridHeight));
 
 		if ((iniPeopleDensity + iniCopsDensity) > 1) {
 			System.out.println("Error: ini people and cops density sum > 1. " +
@@ -65,24 +65,25 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 		int peopleCount = (int) (gridWidth * gridHeight * iniPeopleDensity);
 		int copsCount = (int) (gridWidth * gridHeight * iniCopsDensity);
 		
-		if (Constants.DEBUG == true) {
+		if (Constants.DEBUG) {
 			System.out.println("grid size "+ gridWidth*gridHeight);
 			System.out.println("people count "+peopleCount+" cops count "+copsCount);
 		}
 		
 		for (int i = 0; i < peopleCount; ++i) {
-			Person person = new Person(visNeighbors, maxJailTerm, govLegitimacy);
+			Person person = new Person(grid, space, visNeighbors, maxJailTerm, govLegitimacy);
 			context.add(person);
 		}
 
 		for (int i = 0; i < copsCount; ++i) {
-			Cop cop = new Cop(visNeighbors);
+			Cop cop = new Cop(grid, space, visNeighbors);
 			context.add(cop);
 		}
 
 		for (Object obj : context) {
 			GridPoint pt = grid.getLocation(obj);
 			grid.moveTo(obj, pt.getX(), pt.getY());
+			//System.out.println(obj.toString());
 		}
 
 		context.add(new CoverageCounter());
