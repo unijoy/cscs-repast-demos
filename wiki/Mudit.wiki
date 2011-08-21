@@ -75,6 +75,20 @@ For a Summary Check [MothBasic]
 
 For Details Check [MothBasicDescription]
 
+==*Random Walk*==
+
+For a Summary Check [RandomWalk]
+
+==*Biased Random Walk*==
+
+For a Summary Check [BiasedRandomWalk]
+
+==*RandomChains*==
+
+For a Summary Check [RandomChains]
+
+
+
 
 =*Tutorial*=
 
