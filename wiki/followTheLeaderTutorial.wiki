@@ -34,11 +34,7 @@ Hope you'll find this guide fun and easy to learn. Cheers !!!
 
 ==Where is this model and who wrote this?==
 
-The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeader here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] 
-under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and
-function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant
-to the system behavior. 
-Let us first understand a bit about multi-agent modeling.
+The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeader here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The model is fully commented and each class and function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant to the system behavior. Let us first understand a bit about multi-agent modeling.
 
 =What to know and do before getting started?=
 
