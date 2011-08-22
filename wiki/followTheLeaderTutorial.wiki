@@ -884,9 +884,6 @@ _Fig. 33_
 
  9
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2034.JPG
-
-_Fig. 34_
  #
  #
  # 
@@ -894,14 +891,22 @@ _Fig. 34_
 Your agent mapping should look like this(refer to Fig. 35) :
 
 
-click on Next and you will get optiosn to change the scheduling parameters. (refer to Fig. 36)
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2049.JPG
 
+_Fig. 34_
+
+click on Next and you will get optiosn to change the scheduling parameters. (refer to Fig. 35)
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2034.JPG
+
+_Fig. 35_
 
 Let us keep these parameters as they are and click on _Finish_
 
-Now, it's the *Most Important* part. Do not forget to save the changes using the _Save Button_ (refer to Fig. 35)
+Now, it's the *Most Important* part. Do not forget to save the changes using the _Save Button_ (refer to Fig. 36)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.jpg
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2035.jpg
 
 _Fig. 35_
 
@@ -1025,9 +1030,6 @@ _Fig. 48_
 
 Let us change the background from white to black. To do so  Select _Plot_ from the three tabs. The window now will look like this (refer to Fig. 49):  
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2049.JPG
-
-_Fig. 49_
 
  # Go to _Appearance_
  # In the background paint section _Select..._
