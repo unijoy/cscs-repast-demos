@@ -22,7 +22,7 @@ Proper installation of Repast Simphony (version 2.0 Beta, released 12/3/2010 or 
 
 The rebellion model simulates how a group of people rebels against the authority (cops).  An example of the running model looks like the following figure:
 
-https://cscs-repast-demos.googlecode.com/svn/grace/Rebellion/docs/latex_files/Images/rebellion.png
+http://cscs-repast-demos.googlecode.com/svn/grace/Rebellion/docs/latex_files/images/rebellion.png
 
 Each person is in one of the three states:
 
@@ -64,7 +64,7 @@ Remember to setup the grid and space projections in the resource folder "Rebelli
 
 = Model Parameters =
 
-https://cscs-repast-demos.googlecode.com/svn/grace/Rebellion/docs/latex_files/Images/rebellion_param.png
+http://cscs-repast-demos.googlecode.com/svn/grace/Rebellion/docs/latex_files/images/rebellion_param.png
 
 User-specified parameters are as follow:
 
