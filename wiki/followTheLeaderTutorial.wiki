@@ -118,8 +118,7 @@ _Fig. 6_
 and switch to Relogo prospective using the following step:
 
  # Go to the extreme top right corner and select relogo prospective (refer to Fig. 7)
- # If it  is not available, click  on the double arrow to get a drop 
-down menu (refer to Fig. 8)
+ # If it  is not available, click  on the double arrow to get a drop down menu (refer to Fig. 8)
  # Select Relogo prospective by clicking it (refer to Fig. 8)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%207.jpg
@@ -165,107 +164,75 @@ project. This can be done by various means :
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2010.JPG
 
-_Fig.
- 10_
+_Fig. 10_
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2011.JPG
 
-_Fig.
- 11_
+_Fig. 11_
 
-After any of the mentioned options a New Project _wizard_ appears on the
- screen. Do the following (refer to Fig. 12):
+After any of the mentioned options a New Project _wizard_ appears on the screen. Do the following (refer to Fig. 12):
 
- # Enter the name of the project "followTheLeader" in the Project Name 
-Field.
+ # Enter the name of the project "followTheLeader" in the Project Name Field.
  # Click on _Next_
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2012.jpg
 
-_Fig.
- 12_
+_Fig. 12_
 
-After clicking the _Next_ button the wizard should look like Fig. 13. 
-Click on the _Finish_ button  
+After clicking the _Next_ button the wizard should look like Fig. 13. Click on the _Finish_ button  
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2013.JPG
 
-_Fig.
- 13_
-
+_Fig. 13_
 
 After _Finish_ the wizard will create a tree structure of the new 
-project, and once it is done you can view your project in the project 
-explorer. Click on the small arrow to view the sub directories. In the 
-source folder you will find default classes. The structure should look 
-like Fig. 14
+project, and once it is done you can view your project in the project explorer. Click on the small arrow to view the sub directories. In the source folder you will find default classes. The structure should look like Fig. 14
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2014.JPG
 
-_Fig.
- 14_
-
-Right click on "UserTurtle.groovy" and select _delete_. We would not be 
-using this class. Some models might require this class and others _(It 
-is left to the user to explore)_. 
+_Fig. 14_
 
 Let us see what is a turtle and how can we add one in our project.
 
 ==How to add Turtle behavior?==
 
-"Turtles" or "Agents" are the basic building blocks of a multi-agent 
-model. We also need "Ant" type turtles. We will first define the 
-behavior of these ants using simple rules which were explained above and
- in further sections we will see how to create them and change their 
-behaviors.
+"Turtles" or "Agents" are the basic building blocks of a multi-agent model. We also need "Ant" type turtles. We will first define the behavior of these ants using simple rules which were explained above and in further sections we will see how to create them and change their behaviors.
 
 Let us first see how to add a turtle class to your project. 
-Select _project explorer >> followTheLEader >> src >> 
-followtheleader.relogo then you can follow any of the two methods:
+Select _project explorer >> followTheLEader >> src >> followtheleader.relogo then you can follow any of the two methods:
 
- # _Right Click on followtheleader.relogo >> New >> Turtle_ 
-(refer to Fig. 15)
+ # _Right Click on followtheleader.relogo >> New >> Turtle_ (refer to Fig. 15)
  # Click on the _New Turtle_ button. (refer to Fig. 15)
  
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2015.jpg
 
-_Fig.
- 15_
+_Fig. 15_
 
-After the above command a new turtle dialog box appears on the screen. 
-Follow the given steps (refer to Fig. 16):
+After the above command a new turtle dialog box appears on the screen. Follow the given steps (refer to Fig. 16):
 
  # Click on the _Name_ field and enter name. "Ant" for our project.
- # Click on _Generate Comments_ to automatically generate comments. (It 
-might be useful)
+ # Click on _Generate Comments_ to automatically generate comments. (It might be useful)
  # Click on _Finish_
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2016.jpg
 
-_Fig.
- 16_
+_Fig. 16_
 
-After doing this, check your project's Directory structure, it will have
- a new class in the _followTheLeader >> src >> 
+After doing this, check your project's Directory structure, it will have a new class in the _followTheLeader >> src >> 
 followtheleader.relogo_ with the name "Ant.groovy" (refer to Fig. 17) 
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2017.jpg
 
-_Fig.
- 17_
+_Fig. 17_
 
 Double click on Ant.groovy and you will be able to see the file. It 
 should look like Fig. 18
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2018.jpg
 
-_Fig.
- 18_
+_Fig. 18_
 
-Now we will start writing the code for describing the behavior of an 
-Ant. The behavior and variables described and used in this are with all 
-the ants. Let us first look at few variables that are used in 
-"Ant.groovy" and why. 
+Now we will start writing the code for describing the behavior of an Ant. The behavior and variables described and used in this are with all the ants. Let us first look at few variables that are used in "Ant.groovy" and why. 
 
 {{{
 	def leader=0    //Is Set if the Ant is a Leader
@@ -275,19 +242,15 @@ the ants. Let us first look at few variables that are used in
 	def disable=0   //Is Set if the Ant reaches the food pile 
 }}}
 
-So, an Ant at all times will be aware of the number of steps it took, 
-using the "moved" variable and weather it is a "leader" or a "follower".
- Using "enable" and "disable" the Ant can figure out weather it is in 
-the nest or in a food pile.
+So, an Ant at all times will be aware of the number of steps it took, using the "moved" variable and weather it is a "leader" or a "follower". Using "enable" and "disable" the Ant can figure out weather it is in the nest or in a food pile.
 
-Now let us see how these variables will be guiding an ant's behavior
+Now let us see how these variables will be guiding an ant's behavior 
 
 Note: Both _leader-follower_ and _enable-disable_ could have been 
 clubbed into two variables, but they are taken separately for 
 explanation sake.   
 
-First we look at the step() function that is present in all the _Ants_ 
-and is called at periodic interval of time.
+First we look at the step() function that is present in all the _Ants_ and is called at periodic interval of time.
 
 {{{
 
@@ -311,10 +274,7 @@ parameters
 }}}
 
 If an ant is not in nest and if it the leader then moveLeader() is 
-called, else if it is a follower ant moveFollower() is called. We will 
-look into these function after a while. If an Ant is moving from nest to
- food (i.e it is an "enable" follower or leader.) it should update few 
-parameters. Let us look at these functions one-by-one.
+called, else if it is a follower ant moveFollower() is called. We will look into these function after a while. If an Ant is moving from nest to food (i.e it is an "enable" follower or leader.) it should update few parameters. Let us look at these functions one-by-one.
 
 {{{
 
@@ -333,29 +293,15 @@ def moveLeader()
 
 }}} 
 
-If a "Leader" ant has to move, it will face the center of the food pile,
- using the function _facexy(8,0)_. facexy(x,y) will make the turtle face
- towards a point given by (x,y) coordinates. For other such functions 
-and details, view 
-[http://repast.sourceforge.net/docs/api/relogo/index.html this], infact 
-it is advisable that is you are reading the tutorial online open the 
-above mentioned link and 
-[http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html 
-this]
+If a "Leader" ant has to move, it will face the center of the food pile, using the function _facexy(8,0)_. facexy(x,y) will make the turtle face towards a point given by (x,y) coordinates. For other such functions and details, view 
+[http://repast.sourceforge.net/docs/api/relogo/index.html this], infact it is advisable that is you are reading the tutorial online open the above mentioned link and 
+[http://repast.sourceforge.net/docs/api/relogo/ReLogoPrimitives.html this]
 
 Similarly, _random(2)_ is used to generate random number 0 or 1. 
-_random(n)_ generates random numbers in the interval (0,n]. Similarly, 
-_random(dev)_ will generate random numbers less than "dev". We will get 
-back on to how the variable "dev" is set later. 
+_random(n)_ generates random numbers in the interval (0,n]. Similarly, _random(dev)_ will generate random numbers less than "dev". We will get back on to how the variable "dev" is set later. 
 
-**So, an ant can randomly move to it's right(there is a (-)ve sign) or 
-left. The function _left()_ used in the code is used turn the turtle at a
- given angle to it's left. The turtle will turn at random angles also.  
-   
-
-*Note:* Refer to the _area map_ given below for the initial positioning:
-   
-
+**So, an ant can randomly move to it's right(there is a (-)ve sign) or left. The function _left()_ used in the code is used turn the turtle at a given angle to it's left. The turtle will turn at random angles also.  
+ 
 Similarly let us look at the moveFollower()
 
 {{{
@@ -372,31 +318,20 @@ def moveFollower()
 }
 }}}
 
-This part of code might look a bit tricky, but lets analyze it from the 
-starting. 
+
+This part of code might look a bit tricky, but lets analyze it from the starting. 
 
 First of all the getWho() function used will give the ID of the ant 
-which is calling it. Each ant when created will have an ID given to it 
-by default. So, getWho()-1 will be the ant with ID 1 less than the 
-present. So, if the (getWho()-1).moved > lapse, i.e. if the "moved" 
-variable of the ant just before the present one has a higher value than 
-"lapse" then the following block will be executed."Lapse" is again a 
-variable about which we will talk about in the coming sections. It is 
-basically a time delay between two ants.
+which is calling it. Each ant when created will have an ID given to it by default. So, getWho()-1 will be the ant with ID 1 less than the present. So, if the (getWho()-1).moved > lapse, i.e. if the "moved" variable of the ant just before the present one has a higher value than "lapse" then the following block will be executed."Lapse" is again a variable about which we will talk about in the coming sections. It is basically a time delay between two ants.
 
-If it is so, the ant is enabled. _st()_ is also a pre-defined function, 
-it just makes the turtle visible. _turtle(n)_ is another function that 
-is used, it returns the turtle corresponding to ID number  = n. So, 
-_face(turtle(getWho()-1))_ is quite self explanatory. 
+If it is so, the ant is enabled. _st()_ is also a pre-defined function, it just makes the turtle visible. _turtle(n)_ is another function that is used, it returns the turtle corresponding to ID number  = n. So, _face(turtle(getWho()-1))_ is quite self explanatory. 
 
 **So, basically if a turtle is a follower turtle, it will face the 
-turtle which is in front of it, provided the turtle in front have been 
-moving for greater than "lapse" period of time. 
+turtle which is in front of it, provided the turtle in front have been moving for greater than "lapse" period of time. 
 
 Once the ants are facing where they have to, let us look at the 
 _update()_ function. This will be called for all those ants who are 
-enabled and also for the leader, i.e. all those ants which are moving 
-from the "nest" to the "food".
+enabled and also for the leader, i.e. all those ants which are moving from the "nest" to the "food".
 
 {{{
 def update()
@@ -413,15 +348,10 @@ def update()
 }
 }}} 
 
-**"moved" gets updated. _forward(n)_ function is used to move the ant 
-forward, in the direction in which it was facing for a specified number 
-of steps. 
+**"moved" gets updated. _forward(n)_ function is used to move the ant forward, in the direction in which it was facing for a specified number of steps. 
 
-**If the ant finds food in it's new position, it will be disabled. The 
-_patchHere()_ function used here will give the patch on which the ant is
- on. "food" is a variable in the UserPatch class _(More on this later)_.
- But what exactly are patches. Well, lets first look at a small piece of
- code before answering this question.
+**If the ant finds food in it's new position, it will be disabled. The _patchHere()_ function used here will give the patch on which the ant is on. "food" is a variable in the UserPatch class _(More on this later)_. 
+But what exactly are patches. Well, lets first look at a small piece of code before answering this question.
 
 {{{
 
@@ -442,14 +372,9 @@ def setFollower()
 }
 }}}
 
-The code is quite self explanatory, but the importance of this segment 
-is, when are these functions called? Well, they are called from the 
-"UserObserver.groovy" at the time of creation of ants. We will get back 
-to that later.
+The code is quite self explanatory, but the importance of this segment is, when are these functions called? Well, they are called from the "UserObserver.groovy" at the time of creation of ants. We will get back to that later.
 
-Now we have defined the behavior of an ant, check out the [**] marked 
-section in the above question for the overall behavior. This is quite 
-similar to the one we described in Whar are we modeling?
+Now we have defined the behavior of an ant, check out the [**] marked section in the above question for the overall behavior. This is quite similar to the one we described in Whar are we modeling?
 
 The overall "Ant.groovy" code should look like this : 
 {{{
@@ -534,16 +459,10 @@ def setFollower()
 
 }}}
 
-*Note:* The terms "turtle" and "ant" are used interchangeably through 
-out the guide. Both refer to "agents", turtle is a general term related 
-to modeling using Relogo, whereas, ant is specific to this model.
+*Note:* The terms "turtle" and "ant" are used interchangeably through out the guide. Both refer to "agents", turtle is a general term related to modeling using Relogo, whereas, ant is specific to this model.
 
 Comment:You can have more than one type of turtles in your models. 
-[GuidingBots] and Zombies are two such models. You can add a new turtle 
-type following the steps mentioned above. You can then add a behavior 
-and you can even make turtles interact and change each others' behavior.
- Go through the [GuidingBots] documentation of Relogo getting started 
-guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf 
+[GuidingBots] and Zombies are two such models. You can add a new turtle type following the steps mentioned above. You can then add a behavior and you can even make turtles interact and change each others' behavior. Go through the [GuidingBots] documentation of Relogo getting started guide [http://repast.sourceforge.net/docs/ReLogoGettingStarted.pdf 
 Zombies] for details.
 
 Let us now look at what are patches?
