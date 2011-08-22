@@ -14,7 +14,7 @@ import repast.simphony.parameter.Parameters;
 import repast.simphony.random.RandomHelper;
 
 /**
- * Toolkit for discrete event simulation using Repast's scheduler.
+ * Toolkit for discrete event simulation using Repast Java.
  * 
  * The model in this example is an M/M/1 queue, which can easily be modified 
  * to a G/G/s queue with some minor adjustments.  More complex systems can be 
@@ -26,18 +26,9 @@ import repast.simphony.random.RandomHelper;
 
 public class DESimBuilder implements ContextBuilder<Object> {
 
+	// Declare schedule and actions
 	static ISchedule schedule;
-	
-	// Declare queue, resource, and stat lists
-	static List<Queue> qList;
-	static List<Resource> rList;
-	static List<Stat> sList;
-	
-	// Declare run parameters
-	int replications; // Number of replications
-	int repCounter;
-	double warmup; // Warmup time for each replication
-	double endTime; // Length of each replication
+	ISchedulableAction nextArrival, nextDeparture, nextClear, nextEnd;
 	
 	// Declare queues, resources, random number generators, and statistics
 	Queue mm1q;
@@ -46,12 +37,20 @@ public class DESimBuilder implements ContextBuilder<Object> {
 	int arrivals, departures;
 	Stat arriveStat, departStat, lengthStat, waitStat, utilStat;
 	
-	// Declare actions
-	ISchedulableAction nextArrival, nextDeparture, nextEnd;
+	// Declare queue, resource, and stat lists
+	static List<Queue> qList;
+	static List<Resource> rList;
+	static List<Stat> sList;
 	
 	// Declare system parameters
 	double lambda; // Mean arrival rate
 	double mu; // Mean service time
+	
+	// Declare run parameters
+	int replications; // Number of replications
+	int repCounter;
+	double warmup; // Warmup time for each replication
+	double endTime; // Length of each replication
 	
 	@Override
 	public Context<Object> build(Context<Object> context) {
@@ -104,7 +103,7 @@ public class DESimBuilder implements ContextBuilder<Object> {
 		
 		double firstArrival = schedule.getTickCount()+arrivalRNG.nextDouble();
 		nextArrival = schedule.schedule(ScheduleParameters.createOneTime(firstArrival, 1), this, "arrive");
-		schedule.schedule(ScheduleParameters.createOneTime(schedule.getTickCount()+warmup, ScheduleParameters.LAST_PRIORITY), this, "clearStats");
+		nextClear = schedule.schedule(ScheduleParameters.createOneTime(schedule.getTickCount()+warmup, ScheduleParameters.LAST_PRIORITY), this, "clearStats");
 		nextEnd = schedule.schedule(ScheduleParameters.createOneTime(schedule.getTickCount()+endTime, ScheduleParameters.LAST_PRIORITY), this, "end");
 	}
 	

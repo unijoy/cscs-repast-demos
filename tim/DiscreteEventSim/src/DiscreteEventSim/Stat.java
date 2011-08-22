@@ -7,10 +7,7 @@ package DiscreteEventSim;
 
 public class Stat {
 	
-	private double total;
-	private double totalSq;
-	private double count;
-	private double lastTime;
+	private double total, totalSq, count, lastTime;
 	
 	public Stat() {
 		initialize();
@@ -23,7 +20,7 @@ public class Stat {
 		lastTime = DESimBuilder.schedule.getTickCount();
 	}
 	
-	// Record continuous time statistic
+	// Record continuous-time statistic
 	public void recordCT(double value) {
 		double currentTime = DESimBuilder.schedule.getTickCount();
 		total += value*(currentTime-lastTime);
@@ -31,7 +28,7 @@ public class Stat {
 		lastTime = currentTime;
 	}
 	
-	// Record discrete time statistic
+	// Record discrete-time statistic
 	public void recordDT(double value) {
 		total += value;
 		totalSq += value*value;

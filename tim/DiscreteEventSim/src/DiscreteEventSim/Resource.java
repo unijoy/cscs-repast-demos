@@ -50,13 +50,5 @@ public class Resource {
 	public void reset() {
 		numBusy = 0;
 	}
-	
-	public int getNumBusy() {
-		return numBusy;
-	}
-	
-	public Stat getUtilization() {
-		return utilization;
-	}
 
 }

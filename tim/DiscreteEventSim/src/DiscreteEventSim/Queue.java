@@ -24,6 +24,7 @@ public class Queue extends ArrayList<Entity> {
 	
 	public Queue(String type) {
 		this.type = type;
+		// If type is not recognized, default to FIFO
 		if (type != "FIFO" && type != "LIFO" && type != "Priority")
 			this.type = "FIFO";
 		length = new Stat();
