@@ -901,7 +901,7 @@ Let us keep these parameters as they are and click on _Finish_
 
 Now, it's the *Most Important* part. Do not forget to save the changes using the _Save Button_ (refer to Fig. 35)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.jpg
 
 _Fig. 35_
 
@@ -977,7 +977,7 @@ Rest options are left for the user to explore. _(Let them be as they are i.e. De
 
 Your Final _Visual Settings_ should look like this
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2043.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2043.jpg
 
 _Fig. 43_
 
@@ -990,7 +990,7 @@ _Fig. 44_
 Do not forget to save your setting.
 Go to the scenario tree and check under charts, you will see the chart "Difference between first and present ant" there. Now to see this chart you need to (refer to Fig. 45):
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2045.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2045.jpg
 
 _Fig. 45_
 
@@ -1004,7 +1004,7 @@ _Fig. 45_
  
 You will see your model running. Click on the _Difference between first and present ant_ at the bottom to view the chart. (refer to Fig. 46)
  
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2046.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2046.jpg
 
 _Fig. 46_
 
@@ -1036,7 +1036,7 @@ _Fig. 49_
 
 You have successfully changed the color of the background. (refer to fig 50)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2050.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2050.png
 
 _Fig. 50_
 
