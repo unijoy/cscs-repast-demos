@@ -27,9 +27,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: StupidModel documentation
     * Done: StupidModel
   * *[Grace Grace Lin]* (mentor: rick)
-    * Planned: [Grace#Planned_Models Termites]; Rebellion; Sunflower Biomorphs
-    * Working: [Grace#Planned_Models Fire]
-    * Done: tba
+    * Planned: [Grace#Planned_Models]
+    * Working: [Grace#Planned_Models]
+    * Done: [Fire][Termites][Rebellion]
   * *Benjamin Schleich*  (mentor: nick)
     * Planned: tba
     * Working: tba
