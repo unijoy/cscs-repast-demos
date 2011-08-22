@@ -13,20 +13,25 @@ My name is Grace I. Lin, and I'm currently a second year PhD student in Computer
 
 On a more personal note, I love to travel and enjoy good food. I hope to explore a bit more of Santa Cruz (and northern California in general) through hiking this summer :]
 
+= Completed (unverified) Models =
+
+Learning and working on these models turned out to be more time-consuming than I had originally expected, but overall a good experience.  The completed, but unverified, models are listed as follow:
+
+  # *[Fire]*: spread of a fire through forest
+    * [http://ccl.northwestern.edu/netlogo/models/Fire NetLogo: Earth Science: Fire]
+  # *[Termites]*: termites gather wood chips into piles
+    * [http://ccl.northwestern.edu/netlogo/models/Termites NetLogo: Biology: Termites]
+  # *[Rebellion]*: rebel against a central authority
+    * [http://ccl.northwestern.edu/netlogo/models/Rebellion NetLogo: Social Science: Rebellion]
+
 = Planned Models =
 
-Here's a list of models of interest.  I plan to work on them in the listed order, but that might be changed.
+Here's the remaining list of models of interest.  I hope to upload them as I work and finish them in the up coming months. I plan to work on them in the listed order, but that might be changed.
 
 They are based on [http://ccl.northwestern.edu/netlogo/models/index.cgi NetLogo Models] and [http://jmvidal.cse.sc.edu/netlogomas/ Multiagent NetLogo Models] so I know what others have done, you know what to expect, and others know what to compare with. Well, I might add more/less features...  
 
 I've listed MORE models than expected in case there's overlap with other students. Each item is linked with the corresponding individual model. Let me know if there's any feedback on what (not) to do, etc.
 
-  # *Fire*: spread of a fire through forest
-    * [http://ccl.northwestern.edu/netlogo/models/Fire NetLogo: Earth Science: Fire]
-  # *Termites*: termites gather wood chips into piles
-    * [http://ccl.northwestern.edu/netlogo/models/Termites NetLogo: Biology: Termites]
-  # *Rebellion*: rebel against a central authority
-    * [http://ccl.northwestern.edu/netlogo/models/Rebellion NetLogo: Social Science: Rebellion]
   # *Sunflower Biomorphs*: selective pressure
     * [http://ccl.northwestern.edu/netlogo/models/SunflowerBiomorphs NetLogo: Biology: Evolution: Sunflower Biomorphs]
   # *Dining Philosopher*: does everyone get to eat?
