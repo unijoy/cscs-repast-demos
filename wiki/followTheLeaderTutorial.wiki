@@ -774,17 +774,16 @@ along with the run button (red box) and selecting your model name, i.e.
 "followTheLeader". (refer to Fig. 24)
 
 
-http://cscs-repast-
-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0224.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0224.JPG
 
 _Fig. 24_
 
 Once you selected your model, you will get a new window like the one 
 shown in Fig. 25._(It might take few seconds for your model to load)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.+24.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0225.JPG
 
-_Fig. 24_
+_Fig. 25_
 
 In this you will find the following elements :
  
