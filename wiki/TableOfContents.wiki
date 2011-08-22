@@ -1,7 +1,10 @@
 #summary General Table of Contents.
 
  * Students
+   * [Ben]
+   * [Grace]
    * [Kwame]
+   * [Mark]
    * [Mudit]
      * [http://code.google.com/p/cscs-repast-demos/wiki/Mudit#Models Models]
        * [Ant]
@@ -27,12 +30,9 @@
        * [RandomWalkDescription] 
      * [http://code.google.com/p/cscs-repast-demos/wiki/Mudit#Tutorial Tutorial]
        * [followTheLeaderTutorial]
-   * [Tim]
-   * [Mark]
-   * [Grace]
    * [Richard]
-   * [Ben]
    * [Rowan]
+   * [Tim]
  * Models
    * [Ant]
    * [AreaCoverage]
@@ -40,6 +40,7 @@
    * [Boids]
    * [BugCatcher]
    * [Diffusion]
+   * [DiscreteEventSim]
    * [ElFarol El Farol]
    * [Ethnocentrism]
    * [Fire]
@@ -58,8 +59,8 @@
    * [Snake]
    * [Termites]
  * Tutorials
-   * [StupidModel Stupid Model]
    * [followTheLeaderTutorial Follow the Leader]
+   * [StupidModel Stupid Model]
  * Platforms
    * [RepastSReLogo ReLogo]
    * [RepastSJava Java]
