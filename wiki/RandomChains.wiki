@@ -23,7 +23,7 @@
 The model demonstrates a two dimensional Random Chains. 
 The Walkers are all created at the center of the world. They then start performing a two dimensional random walk. Each walker can only move at right angle. As the ticks increase the walker move to cover a given area. The pattern of area coverage is different, but using the guiding equations of a random walk, the average area coverage and average displacement can be calculated.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/RandomChains/RandomChains%28main%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/RandomChains/RandomChains%28main%29.JPG
 
 ---------
 
@@ -50,7 +50,7 @@ Model Outputter is also added. The added model outputter is comma separated valu
 
 Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Area Coverage" on y-axis and "Time" on x-axis is plotted.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/RandomWalk/RandomChains%28plot%29.png
+https://cscs-repast-demos.googlecode.com/svn/wiki/RandomChains/RandomChains%28plot%29.png
 
 Run the model with the same parameters and observe the nature of the plot. You will notice that the walker although cover different areas for different run but they cover a given area with 99% confidence.
 
