@@ -1066,7 +1066,7 @@ _Fig. 54_
  # Select the values which you want in the output
  # Click on this button to add the selected value. Repeat (4) and (5) for all the values.
 
-After the above steps the window should look like this (refer to Fir. 55):
+After the above steps the window should look like this (refer to Fig. 55):
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2055.JPG
 
@@ -1082,7 +1082,7 @@ Click _Finish_
 
 You have successfully added an outputter to your model. You can check that it is created in _Scenario Tree >> Outputters  >> DifferenceOut
 
-If you do a test run. (refer to Fig. 49) and then check your followTheLeader folder in the Project Explorer (refresh it by right clicking on followTheLeader and selecting refresh or just ctrl + F5) you will see a text file with the same name you gave. (refer to Fig. 57)
+If you do a test run. (refer to Fig. 57) and then check your followTheLeader folder in the Project Explorer (refresh it by right clicking on followTheLeader and selecting refresh or just ctrl + F5) you will see a text file with the same name you gave. (refer to Fig. 57)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2057.JPG
 
@@ -1096,28 +1096,28 @@ There are many external plug-ins available with RepastS. They are useful as you 
 
 Go to the plug-ins section which has icons for different plug-ins. Select _Spreadsheet_
 
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2056.JPG
+
+_Fig. 56_
+
+A _Spreadsheet's licence_ will be displayed since it is an external tool and has a different license. (refer to Fig. 57)
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2057.JPG
+
+_Fig. 57_
+
+Click _Next_. Now set the path to the .exe file. (refer to Fig. 58)
+
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2058.JPG
 
 _Fig. 58_
 
-A _Spreadsheet's licence_ will be displayed since it is an external tool and has a different license. (refer to Fig. 59)
+Click _Next_. Now select the outputter(s) that you want to add to the spreadsheet. Select _Difference Out_ in our case.
+(refer to Fig. 59)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2059.JPG
 
 _Fig. 59_
-
-Click _Next_. Now set the path to the .exe file. (refer to Fig. 60)
-
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2060.JPG
-
-_Fig. 60_
-
-Click _Next_. Now select the outputter(s) that you want to add to the spreadsheet. Select _Difference Out_ in our case.
-(refer to Fig. 61)
-
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2061.JPG
-
-_Fig. 61_
 
 Click _Finish_. You have successfully added a spreadsheet plug-in to your model.
 
@@ -1177,22 +1177,22 @@ influence of time delay is checked using the following test runs.
 || 3   ||    3     ||   (iii) ||
 || 4   ||    4     ||   (iv)  ||
 
-http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay1.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Delay1.JPG
 
 _Delay
  Fig. (i)_
 
-http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay2.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Delay2.JPG
 
 _Delay
  Fig. (ii)_
 
-http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay3.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Delay3.JPG
 
 _Delay
  Fig. (iii)_
 
-http://code.google.com/p/cscs-repast-demos/source/browse/wiki/Images_Mudit/Delay4.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Delay4.JPG
 
 _Delay
  Fig. (iv)_
@@ -1210,7 +1210,11 @@ The user can try and do test runs to check the relationship of
 
 ==How to change Run Options?==
 
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0260
+
 ==How to add Parameters of Simulation?==
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0261
 
 ==How to extend the model?==
 
@@ -1226,15 +1230,6 @@ check other Relogo models and their Model Description and documentation
  
 ==Where to learn more about RepastS?==
 
-=What else is there? (Appendix)=
-
-==How to distribute your models?==
-==How to add patch variables?==
-==How to add Undirected and Directed Links?==
-==How to add new turtle shapes?==
-==What are the available Graphical Elements?==
-==What are the generated relogo primitives?==
-==What are the default/recommended settings for Relogo?==
 
 =References=
 
