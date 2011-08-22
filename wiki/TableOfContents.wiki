@@ -17,6 +17,7 @@
    * [Diffusion]
    * [ElFarol El Farol]
    * [Ethnocentrism]
+   * [Fire]
    * [FollowTheLeader]
    * [GameOfLife]
    * [Gridlock]
@@ -25,8 +26,10 @@
    * [Moth_Advance]
    * [Mousetraps]
    * [NBodies]
+   * [Rebellion]
    * [SmallWorld]
    * [Snake]
+   * [Termites]
  * Tutorials
    * [StupidModel Stupid Model]
    * [followTheLeaderTutorial Follow the Leader]
