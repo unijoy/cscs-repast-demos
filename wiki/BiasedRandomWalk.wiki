@@ -23,7 +23,7 @@
 The model demonstrates a two dimensional Random Walk. 
 The Walkers are all created at the center of the word. They then start performing a two dimensional random walk. Each walker can only move at right angle. As the ticks increase the walker move to cover a given area. The pattern of area coverage is different, but using the guiding equations of a random walk, the average area coverage and average displacement can be calculated.
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28main%29.jpg
+https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28main%29.JPG
 
 ---------
 
@@ -31,7 +31,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomW
 
 The user can assign Energy Values to the walkers and the user can also change the step size of the walkers. User can also run the model in area coverage mode by selecting _Area Coverage_.The number of walker are also adjustable. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
 
-https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/RandomWalk%28panel%29.JPG
+https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28panel%29.JPG
 
 
 ---------
