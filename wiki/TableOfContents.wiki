@@ -3,7 +3,7 @@
  * Students
    * [Kwame]
    * [Mudit]
-     *[Ant]
+     * [Ant]
    * [Tim]
    * [Mark]
    * [Grace]
