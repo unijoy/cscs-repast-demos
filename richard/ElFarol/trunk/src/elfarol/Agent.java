@@ -26,7 +26,8 @@ import elfarol.strategies.RandomStrategy;
  * 
  * @author Richard O. Legendi (richard.legendi)
  * @since 2.0-beta, 2011
- * @version $Id$
+ * @version $Id: Agent.java 1092 2011-08-22 08:35:16Z richard.legendi@gmail.com
+ *          $
  * @see AStrategy
  */
 public class Agent {
@@ -53,7 +54,7 @@ public class Agent {
 	private boolean attend = false;
 
 	/**
-	 * Initializes a new agent instance with the 
+	 * Initializes a new agent instance with the
 	 */
 	public Agent() {
 		for (int i = 0, n = getStrategiesNumber(); i < n; ++i) {
@@ -61,7 +62,7 @@ public class Agent {
 		}
 
 		bestStrategy = strategies.get(0); // Choose the first one initially
-		updateStrategies();
+		updateBestStrategy();
 	}
 
 	/**
@@ -139,8 +140,11 @@ public class Agent {
 	 * <p>
 	 * 
 	 * @param strategy
+	 *            the strategy to predict the attendance with
 	 * @param subhistory
-	 * @return
+	 *            the time window of the history to create a prediction from
+	 * @return the prediction based on the previous attendance levels based on
+	 *         the described formulae
 	 */
 	private double predictAttendance(final AStrategy strategy,
 			final List<Integer> subhistory) {
@@ -157,7 +161,15 @@ public class Agent {
 		return ret;
 	}
 
-	public void updateStrategies() {
+	// ========================================================================
+	// === Public Interface ===================================================
+
+	/**
+	 * Makes the agent evaluate all the strategies and if any of them is better
+	 * than the previously used one it is updated. A threshold level of
+	 * <code>memorySize * agentsNumber + 1</code> is also considered.
+	 */
+	public void updateBestStrategy() {
 		// Defined threshold level
 		double minScore = getMemorySize() * getAgentsNumber() + 1;
 
@@ -170,6 +182,10 @@ public class Agent {
 		}
 	}
 
+	/**
+	 * Makes the agent update its attendance level based on its attendance
+	 * prediction by its best evaluated strategy.
+	 */
 	public void updateAttendance() {
 		final double prediction = predictAttendance(bestStrategy, History
 				.getInstance().getMemoryBoundedSubHistory());
