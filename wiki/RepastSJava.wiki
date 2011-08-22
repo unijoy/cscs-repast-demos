@@ -27,8 +27,9 @@ Users with a workable knowledge of Java who want highly customized models also s
  # !SimplePhysics (Available with the software)
  # !SolarSystem (Available with the software)
  # !SugarScape (Available with the software)
- # StupidModel (Unverified)
+ # [DiscreteEventSim] (Unverified)
  # [ElFarol El Farol] (Unverified)
+ # StupidModel (Unverified)
 
 = References =
 
