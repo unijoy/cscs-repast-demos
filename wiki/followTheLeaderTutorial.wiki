@@ -21,34 +21,22 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Index.jpg
 
 ==How to use this tutorial?==
 
-This How-To/What-Is guide basically will help you learn how to model 
-using RepastS with Relogo Platform. This guide does not assume any 
-pre-requisites apart from the mentioned ones, although it is advisable 
-to go through each question in the order in which they are given. Please
- don't skip questions if you are a new user. Each question builds
-on to the other. Although, this guide tells you how to make a model from
- scratch, but you can also try other documents (_a list can be found in 
-What other such documents are available?_). 
+This How-To/What-Is guide basically will help you learn how to model using RepastS with Relogo Platform. This guide does not assume any pre-requisites apart from the mentioned ones, although it is advisable to go through each question in the order in which they are given. Please
+ don't skip questions if you are a new user. Each question builds on to the other. Although, this guide tells you how to make a model from
+scratch, but you can also try other documents (_a list can be found in What other such documents are available?_). 
 
-Some part of the code is not dealt with in this tutorial. That code is 
-mostly feature extension and does not affect the overall behavior of the
- system.
+Some part of the code is not dealt with in this tutorial. That code is mostly feature extension and does not affect the overall behavior of the
+system.
 
-Most of the figures in tutorial are numbered and the text before it 
-explains the numbering. This numbering could be different methods, 
-screen elements, or steps etc. 
+Most of the figures in tutorial are numbered and the text before it explains the numbering. This numbering could be different methods, screen elements, or steps etc. 
    
 Hope you'll find this guide fun and easy to learn. Cheers !!! 
 
 ==Where is this model and who wrote this?==
 
-The complete commented source code of the model can be found 
-[https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeade 
-here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] 
-under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric 
-Tatara]. The code is wellThe model is fully commented and each class and
- function has a description attached. The part of the code which is not 
-explained in the tutorial is either self - explanatory or is irrelevant 
+The complete commented source code of the model can be found [https://cscs-repast-demos.googlecode.com/svn/mudit/followTheLeader here]. This tutorial and model was written by [Mudit Mudit Raj Gupta] 
+under the guidance of [http://mypages.iit.edu/~tataeri/ Dr. Eric Tatara]. The code is wellThe model is fully commented and each class and
+function has a description attached. The part of the code which is not explained in the tutorial is either self - explanatory or is irrelevant
 to the system behavior. 
 Let us first understand a bit about multi-agent modeling.
 
@@ -57,30 +45,16 @@ Let us first understand a bit about multi-agent modeling.
 ==What is Multi-Agent Modelling?==
 
 Agent-based modelling and simulation (ABMS) is a relatively new approach
- to modelling complex systems composed of
-interacting, autonomous ?agents?. Agents have behaviours, often 
-described by simple rules, and interactions with other
-agents, which in turn influence their behaviours. By modelling agents 
-individually, the full effects of the diversity that
-exists among agents in their attributes and behaviours can be observed 
-as it gives rise to the behavior of the system as a
-whole. [1]
+to modelling complex systems composed of interacting, autonomous agents? Agents have behaviours, often described by simple rules, and nteractions with other agents, which in turn influence their behaviours. By modelling agents individually, the full effects of the diversity that exists among agents in their attributes and behaviours can be observed 
+as it gives rise to the behavior of the system as a whole. [1]
 
 We are infact doing the same for this model. We are modeling artificial 
-ants. These ants have relatively simple behaviour,
-described by simple rules (which will be talked about in the nest 
-question). This behavior is influenced by other ants and 
-environment in which the ant is. When all ants are left to interact with
- each other  in a given environment, a complex overall 
-behavior is noticed. Let us first figure out What are we modelling?
+ants. These ants have relatively simple behaviour, described by simple rules (which will be talked about in the nest question). This behavior is influenced by other ants and environment in which the ant is. When all ants are left to interact with  each other  in a given environment, a complex overall behavior is noticed. Let us first figure out What are we modelling?
   
 ==What are We Modelling?==
 
 The model is a simple multi agent model which demonstrates how the ant 
-lines become short as time passes.
-The model basically has an ant "nest"  and the "food"(refer to Fig. 1) .
- The ants are moving from 
-the nest to the food source. 
+lines become short as time passes.The model basically has an ant "nest"  and the "food"(refer to Fig. 1). The ants are moving from the nest to the food source. 
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%201.JPG
 
@@ -107,8 +81,7 @@ _Fig. 2_
 
 Initially, ants take a longer route from nest to food. (refer to Fig. 3,
  denoted by red line). The following ants take smaller routes (refer to 
-Fig. 4, denoted by blue lines) and finally the last ant takes 
-the smallest route (refer to Fig 5, denoted by green line). 
+Fig. 4, denoted by blue lines) and finally the last ant takes the smallest route (refer to Fig 5, denoted by green line). 
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%203.JPG
 
@@ -123,8 +96,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%205.JPG
 _Fig. 5_
 
 Keep on reading to find the prerequisites in the next section to make 
-this model. You also check out the analysis in _What are the 
-observations?_ (Although I would suggest making the model first and then
+this model. You also check out the analysis in _What are the observations?_ (Although I would suggest making the model first and then
  reading the question, again go sequentially.) 
 
 ==What are the Prerequisites?== 
@@ -132,10 +104,8 @@ observations?_ (Although I would suggest making the model first and then
 Before we can do anything with ReLogo, we need to make sure that we have
  a proper installation of Repast Simphony (version 2.0 Beta, released on
  12/3/2010 or later). Instructions on downloading and installing Repast 
-Simphony on various platforms can be found 
-[http://repast.sourceforge.net/download.html here]. After installing go 
-to the default/recommended setting for relogo. After installing the 
-software open it.
+Simphony on various platforms can be found [http://repast.sourceforge.net/download.html here]. After installing go 
+to the default/recommended setting for relogo. After installing the software open it.
 
 If you are opening RepastS for the first time, it asks for a default 
 workspace (refer to Fig. 6). The workspace is a directory used to store 
@@ -165,10 +135,9 @@ http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%208.jpg
 
 _Fig. 8_
 
-Now let us have a look at various elements on your screen (Windows 7 
-screenshots). The figure mentions various blocks which are either self -
- explanatory or will be dealt later in the guide(refer to Fig. 9). Since
- it is an introductory guide, some parts are left unmarked, to be 
+Now let us have a look at various elements on your screen (Windows 7 screenshots). The figure mentions various blocks which are either self -
+explanatory or will be dealt later in the guide(refer to Fig. 9). Since
+it is an introductory guide, some parts are left unmarked, to be 
 explored by the user
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.jpg
