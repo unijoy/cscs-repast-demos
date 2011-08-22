@@ -770,19 +770,23 @@ run this model.
 ==How to run the model?==
 
 You can run your model by clicking at the drop down arrow (green box) 
-along with the run button (red box) and selecting your model name, i.e. 
-"followTheLeader". (refer to Fig. 24)
+along with the run button (red box) (refer to Fig. 24) and selecting your model name, i.e. "followTheLeader". (refer to Fig. 25)
 
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2024.JPG
+
 _Fig. 24_
 
-Once you selected your model, you will get a new window like the one 
-shown in Fig. 25._(It might take few seconds for your model to load)_
-
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%0225.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2025.JPG
 
 _Fig. 25_
+
+Once you selected your model, you will get a new window like the one 
+shown in Fig. 26._(It might take few seconds for your model to load)_
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2026.JPG
+
+_Fig. 26_
 
 In this you will find the following elements :
  
@@ -807,11 +811,9 @@ So, one of the elements mentioned above was a User Panel. We already
 wrote the code for the User Panel in _UserGlobalFactory.groovy_. The 
 user panel will look like this : 
 
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2024.JPG
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2025.JPG
-
-_Fig.
- 25_
+_Fig. 25_
 
 You can change various parameters of the model using these controls. The
  changes take place in real time.
