@@ -3,7 +3,10 @@
  * Students
    * [Kwame]
    * [Mudit]
-     * [Ant]
+     * [http://code.google.com/p/cscs-repast-demos/wiki/Mudit#Models Models]
+       * [Ant]
+       * [AreaCoverage]
+       
    * [Tim]
    * [Mark]
    * [Grace]
