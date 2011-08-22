@@ -724,8 +724,7 @@ same.
 Let us now look at how we can change the various parameters of our model
 for different runs, without modifying the code. For this we have to 
 modify the UserGlobalPanelFactory.groovy. This you can find in 
-_followTheLeader >> src >> followtheleader >> 
-UserGlobalFactory.groovy_ (refer to Fig. 23)
+_followTheLeader >> src >> followtheleader >> UserGlobalFactory.groovy_ (refer to Fig. 23)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%2023.JPG
 
