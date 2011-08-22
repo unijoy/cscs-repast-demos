@@ -68,7 +68,7 @@ An Ant can be either a "Leader"(first Ant coming out of the nest) or a
 food. 
 
 *Follower Ants*
-	# They start moving after a specified time delay (refer to Fig. 
+	# They start moving after a specified time delay (refer to Fig. 2 
 	# They follow the ant infront of them by facing it and moving forward and stops on finding food.
 	 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%202.JPG
@@ -76,7 +76,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%202.JPG
 _Fig. 2_
 
 Initially, ants take a longer route from nest to food. (refer to Fig. 3,
- denoted by red line). The following ants take smaller routes (refer to 
+denoted by red line). The following ants take smaller routes (refer to 
 Fig. 4, denoted by blue lines) and finally the last ant takes the smallest route (refer to Fig 5, denoted by green line). 
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%203.JPG
@@ -93,13 +93,13 @@ _Fig. 5_
 
 Keep on reading to find the prerequisites in the next section to make 
 this model. You also check out the analysis in _What are the observations?_ (Although I would suggest making the model first and then
- reading the question, again go sequentially.) 
+reading the question, again go sequentially.) 
 
 ==What are the Prerequisites?== 
 
 Before we can do anything with ReLogo, we need to make sure that we have
- a proper installation of Repast Simphony (version 2.0 Beta, released on
- 12/3/2010 or later). Instructions on downloading and installing Repast 
+a proper installation of Repast Simphony (version 2.0 Beta, released on
+12/3/2010 or later). Instructions on downloading and installing Repast 
 Simphony on various platforms can be found [http://repast.sourceforge.net/download.html here]. After installing go 
 to the default/recommended setting for relogo. After installing the software open it.
 
@@ -117,8 +117,7 @@ _Fig. 6_
 
 and switch to Relogo prospective using the following step:
 
- # Go to the extreme top right corner and select relogo prospective 
-(refer to Fig. 7)
+ # Go to the extreme top right corner and select relogo prospective (refer to Fig. 7)
  # If it  is not available, click  on the double arrow to get a drop 
 down menu (refer to Fig. 8)
  # Select Relogo prospective by clicking it (refer to Fig. 8)
