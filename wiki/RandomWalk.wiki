@@ -21,7 +21,7 @@
 =1. Description=
 
 The model demonstrates a two dimensional Random Walk. 
-The Walkers are all created at the center of the word. They then start performing a two dimensional random walk. Each walker can only move at right angle. As the ticks increase the walker move to cover a given area. The pattern of area coverage is different, but using the guiding equations of a random walk, the average area coverage and average displacement can be calculated.
+The Walkers are all created at the center of the world. They then start performing a two dimensional random walk. Each walker can only move at right angle. As the ticks increase the walker move to cover a given area. The pattern of area coverage is different, but using the guiding equations of a random walk, the average area coverage and average displacement can be calculated.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/RandomWalk/RandomWalk%28main%29.png
 
