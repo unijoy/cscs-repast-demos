@@ -20,8 +20,8 @@
 
 =1. Description=
 
-The model demonstrates a two dimensional Random Walk. 
-The Walkers are all created at the center of the word. They then start performing a two dimensional random walk. Each walker can only move at right angle. As the ticks increase the walker move to cover a given area. The pattern of area coverage is different, but using the guiding equations of a random walk, the average area coverage and average displacement can be calculated.
+The model demonstrates a two biased dimensional Random Walk. 
+The Walkers are all created at one corner of the world (-9,0). They then start performing a two dimensional biased random walk. Each walker can only move in it'e Moore's neighborhood. As the ticks increase the walker move towards the other side (line: x=9). Although the walk of the walker is purely random, still they manage to reach a final destination, because of a biased introduced in their walk. Once they reach the biased region (lines : x=7 and x=11), they tend to revisit the patches in the region. The revisited region is dependent on the step sizes of the walkers.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28main%29.JPG
 
@@ -29,7 +29,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomW
 
 =2. User Control=
 
-The user can assign Energy Values to the walkers and the user can also change the step size of the walkers. User can also run the model in area coverage mode by selecting _Area Coverage_.The number of walker are also adjustable. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
+The user can assign a maximum "Energy Value", all walkers will have a random value of energy, less than the specified.User can also change the step size of the walkers. The number of walker are also adjustable. Standard Setup, Go and Go Once Options are also present. User Panel looks like this :
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28panel%29.JPG
 
@@ -38,7 +38,7 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomW
 
 =3. Output=
 
-Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Area Covered". One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/BiasedRandomWalk/ModelOutput.txt here]
+Model Outputter is also added. The added model outputter is comma separated values of "Time" and "Number of revisits of the Biased Region (C)". One of the sample output file can be checked [https://code.google.com/p/cscs-repast-demos/source/browse/wiki/BiasedRandomWalk/ModelOutput.txt here]
 
 *Note:* 
 
@@ -48,34 +48,35 @@ Model Outputter is also added. The added model outputter is comma separated valu
 
 =4. Analysis=
 
-Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Area Coverage" on y-axis and "Time" on x-axis is plotted.
+Various analysis could be carried out with the model, but for demonstration purpose a graph between, "Number of Visits (C)" on y-axis and "Time" on x-axis is plotted.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/BiasedRandomWalk/BiasedRandomWalk%28plot%29.png
 
-Run the model with the same parameters and observe the nature of the plot. You will notice that the walker although cover different areas for different run but they cover a given area with 99% confidence.
+Run the model with the same parameters and observe the nature of the plot. The maximum value although changes, is always above a thresh hold for a given set of model parameters.
 
 ---------
 
 =5. Extending =
 
-==5.1 Change in area coverage==
+==5.1 Two dimensional Bias==
 
-Go through the source code and try to add a slider for cut-off area. At present the cut-off area is 200. After the walkers have covered 200 different patches the color changes to green (of the remaining covered patches and walker trail)
+Go through the source code and try to add a two dimensional bias to the walkers. They should all try to converge at a point, rather than a moving towards a line.
 
-==5.2 Self Avoiding Random Walk==
+==5.2 Making Follow the Leader==
+
+Check out the [FollowTheLeader] model and try to use a Biased Random Walk to make the model. The model uses a different algorithms, since ants cannot move in any of their Moore's Neighborhood due to physical constrains.
  
-Think of a strategy to implement a Self Avoiding Random Walk. In a self avoiding random walk, a walker tries not to move in a region it has already visited. Try with one walker first and then try to extend it.
 ---------
 
 =6. Applications=
 
 ==6.1 Path planning in Robotics==
 
-A Random Walk model can be used in various search based robotic missions, in which the search value's position is unknown. The algorithm is optimized by adding various features like -"Bias", "Restrictions" and "Self-Avoidance"
+A Biased Random Walk model can be used in various search based robotic missions, in which the search value's position is known. The robots do a random walk towards the biased area in order to find the value.
 
 ==6.2 Predicting the Stock Market==
 
-Stock prizes change a little with time. The Random Walk can be used for predicting such changes and predicting the average prize after a given time interval. A book which covers the topic extensively is - "A Random Walk down the Wallstreet."
+Stock prizes change a little with time. The Random Walk can be used for predicting such changes and predicting the average prize after a given time interval. Biased Random walk is normally observed in a "Bull" or a "Bear" market. A stable market is more or less a Random Walk with out a bias. A book which covers the topic extensively is - "A Random Walk down the Wallstreet."
 
 ==6.3 Other Applications== 
 
