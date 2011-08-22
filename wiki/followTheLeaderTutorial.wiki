@@ -770,12 +770,13 @@ run this model.
 ==How to run the model?==
 
 You can run your model by clicking at the drop down arrow (green box) 
-along with the run button (red box) (refer to Fig. 24) and selecting your model name, i.e. "followTheLeader". (refer to Fig. 25)
-
+along with the run button (red box) (refer to Fig. 24).
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2024.JPG
 
 _Fig. 24_
+
+Select your model name, i.e. "followTheLeader". (refer to Fig. 25)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2025.JPG
 
@@ -811,12 +812,12 @@ So, one of the elements mentioned above was a User Panel. We already
 wrote the code for the User Panel in _UserGlobalFactory.groovy_. The 
 user panel will look like this : 
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2024.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2027.jpg
 
-_Fig. 25_
+_Fig. 27_
 
 You can change various parameters of the model using these controls. The
- changes take place in real time.
+changes take place in real time.
 
 ==How to add Data Sets?==
 
@@ -828,17 +829,17 @@ sampled at a given instance of time.
 
 For adding a data set to your model follow the following steps: 
 
-When your model is loaded, go to the scenario tree and search for _DataSets_. Right click on the the option and the select _Add Data Set_ (refer to Fig. 30)
+When your model is loaded, go to the scenario tree and search for _DataSets_. Right click on the the option and the select _Add Data Set_ (refer to Fig. 28)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2030.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2028.JPG
 
-_Fig. 30_
+_Fig. 28_
 
-On clicking this a _Data Set Editor_ pops up. Follow these steps : (refer to Fig. 31))
+On clicking this a _Data Set Editor_ pops up. Follow these steps : (refer to Fig. 29)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2031.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2029.JPG
 
-_Fig. 31_
+_Fig. 29_
 
  # Give a name to your Dataset by filling the _Data Set ID_ field. Let's call it "Difference"
 
@@ -848,11 +849,11 @@ _Fig. 31_
 
  # Click on _Next_
 
-On clicking you will be given _Agent Mapping_ options. (refer to Fig. 32)
+On clicking you will be given _Agent Mapping_ options. (refer to Fig. 30)
  
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2032.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2030.JPG
 
-_Fig. 32_
+_Fig. 30_
 
  # Click on _Add_ and a new column (4) and Source (2) appears.
  # Click on small drop down arrow to see a list of sources available. 
