@@ -1,0 +1,11 @@
+#summary (Java) Toolkit for discrete event simulation
+#sidebar TableOfContents
+
+= Summary =
+
+ * Source Code   : https://cscs-repast-demos.googlecode.com/svn/tim/DiscreteEventSim/
+ * Platform      : [RepastSJava Repast Simphony Java]
+ * Documentation
+   * Wiki: http://code.google.com/p/cscs-repast-demos/wiki/DiscreteEventSim
+   * PDF: https://cscs-repast-demos.googlecode.com/svn/tim/DiscreteEventSim/docs/discreteeventsim.pdf
+ * Author: [Tim Tim Sweda]
