@@ -11,9 +11,13 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.SimUtilities;
 
+/**
+ * @author grace
+ * Cop class
+ */
 public class Cop {
 	
-	private int visNeighbors;
+	private int visNeighbors; // neighborhood visibility
 	private Grid <Object> grid;
 	private ContinuousSpace<Object> space;
 	
@@ -23,19 +27,10 @@ public class Cop {
 		this.space = space;
 		this.visNeighbors = visNeighbors;
 	}
-
-	/*
-	public Grid<Object> getGrid() {
-		@SuppressWarnings("unchecked")
-		Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
-				.getProjection(Constants.GRID_ID);
-		if (null == grid) {
-			throw new IllegalStateException("Cannot locate grid in context.");
-		}
-		return grid;
-	}
-	*/
 	
+	/*
+	 * Step
+	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void step() {
 
@@ -78,6 +73,9 @@ public class Cop {
 		
 	}
 	
+	/*
+	 * overrid for debugging purpose
+	 */
 	@Override
 	public String toString() {
 		String location = grid.getLocation(this).toString();

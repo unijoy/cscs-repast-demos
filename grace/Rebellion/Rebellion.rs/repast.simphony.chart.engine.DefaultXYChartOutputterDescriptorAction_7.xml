@@ -1,16 +1,16 @@
 <repast.simphony.chart.engine.DefaultXYChartOutputterDescriptor>
-  <name>Active People</name>
+  <name>Jailed People</name>
   <outputterFactory class="repast.simphony.chart.wizard.XYChartMappingsStep$XYFactory"/>
   <dataSetHandler>
     <dataSets>
-      <string>Active People Data</string>
+      <string>Jailed People Data</string>
     </dataSets>
   </dataSetHandler>
   <streamHandler>
     <columns/>
   </streamHandler>
   <isBatchAction>false</isBatchAction>
-  <dataSetId class="string">Active People Data</dataSetId>
+  <dataSetId class="string">Jailed People Data</dataSetId>
   <showLegend>false</showLegend>
   <multipleSeries>false</multipleSeries>
   <xColumnName>Tick</xColumnName>
@@ -28,8 +28,8 @@
   <series>
     <repast.simphony.chart.Series>
       <seriesID>Title</seriesID>
-      <valueColumn>ActivePeopleCount</valueColumn>
-      <hashCode>1671820731</hashCode>
+      <valueColumn>JailedPeopleCount</valueColumn>
+      <hashCode>1631698984</hashCode>
       <proxy>false</proxy>
     </repast.simphony.chart.Series>
   </series>

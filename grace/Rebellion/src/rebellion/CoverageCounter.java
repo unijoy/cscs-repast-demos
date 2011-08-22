@@ -5,13 +5,17 @@ import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.util.ContextUtils;
 
+/**
+ * @author grace
+ * Count number of people in different states and cops
+ */
 public class CoverageCounter {
 
-	public double pCount;
-	public double pActiveCount;
-	public double cCount;
-	public double pJailedCount;
-	public double pQuietCount;
+	public double pCount;		// people count
+	public double pActiveCount; // active people count
+	public double cCount;		// cops count
+	public double pJailedCount; // jailed people count
+	public double pQuietCount;  // quiet people count
 	
 	@ScheduledMethod(start=1, interval=1, priority=ScheduleParameters.LAST_PRIORITY)
 	public void step(){
@@ -42,6 +46,7 @@ public class CoverageCounter {
 				cCount++;
 			}
 		}
+		
 		System.out.println("people "+pCount+" active "+pActiveCount+
 				" jailed "+pJailedCount+" quiet "+pQuietCount+
 				" total "+(pActiveCount+pJailedCount+pQuietCount));

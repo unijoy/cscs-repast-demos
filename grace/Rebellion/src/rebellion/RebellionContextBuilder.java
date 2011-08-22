@@ -14,6 +14,11 @@ import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.space.grid.RandomGridAdder;
 
+/**
+ * @author grace
+ * Creating context for people and cops
+ */
+
 public class RebellionContextBuilder extends DefaultContext<Object> implements 
 	ContextBuilder<Object> {
 
@@ -33,6 +38,7 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 		double govLegitimacy = (Double)p.getValue("govLegitimacy");
 		int maxJailTerm = (Integer)p.getValue("maxJailTerm");
 		
+		// create space
 		final ContinuousSpace<Object> space = ContinuousSpaceFactoryFinder
 				.createContinuousSpaceFactory(null)
 				.createContinuousSpace(
@@ -42,6 +48,7 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 						new repast.simphony.space.continuous.WrapAroundBorders(),
 						gridWidth, gridHeight);
 
+		// create grid
 		final Grid<Object> grid = GridFactoryFinder
 				.createGridFactory(null)
 				.createGrid(
@@ -53,6 +60,7 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 							false,
 							gridWidth, gridHeight));
 
+		// make sure density are not greater than 1
 		if ((iniPeopleDensity + iniCopsDensity) > 1) {
 			System.out.println("Error: ini people and cops density sum > 1. " +
 					"Cutting both density by half.");
@@ -61,7 +69,8 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 			System.out.println("New iniPeopleDensity "+iniPeopleDensity+
 					" new iniCopsDensity "+iniCopsDensity);
 		}
-			
+		
+		// number of people and cops
 		int peopleCount = (int) (gridWidth * gridHeight * iniPeopleDensity);
 		int copsCount = (int) (gridWidth * gridHeight * iniCopsDensity);
 		
@@ -70,22 +79,26 @@ public class RebellionContextBuilder extends DefaultContext<Object> implements
 			System.out.println("people count "+peopleCount+" cops count "+copsCount);
 		}
 		
+		// create people
 		for (int i = 0; i < peopleCount; ++i) {
 			Person person = new Person(grid, space, visNeighbors, maxJailTerm, govLegitimacy);
 			context.add(person);
 		}
 
+		// create cops
 		for (int i = 0; i < copsCount; ++i) {
 			Cop cop = new Cop(grid, space, visNeighbors);
 			context.add(cop);
 		}
 
+		// add all to context
 		for (Object obj : context) {
 			GridPoint pt = grid.getLocation(obj);
 			grid.moveTo(obj, pt.getX(), pt.getY());
 			//System.out.println(obj.toString());
 		}
 
+		// add coverage counter to context
 		context.add(new CoverageCounter());
 		
 		return context;

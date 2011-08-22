@@ -15,7 +15,7 @@ import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.SimUtilities;
 /**
  * @author grace
- *
+ * Person class
  */
 public class Person {
 
@@ -28,10 +28,10 @@ public class Person {
 	public int jailTerm; // remaining jail turns (if 0, then agent is not in jail)
 	private int visNeighbors; // neighbor visibility radius range
 	public int MAX_JAIL_TERM;
-	private double grievance;
-	private double govLegitimacy;
-	private double arrestProb;
-	public int red;
+	private double grievance; // person's grievance
+	private double govLegitimacy; // user-specified government legitimacy
+	private double arrestProb; // person's arrest probability
+	public int red;   // assign color base on behavior
 	public int green;
 	public int blue;
 	
@@ -41,31 +41,25 @@ public class Person {
 		this.space = space;
 		this.visNeighbors = visNeighbors;
 		this.MAX_JAIL_TERM = maxJailTerm;
-		this.riskAversion = 1.0;
-		this.perceivedHardship = 1.0;
-		this.active = false;
+		this.riskAversion = Constants.RISK_AVERSION; // fixed for lifetime
+		this.perceivedHardship = Constants.PERCEIVED_HARDSHIP; // fixed for lifetime
+		this.active = false; // by default not rebelling
 		this.jailTerm = 0;
-		this.govLegitimacy = govLegitimacy;
+		this.govLegitimacy = govLegitimacy; // user-specified
 		this.grievance = 0;
 		set_colors();
 	}
 
 	/*
-	public Grid<Object> getGrid() {
-		@SuppressWarnings("unchecked")
-		final Grid<Object> grid = (Grid<Object>) ContextUtils.getContext(this)
-				.getProjection(Constants.GRID_ID);
-		if (null == grid) {
-			throw new IllegalStateException("Cannot locate grid in context.");
-		}
-		return grid;
-	}
-	*/
-	
+	 * Calculate grievance
+	 */
 	private void calc_grievance() {
 		this.grievance = this.perceivedHardship * (1 - this.govLegitimacy);
 	}
 	
+	/*
+	 * Calculate arrest probability
+	 */
 	private void est_arrest_prob(List<GridCell<Person>> personNeighborhood, 
 			List<GridCell<Cop>> copNeighborhood) {
 		
@@ -89,47 +83,49 @@ public class Person {
 			}
 		}
 		
-		/*
-		for (Object obj : personNeighborhood) {
-			if (obj instanceof Person) {
-				if (((Person)obj).active == true)
-					pActiveCount++;
-			}
-		}
-		*/
-		
 		if (Constants.DEBUG) {
 			//System.out.println(location.toString()+ " visNeighbors "+visNeighbors);
 			System.out.println("active people nearby "+pActiveCount);
 			System.out.println("cops nearby "+cCount);
 		}
 		
+		// calculate arrest probability
 		this.arrestProb = 1 - Math.exp(-Constants.K * Math.floor(cCount/pActiveCount));
 		
 		if (Constants.DEBUG)
 			System.out.println("arrestProb "+arrestProb+" cCount "+cCount+" pActiveCount "+pActiveCount);
 	}
 
-	/* set colors base on rebellion or grievance */
+	/* 
+	 * set colors base on person's current behavior
+	 * */
 	private void set_colors() {
-		if (this.active==true) {
+		if (this.active==true) { // red
 			this.red = 0xFF;
+			this.green = 0x0;
+			this.blue = 0x0;
+		} else if (this.jailTerm>0) { // jailed
+			this.red = 0x0;
 			this.green = 0x0;
 			this.blue = 0x0;
 		} else {
 			// grievance is between 0 and 1
 			this.red = 0x0;
-			this.green = (int) (this.grievance * 0xFF);
+			this.green = 0xFF; //(int) (this.grievance * 0xFF);
 			this.blue = 0x0;
 		}
 	}
 
+	/*
+	 * Step
+	 */
 	@ScheduledMethod(start = 1, interval = 1, priority = 0)
 	public void step() {
 
 		// if jailTurn == 0 (not in jail), then move and determine behavior
 		if (this.jailTerm == 0) {
 			
+			this.active = false;
 			GridPoint location = grid.getLocation(this);
 			
 			// people nearby
@@ -137,16 +133,15 @@ public class Person {
 					grid, location, Person.class, visNeighbors, 
 					visNeighbors).getNeighborhood(false);
 			
-
-			
 			// look for empty cells
 			List<GridCell<Person>> freeCells = SMUtils
 				.getFreeGridCells(personNeighborhood);
 			
-			// move to empty cell
 			if (freeCells.isEmpty()) {
 				return;
 			}
+			
+			// move to empty cell
 			SimUtilities.shuffle(freeCells, RandomHelper.getUniform());
 			GridCell<Person> chosenFreeCell = SMUtils.randomElementOf(freeCells);
 
@@ -158,39 +153,42 @@ public class Person {
 					visNeighbors, visNeighbors);
 			List<GridCell<Cop>> copNeighborhood = copNgh.getNeighborhood(false);
 
-
 			
-			//List<GridCell<Cop>> copNeighborhood = new GridCellNgh<Cop>(
-			//		grid, location, Cop.class, 1, 
-			//		1).getNeighborhood(false);
-			
-			// should this person be active (rebelling)?
+			// should this person be active (rebel)?
+			// calculate grievance and arrest probability
 			this.calc_grievance();
 			this.est_arrest_prob(personNeighborhood, copNeighborhood);
 			
-			if (this.grievance - this.riskAversion * this.arrestProb > 
+			if ((this.grievance - this.riskAversion * this.arrestProb) > 
 				Constants.THRESHOLD) {
 				this.active = true;
-				/*
-				System.out.println("ACTIVE grievance "+grievance+
+				if (Constants.DEBUG)
+					System.out.println("ACTIVE grievance "+grievance+
 						" riskAversion "+riskAversion+
 						" arrestProb "+arrestProb+
 						" threshold "+Constants.THRESHOLD);
-						*/
 			}
 			
 		} else if (this.jailTerm > 0) {
-			this.jailTerm--;
+			this.jailTerm--; // decrement jail turn by 1 each step
 		}
 		
 		set_colors();
-		//print_state();
+		
+		if (Constants.DEBUG)
+			print_state();
 	}
 
+	/*
+	 * Print current state
+	 */
 	public void print_state() {
 		System.out.println("active? "+active+" G "+grievance+" A "+arrestProb);
 	}
 
+	/*
+	 * Override toString() for debug purpose
+	 */
 	@Override
 	public String toString() {
 		String location = grid.getLocation(this).toString();

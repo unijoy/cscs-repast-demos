@@ -8,6 +8,7 @@ import repast.simphony.random.RandomHelper;
 
 public class SMUtils {
 
+	// get free grid cells
 	public static <T> List<GridCell<T>> getFreeGridCells(
 			final List<GridCell<T>> neighborhood) {
 		if (null == neighborhood) {
@@ -22,26 +23,21 @@ public class SMUtils {
 				ret.add(act);
 			}
 		}
-
 		return ret;
 	}
 	
+	// pick random element
 	public static <T> T randomElementOf(final List<T> list) {
 		if (null == list) {
 			throw new IllegalArgumentException("Parameter list cannot be null.");
 		}
-
 		if (list.isEmpty()) {
 			throw new IllegalArgumentException(
 					"Cannot return a random element from an empty list.");
 		}
-
 		return list.get(RandomHelper.nextIntFromTo(0, list.size() - 1));
 	}
 
-	/**
-	 * Hidden constructor to ensure no instances are created.
-	 */
 	private SMUtils() {
 		;
 	}
