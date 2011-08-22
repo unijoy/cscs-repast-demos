@@ -9,3 +9,5 @@
    * Wiki: http://code.google.com/p/cscs-repast-demos/wiki/DiscreteEventSim
    * PDF: https://cscs-repast-demos.googlecode.com/svn/tim/DiscreteEventSim/docs/discreteeventsim.pdf
  * Author: [Tim Tim Sweda]
+
+See [https://cscs-repast-demos.googlecode.com/svn/tim/DiscreteEventSim/docs/discreteeventsim.pdf PDF file] for tutorial.
