@@ -87,44 +87,26 @@ public class CA {
 # Please copy the following comments and past them into the body of the CA class:
 
 {{{
-	/***************
-	 * Scheduling  *
-     ***************
-	 */
-
-    /***
-     End
-     ***/
-
-	    /**********
-	     * Query  *
-         **********
-	     */
-
-        /***
-         End
-         ***/
-
-
-	    /*********
-	     * Rule  *
-         *********
-	     */
-
-        /***
-         End
-         ***/
-
-	}
-
-	/*************
-	 * Function  *
-     *************
+	/**************
+	 * Scheduling *
+	 **************
 	 */
 	
-    /***
-     End
-     ***/
+		/*********
+		 * Query *
+		 *********
+		 */
+	
+		/********
+		 * Rule *
+		 ********
+		 */
+	
+	
+	/************
+	 * Function *
+	 ************
+	 */
 }}}
 
 As you can see, these blocks are:
@@ -178,8 +160,7 @@ In the scheduling block, we will use Repasts available scheduling methods. These
 		oldState = state;
 	}
 }}}
-But wait, there is a squiggle line under one of the lines! It looks like an error, oh no! No worries, this is just Eclipse reminding you that the code is missing an import statement for something called "ScheduledMethod". If you hover over the line, a window will pop up giving you optional import statements. You should click on the one that is from repast.simphony, or alternatively, you could manually write the import line at the top of the CA file, but this takes more time. Auto-completion using `Ctrl + Space` is a time saver here. More about this here.
-Remark From now on, for the sake of simplicity, we omit the fully qualified class names and import statements. Eclipse automatically inserts these, and in case of uncertainity the Ctrl + Space (auto-complete feature) combination can solve the situation. In case a whole code segment is inserted into the Java editor, using the Ctrl + Shift + O (organize imports) key combination solves all of the importing and namespace errors (in case of duplicate identifiers it asks for assistance). Using the hotkeys may really boost up the development speed. Press Ctrl+Shift+L to get a full list of usable hotkey combinations in the current context (e.g., in the Java editor), or see the full list of available ones through Window -> Preferences -> General -> Keys settings page.
+But wait, there is a squiggle line under one of the lines! It looks like an error, oh no! No worries, this is just Eclipse reminding you that the code is missing an import statement for something called "ScheduledMethod". If you hover over the line, a window will pop up giving you optional import statements. You should click on the one that is from repast.simphony, or alternatively, you could manually write the import line at the top of the CA file, but this takes more time. Auto-completion using `Ctrl + Space` is a time saver here. 
 
 {{{
 import repast.simphony.engine.schedule.ScheduledMethod;
@@ -208,7 +189,7 @@ You should have a file `CAContextBuilder.java` under /src/Automata with the cont
 
 {{{
 package Automata;
-*CheckThis*
+
 public class CAContextBuilder implements ContextBuilder<CA> {
 
 		return context;
@@ -228,25 +209,24 @@ Now, to actually build the context, add the following
 
 
 
-Paste the following above `return context`, for the sake of future reference.
+Paste the comments above `return context`, for the sake of future reference.
 {{{
-	    /*********
-	     * Build *
-         *********
-	     */
+	public Context<CA> build(Context<CA> context) {
 
-        /***
-         End
-         ***/
+		/*********
+		 * Build *
+		 *********
+		 */
 
-	    /********
-	     * Fill *
-         ********
-	     */
 
-        /***
-         End
-         ***/
+		/********
+		 * Fill *
+		 ********
+		 */
+
+
+		return context;
+	}
 
 }}}
 
@@ -357,7 +337,7 @@ public class CA {
 
 	/**************
 	 * Scheduling *
-     **************
+	 **************
 	 */
 
 	// Maintain the history of the state for one time interval
@@ -370,34 +350,23 @@ public class CA {
 	public void step(){
 		Context<CA> context = ContextUtils.getContext(this);
 		Grid<CA> grid = (Grid)context.getProjection("Grid");
-    /***
-     End
-     ***/
 
-	    /*********
-	     * Query *
-         *********
-	     */
-
-        /***
-         End
-         ***/
-
-
-	    /********
-	     * Rule *
-         ********
-	     */
-
-        /***
-         End
-         ***/
+		/*********
+		 * Query *
+		 *********
+		 */
+	
+	
+		/********
+		 * Rule *
+		 ********
+		 */
 
 	}
 
 	/************
 	 * Function *
-     *************
+	 ************
 	 */
 	
 	public int getState() {
@@ -419,9 +388,7 @@ public class CA {
     GridValueLayer vl = (GridValueLayer)context.getValueLayer("State");
     vl.set(state, grid.getLocation(this).getX(), grid.getLocation(this).getY());
 	}
-    /***
-     End
-     ***/
+
 }
 }}}
 
@@ -453,7 +420,7 @@ public class CAContextBuilder implements ContextBuilder<CA> {
 		int seedWidth = (Integer)parm.getValue("centerSeedWidth");
 
 		/*********
-	     * Build *
+		 * Build *
 		 *********
 		 */
 
@@ -477,14 +444,12 @@ public class CAContextBuilder implements ContextBuilder<CA> {
 				grid.moveTo(ca, i, j);
 			}
 		}
-        /***
-         End
-         ***/
 
-	    /********
-	     * Fill *
-         ********
-	     */
+
+		/********
+		 * Fill *
+		 ********
+		 */
 
 		// "Seed" the the center CA.
 		RandomHelper.init();
@@ -497,9 +462,7 @@ public class CAContextBuilder implements ContextBuilder<CA> {
 						ca, "setState", rand);
 			}
 		}
-        /***
-         End
-         ***/
+
 		
 		return context;
 	}
@@ -524,9 +487,9 @@ Moving up from 1-dimensional CA, 2-D CA exist on a grid instead of just being "p
 Lets start by changing how the cell looks up its neighborhood. We want to query the von Neumann neighborhood, then get the states of the four nearest neighbors.
 
 {{{
-		/***************
-		 * Query Block *
-		 ***************
+		/*********
+		 * Query *
+		 *********
 		 */
 
 		// Query the von Neumann neighborhood
@@ -612,8 +575,10 @@ Being able to load/save configurations from a file is another feature that would
 =Conclusion=
 Building the template for a CA ABM is not very challenging once you have done it once. Even easier is modifing the code in what we termed the "Query block" and "Rule block" to get vastly different end behavior from the model. This is characteristic of all complex systems. Changing the underlying, simple rules makes the simulation unpredicatable, and hopefully interesting.
 
+
 This has been a general introduction to both CA and using the basic features of Repast Simphony. From this point you should be able to reproduce a wide range of grid based ABM's, whether they are categorized as "cellular automata" or not. Remember to consult the Repast documentation and user guides for more information.
 
 =Resources=
+
 
 =References=
