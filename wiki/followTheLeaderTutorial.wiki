@@ -22,15 +22,16 @@ https://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Index.jpg
 ==How to use this tutorial?==
 
 This How-To/What-Is guide basically will help you learn how to model using RepastS with Relogo Platform. This guide does not assume any pre-requisites apart from the mentioned ones, although it is advisable to go through each question in the order in which they are given. Please
- don't skip questions if you are a new user. Each question builds on to the other. Although, this guide tells you how to make a model from
-scratch, but you can also try other documents (_a list can be found in What other such documents are available?_). 
+don't skip questions if you are a new user. Each question builds on to the other. Although, this guide tells you how to make a model from scratch, but you can also try other documents (_a list can be found in What other such documents are available?_). 
 
 Some part of the code is not dealt with in this tutorial. That code is mostly feature extension and does not affect the overall behavior of the
 system.
 
 Most of the figures in tutorial are numbered and the text before it explains the numbering. This numbering could be different methods, screen elements, or steps etc. 
    
-Hope you'll find this guide fun and easy to learn. Cheers !!! 
+Hope you'll find this guide fun and easy to learn. 
+
+Cheers !!! 
 
 ==Where is this model and who wrote this?==
 
