@@ -23,9 +23,9 @@ Record status after the group agrees on the assignment - planned,working,done
     * Working: Improving Documentation
     * Done: [GuidingBots], [Ant], [FollowTheLeader], [AreaCoverage], [BugCatcher], [Moth_Basic] and [Moth_Advance] 
   * *[Richard Richard Legendi]* (mentor: eric)
-    * Planned: [ElFarol El Farol]
-    * Working: StupidModel documentation
-    * Done: StupidModel
+    * Planned: -
+    * Working: -
+    * Done: StupidModel, [StupidModel StupidModel documentation], [ElFarol El Farol]
   * *[Grace Grace Lin]* (mentor: rick)
     * Planned: [Grace#Planned_Models Planned Models]
     * Working: [Grace#Planned_Models Planned Models]
