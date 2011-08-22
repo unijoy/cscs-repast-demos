@@ -84,8 +84,7 @@ the nest to the food source.
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%201.JPG
 
-_Fig.
- 1_
+_Fig. 1_
 
 Ants are guided by a set of simple rules, which are as follows :
 
@@ -104,8 +103,7 @@ and stops on finding food.
 	 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%202.JPG
 
-_Fig.
- 2_
+_Fig. 2_
 
 Initially, ants take a longer route from nest to food. (refer to Fig. 3,
  denoted by red line). The following ants take smaller routes (refer to 
@@ -114,18 +112,15 @@ the smallest route (refer to Fig 5, denoted by green line).
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%203.JPG
 
-_Fig.
- 3_
+_Fig. 3_
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%204.JPG
 
-_Fig.
- 4_
+_Fig. 4_
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%205.JPG
 
-_Fig.
- 5_
+_Fig. 5_
 
 Keep on reading to find the prerequisites in the next section to make 
 this model. You also check out the analysis in _What are the 
@@ -152,8 +147,7 @@ following:
 
 https://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%206.JPG
 
-_Fig.
- 6_
+_Fig. 6_
 
 and switch to Relogo prospective using the following step:
 
@@ -165,13 +159,11 @@ down menu (refer to Fig. 8)
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%207.jpg
 
-_Fig.
- 7_
+_Fig. 7_
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%208.jpg
 
-_Fig.
- 8_
+_Fig. 8_
 
 Now let us have a look at various elements on your screen (Windows 7 
 screenshots). The figure mentions various blocks which are either self -
@@ -181,8 +173,7 @@ explored by the user
 
 http://cscs-repast-demos.googlecode.com/svn/wiki/Images_Mudit/Fig.%209.jpg
 
-_Fig.
- 9_
+_Fig. 9_
 
 The Elements are as follows:
 
