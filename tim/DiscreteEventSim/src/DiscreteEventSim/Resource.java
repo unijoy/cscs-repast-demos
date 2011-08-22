@@ -15,8 +15,8 @@ public class Resource {
 		numServers = size;
 		numBusy = 0;
 		utilization = new Stat();
-		DESimBuilder.rlist.add(this);
-		DESimBuilder.slist.add(utilization);
+		DESimBuilder.rList.add(this);
+		DESimBuilder.sList.add(utilization);
 	}
 	
 	// Check if new job can begin service immediately

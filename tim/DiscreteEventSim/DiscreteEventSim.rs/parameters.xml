@@ -6,6 +6,36 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="replications" displayName="Replications" type="int" 
+						defaultValue="100"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="warmup" displayName="Warmup Period" type="double" 
+						defaultValue="500"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="endTime" displayName="End Time" type="double" 
+						defaultValue="5000"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="lambda" displayName="Lambda" type="double" 
+						defaultValue="0.8"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="mu" displayName="Mu" type="double" 
+						defaultValue="1"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
 		</parameters>
 
 

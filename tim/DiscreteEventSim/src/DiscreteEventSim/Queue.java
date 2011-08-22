@@ -17,9 +17,9 @@ public class Queue extends ArrayList<Entity> {
 		type = "FIFO";
 		length = new Stat();
 		waitTime = new Stat();
-		DESimBuilder.qlist.add(this);
-		DESimBuilder.slist.add(length);
-		DESimBuilder.slist.add(waitTime);
+		DESimBuilder.qList.add(this);
+		DESimBuilder.sList.add(length);
+		DESimBuilder.sList.add(waitTime);
 	}
 	
 	public Queue(String type) {
@@ -28,9 +28,9 @@ public class Queue extends ArrayList<Entity> {
 			this.type = "FIFO";
 		length = new Stat();
 		waitTime = new Stat();
-		DESimBuilder.qlist.add(this);
-		DESimBuilder.slist.add(length);
-		DESimBuilder.slist.add(waitTime);
+		DESimBuilder.qList.add(this);
+		DESimBuilder.sList.add(length);
+		DESimBuilder.sList.add(waitTime);
 	}
 	
 	// Remove next entity from queue
