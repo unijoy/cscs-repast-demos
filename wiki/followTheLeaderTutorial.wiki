@@ -580,7 +580,7 @@ _Fig. 20_
 
 For adding a new link, follow the same steps as those for adding a new 
 turtle, but select _new link_ in place of _new turtle_. A model which 
-has an extensive us of links is the [GuidingBots] model.
+has an extensive use of links is the [GuidingBots] model.
 
 ==How to add Observers?==
 
@@ -785,7 +785,7 @@ _Fig. 25_
 Once you selected your model, you will get a new window like the one 
 shown in Fig. 26._(It might take few seconds for your model to load)_
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2026.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2026.jpg
 
 _Fig. 26_
 
@@ -812,7 +812,7 @@ So, one of the elements mentioned above was a User Panel. We already
 wrote the code for the User Panel in _UserGlobalFactory.groovy_. The 
 user panel will look like this : 
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2027.jpg
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2027.JPG
 
 _Fig. 27_
 
@@ -850,6 +850,7 @@ _Fig. 29_
  # Click on _Next_
 
 On clicking you will be given _Agent Mapping_ options. (refer to Fig. 30)
+
  
 http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2030.JPG
 
@@ -860,32 +861,49 @@ _Fig. 30_
  # Scroll down and select _timestamp():Object_ from the list. Remember making a _timestamp()_ function in the _UserObserver_ class earlier in this section.
  # Give a nice name to this value, say "Time". Just click on the present name and you can edit it then. Repeat Steps (1-4) for _getFr():Object_ * and _getPr()_ * Object with names _Steps taken by first Ant_ and _Steps taken by present Ant_ respectively. 
  # *IF* you added an extra data set you can delete it using this.
- # Now lets tell RepastS about the number of series. For doing this click on a drop down button (1) with add    
+ # Now lets tell RepastS about the number of series. For doing this click on a drop down button and select _add using wizard_ (refer to Fig. 31)
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2031.JPG
+
+_Fig. 31_
+    
+ 7 
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2032.JPG
+
+_Fig. 32_
+
+ 8
+
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2033.JPG
+
+_Fig. 33_
+
+ 9
+
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2034.JPG
+
+_Fig. 34_
+ #
+ #
  # 
- #
- #
- #
- # Press on _Next_.
 
-Your agent mapping should look like this(refer to Fig. 3) :
+Your agent mapping should look like this(refer to Fig. 35) :
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.JPG
 
-_Fig. 37_
+click on Next and you will get optiosn to change the scheduling parameters. (refer to Fig. 36)
 
-click on Next and you will get optiosn to change the scheduling parameters. (refer to Fig. 38)
-
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2038.JPG
-
-_Fig. 38_
 
 Let us keep these parameters as they are and click on _Finish_
 
-Now, it's the *Most Important* part. Do not forget to save the changes using the _Save Button_ (refer to Fig. 39)
+Now, it's the *Most Important* part. Do not forget to save the changes using the _Save Button_ (refer to Fig. 35)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2039.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.JPG
 
-_Fig. 39_
+_Fig. 35_
 
 We have successfully added a Data Set _(Check the Scenario Tree)_. Let's see how we can use it. So, lets try to create a chart using this data set. 
 
@@ -893,43 +911,43 @@ We have successfully added a Data Set _(Check the Scenario Tree)_. Let's see how
 
 So for adding a Chart. 
 
-Go to _Scenario Tree >> Charts(right click) >> Add Chart(click) _ (refer to Fig. 40)  
+Go to _Scenario Tree >> Charts(right click) >> Add Chart(click) _ (refer to Fig. 36)  
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2040.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2036.JPG
 
-_Fig. 40_
+_Fig. 36_
 
-You will be given an option to select Data Source (refer to Fig. 41)
+You will be given an option to select Data Source (refer to Fig. 37)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2041.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2037.JPG
 
-_Fig. 41_
+_Fig. 37_
 
  # Select _XY Line or Bar Chart, or  Scatterplot_
  # Select _Next_
 
-You will be asked to set the _Chart Data Mapping_ (refer to Fig. 42)
+You will be asked to set the _Chart Data Mapping_ (refer to Fig. 38)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2042.jpg
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2038.jpg
 
-_Fig. 42_
+_Fig. 38_
 
  # Give a Name, say "Difference between first and present ant"
  # Select _DataSet_ i.e. _Difference_
 
-Now you have to set the x axis values : (refer to Fig. 43)
+Now you have to set the x axis values : (refer to Fig. 39)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2043.jpg
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2039.jpg
 
-_Fig. 43_
+_Fig. 39_
 
-  Go to the _X-Axis Column_  and click on the small drop down button to get a list. Select _Time_ (Remember we gave the name time to an object while making data set "Difference")
+Go to the _X-Axis Column_  and click on the small drop down button to get a list. Select _Time_ (Remember we gave the name time to an object while making data set "Difference")
 
 Let us now set y-axis values : 
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2044.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2040.JPG
 
-_Fig. 44_
+_Fig. 40_
 
  # Click on _Add_
  # A new _Series_ will be added
@@ -937,17 +955,17 @@ _Fig. 44_
  # Select _Steps taken by present Ant_ (Remember adding the same while making "Difference" Data Set. In the _Series Name_ section select _Mapping0_, so that to tell RepastS that is the first series. Do the same for _Steps taken by present Ant_ and add _Mapping1_ 
  # *IF* you add an extra Series, just select it and click on _Remove_
 
-Your _Chart Data Mapping_ should look like this (refer to Fig. 45)  
+Your _Chart Data Mapping_ should look like this (refer to Fig. 41)  
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2045.jpg
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2041.jpg
 
-_Fig. 45_
+_Fig. 41_
 
-Click on _Next_  and you will be given the options of _Visual Setting_ (refer to Fig. 46)
+Click on _Next_  and you will be given the options of _Visual Settings_ (refer to Fig. 42)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2046.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2042.JPG
 
-_Fig. 46_
+_Fig. 42_
 
 You have many options here, like the highlighted one is about _Type of Chart_. We will select a _Line Chart_ 
 
@@ -959,22 +977,22 @@ Rest options are left for the user to explore. _(Let them be as they are i.e. De
 
 Your Final _Visual Settings_ should look like this
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2047.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2043.JPG
 
-_Fig. 47_
+_Fig. 43_
 
-Click on _Next_ an then _Finish_ (refer to Fig. 48)
+Click on _Next_ an then _Finish_ (refer to Fig. 44)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2048.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2044.JPG
 
-_Fig. 48_
+_Fig. 44_
 
 Do not forget to save your setting.
-Go to the scenario tree and check under charts, you will see the chart "Difference between first and present ant" there. Now to see this chart you need to (refer to Fig. 49):
+Go to the scenario tree and check under charts, you will see the chart "Difference between first and present ant" there. Now to see this chart you need to (refer to Fig. 45):
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2049.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2045.JPG
 
-_Fig. 49_
+_Fig. 45_
 
  # Refresh 
  # Initialize 
@@ -984,43 +1002,43 @@ _Fig. 49_
 
 *Note : * Some screen shorts are taken after adding the code described in How to extend the model? So some paramenters in the User Panel may differ.
  
-You will see your model running. Click on the _Difference between first and present ant_ at the bottom to view the chart. (refer to Fig. 50)
+You will see your model running. Click on the _Difference between first and present ant_ at the bottom to view the chart. (refer to Fig. 46)
  
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2050.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2046.JPG
 
-_Fig. 50_
+_Fig. 46_
 
 We have successfully added a chart to our mode. Let us look at how we can change it's appearance during run time.
 
-Right click anywhere on the chart a pop up menu will appear. Select _Properties_. Rest options are self - explanatory. (refer to Fig. 51)
+Right click anywhere on the chart a pop up menu will appear. Select _Properties_. Rest options are self - explanatory. (refer to Fig. 47)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2051.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2047.JPG
 
-_Fig. 51_
+_Fig. 47_
 
-You will get options to change the Title, Plot properties or other. (refer to Fig 52).
+You will get options to change the Title, Plot properties or other. (refer to Fig 48).
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2052.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2048.JPG
 
-_Fig. 52_
+_Fig. 48_
 
 
-Let us change the background from white to black. To do so  Select _Plot_ from the three tabs. The window now will look like this (refer to Fig. 52):  
+Let us change the background from white to black. To do so  Select _Plot_ from the three tabs. The window now will look like this (refer to Fig. 49):  
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2052.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2049.JPG
 
-_Fig. 52_
+_Fig. 49_
 
  # Go to _Appearance_
  # In the background paint section _Select..._
  # A new window pops up. Select the color and click _OK_
  # Click _OK_
 
-You have successfully changed the color of the background. (refer to fig 53)
+You have successfully changed the color of the background. (refer to fig 50)
 
-http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2053.JPG
+http://cscs-repast-demos.googlecode.com/svn/wiki/Tutorial/Fig.%2050.JPG
 
-_Fig. 53_
+_Fig. 50_
 
 You can change other properties like color of the axes and font. This is left to the user to explore. Now let us see how to add outputters.
  
