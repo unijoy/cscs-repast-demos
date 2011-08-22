@@ -12,6 +12,7 @@
  * Models
    * [Ant]
    * [AreaCoverage]
+   * [BiasedRandomWalk]
    * [Boids]
    * [BugCatcher]
    * [Diffusion]
@@ -26,6 +27,8 @@
    * [MothAdvance]
    * [Mousetraps]
    * [NBodies]
+   * [RandomChains]
+   * [RandomWalk]
    * [Rebellion]
    * [SmallWorld]
    * [Snake]
